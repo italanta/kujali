@@ -4,15 +4,6 @@
       "SWITCH-LANG": "Switch language"
     }
   },
-  "SIDENAV": {
-    "NAV": {
-      "DASHBOARD": "Dashboard",
-      "BUSINESS": "Business",
-      "OPERATIONS": "Operations",
-      "BUDGETTING": "Budgetting",
-      "SETTINGS": "Settings"
-    }
-  },
   "LOGIN": {
     "LOGIN": "Login",
     "OR": "or",
@@ -148,39 +139,6 @@
       "EQUIPMENT": "Equipment",
       "FINANCE": "Finance",
       "MISC": "Miscellaneous"
-    }
-  },
-  "FINANCE": {
-    "BUDGET-SHARE": {
-      "MODAL-TITLE": "Share budget",
-      "SAVE": "Save"
-    },
-    "BUDGET-SELECT": {
-      "TITLE": "Budgets",
-      "SUBTITLE": "All your budgets in one place",
-      "ACTIVE-BUDGETS": "Active budgets",
-      "MY-BUDGETS": "My budgets",
-      "ARCHIVED-BUDGETS": "Archived budgets",
-      "CREATE-NEW": "Create New"
-    }
-  },
-  "BUDGET": {
-    "CREATE": {
-      "HDR-CREATE-BUDGET":"Create budget",
-      "HDR-FLD-BUDGET-NAME": "Budget name",
-      "FLD-BUDGET-NAME": "Name",
-      "FLD-START-YR": "Start year",
-      "FLD-DUR": "Duration",
-      "BTN-SUBMIT": "Submit",
-      "HDR-OVERRIDE-LST": "Override List"
-    },
-    "VIEW-RECORD": {
-      "ACTIONS": {
-        "VIEW": "View",
-        "EDIT": "Edit",
-        "SHARE": "Share",
-        "CLONE": "Clone"
-      }
     }
   }
 }

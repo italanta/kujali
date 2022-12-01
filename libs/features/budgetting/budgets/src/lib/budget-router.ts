@@ -8,11 +8,7 @@ const BUDGET_EXPL_ROUTES: Route[] = [
     component: SelectBudgetPageComponent
   },
   {
-    path: ':budgetId/edit',
-    loadChildren: () => import('@app/features/budgetting/budget-explorer').then(m => m.BudgetExplorerFeatureModule),
-  },
-  {
-    path: ':budgetId/view',
+    path: ':budgetId',
     loadChildren: () => import('@app/features/budgetting/budget-explorer').then(m => m.BudgetExplorerFeatureModule),
   }
 ];

@@ -16,28 +16,21 @@
 .language-holder {
   padding: 15px;
 }
+  .lang {
+    font-size: 0.9em;
+    padding: 8px;
+    margin: 0 10px;
+    color: #eee;
+    background-color: mat-color($primary, 800);
+  }
+    .lang:hover {
+      background-color: mat-color($accent, 'A400');
+      cursor: pointer;
+    }
 
-.lang {
-  font-size: 0.9em;
-  padding: 8px;
-  margin: 0 10px;
-  color: #eee;
-  border-radius: 10px;
-  background-color: mat-color($primary, 800);
-}
-
-.lang:hover {
-  background-color: white!important;
-  color: var(--kujali-color-primary-blue)!important;
-  cursor: pointer;
-}
-
-.lang.active {
-  background-color: white;
-  color: var(--kujali-color-primary-blue);
-}
-
-.lang.active:hover {
-  background-color: white!important;
-  color: var(--kujali-color-primary-blue)!important;
-}
+  .lang.active {
+    background-color: mat-color($accent, 'A400');
+  }
+    .lang.active:hover {
+      background-color: mat-color($accent, 'A400');
+    }

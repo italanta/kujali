@@ -6,8 +6,6 @@
 #side-menu {
   min-width: 200px;
   font-family: mat-font-family($custom-typography, subheading-2);
-  background-color: var(--kujali-color-primary-blue);
-  min-height: 100%;
 }
 
 mat-nav-list {
@@ -47,15 +45,11 @@ mat-nav-list {
   margin-bottom: 0;
 }
 
-a {
-  text-decoration: none;
-  color: #ccc;
-  font-size: 1.1rem;
-  font-family: var(--kujali-segoe-ui);
-  margin-left: 10px;
+.header {
   padding: 12px 25px;
+  border-bottom: 0.8px solid rgba(255,255,255,.1);
+  font-size: 14px;
   outline: none;
-  margin-bottom: 10px;
 }
 
 .header-main-item:before {
@@ -68,6 +62,7 @@ a {
   cursor: pointer;
   padding: 10px;
   font-size: 16px;
+  border-bottom: 5px solid #fafafa;
   margin-bottom: 10px;
 }
 
@@ -115,17 +110,7 @@ a {
   // padding: 10px 5px;
 }
 
-a:hover {
+.hov:hover, .child-header:hover {
   cursor: pointer;
-  background-color: white;
-  color: black!important;
-  border-radius: 20px 0px 0px 20px;
-}
-
-.active {
-  font-family: var(--kujali-segoe-ui-semi-bold);
-  color: var(--kujali-color-primary-blue);
-  cursor: pointer;
-  background-color: #fafafa;
-  border-radius: 20px 0px 0px 20px;
+  background-color: mat-color($accent, A200);
 }

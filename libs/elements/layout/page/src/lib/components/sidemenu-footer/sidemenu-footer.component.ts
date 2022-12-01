@@ -1,8 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-
 import { User } from '@iote/bricks';
-
-import { TranslateService } from '@ngfi/multi-lang';
 
 @Component({
   selector: 'app-sidemenu-footer',
@@ -15,15 +12,8 @@ export class SideMenuFooterComponent implements OnInit
 
   lang : string;
 
-  constructor(private _translateService: TranslateService) {
-    this.lang = this._translateService.initialise();
-  }
+  constructor() {}
 
   ngOnInit() {  }
 
-  setLang(lang: 'en' | 'fr' | 'nl')
-  {
-    this.lang = lang;
-    this._translateService.setLang(lang);
-  }
 }

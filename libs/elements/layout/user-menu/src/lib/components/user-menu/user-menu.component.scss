@@ -1,16 +1,5 @@
-.user-image {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-  clip-path: circle();
-  margin-right: 10px;
-}
-
-img {
-  margin-top: 5px;
-}
+@import 'libs/elements/theming/common.theme.scss';
 
 .user-btn{
-  color: white;
-  background-color: var(--kujali-color-primary-blue);
+  background-color: mat-color($accent, A200);;
 }
