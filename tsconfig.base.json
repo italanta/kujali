@@ -136,6 +136,9 @@
       ],
       "@app/model/organisation": ["libs/model/organisation/main/src/index.ts"],
       "@app/state/data/firebase": ["libs/state/data/firebase/src/index.ts"],
+      "@app/state/finance/activities": [
+        "libs/state/finance/activities/base/src/index.ts"
+      ],
       "@app/state/finance/banking": ["libs/state/finance/banking/src/index.ts"],
       "@app/state/finance/budgetting/budgets": [
         "libs/state/finance/budgetting/budgets/src/index.ts"
