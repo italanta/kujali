@@ -61,6 +61,7 @@
     "state-finance-invoices-base": "libs/state/finance/invoices/base",
     "state-finance-notes-base": "libs/state/finance/notes/base",
     "state-finance-opportunities-base": "libs/state/finance/opportunities/base",
+    "state-roles-base": "libs/state/roles/base",
     "state-tags-base": "libs/state/tags/base",
     "util-iote-bricks": "libs/util/iote/bricks",
     "util-iote-bricks-angular": "libs/util/iote/bricks-angular",
