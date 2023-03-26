@@ -3,15 +3,15 @@ import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { switchMap, tap, filter } from 'rxjs/operators';
 
-import { Repository, DataService } from '@ngfire/angular';
+import { Repository, DataService } from '@ngfi/angular';
 
 import { Store } from '@iote/state';
 import { Logger } from '@iote/bricks-angular';
 
-import { InvoicesPrefix } from '@volk/model/crm/invoices';
+import { InvoicesPrefix } from '@app/model/finance/invoices';
 
-import { ActiveCrmObjectLoader } from '@volk/state/crm/base'
-import { ActiveOrgStore } from '@volk/state/orgs';
+import { ActivefinanceObjectLoader } from '@app/state/finance/base'
+import { ActiveOrgStore } from '@app/state/organisation';
 
 @Injectable()
 export class InvoicesPrefixStore extends Store<InvoicesPrefix>
@@ -20,7 +20,7 @@ export class InvoicesPrefixStore extends Store<InvoicesPrefix>
   protected _activeRepo: Repository<InvoicesPrefix>;
 
   constructor(_activeOrg$$: ActiveOrgStore,
-              _crmObjLoader: ActiveCrmObjectLoader,
+              _financeObjLoader: ActivefinanceObjectLoader,
               _dataProvider: DataService,
               protected _logger: Logger
   )

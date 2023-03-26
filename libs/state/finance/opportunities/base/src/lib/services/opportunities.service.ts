@@ -10,16 +10,16 @@ import { combineLatest } from 'rxjs';
 import * as moment from 'moment';
 
 import { __DateToStorage } from '@iote/time';
-import { BackendService } from '@ngfire/angular';
+import { BackendService } from '@ngfi/angular';
 
-import { Opportunity } from '@volk/model/crm/opportunities';
-import { Tags } from '@volk/model/crm/tags';
+import { Opportunity } from '@app/model/finance/opportunities';
+import { Tags } from '@app/model/finance/tags';
 
-import { TagsStore } from '@volk/state/crm/tags';
-import { ContactsStore } from '@volk/state/crm/contacts';
-import { CompaniesStore } from '@volk/state/crm/companies';
+import { TagsStore } from '@app/state/finance/tags';
+import { ContactsStore } from '@app/state/finance/contacts';
+import { CompaniesStore } from '@app/state/finance/companies';
 
-import { DeleteModalComponent } from '@volk/elements/crm/modals';
+import { DeleteModalComponent } from '@app/elements/finance/modals';
 
 import { OpportunitiesStore } from '../stores/opportunities.store';
 import { ActiveOpportunityStore } from '../stores/active-opportunity.store';

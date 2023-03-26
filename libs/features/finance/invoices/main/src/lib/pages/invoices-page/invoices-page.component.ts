@@ -14,13 +14,13 @@ import { round as __round } from 'lodash';
 import { TranslateService } from '@ngfi/multi-lang';
 import { __DateFromStorage } from '@iote/time';
 
-import { Invoice } from '@app/model/crm/invoices';
+import { Invoice } from '@app/model/finance/invoices';
 import { AppClaimDomains } from '@app/model/access-control';
 
-import { OpportunitiesService } from '@app/state/crm/opportunities';
+import { OpportunitiesService } from '@app/state/finance/opportunities';
 import { _CheckPermission } from '@app/state/access-control';
 import { VolkUsersService } from '@app/state/user';
-import { InvoicesService } from '@app/state/crm/invoices';
+import { InvoicesService } from '@app/state/finance/invoices';
 
 const DATA: Invoice[] = []
 

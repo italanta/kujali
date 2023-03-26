@@ -5,11 +5,11 @@ import { switchMap, tap, filter } from 'rxjs/operators';
 
 import { Logger } from '@iote/bricks-angular';
 
-import { Repository, DataService } from '@ngfire/angular';
-import { DataStore } from '@ngfire/state';
+import { Repository, DataService } from '@ngfi/angular';
+import { DataStore } from '@ngfi/state';
 
-import { Task } from '@volk/model/crm/activities';
-import { ActiveOrgStore } from '@volk/state/orgs';
+import { Task } from '@app/model/finance/activities';
+import { ActiveOrgStore } from '@app/state/organisation';
 
 @Injectable()
 export class TaskStore extends DataStore<Task>

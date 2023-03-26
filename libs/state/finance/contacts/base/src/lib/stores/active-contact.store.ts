@@ -6,8 +6,8 @@ import { filter, map } from 'rxjs/operators';
 
 import { Store } from '@iote/state';
 
-import { Contact } from '@volk/model/crm/contacts';
-import { ContactsStore } from '@volk/state/crm/contacts';
+import { Contact } from '@app/model/finance/contacts';
+import { ContactsStore } from '@app/state/finance/contacts';
 
 @Injectable()
 export class ActiveContactStore extends Store<Contact>

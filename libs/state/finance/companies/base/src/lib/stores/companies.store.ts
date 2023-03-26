@@ -4,12 +4,12 @@ import { switchMap, tap, filter } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Logger } from '@iote/bricks-angular';
 
-import { Repository, UserService, DataService } from '@ngfire/angular';
-import { DataStore }  from '@ngfire/state';
+import { Repository, UserService, DataService } from '@ngfi/angular';
+import { DataStore }  from '@ngfi/state';
 
-import { Company } from '@volk/model/crm/companies';
+import { Company } from '@app/model/finance/companies';
 
-import { ActiveOrgStore } from '@volk/state/orgs';
+import { ActiveOrgStore } from '@app/state/organisation';
 
 @Injectable()
 export class CompaniesStore extends DataStore<Company>
@@ -19,7 +19,7 @@ export class CompaniesStore extends DataStore<Company>
 
   constructor(_activeOrg$$: ActiveOrgStore,
               _dataProvider: DataService,
-              protected _logger: Logger)
+              protected override _logger: Logger)
   {
     super('always',  _logger);
 

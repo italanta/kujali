@@ -4,15 +4,15 @@ import { switchMap, tap, filter, startWith } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Logger } from '@iote/bricks-angular';
 
-import { Repository, DataService } from '@ngfire/angular';
+import { Repository, DataService } from '@ngfi/angular';
 import { Query } from '@ngfire/firestore-qbuilder';
-import { DataStore } from '@ngfire/state';
+import { DataStore } from '@ngfi/state';
 
-import { ActiveCrmObjectLoader } from '@volk/state/crm/base'
+import { ActivefinanceObjectLoader } from '@app/state/finance/base'
 
-import { Activity } from '@volk/model/crm/activities';
-import { ActiveOrgStore } from '@volk/state/orgs';
-import { CrmObject } from '@volk/model/crm/crm-object';
+import { Activity } from '@app/model/finance/activities';
+import { ActiveOrgStore } from '@app/state/organisation';
+import { financeObject } from '@app/model/finance/finance-object';
 import { Router } from '@angular/router';
 
 
@@ -24,7 +24,7 @@ export class ActivityStore extends DataStore<Activity>
 
   constructor(private _router$$: Router,
               private _org$$: ActiveOrgStore,
-              private _crmObjLoader: ActiveCrmObjectLoader,
+              private _financeObjLoader: ActivefinanceObjectLoader,
               private _dataProvider: DataService,
               protected _logger: Logger
     ) {
@@ -35,11 +35,11 @@ export class ActivityStore extends DataStore<Activity>
     
     const data$
       = combineLatest(
-        [_org$$.get(), _crmObjLoader.load().pipe(startWith({type : type, id: id}))])
+        [_org$$.get(), _financeObjLoader.load().pipe(startWith({type : type, id: id}))])
         .pipe(tap(([o, c]) => {
           const store = c.type + '-activities';
           this._activeRepo =
-            (!!o && _crmObjLoader.isValidCrmObject(c)) ? _dataProvider.getRepo<Activity>(`orgs/${o.id}/${store}`) : null as any
+            (!!o && _financeObjLoader.isValidfinanceObject(c)) ? _dataProvider.getRepo<Activity>(`orgs/${o.id}/${store}`) : null as any
         }),
           switchMap(([o, c]) =>
             !!this._activeRepo

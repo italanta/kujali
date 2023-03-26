@@ -8,7 +8,7 @@ import { Logger } from '@iote/bricks-angular';
 import { Repository, UserService, DataService } from '@ngfi/angular';
 import { DataStore }  from '@ngfi/state';
 
-import { Contact } from '@volk/model/crm/contacts';
+import { Contact } from '@app/model/finance/contacts';
 
 import { ActiveOrgStore } from '@app/state/organisation';
 

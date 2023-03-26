@@ -4,15 +4,15 @@ import { switchMap, tap, filter } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Logger } from '@iote/bricks-angular';
 
-import { Repository, DataService } from '@ngfire/angular';
+import { Repository, DataService } from '@ngfi/angular';
 
-import { ActiveCrmObjectLoader } from '@volk/state/crm/base'
+import { ActivefinanceObjectLoader } from '@app/state/finance/base'
 
 import { Store } from '@iote/state';
 
-import { Notes } from '@volk/model/crm/notes';
+import { Notes } from '@app/model/finance/notes';
 
-import { ActiveOrgStore } from '@volk/state/orgs';
+import { ActiveOrgStore } from '@app/state/organisation';
 
 @Injectable()
 export class NotesStore extends Store<Notes>
@@ -22,7 +22,7 @@ export class NotesStore extends Store<Notes>
 
   constructor(
               _activeOrg$$: ActiveOrgStore,
-              _crmObjLoader: ActiveCrmObjectLoader,
+              _financeObjLoader: ActivefinanceObjectLoader,
               _dataProvider: DataService,
               protected _logger: Logger
   )
@@ -30,12 +30,12 @@ export class NotesStore extends Store<Notes>
     super(null as any);
 
     const data$
-      = combineLatest([_activeOrg$$.get(), _crmObjLoader.load()])
+      = combineLatest([_activeOrg$$.get(), _financeObjLoader.load()])
             .pipe(tap(([o, a])  =>
                   {                                    
-                    // TODO: Type = CRM Object
+                    // TODO: Type = finance Object
                     this._activeRepo =
-                      (!!o && _crmObjLoader.isValidCrmObject(a))
+                      (!!o && _financeObjLoader.isValidfinanceObject(a))
                                  ? _dataProvider.getRepo<any>(`orgs/${o.id}/${a.type}/${a.id}/config`)
                                  : null as any
                   }),

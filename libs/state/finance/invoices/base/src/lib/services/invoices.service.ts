@@ -12,15 +12,15 @@ import { Moment } from 'moment';
 
 import { __DateFromStorage, __DateToStorage } from '@iote/time';
 import { ToastService } from '@iote/bricks-angular';
-import { BackendService } from '@ngfire/angular';
+import { BackendService } from '@ngfi/angular';
 
-import { Invoice, InvoicesPrefix } from '@volk/model/crm/invoices';
+import { Invoice, InvoicesPrefix } from '@app/model/finance/invoices';
 
-import { OrganisationService } from '@volk/state/orgs';
-import { ContactsStore } from '@volk/state/crm/contacts';
-import { CompaniesStore } from '@volk/state/crm/companies';
+import { OrganisationService } from '@app/state/orgs';
+import { ContactsStore } from '@app/state/finance/contacts';
+import { CompaniesStore } from '@app/state/finance/companies';
 
-import { DeleteModalComponent } from '@volk/elements/crm/modals';
+import { DeleteModalComponent } from '@app/elements/finance/modals';
 
 import { InvoicesStore } from '../stores/invoices.store';
 import { ActiveInvoiceStore } from '../stores/active-invoice.store';

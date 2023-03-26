@@ -8,12 +8,12 @@ import { intersection as ___intersection, map as ___map, flatMap } from 'lodash'
 
 import { TranslateService } from '@ngfire/multi-lang';
 
-import { Invoice } from '@app/model/crm/invoices';
-import { Company } from '@app/model/crm/companies';
-import { Contact } from '@app/model/crm/contacts';
+import { Invoice } from '@app/model/finance/invoices';
+import { Company } from '@app/model/finance/companies';
+import { Contact } from '@app/model/finance/contacts';
 import { VolkUser } from '@app/model/user';
 
-import { InvoicesService } from '@app/state/crm/invoices';
+import { InvoicesService } from '@app/state/finance/invoices';
 import { VolkUsersService } from '@app/state/user';
 
 import { InvoicesFilter, __NullInvoicesFilter } from './invoices-filter.interface';

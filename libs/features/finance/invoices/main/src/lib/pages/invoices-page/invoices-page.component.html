@@ -1,7 +1,7 @@
-<volk-crm-volk-main-page>
+<volk-finance-volk-main-page>
   <div fullContent>
-      <volk-crm-toolbar>
-          <volk-crm-search-header-card header (toogleFilterEvent)='toogleFilter($event)'
+      <volk-finance-toolbar>
+          <volk-finance-search-header-card header (toogleFilterEvent)='toogleFilter($event)'
               (searchTableEvent)='applyFilter($event)' [tableData]="allTableData">
               <div add-new>
                 <button *hasWriteAccess="CAN_CREATE_INVOICES" mat-flat-button (click)="createInvoice()" class="add-new"> 
@@ -9,8 +9,8 @@
                     {{'HEADER-ADD-NEW' | transloco}}
                 </button>
               </div>
-          </volk-crm-search-header-card>
-      </volk-crm-toolbar>
+          </volk-finance-search-header-card>
+      </volk-finance-toolbar>
 
       <div *ngIf="showFilter" class="filter-section">
           <volk-invoices-filter (filterChanged)='fieldsFilter($event)'>
@@ -93,4 +93,4 @@
       <mat-paginator [pageSizeOptions]="[20, 30]" showFirstLastButtons>
       </mat-paginator>
   </div>
-</volk-crm-volk-main-page>
+</volk-finance-volk-main-page>

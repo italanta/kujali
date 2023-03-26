@@ -4,13 +4,13 @@ import { Router } from '@angular/router';
 
 import { SubSink } from 'subsink';
 
-import { ActiveContactStore } from '@app/state/crm/contacts';
+import { ActiveContactStore } from '@app/state/finance/contacts';
 
-import { ActiveCompanyStore } from '@app/state/crm/companies';
-import { ActiveOpportunityStore } from '@app/state/crm/opportunities';
+import { ActiveCompanyStore } from '@app/state/finance/companies';
+import { ActiveOpportunityStore } from '@app/state/finance/opportunities';
 
 @Component({
-  selector: 'volk-crm-detail-header-card',
+  selector: 'volk-finance-detail-header-card',
   templateUrl: './detail-header-card.component.html',
   styleUrls: ['./detail-header-card.component.scss']
 })

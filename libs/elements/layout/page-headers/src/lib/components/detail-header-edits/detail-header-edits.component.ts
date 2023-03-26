@@ -8,13 +8,13 @@ import { Observable } from 'rxjs';
 
 import { TranslateService } from '@ngfire/multi-lang';
 
-import { Contact } from '@app/model/crm/contacts';
-import { ActiveContactStore } from '@app/state/crm/contacts';
-import { ActiveCompanyStore } from '@app/state/crm/companies';
-import { ActiveOpportunityStore } from '@app/state/crm/opportunities';
+import { Contact } from '@app/model/finance/contacts';
+import { ActiveContactStore } from '@app/state/finance/contacts';
+import { ActiveCompanyStore } from '@app/state/finance/companies';
+import { ActiveOpportunityStore } from '@app/state/finance/opportunities';
 
 @Component({
-  selector: 'volk-crm-detail-header-edits',
+  selector: 'volk-finance-detail-header-edits',
   templateUrl: './detail-header-edits.component.html',
   styleUrls: ['./detail-header-edits.component.scss'],
 })

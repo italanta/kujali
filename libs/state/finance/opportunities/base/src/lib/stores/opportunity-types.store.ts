@@ -4,12 +4,12 @@ import { switchMap, tap, filter } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Logger } from '@iote/bricks-angular';
 
-import { Repository, DataService } from '@ngfire/angular';
+import { Repository, DataService } from '@ngfi/angular';
 import { Store } from '@iote/state';
 
-import { OpportunityTypes } from '@volk/model/crm/opportunities';
+import { OpportunityTypes } from '@app/model/finance/opportunities';
 
-import { ActiveOrgStore } from '@volk/state/orgs';
+import { ActiveOrgStore } from '@app/state/organisation';
 
 @Injectable()
 export class OpportunityTypesStore extends Store<OpportunityTypes>

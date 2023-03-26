@@ -4,12 +4,12 @@ import { switchMap, tap, filter, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Logger } from '@iote/bricks-angular';
 
-import { Repository, DataService } from '@ngfire/angular';
-import { DataStore }  from '@ngfire/state';
+import { Repository, DataService } from '@ngfi/angular';
+import { DataStore }  from '@ngfi/state';
 
-import { Role } from '@volk/model/crm/roles';
+import { Role } from '@app/model/finance/roles';
 
-import { ActiveOrgStore } from '@volk/state/orgs';
+import { ActiveOrgStore } from '@app/state/organisation';
 
 import { Query } from '@ngfire/firestore-qbuilder';
 

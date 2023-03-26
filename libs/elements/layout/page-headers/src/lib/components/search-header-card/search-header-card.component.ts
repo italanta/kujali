@@ -8,12 +8,12 @@ import { TranslateService } from '@ngfire/multi-lang';
 
 import { AppClaimDomains } from '@app/model/access-control';
 
-import { AddNewCompanyComponent } from '@app/features/crm/companies/create';
-import { AddNewContactFormComponent } from '@app/features/crm/contacts/create';
-import { AddNewOpportunityComponent } from '@app/features/crm/opportunities/create';
+import { AddNewCompanyComponent } from '@app/features/finance/companies/create';
+import { AddNewContactFormComponent } from '@app/features/finance/contacts/create';
+import { AddNewOpportunityComponent } from '@app/features/finance/opportunities/create';
 
 @Component({
-  selector: 'volk-crm-search-header-card',
+  selector: 'volk-finance-search-header-card',
   templateUrl: './search-header-card.component.html',
   styleUrls: ['./search-header-card.component.scss']
 })

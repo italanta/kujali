@@ -6,7 +6,7 @@ import { filter, map } from 'rxjs/operators';
 
 import { Store } from '@iote/state';
 
-import { Invoice } from '@volk/model/crm/invoices';
+import { Invoice } from '@app/model/finance/invoices';
 import { InvoicesStore } from './invoices.store';
 
 @Injectable()

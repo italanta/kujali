@@ -6,8 +6,8 @@ import { filter, map } from 'rxjs/operators';
 
 import { Store } from '@iote/state';
 
-import { Opportunity } from '@volk/model/crm/opportunities';
-import { OpportunitiesStore } from '@volk/state/crm/opportunities';
+import { Opportunity } from '@app/model/finance/opportunities';
+import { OpportunitiesStore } from '@app/state/finance/opportunities';
 
 @Injectable()
 export class ActiveOpportunityStore extends Store<Opportunity>

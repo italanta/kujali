@@ -6,12 +6,12 @@ import { switchMap, tap, filter, map, startWith } from 'rxjs/operators';
 
 import { Logger } from '@iote/bricks-angular';
 
-import { Repository, DataService } from '@ngfire/angular';
-import { DataStore } from '@ngfire/state';
+import { Repository, DataService } from '@ngfi/angular';
+import { DataStore } from '@ngfi/state';
 
 
-import { Tags } from '@volk/model/crm/tags';
-import { ActiveOrgStore } from '@volk/state/orgs';
+import { Tags } from '@app/model/finance/tags';
+import { ActiveOrgStore } from '@app/state/organisation';
 
 @Injectable()
 export class TagsStore extends DataStore<Tags> {

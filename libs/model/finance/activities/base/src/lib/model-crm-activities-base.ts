@@ -1,3 +1,3 @@
-export function modelCrmActivitiesBase(): string {
-  return 'model-crm-activities-base';
+export function modelfinanceActivitiesBase(): string {
+  return 'model-finance-activities-base';
 }

@@ -13,12 +13,12 @@ import { __DateToStorage } from '@iote/time';
 
 import { TranslateService } from '@ngfi/multi-lang';
 
-import { Contact } from '@volk/model/crm/contacts';
+import { Contact } from '@app/model/finance/contacts';
 
-import { TagsService } from '@volk/state/crm/tags';
+import { TagsService } from '@app/state/finance/tags';
 
-import { DeleteModalComponent } from '@volk/elements/crm/modals';
-import { FileStorageService } from '@volk/features/crm/files';
+import { DeleteModalComponent } from '@app/elements/finance/modals';
+import { FileStorageService } from '@app/features/finance/files';
 
 import { ContactsStore, ActiveContactStore } from '../..';
 

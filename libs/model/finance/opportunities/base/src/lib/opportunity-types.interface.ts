@@ -1,6 +1,6 @@
-import { CrmObject } from '@volk/model/crm/crm-object';
+import { financeObject } from '@app/model/finance/finance-object';
 
-export interface OpportunityTypes extends CrmObject{
+export interface OpportunityTypes extends financeObject{
   labels: TypeLabel[];
 }
 

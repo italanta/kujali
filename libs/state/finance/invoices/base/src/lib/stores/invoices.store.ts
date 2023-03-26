@@ -4,12 +4,12 @@ import { switchMap, tap, filter } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Logger } from '@iote/bricks-angular';
 
-import { Repository, UserService, DataService } from '@ngfire/angular';
-import { DataStore }  from '@ngfire/state';
+import { Repository, UserService, DataService } from '@ngfi/angular';
+import { DataStore }  from '@ngfi/state';
 
-import { Invoice } from '@volk/model/crm/invoices';
+import { Invoice } from '@app/model/finance/invoices';
 
-import { ActiveOrgStore } from '@volk/state/orgs';
+import { ActiveOrgStore } from '@app/state/organisation';
 
 @Injectable()
 export class InvoicesStore extends DataStore<Invoice>

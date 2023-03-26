@@ -13,9 +13,9 @@ import * as moment from 'moment';
 import { __DateToStorage } from '@iote/time';
 import { TranslateService } from '@ngfire/multi-lang';
 
-import { Activity } from '@volk/model/crm/activities';
+import { Activity } from '@app/model/finance/activities';
 
-import { OrganisationService } from '@volk/state/orgs';
+import { OrganisationService } from '@app/state/orgs';
 
 import { ActivityStore } from '../stores/acitvity.store';
 

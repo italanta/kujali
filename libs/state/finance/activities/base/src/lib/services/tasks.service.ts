@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 
-import { Activity, Task } from '@volk/model/crm/activities';
+import { Activity, Task } from '@app/model/finance/activities';
 
 import { TaskStore } from '../stores/tasks.store';
 

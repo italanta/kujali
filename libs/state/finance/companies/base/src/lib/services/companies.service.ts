@@ -8,14 +8,14 @@ import { SubSink } from 'subsink';
 import { BackendService } from '@ngfi/angular';
 import { TranslateService } from '@ngfi/multi-lang';
 
-import { Company } from '@volk/model/crm/companies';
-import { Contact } from '@volk/model/crm/contacts';
+import { Company } from '@app/model/finance/companies';
+import { Contact } from '@app/model/finance/contacts';
 
 import { CompaniesStore } from '@app/state/finance/companies';
-import { TagsService } from '@volk/state/crm/tags'
-import { ContactsStore } from '@volk/state/crm/contacts';
+import { TagsService } from '@app/state/finance/tags'
+import { ContactsStore } from '@app/state/finance/contacts';
 
-import { DeleteModalComponent } from '@volk/elements/crm/modals';
+import { DeleteModalComponent } from '@app/elements/finance/modals';
 
 @Injectable({
   providedIn: 'root',

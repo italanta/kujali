@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { InvoicesPrefix } from '@volk/model/crm/invoices';
+import { InvoicesPrefix } from '@app/model/finance/invoices';
 
 import { InvoicesPrefixStore } from '../stores/invoice-prefix.store';
 

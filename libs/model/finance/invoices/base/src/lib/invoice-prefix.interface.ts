@@ -1,6 +1,6 @@
-import { CrmObject } from '@volk/model/crm/crm-object';
+import { financeObject } from '@app/model/finance/finance-object';
 
-export interface InvoicesPrefix extends CrmObject {
+export interface InvoicesPrefix extends financeObject {
   prefix: string;
   number: number;
   

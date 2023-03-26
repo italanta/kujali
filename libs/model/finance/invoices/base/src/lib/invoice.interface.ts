@@ -1,8 +1,8 @@
 import { Timestamp } from '@firebase/firestore-types';
 
-import { CrmObject } from '@volk/model/crm/crm-object';
+import { financeObject } from '@app/model/finance/finance-object';
 
-export interface Invoice extends CrmObject {
+export interface Invoice extends financeObject {
 
   title: string
 
