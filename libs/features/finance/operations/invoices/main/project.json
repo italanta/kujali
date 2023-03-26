@@ -1,5 +1,5 @@
 {
-  "name": "features-finance-invoices-main",
+  "name": "features-finance-operations-invoices-main",
   "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/features/finance/invoices/main/src",
