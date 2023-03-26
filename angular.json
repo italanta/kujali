@@ -30,6 +30,7 @@
     "features-budgetting-budget-planning": "libs/features/budgetting/budget-planning",
     "features-finance-banking-activate-banking": "libs/features/finance/banking/activate-banking",
     "features-finance-banking-main": "libs/features/finance/banking/main",
+    "features-finance-invoices-details-view": "libs/features/finance/invoices/details/view",
     "features-finance-invoices-main": "libs/features/finance/invoices/main",
     "features-operations-main": "libs/features/operations/main",
     "features-shared-components-modals": "libs/features/shared/components/modals",
