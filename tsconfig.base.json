@@ -161,6 +161,9 @@
       "@app/state/finance/invoices": [
         "libs/state/finance/invoices/base/src/index.ts"
       ],
+      "@app/state/finance/notes": [
+        "libs/state/finance/notes/base/src/index.ts"
+      ],
       "@app/state/organisation": ["libs/state/organisation/main/src/index.ts"],
       "@app/state/user": ["libs/state/user/src/index.ts"],
       "@iote/bricks": ["libs/util/iote/bricks/src/index.ts"],

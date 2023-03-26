@@ -59,6 +59,7 @@
     "state-finance-contacts-base": "libs/state/finance/contacts/base",
     "state-finance-cost-types": "libs/state/finance/cost-types",
     "state-finance-invoices-base": "libs/state/finance/invoices/base",
+    "state-finance-notes-base": "libs/state/finance/notes/base",
     "util-iote-bricks": "libs/util/iote/bricks",
     "util-iote-bricks-angular": "libs/util/iote/bricks-angular",
     "util-iote-cqrs": "libs/util/iote/cqrs",
