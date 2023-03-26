@@ -45,6 +45,7 @@
     "fs": "0.0.1-security",
     "fs-extra": "^11.1.0",
     "lodash": "^4.17.21",
+    "mat-select-filter": "^2.4.1",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.41",
     "ng-packagr": "^15.1.1",
