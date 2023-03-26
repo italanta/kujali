@@ -57,6 +57,7 @@
     "model-finance-planning-budget-grouping": "libs/model/finance/planning/budget-grouping",
     "model-finance-planning-budget-rendering": "libs/model/finance/planning/budget-rendering",
     "model-finance-planning-budget-rendering-state": "libs/model/finance/planning/budget-rendering-state",
+    "model-roles-base": "libs/model/roles/base",
     "state-data-firebase": "libs/state/data/firebase",
     "state-finance-activities-base": "libs/state/finance/activities/base",
     "state-finance-banking": "libs/state/finance/banking",

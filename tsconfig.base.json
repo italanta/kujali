@@ -153,6 +153,7 @@
         "libs/model/finance/planning/time/src/index.ts"
       ],
       "@app/model/organisation": ["libs/model/organisation/main/src/index.ts"],
+      "@app/model/roles": ["libs/model/roles/base/src/index.ts"],
       "@app/state/data/firebase": ["libs/state/data/firebase/src/index.ts"],
       "@app/state/finance/activities": [
         "libs/state/finance/activities/base/src/index.ts"
