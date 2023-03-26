@@ -48,6 +48,7 @@
     "model-finance-activities-base": "libs/model/finance/activities/base",
     "model-finance-banking-base": "libs/model/finance/banking/base",
     "model-finance-banking-ponto": "libs/model/finance/banking/ponto",
+    "model-finance-companies-base": "libs/model/finance/companies/base",
     "model-finance-payments": "libs/model/finance/payments",
     "model-finance-planning-budget-grouping": "libs/model/finance/planning/budget-grouping",
     "model-finance-planning-budget-rendering": "libs/model/finance/planning/budget-rendering",

@@ -104,6 +104,9 @@
       "@app/model/finance/banking/ponto": [
         "libs/model/finance/banking/ponto/src/index.ts"
       ],
+      "@app/model/finance/companies": [
+        "libs/model/finance/companies/base/src/index.ts"
+      ],
       "@app/model/finance/payments": [
         "libs/model/finance/payments/src/index.ts"
       ],
