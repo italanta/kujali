@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { AngularFireFunctions } from '@angular/fire/compat/functions';
 
 import { SubSink } from 'subsink';
 
@@ -12,11 +13,10 @@ import { Moment } from 'moment';
 
 import { __DateFromStorage, __DateToStorage } from '@iote/time';
 import { ToastService } from '@iote/bricks-angular';
-import { BackendService } from '@ngfi/angular';
 
 import { Invoice, InvoicesPrefix } from '@app/model/finance/invoices';
 
-import { OrganisationService } from '@app/state/orgs';
+import { OrganisationService } from '@app/state/organisation';
 import { ContactsStore } from '@app/state/finance/contacts';
 import { CompaniesStore } from '@app/state/finance/companies';
 
@@ -38,7 +38,7 @@ export class InvoicesService {
   constructor(private _router$$: Router,
               private _dialog: MatDialog,
               private _toastService: ToastService,
-              private _bs:BackendService,
+              private _bs: AngularFireFunctions,
               private _invoices$$: InvoicesStore,
               private _invoicesPrefix$$: InvoicesPrefixStore,
               private _activeInvoice$$: ActiveInvoiceStore,
@@ -171,7 +171,7 @@ export class InvoicesService {
           attachments: [{filename: 'termsandconditions.pdf', path: prefix.termsAndConditionsDocUrl}]
         }
       }
-      this._bs.callFunction('sendInvoiceEmail', data).subscribe((success) => {
+      this._bs.httpsCallable('sendInvoiceEmail')(data).subscribe((success) => {
         this._toastService.doSimpleToast('Email sent successfully', 2000);
       });
     })

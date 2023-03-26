@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 
 import { InvoicesPrefix } from '@app/model/finance/invoices';
 
@@ -24,7 +23,6 @@ export class InvoicesPrefixService {
       termsAndConditionsDocUrl: prefix.termsAndConditionsDocUrl
     }
 
-    debugger
     this._invoicesPrefix$$.set(prefixData as InvoicesPrefix);
   }
 }

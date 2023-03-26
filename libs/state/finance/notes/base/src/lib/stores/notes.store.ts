@@ -1,18 +1,17 @@
+import { Injectable } from '@angular/core';
+
 import { combineLatest, of } from 'rxjs';
 import { switchMap, tap, filter } from 'rxjs/operators';
 
-import { Injectable } from '@angular/core';
 import { Logger } from '@iote/bricks-angular';
 
 import { Repository, DataService } from '@ngfi/angular';
-
-import { ActivefinanceObjectLoader } from '@app/state/finance/base'
-
 import { Store } from '@iote/state';
 
 import { Notes } from '@app/model/finance/notes';
 
 import { ActiveOrgStore } from '@app/state/organisation';
+import { ActiveFinanceObjectLoader } from '@app/state/finance/base'
 
 @Injectable()
 export class NotesStore extends Store<Notes>
@@ -20,9 +19,8 @@ export class NotesStore extends Store<Notes>
   protected store = 'notes-store';
   protected _activeRepo: Repository<Notes>;
 
-  constructor(
-              _activeOrg$$: ActiveOrgStore,
-              _financeObjLoader: ActivefinanceObjectLoader,
+  constructor(_activeOrg$$: ActiveOrgStore,
+              _financeObjLoader: ActiveFinanceObjectLoader,
               _dataProvider: DataService,
               protected _logger: Logger
   )
@@ -35,7 +33,7 @@ export class NotesStore extends Store<Notes>
                   {                                    
                     // TODO: Type = finance Object
                     this._activeRepo =
-                      (!!o && _financeObjLoader.isValidfinanceObject(a))
+                      (!!o && _financeObjLoader.isValidFinanceObject(a))
                                  ? _dataProvider.getRepo<any>(`orgs/${o.id}/${a.type}/${a.id}/config`)
                                  : null as any
                   }),
@@ -49,9 +47,9 @@ export class NotesStore extends Store<Notes>
     });
   }
 
-  get = () => super.get().pipe(filter((cts, i) => !!cts));
+  override get = () => super.get().pipe(filter((cts, i) => !!cts));
 
-  set(n: Notes)
+  override set(n: Notes)
   {
     if(this._activeRepo)
       return this._activeRepo.write(n, 'notes');

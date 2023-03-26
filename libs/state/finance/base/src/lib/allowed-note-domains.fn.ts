@@ -1,6 +1,6 @@
 
 /** Returns whether the current base pages has notes. */
-export function __IsValidFinanceObjectDomain(type: string)
+export function __isValidFinanceObjectDomain(type: string)
 {
   return ['companies', 'contacts', 'opportunities'].indexOf(type) >= 0;
 }

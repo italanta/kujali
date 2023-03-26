@@ -7,8 +7,9 @@ import { SubSink } from 'subsink';
 
 import { flatMap as __flatMap } from 'lodash'
 
+import { Tags } from '@app/model/tags';
+
 import { TagsStore } from '../stores/tags.store';
-import { Tags } from '@app/model/finance/tags';
 
 @Injectable({
   providedIn: 'root',

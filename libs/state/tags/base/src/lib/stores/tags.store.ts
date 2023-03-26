@@ -9,8 +9,8 @@ import { Logger } from '@iote/bricks-angular';
 import { Repository, DataService } from '@ngfi/angular';
 import { DataStore } from '@ngfi/state';
 
+import { Tags } from '@app/model/tags';
 
-import { Tags } from '@app/model/finance/tags';
 import { ActiveOrgStore } from '@app/state/organisation';
 
 @Injectable()
@@ -21,7 +21,7 @@ export class TagsStore extends DataStore<Tags> {
   constructor(private _dataProvider: DataService,
               private _activeOrg$$: ActiveOrgStore,
               private _router$$: Router,
-              protected _logger: Logger
+              protected override _logger: Logger
   ) 
   {
     super('always', _logger);
@@ -46,7 +46,7 @@ export class TagsStore extends DataStore<Tags> {
     });
   }
 
-  get() {
+  override get() {
     return super.get().pipe(filter((tags, i) => !!tags && tags.length >= 0));
   }
 }

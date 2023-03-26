@@ -19,7 +19,7 @@ import { TagsService } from '@app/state/tags';
 
 import { DeleteModalComponent } from '@app/elements/modals';
 
-import { FileStorageService } from '@app/features/finance/files';
+import { FileStorageService } from '@app/state/files';
 
 import { ContactsStore, ActiveContactStore } from '../..';
 
@@ -38,12 +38,12 @@ export class ContactsService {
   constructor(private _router$$: Router,
               private location: Location,
               public dialog: MatDialog,
-              // private _tags$$: TagsService,
+              private _tags$$: TagsService,
               private _contacts$$: ContactsStore,
               private _contact$$: ActiveContactStore,
               private _snackBar: MatSnackBar,
               private _translateService: TranslateService,
-              // private _fileStorageService$$: FileStorageService
+              private _fileStorageService$$: FileStorageService
   ) {}
 
   getContacts(){

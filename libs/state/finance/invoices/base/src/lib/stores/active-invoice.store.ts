@@ -7,6 +7,7 @@ import { filter, map } from 'rxjs/operators';
 import { Store } from '@iote/state';
 
 import { Invoice } from '@app/model/finance/invoices';
+
 import { InvoicesStore } from './invoices.store';
 
 @Injectable()
@@ -43,7 +44,6 @@ export class ActiveInvoiceStore extends Store<Invoice>
   private _getRoute(route: NavigationEnd): string {
     const elements = route.url.split('/');
     const invoiceId = elements.length >= 3 ? elements[2] : '__noop__';
-
     return invoiceId;
   }
 }

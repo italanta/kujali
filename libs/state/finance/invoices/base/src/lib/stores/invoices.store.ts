@@ -4,7 +4,7 @@ import { switchMap, tap, filter } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Logger } from '@iote/bricks-angular';
 
-import { Repository, UserService, DataService } from '@ngfi/angular';
+import { Repository, DataService } from '@ngfi/angular';
 import { DataStore }  from '@ngfi/state';
 
 import { Invoice } from '@app/model/finance/invoices';
@@ -19,7 +19,7 @@ export class InvoicesStore extends DataStore<Invoice>
 
   constructor(_activeOrg$$: ActiveOrgStore,
               _dataProvider: DataService,
-              protected _logger: Logger)
+              protected override _logger: Logger)
   {
     super('always',  _logger);
 
@@ -33,5 +33,5 @@ export class InvoicesStore extends DataStore<Invoice>
     });
   }
 
-  get = () => super.get().pipe(filter((cts, i) => !!cts && cts.length >= 0));
+  override get = () => super.get().pipe(filter((cts, i) => !!cts && cts.length >= 0));
 }

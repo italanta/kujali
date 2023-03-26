@@ -10,7 +10,7 @@ import { Logger } from '@iote/bricks-angular';
 
 import { InvoicesPrefix } from '@app/model/finance/invoices';
 
-import { ActivefinanceObjectLoader } from '@app/state/finance/base'
+import { ActiveFinanceObjectLoader } from '@app/state/finance/base'
 import { ActiveOrgStore } from '@app/state/organisation';
 
 @Injectable()
@@ -20,7 +20,7 @@ export class InvoicesPrefixStore extends Store<InvoicesPrefix>
   protected _activeRepo: Repository<InvoicesPrefix>;
 
   constructor(_activeOrg$$: ActiveOrgStore,
-              _financeObjLoader: ActivefinanceObjectLoader,
+              _financeObjLoader: ActiveFinanceObjectLoader,
               _dataProvider: DataService,
               protected _logger: Logger
   )
@@ -40,9 +40,9 @@ export class InvoicesPrefixStore extends Store<InvoicesPrefix>
     });
   }
 
-  get = () => super.get().pipe(filter((cts, i) => !!cts));
+  override get = () => super.get().pipe(filter((cts, i) => !!cts));
 
-  set(n: InvoicesPrefix)
+  override set(n: InvoicesPrefix)
   {
     if(this._activeRepo)
       return this._activeRepo.write(n, 'invoices-prefix');

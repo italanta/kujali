@@ -1,17 +1,16 @@
-import { combineLatest, of } from 'rxjs';
+import { Injectable } from '@angular/core';
+
+import { of } from 'rxjs';
 import { switchMap, tap, filter, map } from 'rxjs/operators';
 
-import { Injectable } from '@angular/core';
 import { Logger } from '@iote/bricks-angular';
 
 import { Repository, DataService } from '@ngfi/angular';
 import { DataStore }  from '@ngfi/state';
 
-import { Role } from '@app/model/finance/roles';
+import { Role } from '@app/model/roles';
 
 import { ActiveOrgStore } from '@app/state/organisation';
-
-import { Query } from '@ngfi/firestore-qbuilder';
 
 
 @Injectable()
@@ -21,7 +20,7 @@ export class ContactRolesStore extends DataStore<Role>
   protected _activeRepo: Repository<Role>;
 
   constructor(_dataProvider: DataService, _activeOrg$$: ActiveOrgStore,
-              protected _logger: Logger)
+              protected override _logger: Logger)
   {
     super('always',  _logger);
 
@@ -37,5 +36,5 @@ export class ContactRolesStore extends DataStore<Role>
     });
   }
 
-  get = () => super.get().pipe(filter((cts, i) => !!cts && cts.length >= 0));
+  override get = () => super.get().pipe(filter((cts, i) => !!cts && cts.length >= 0));
 }

@@ -6,7 +6,7 @@ import { filter, map } from 'rxjs/operators';
 import { Logger } from '@iote/bricks-angular';
 
 
-import { __IsValidFinanceObjectDomain } from './allowed-note-domains.fn';
+import { __isValidFinanceObjectDomain } from './allowed-note-domains.fn';
 
 @Injectable()
 export class ActiveFinanceObjectLoader
@@ -39,6 +39,6 @@ export class ActiveFinanceObjectLoader
   public isValidFinanceObject(artifect: any)
   {
     return !!artifect.type && artifect.id
-              && __IsValidFinanceObjectDomain(artifect.type as string);
+              && __isValidFinanceObjectDomain(artifect.type as string);
   }
 }
