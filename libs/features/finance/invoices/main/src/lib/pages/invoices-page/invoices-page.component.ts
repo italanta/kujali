@@ -11,16 +11,16 @@ import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 
 import { round as __round } from 'lodash';
 
-import { TranslateService } from '@ngfire/multi-lang';
+import { TranslateService } from '@ngfi/multi-lang';
 import { __DateFromStorage } from '@iote/time';
 
-import { Invoice } from '@volk/model/crm/invoices';
-import { AppClaimDomains } from '@volk/model/access-control';
+import { Invoice } from '@app/model/crm/invoices';
+import { AppClaimDomains } from '@app/model/access-control';
 
-import { OpportunitiesService } from '@volk/state/crm/opportunities';
-import { _CheckPermission } from '@volk/state/access-control';
-import { VolkUsersService } from '@volk/state/user';
-import { InvoicesService } from '@volk/state/crm/invoices';
+import { OpportunitiesService } from '@app/state/crm/opportunities';
+import { _CheckPermission } from '@app/state/access-control';
+import { VolkUsersService } from '@app/state/user';
+import { InvoicesService } from '@app/state/crm/invoices';
 
 const DATA: Invoice[] = []
 

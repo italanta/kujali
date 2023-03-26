@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 
 import { SubSink } from 'subsink';
 
-import { ActiveContactStore } from '@volk/state/crm/contacts';
+import { ActiveContactStore } from '@app/state/crm/contacts';
 
-import { ActiveCompanyStore } from '@volk/state/crm/companies';
-import { ActiveOpportunityStore } from '@volk/state/crm/opportunities';
+import { ActiveCompanyStore } from '@app/state/crm/companies';
+import { ActiveOpportunityStore } from '@app/state/crm/opportunities';
 
 @Component({
   selector: 'volk-crm-detail-header-card',

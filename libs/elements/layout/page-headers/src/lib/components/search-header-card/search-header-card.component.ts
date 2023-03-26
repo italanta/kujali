@@ -6,11 +6,11 @@ import { SubSink } from 'subsink';
 
 import { TranslateService } from '@ngfire/multi-lang';
 
-import { AppClaimDomains } from '@volk/model/access-control';
+import { AppClaimDomains } from '@app/model/access-control';
 
-import { AddNewCompanyComponent } from '@volk/features/crm/companies/create';
-import { AddNewContactFormComponent } from '@volk/features/crm/contacts/create';
-import { AddNewOpportunityComponent } from '@volk/features/crm/opportunities/create';
+import { AddNewCompanyComponent } from '@app/features/crm/companies/create';
+import { AddNewContactFormComponent } from '@app/features/crm/contacts/create';
+import { AddNewOpportunityComponent } from '@app/features/crm/opportunities/create';
 
 @Component({
   selector: 'volk-crm-search-header-card',

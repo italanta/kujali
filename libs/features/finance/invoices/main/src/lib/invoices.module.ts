@@ -8,14 +8,14 @@ import { MultiLangModule } from '@ngfi/multi-lang';
 
 import { MatSelectFilterModule } from 'mat-select-filter';
 
-import { ElementsLayoutPagesModule } from '@volk/elements/layout/pages';
-// import { AccessControlElementsModule } from '@volk/elements/access-control';
-import { ElementsLayoutHeaderPagesModule } from '@volk/elements/layout/page-header';
+import { iTalPageModule } from '@app/elements/layout/page';
+// import { AccessControlElementsModule } from '@app/elements/access-control';
+import { PageHeadersModule } from '@app/elements/layout/page-headers';
 
+import { InvoicesFilterComponent } from './components/invoices-filter/invoices-filter.component';
 import { InvoicesPageComponent } from './pages/invoices-page/invoices-page.component';
 
 import { InvoicesRouterModule } from './invoices-main.router';
-import { InvoicesFilterComponent } from './components/invoices-filter/invoices-filter.component';
 
 @NgModule({
   imports: [
@@ -32,10 +32,10 @@ import { InvoicesFilterComponent } from './components/invoices-filter/invoices-f
     ReactiveFormsModule,
     DragDropModule,
 
-    ElementsLayoutHeaderPagesModule,
-    ElementsLayoutPagesModule,
+    PageHeadersModule,
+    iTalPageModule,
 
-    AccessControlElementsModule,
+    // AccessControlElementsModule,
     
     InvoicesRouterModule
   ],

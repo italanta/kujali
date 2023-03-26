@@ -8,10 +8,10 @@ import { Observable } from 'rxjs';
 
 import { TranslateService } from '@ngfire/multi-lang';
 
-import { Contact } from '@volk/model/crm/contacts';
-import { ActiveContactStore } from '@volk/state/crm/contacts';
-import { ActiveCompanyStore } from '@volk/state/crm/companies';
-import { ActiveOpportunityStore } from '@volk/state/crm/opportunities';
+import { Contact } from '@app/model/crm/contacts';
+import { ActiveContactStore } from '@app/state/crm/contacts';
+import { ActiveCompanyStore } from '@app/state/crm/companies';
+import { ActiveOpportunityStore } from '@app/state/crm/opportunities';
 
 @Component({
   selector: 'volk-crm-detail-header-edits',
