@@ -152,6 +152,9 @@
       "@app/state/finance/companies": [
         "libs/state/finance/companies/base/src/index.ts"
       ],
+      "@app/state/finance/contacts": [
+        "libs/state/finance/contacts/base/src/index.ts"
+      ],
       "@app/state/finance/cost-types": [
         "libs/state/finance/cost-types/src/index.ts"
       ],

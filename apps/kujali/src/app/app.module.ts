@@ -28,6 +28,7 @@ import { BudgetsStateModule } from '@app/state/finance/budgetting/budgets';
 
 import { ActivitiesStateModule } from '@app/state/finance/activities';
 import { CompaniesStateModule } from '@app/state/finance/companies';
+import { ContactsStateModule } from '@app/state/finance/contacts';
 
 import { environment } from '../environments/environment';
 
@@ -71,6 +72,7 @@ import { AppRoutingModule } from './app.routing.module';
 
     ActivitiesStateModule.forRoot(),
     CompaniesStateModule.forRoot(),
+    ContactsStateModule.forRoot(),
 
     // FlowsStateModule.forRoot(),
     // ChatsStateModule.forRoot(),
