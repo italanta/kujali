@@ -1,15 +1,15 @@
 {
-  "name": "features-operations-main",
-  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "name": "features-finance-operations-main",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/features/operations/main/src",
+  "sourceRoot": "libs/features/finance/operations/main/src",
   "prefix": "app",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/features/operations/main/jest.config.ts",
+        "jestConfig": "libs/features/finance/operations/main/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -18,8 +18,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/features/operations/main/**/*.ts",
-          "libs/features/operations/main/**/*.html"
+          "libs/features/finance/operations/main/**/*.ts",
+          "libs/features/finance/operations/main/**/*.html"
         ]
       }
     }

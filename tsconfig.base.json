@@ -76,8 +76,8 @@
       "@app/features/finance/operations/invoices/main": [
         "libs/features/finance/operations/invoices/main/src/index.ts"
       ],
-      "@app/features/operations/main": [
-        "libs/features/operations/main/src/index.ts"
+      "@app/features/finance/operations/main": [
+        "libs/features/finance/operations/main/src/index.ts"
       ],
       "@app/features/shared/components/modals": [
         "libs/features/shared/components/modals/src/index.ts"
