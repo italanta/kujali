@@ -6,7 +6,7 @@ import { SubSink } from 'subsink';
 
 import { Observable } from 'rxjs';
 
-import { TranslateService } from '@ngfire/multi-lang';
+import { TranslateService } from '@ngfi/multi-lang';
 
 import { Contact } from '@app/model/finance/contacts';
 import { ActiveContactStore } from '@app/state/finance/contacts';

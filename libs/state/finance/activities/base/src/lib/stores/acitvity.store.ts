@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { Logger } from '@iote/bricks-angular';
 
 import { Repository, DataService } from '@ngfi/angular';
-import { Query } from '@ngfire/firestore-qbuilder';
+import { Query } from '@ngfi/firestore-qbuilder';
 import { DataStore } from '@ngfi/state';
 
 import { ActivefinanceObjectLoader } from '@app/state/finance/base'

@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { SubSink } from 'subsink';
 
-import { TranslateService } from '@ngfire/multi-lang';
+import { TranslateService } from '@ngfi/multi-lang';
 
 import { AppClaimDomains } from '@app/model/access-control';
 

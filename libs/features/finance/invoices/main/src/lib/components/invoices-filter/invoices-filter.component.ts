@@ -6,15 +6,17 @@ import { SubSink } from 'subsink';
 import * as moment from 'moment';
 import { intersection as ___intersection, map as ___map, flatMap } from 'lodash';
 
-import { TranslateService } from '@ngfire/multi-lang';
+import { TranslateService } from '@ngfi/multi-lang';
 
 import { Invoice } from '@app/model/finance/invoices';
 import { Company } from '@app/model/finance/companies';
 import { Contact } from '@app/model/finance/contacts';
-import { VolkUser } from '@app/model/user';
+
+import { KuUser } from '@app/model/common/user';
 
 import { InvoicesService } from '@app/state/finance/invoices';
-import { VolkUsersService } from '@app/state/user';
+
+import { KuUsersService } from '@app/state/user';
 
 import { InvoicesFilter, __NullInvoicesFilter } from './invoices-filter.interface';
 
@@ -40,8 +42,8 @@ export class InvoicesFilterComponent implements OnInit {
   contactsList: Contact[];
   filteredContactsList: Contact[];
 
-  createdByList: VolkUser[];
-  filteredCreatedByList: VolkUser[];
+  createdByList: KuUser[];
+  filteredCreatedByList: KuUser[];
 
   statusList: string[];
   filteredStatusList: any;
@@ -56,7 +58,7 @@ export class InvoicesFilterComponent implements OnInit {
   constructor(private _translateService: TranslateService,
               private _fb: FormBuilder,
               private _invoicesService: InvoicesService,
-              private _volkUserService: VolkUsersService
+              private _KuUserService: KuUsersService
   ) { }
 
   ngOnInit(): void {
@@ -94,7 +96,7 @@ export class InvoicesFilterComponent implements OnInit {
 
         let assignedUsers = this.flattenArray(invoices, 'createdBy');
         assignedUsers = Array.from(assignedUsers.values());
-        this.createdByList = this._volkUserService.getOrgUsersProperties(assignedUsers);
+        this.createdByList = this._KuUserService.getOrgUsersProperties(assignedUsers);
         this.filteredCreatedByList = this.createdByList.slice();
 
         this.statusList = this.flattenArray(invoices, 'status');

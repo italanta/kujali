@@ -19,7 +19,7 @@ import { AppClaimDomains } from '@app/model/access-control';
 
 import { OpportunitiesService } from '@app/state/finance/opportunities';
 import { _CheckPermission } from '@app/state/access-control';
-import { VolkUsersService } from '@app/state/user';
+import { KuUsersService } from '@app/state/user';
 import { InvoicesService } from '@app/state/finance/invoices';
 
 const DATA: Invoice[] = []
@@ -55,7 +55,7 @@ export class InvoicesPageComponent implements OnInit {
               private _snackBar: MatSnackBar,
               private cdref: ChangeDetectorRef,
               private _oppsService: OpportunitiesService,
-              private _volkUserService: VolkUsersService,
+              private _KuUserService: KuUsersService,
               private _invoicesService: InvoicesService,
               private _router$$: Router
   ) 
@@ -110,7 +110,7 @@ export class InvoicesPageComponent implements OnInit {
   }
 
   getUserName(userId: string) {
-    let user: any = this._volkUserService.getOrgUser(userId);
+    let user: any = this._KuUserService.getOrgUser(userId);
     return user?.displayName;
   }
 

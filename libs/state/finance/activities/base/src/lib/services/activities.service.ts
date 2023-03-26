@@ -11,11 +11,11 @@ import { switchMap } from 'rxjs/operators';
 import * as moment from 'moment';
 
 import { __DateToStorage } from '@iote/time';
-import { TranslateService } from '@ngfire/multi-lang';
+import { TranslateService } from '@ngfi/multi-lang';
 
 import { Activity } from '@app/model/finance/activities';
 
-import { OrganisationService } from '@app/state/orgs';
+import { ActiveOrgStore } from '@app/state/organisation';
 
 import { ActivityStore } from '../stores/acitvity.store';
 
@@ -23,7 +23,7 @@ import { ActivityStore } from '../stores/acitvity.store';
   providedIn: 'root'
 })
 
-export class ActionsService {
+export class ActivitiesService {
 
   private _sbS = new SubSink();
 
@@ -33,13 +33,13 @@ export class ActionsService {
   constructor(private _router$$: Router,
               private _snackBar: MatSnackBar,
               private _translateService: TranslateService,
-              private _orgService: OrganisationService,
+              private _orgService: ActiveOrgStore,
               private _activity$$: ActivityStore,
   ) { }
 
 
   getAllActions(): Observable<[Activity[], Activity[], Activity[]]> {
-    return this._orgService.getActiveOrg().pipe(switchMap((org) => !!org ? this._activity$$.getAllActions(org.id!) : []));
+    return this._orgService.get().pipe(switchMap((org) => !!org ? this._activity$$.getAllActions(org.id!) : []));
   }
 
   submitAction(addNewActionForm: FormGroup) {

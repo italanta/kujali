@@ -11,7 +11,7 @@ import { Role } from '@app/model/finance/roles';
 
 import { ActiveOrgStore } from '@app/state/organisation';
 
-import { Query } from '@ngfire/firestore-qbuilder';
+import { Query } from '@ngfi/firestore-qbuilder';
 
 
 @Injectable()
