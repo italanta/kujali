@@ -52,6 +52,7 @@
     "model-finance-contacts-base": "libs/model/finance/contacts/base",
     "model-finance-invoices-base": "libs/model/finance/invoices/base",
     "model-finance-notes-base": "libs/model/finance/notes/base",
+    "model-finance-opportunities-base": "libs/model/finance/opportunities/base",
     "model-finance-payments": "libs/model/finance/payments",
     "model-finance-planning-budget-grouping": "libs/model/finance/planning/budget-grouping",
     "model-finance-planning-budget-rendering": "libs/model/finance/planning/budget-rendering",

@@ -116,6 +116,9 @@
       "@app/model/finance/notes": [
         "libs/model/finance/notes/base/src/index.ts"
       ],
+      "@app/model/finance/opportunities": [
+        "libs/model/finance/opportunities/base/src/index.ts"
+      ],
       "@app/model/finance/payments": [
         "libs/model/finance/payments/src/index.ts"
       ],
