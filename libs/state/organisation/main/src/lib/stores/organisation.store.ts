@@ -81,7 +81,9 @@ export class OrgStore extends DataStore<Organisation> implements OnDestroy
         email: u.email
       },
       users: [],
-      bankingInfo: { accounts: {}}
+      bankingInfo: { accounts: {}},
+      roles: [],
+      permissions: {}
     };
   }
 
