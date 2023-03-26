@@ -51,7 +51,7 @@ export class ActivityStore extends DataStore<Activity>
     });
   }
 
-  get = () => super.get().pipe(filter((cts, i) => !!cts && cts.length >= 0));
+  override get = () => super.get().pipe(filter((cts, i) => !!cts && cts.length >= 0));
 
   getAllActions(orgId:string): Observable<[Activity[], Activity[], Activity[]]> {
     const companyActivities$ =this._dataProvider.getRepo<Activity>(`orgs/${orgId}/companies-activities`).getDocuments();

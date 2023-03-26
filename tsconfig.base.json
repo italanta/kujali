@@ -161,6 +161,7 @@
         "libs/state/finance/activities/base/src/index.ts"
       ],
       "@app/state/finance/banking": ["libs/state/finance/banking/src/index.ts"],
+      "@app/state/finance/base": ["libs/state/finance/base/src/index.ts"],
       "@app/state/finance/budgetting/budgets": [
         "libs/state/finance/budgetting/budgets/src/index.ts"
       ],
