@@ -1,11 +1,13 @@
 .content-wrapper-outer {
   overflow: hidden;
-  padding: 0 0px;
+  padding: 0px 0px;
 }
 
 .content-wrapper-inner {
   overflow: auto;
   min-height: 100%;
+  padding: 30px 30px;
+
 }
 
 ele-navbar{
