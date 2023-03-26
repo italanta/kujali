@@ -1,1 +1,1 @@
-export * from './lib/invoices-details-view.module';
+export * from './lib/invoices-view.module';
