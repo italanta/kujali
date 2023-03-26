@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { AngularFireFunctions } from '@angular/fire/compat/functions';
 
 import { SubSink } from 'subsink';
 
@@ -10,16 +11,15 @@ import { combineLatest } from 'rxjs';
 import * as moment from 'moment';
 
 import { __DateToStorage } from '@iote/time';
-import { BackendService } from '@ngfi/angular';
 
 import { Opportunity } from '@app/model/finance/opportunities';
-import { Tags } from '@app/model/finance/tags';
+import { Tags } from '@app/model/tags';
 
-import { TagsStore } from '@app/state/finance/tags';
+import { TagsStore } from '@app/state/tags';
 import { ContactsStore } from '@app/state/finance/contacts';
 import { CompaniesStore } from '@app/state/finance/companies';
 
-import { DeleteModalComponent } from '@app/elements/finance/modals';
+import { DeleteModalComponent } from '@app/elements/modals';
 
 import { OpportunitiesStore } from '../stores/opportunities.store';
 import { ActiveOpportunityStore } from '../stores/active-opportunity.store';
@@ -42,12 +42,12 @@ export class OpportunitiesService {
 
   constructor(private _router$$: Router,
               private _dialog: MatDialog,
+              private _bs: AngularFireFunctions,
               private _opportunity$$: OpportunitiesStore,
               private _opps$$: ActiveOpportunityStore,
               private _contacts$$: ContactsStore,
               private _companies$$: CompaniesStore,
               private _tags$$: TagsStore,
-              private _bs: BackendService
   ) 
   {
     this._sbS.sink = this._companies$$.get().subscribe((companies) => {
@@ -118,7 +118,7 @@ export class OpportunitiesService {
         opps: opps
       }      
 
-      this._bs.callFunction('createOppsWithContactOrCompany', data).subscribe();
+      this._bs.httpsCallable('createOppsWithContactOrCompany')(data).subscribe();
 
     } else {
       opps.company = company.value.company

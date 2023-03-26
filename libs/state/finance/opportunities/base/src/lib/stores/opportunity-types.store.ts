@@ -1,11 +1,12 @@
+import { Injectable } from '@angular/core';
+
 import { of } from 'rxjs';
 import { switchMap, tap, filter } from 'rxjs/operators';
 
-import { Injectable } from '@angular/core';
 import { Logger } from '@iote/bricks-angular';
+import { Store } from '@iote/state';
 
 import { Repository, DataService } from '@ngfi/angular';
-import { Store } from '@iote/state';
 
 import { OpportunityTypes } from '@app/model/finance/opportunities';
 
@@ -34,7 +35,7 @@ export class OpportunityTypesStore extends Store<OpportunityTypes>
     });
   } 
 
-  get = () => super.get().pipe(filter((cts, i) => !!cts));
+  override get = () => super.get().pipe(filter((cts, i) => !!cts));
 
   create (pportunityTypes: any) {
     if(this._activeRepo){

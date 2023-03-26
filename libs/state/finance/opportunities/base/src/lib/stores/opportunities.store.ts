@@ -1,7 +1,8 @@
+import { Injectable } from '@angular/core';
+
 import { of } from 'rxjs';
 import { switchMap, tap, filter } from 'rxjs/operators';
 
-import { Injectable } from '@angular/core';
 import { Logger } from '@iote/bricks-angular';
 
 import { Repository, DataService } from '@ngfi/angular';
@@ -19,7 +20,7 @@ export class OpportunitiesStore extends DataStore<Opportunity>
 
   constructor(_activeOrg$$: ActiveOrgStore,
               _dataProvider: DataService,
-              protected _logger: Logger)
+              protected override _logger: Logger)
   {
     super('always',  _logger);
 
@@ -33,7 +34,7 @@ export class OpportunitiesStore extends DataStore<Opportunity>
     });
   }
 
-  get = () => super.get().pipe(filter((ops, i) => !!ops && ops.length >= 0));
+  override get = () => super.get().pipe(filter((ops, i) => !!ops && ops.length >= 0));
 
   //updaterepo
   public updateContact(opportunity: Opportunity){
