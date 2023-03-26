@@ -1,0 +1,77 @@
+<div [formGroup]="invoicesFilterFormGroup" class="filter" fxLayout="row" fxLayoutAlign="start center">
+
+  <div class="search-input" fxFlex="50%">
+    <i class="bi bi-funnel-fill"></i>
+    <input formControlName="searchControl" type="text" [placeholder]="'HEADER-SEARCH' | transloco">
+  </div>
+
+
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="80%">
+    <div class="fields" fxLayout="row" fxLayoutAlign="start center">
+
+      <!-- Deaadline  -->
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{"QUOTES.TABLE.DUE-DATE" | transloco}}</mat-label>
+        <mat-select formControlName="dateControl">
+          <mat-option value=""></mat-option>
+          <mat-option value="past">Past</mat-option>
+          <mat-option value="day">Today</mat-option>
+          <mat-option value="week">This Week</mat-option>
+          <mat-option value="month">This Month</mat-option>
+          <mat-option value="year">This Year</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Company -->
+      <mat-form-field appearance="outline">
+        <mat-label>{{"QUOTES.TABLE.COMPANY" | transloco}}</mat-label>
+        <mat-select formControlName="customerControl" [compareWith]="compareFn" multiple>
+          <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="customersList"
+            (filteredReturn)="filteredCustomersList =$event"></mat-select-filter>
+          <mat-option *ngFor="let customer of filteredCustomersList" [value]="customer.id">
+            {{customer.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Contact  -->
+      <mat-form-field appearance="outline">
+        <mat-label>{{"QUOTES.TABLE.CONTACT" | transloco}}</mat-label>
+        <mat-select formControlName="contactControl" multiple>
+          <mat-select-filter [placeholder]="'Filter'" [displayMember]="'fullName'" [array]="contactsList"
+            (filteredReturn)="filteredContactsList =$event"></mat-select-filter>
+          <mat-option *ngFor="let contact of filteredContactsList" [value]="contact.id">{{contact.fName}} {{contact.lName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Created By  -->
+      <mat-form-field appearance="outline">
+        <mat-label>{{"QUOTES.TABLE.CREATED-BY" | transloco}}</mat-label>
+        <mat-select formControlName="assingToControl" multiple>
+          <mat-select-filter [placeholder]="'Filter'" [displayMember]="'displayName'" [array]="createdByList"
+            (filteredReturn)="filteredCustomersList =$event"></mat-select-filter>
+          <mat-option *ngFor="let user of filteredCreatedByList" [value]="user.id">{{user.displayName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Status  -->
+      <mat-form-field appearance="outline">
+        <mat-label>{{"QUOTES.TABLE.STATUS" | transloco}}</mat-label>
+        <mat-select formControlName="statusControl" multiple>
+          <mat-select-filter [placeholder]="'Filter'" [array]="statusList"
+            (filteredReturn)="filteredStatusList =$event"></mat-select-filter>
+          <mat-option *ngFor="let status of filteredStatusList" [value]="status">{{status}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+    <div class="clear">
+      <p (click)="clearFIlters()">{{"COMPANY.TABLE.CLEAR-FILTERS" | transloco}} ({{filterCount < 1 ? 0 :
+          filterCount}})</p>
+    </div>
+  </div>
+</div>

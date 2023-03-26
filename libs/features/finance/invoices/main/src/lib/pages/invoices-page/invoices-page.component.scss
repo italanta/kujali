@@ -1,0 +1,92 @@
+.main-page {
+  padding-bottom: 50px;
+}
+
+.filter-section {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.table-container {
+  margin-top: 50px;
+  position: relative;
+  min-height: 200px;
+  max-height: 70vh;
+  overflow: auto;
+}
+
+img,
+.nameChar {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: var(--volk-color-text-background);
+  border: none;
+  outline: none;
+}
+
+.nameChar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--volk-color-primary);
+}
+
+td.mat-column-title {
+  font-weight: 600;
+  color: var(--volk-color-text-black);
+}
+
+td.mat-column-imageurl {
+  padding-top: 5px;
+}
+
+.mat-header-cell {
+  background-color: var(--volk-color-primary-background);
+  font-weight: 600;
+  font-size: 15px;
+}
+.mat-row:hover .mat-cell {
+  background-color: var(--volk-color-primary-background);
+  cursor: pointer;
+}
+
+td.mat-column-number,
+td.mat-column-dueDate,
+td.mat-column-date,
+td.mat-column-amount,
+td.mat-column-customer,
+td.mat-column-contact,
+td.mat-column-status {
+  font-weight: 600;
+  color: var(--volk-color-nav-inactive);
+}
+
+::ng-deep .mat-elevation-z8 {
+  box-shadow: none;
+}
+
+// Custom Scrollbar
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--volk-color-primary-background); 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--volk-color-text-inactive-bolder);
+  border-radius: 3px; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
