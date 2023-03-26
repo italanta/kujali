@@ -60,9 +60,9 @@ export class SearchHeaderCardComponent implements OnDestroy {
     //   this._sbS.sink = this.dialog.open(AddNewOpportunityComponent, {panelClass: 'full-width-dialog'})
     //   .afterClosed().subscribe();
     // }
-    // else if (this.page == 'invoices') {
-    //   this._router$$.navigate(['invoices/create']);
-    // }
+    else if (this.page == 'invoices') {
+      // this._router$$.navigate(['create']);
+    }
     // else if (this.page == 'quotes') {
     //   // this._router$$.navigate(['quotes/create']);
     // }

@@ -1,0 +1,46 @@
+<div fxLayout="column" class="quote-actions" fxFlex >
+  <div class="buttons">
+    <div fxLayout="column" fxLayoutGap="30px">
+      <button [disabled]="disabled" class="white" mat-raised-button color="primary" (click)="sendInvoice()">
+        <p class="no-margin"> {{'INVOICES.SIDEBAR.SEND-INVOICE' | transloco}} </p>
+      </button>
+
+      <div fxLayout="row" fxLayoutAlign="space-between start">
+        <button (click)="showPreview()" class="white-bg" mat-stroked-button fxFlex="45%">
+          {{'INVOICES.SIDEBAR.PREVIEW' | transloco}}
+        </button>
+        <button [disabled]="!isEditMode" (click)="downloadInvoice()" class="white-bg" mat-stroked-button fxFlex="45%">
+          {{'INVOICES.SIDEBAR.DOWNLOAD' | transloco}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="currency">
+    <div>
+      <p class="label">{{'INVOICES.SIDEBAR.CURRENCY' | transloco}}</p>
+      <mat-form-field appearance="outline">
+        <mat-select [disabled]="!canEditInvoice" [value]="currency" (selectionChange)="currencyChanged($event)">
+          <mat-option value="EUR">Euro</mat-option>
+          <mat-option value="USD">US Dollar</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div fxLayout="column" fxLayoutAlign="start start" class="toogles">
+    <div class="max" fxLayout="row" fxLayoutAlign="space-between start">
+      <p class="label">{{'INVOICES.SIDEBAR.ADD-MESSAGE' | transloco}}</p>
+      <mat-slide-toggle [disabled]="!canEditInvoice || (isEditMode && hasStructuredMessage)" 
+                        [checked]="isEditMode && hasStructuredMessage" color="primary" 
+                        (change)="includeStructuredMessage($event)" >
+        </mat-slide-toggle>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="spinner">
+    <mat-spinner diameter="25"></mat-spinner>
+  </div>
+</ng-template>

@@ -1,0 +1,65 @@
+<form [formGroup]="customersForm" *ngIf="companies && customerContacts" class="bill-to">
+
+  <p class="main-label">{{'INVOICES.DETAIL.CUSTOMER-DETAILS' | transloco}}</p>
+
+  <div class="bill-fields" fxLayout="column">
+
+    <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="20px">
+      <div fxLayout="column" fxFlex="50%">
+        <p class="label">{{'INVOICES.DETAIL.CUSTOMER-NAME' | transloco}}</p>
+        <mat-form-field appearance="outline">
+          <mat-select formControlName="name" (valueChange)="emitSelectedCustomer($event)" [compareWith]="compareFn">
+            <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="companies"
+              (filteredReturn)="filteredCompanies =$event"></mat-select-filter>
+            <mat-option value=""></mat-option>
+            <mat-option *ngFor="let company of filteredCompanies" [value]="company">
+              {{company.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxFlex>
+        <p class="label">{{'INVOICES.DETAIL.CUSTOMER-CONTACT' | transloco}}</p>
+        <mat-form-field appearance="outline">
+          <mat-select formControlName="contact">
+            <mat-select-filter [placeholder]="'Filter'" [displayMember]="'fName'" [array]="customerContacts"
+              (filteredReturn)="filteredCustomerContacts =$event"></mat-select-filter>
+            <mat-option value=""></mat-option>
+            <mat-option *ngFor="let customerContact of filteredCustomerContacts" [value]="customerContact.id">
+              {{customerContact.fName + ' ' + customerContact.lName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="column">
+      <p class="label">{{'INVOICES.DETAIL.ADDRESS' | transloco}}</p>
+      <mat-form-field appearance="outline">
+        <input formControlName="address" matInput placeholder="Halle" />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column">
+      <p class="label">{{'INVOICES.DETAIL.VAT' | transloco}}</p>
+      <mat-form-field appearance="outline">
+        <input formControlName="vat" matInput placeholder="BE XXXXXX" />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column">
+      <p class="label">{{'INVOICES.DETAIL.EMAIL' | transloco}}</p>
+      <mat-form-field appearance="outline">
+        <input formControlName="email" matInput placeholder="company@mail.com" />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column">
+      <p class="label">{{'INVOICES.DETAIL.PHONE' | transloco}}</p>
+      <mat-form-field appearance="outline">
+        <input formControlName="phone" matInput placeholder="+3200000000" />
+      </mat-form-field>
+    </div>
+  </div>
+</form>

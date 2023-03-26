@@ -1,0 +1,65 @@
+.invoices-page {
+  width: 100%;
+}
+
+.invoice-form {
+  background-color: white;
+  padding: 30px 20px;
+  border-radius: 5px;
+}
+
+.label {
+  margin: 0;
+  font-weight: 600;
+  color: var(--kujali-color-text-black);
+}
+
+.logo {
+  border-bottom: solid #C7CDD7 1px;
+  padding-bottom: 30px;
+}
+
+.invoice {
+  font-size: 1.2rem;
+  color: var(--kujali-color-text-black);
+  font-weight: bolder;
+  margin-bottom: 30px;
+}
+
+.icon-button-no-pad {
+  height: 30px;
+}
+
+.icon-button-no-pad mat-icon {
+  margin-bottom: 60%;
+}
+
+.intro-fields {
+  width: 60%;
+}
+
+.from-bill-to {
+  padding: 50px 0px;
+  border-bottom: solid #C7CDD7 1px;
+}
+
+::ng-deep .invoices-page .mat-form-field {
+  width: 100%
+}
+
+::ng-deep .invoices-page .mat-form-field-infix {
+  border-top-width: 2px !important;
+}
+
+::ng-deep .invoices-page .mat-form-field-wrapper {
+  // padding: 0px 0px 15px 0px;
+}
+
+::ng-deep .invoices-page .mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: white;
+}
+
+::ng-deep .invoices-page .short .mat-form-field {
+  
+  width: 100px;
+}

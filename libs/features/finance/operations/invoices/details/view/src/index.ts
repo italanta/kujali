@@ -1,1 +1,1 @@
-export * from './lib/invoices-view.module';
+export * from './lib/crm-invoices-details-view.module';

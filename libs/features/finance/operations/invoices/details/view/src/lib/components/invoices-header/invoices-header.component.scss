@@ -1,0 +1,31 @@
+.detail-header {
+  padding: 20px 0px 50px 0px;
+}
+
+.detail-header div:first-of-type p:last-of-type {
+  margin: 0;
+  color: var(--kujali-color-nav-inactive);
+  font-size: 1rem;
+}
+
+.page-title {
+  margin: 0px 5px 0px 0px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--kujali-color-primary);
+}
+
+.page-title:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.print {
+  padding: 2px;
+  background-color: var(--kujali-color-text-white);
+  color: var(--kujali-color-nav-inactive);
+}
+
+.detail-header > input {
+  margin-right: 10px;
+}

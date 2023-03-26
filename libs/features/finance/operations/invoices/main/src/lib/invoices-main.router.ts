@@ -5,10 +5,10 @@ import { InvoicesPageComponent } from './pages/invoices-page/invoices-page.compo
 
 const INVOICES_ROUTES: Route[] = [
   { path: '', component: InvoicesPageComponent },
-  // {
-  //   path: 'create',
-  //   loadChildren: () => import('libs/features/finance/invoices/details/view/src/lib/finance-invoices-details-view.module').then(m => m.financeInvoicesDetailsViewModule),
-  // },
+  {
+    path: 'create',
+    loadChildren: () => import('libs/features/finance/operations/invoices/details/view/src/lib/invoices-view.module').then(m => m.InvoicesViewModule),
+  },
   // {
   //   path: ':id/edit',
   //   loadChildren: () => import('libs/features/finance/invoices/details/view/src/lib/finance-invoices-details-view.module').then(m => m.financeInvoicesDetailsViewModule),

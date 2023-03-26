@@ -1,0 +1,40 @@
+<form [formGroup]="companyForm" class="bill-from">
+  <p class="main-label"> {{'INVOICES.DETAIL.COMPANY-DETAILS' | transloco}} </p>
+
+  <div class="bill-fields" fxLayout="column">
+    <div fxLayout="column">
+      <p class="label">{{'INVOICES.DETAIL.COMPANY-NAME' | transloco}}</p>
+      <mat-form-field appearance="outline">
+          <input formControlName="name" matInput placeholder="Company" />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column">
+      <p class="label">{{'INVOICES.DETAIL.ADDRESS' | transloco}}</p>
+      <mat-form-field appearance="outline">
+        <input formControlName="address" matInput placeholder="Halle" />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column">
+      <p class="label">{{'INVOICES.DETAIL.VAT' | transloco}}</p>
+      <mat-form-field appearance="outline">
+        <input formControlName="vatNo" matInput placeholder="BE XXXXXX" />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column">
+      <p class="label">{{'INVOICES.DETAIL.EMAIL' | transloco}}</p>
+      <mat-form-field appearance="outline">
+        <input formControlName="email" matInput placeholder="company@mail.com" />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column">
+      <p class="label">{{'INVOICES.DETAIL.PHONE' | transloco}}</p>
+      <mat-form-field appearance="outline">
+        <input formControlName="phone" matInput placeholder="+3200000000" />
+      </mat-form-field>
+    </div>
+  </div>
+</form>

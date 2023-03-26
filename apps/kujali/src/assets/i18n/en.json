@@ -4,6 +4,9 @@
       "SWITCH-LANG": "Switch language"
     }
   },
+  "HEADER-SEARCH": "Search",
+  "HEADER-FILTER": "Filter",
+  "HEADER-ADD-NEW": "Add new",
   "SIDENAV": {
     "NAV": {
       "DASHBOARD": "Dashboard",
@@ -255,6 +258,56 @@
         "SHARE": "Share",
         "CLONE": "Clone"
       }
+    }
+  },
+  "INVOICES" : {
+    "HEADER" : {
+      "INVOICE" : "Invoice",
+      "INVOICES" : "Invoices",
+      "SAVE-PROGRESS": "Save Progress",
+      "COPY": "Copy",
+      "DELETE": "Delete"
+    },
+    "TABLE": {
+      "INV-NUMBER": "Invoice Number",
+      "AMOUNT": "Amount",
+      "DATE": "Date",
+      "DUE-DATE": "Due Date",
+      "STATUS": "Status",
+      "COMPANY": "Company",
+      "CONTACT": "Contact",
+      "ACTIONS": "Actions"
+    },
+    "DETAIL": {
+      "TITLE": "Title",
+      "DATE": "Date",
+      "DUE-DATE": "Due Date",
+      "STATUS": "Status",
+      "COMPANY-DETAILS": "Company Details",
+      "COMPANY-NAME": "Company Name",
+      "ADDRESS": "Address",
+      "VAT": "VAT",
+      "EMAIL": "Email",
+      "PHONE": "Phone",
+      "CUSTOMER-DETAILS": "Customer Details",
+      "CUSTOMER-NAME": "Customer Name",
+      "CUSTOMER-CONTACT": "Customer Contact",
+      "DESC": "Description",
+      "COST": "Cost",
+      "QTY": "Quantity",
+      "TOTAL": "Total",
+      "ACTIONS": "Actions",
+      "ADD-ITEM": "Add Item",
+      "SUBTOTAL": "Subtotal",
+      "TAX": "Tax",
+      "VAT-TOTAL": "VAT Total"
+    },
+    "SIDEBAR" : {
+      "SEND-INVOICE": "Send Invoice",
+      "PREVIEW": "Preview",
+      "DOWNLOAD": "Download",
+      "CURRENCY": "Currency",
+      "ADD-MESSAGE": "Add Message"
     }
   }
 }

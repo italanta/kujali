@@ -1,0 +1,21 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" class="detail-header">
+  <div fxLayout="row" fxLayoutAlign="start center" class="breadcrumbs">
+    <p (click)="goBack()" class="page-title"> {{'INVOICES.HEADER.INVOICES' | transloco}} </p>
+    <p *ngIf="isEditMode; else newQuote"> > {{invoiceNumber}} </p>
+    <ng-template #newQuote> <p> > {{'INVOICES.HEADER.NEW-INVOICE' | transloco}} </p> </ng-template>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px" class="user-edit">
+    <button (click)="saveProgress()" fxLayout="row" fxLayoutAlign="center center" mat-flat-button>
+      <i class="bi bi-save"></i>
+      {{'INVOICES.HEADER.SAVE-PROGRESS' | transloco}}
+    </button>
+    <button [disabled]="!isEditMode" (click)="copyInvoice()" fxLayout="row" fxLayoutAlign="center center" mat-flat-button>
+      <i class="bi bi-clipboard"></i>
+      {{'INVOICES.HEADER.COPY' | transloco}}
+    </button>
+    <button [disabled]="!isEditMode" (click)="deleteInvoice()" fxLayout="row" fxLayoutAlign="center center" mat-flat-button>
+      <i class="bi bi-trash"></i>
+      {{'INVOICES.HEADER.DELETE' | transloco}}
+    </button>
+  </div>
+</div>

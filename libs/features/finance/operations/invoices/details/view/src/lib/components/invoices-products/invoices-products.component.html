@@ -1,0 +1,135 @@
+<div [formGroup]="invoiceFormGroup" class="invoice-products">
+  <div class="product-titles" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+    <p class="label desc" fxFlex="40%">{{'INVOICES.DETAIL.DESC' | transloco}}</p>
+    <p class="label m-l" fxFlex="12%">{{'INVOICES.DETAIL.COST' | transloco}}</p>
+    <p class="label m-l" fxFlex="12%">{{'INVOICES.DETAIL.QTY' | transloco}}</p>
+    <p class="label m-l" fxFlex="12%">{{'INVOICES.DETAIL.VAT' | transloco}}</p>
+    <div fxLayout="column" fxLayoutAlign="start center" class="text-center" fxFlex="12%" fxFill>
+      <p class="label" fxFlex="12%">{{'INVOICES.DETAIL.TOTAL' | transloco}}</p>
+    </div>
+    <p class="label margin-btm" fxFlex="12%">{{'INVOICES.DETAIL.ACTIONS' | transloco}}</p>
+  </div>
+
+  <div class="invoice-form-fields" formArrayName="products" cdkDropList (cdkDropListDropped)="dropProduct($event)">
+    <div class="full-width" *ngFor="let item of getInvoiceProducts().controls; let f = index" cdkDrag>
+
+      <div class="custom-item-placeholder" *cdkDragPlaceholder></div>
+
+      <div class="full-width" fxLayout="column" fxLayoutAlign="start start" [formGroupName]="f" fxFlex>
+        <div class="full-width item-row" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" fxFlex>
+
+          <mat-icon class="item-drag">drag_indicator</mat-icon>
+
+          <div fxFlex="40%">
+            <mat-form-field appearance="outline">
+              <input placeholder="Office tables" matInput formControlName="desc">
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="12%">
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="cost" placeholder="12000" type="number" />
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="12%">
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="qty" placeholder="20" type="number" />
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="12%">
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="vat" placeholder="21%" type="number" />
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="column" fxLayoutAlign="center center" class="text-center" fxFlex="12%" fxFill>
+            <span fxLayout="row" fxLayoutGap="10px">
+              <p class="quote-total total-title">{{calculateProductTotal(item) | currency : invoiceCurrency :
+                'symbol-narrow'}}</p>
+            </span>
+          </div>
+
+          <div fxLayout="column" fxLayoutAlign="space-between start" fxFlex="12%">
+            <div class="action">
+              <button class="icon-button-no-pad" mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_horiz</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button [disabled]="getDiscountFields(item).controls.length > 0" mat-menu-item
+                  (click)="addDiscount(item)">
+                  <mat-icon> monetization_on</mat-icon>
+                  <span>{{'ORDERS.PARTS.ADD-DISCOUNT' | transloco}}</span>
+                </button>
+                <button mat-menu-item (click)="removeInvoiceProduct(f)">
+                  <mat-icon>delete</mat-icon>
+                  <span>{{'INVOICES.DETAIL.DELETE-ROW' | transloco}}</span>
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+        </div>
+
+        <div class="discount" fxLayout="column" fxLayoutAlign="start center" formArrayName="discount" fxFlex>
+          <div class="full-width" fxLayout="column" fxLayoutAlign="start start"
+            *ngFor="let discount of getDiscountFields(item).controls; let disc = index">
+            <p class="label"> {{'ORDERS.PARTS.DISCOUNT' | transloco}}</p>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+              <mat-form-field appearance="outline" fxFlex>
+                <input matInput [formControlName]="disc" placeholder="Thomas" type="number" />
+              </mat-form-field>
+              <span fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                <p>{{discountTotal(item) | currency : invoiceCurrency : 'symbol-narrow'}} </p>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-totals" fxLayout="row" fxLayoutAlign="start start">
+    <div fxFlex="50%">
+      <div class="flat-button">
+        <button mat-flat-button (click)="addInvoiceItem()">
+          {{'INVOICES.DETAIL.ADD-ITEM' | transloco}}
+        </button>
+      </div>
+    </div>
+
+    <div class="total-results" fxLayout="column" fxLayoutAlign="start start">
+      <div fxLayout="row" fxLayoutAlign="start start">
+        <p class="label" fxFlex="50%">{{'INVOICES.DETAIL.SUBTOTAL' | transloco}}</p>
+        <span fxLayout="row" fxLayoutGap="10px">
+          <p>{{subTotal | currency : invoiceCurrency : 'symbol-narrow'}} </p>
+        </span>
+      </div>
+
+      <div fxLayout="column">
+        <div fxLayout="column" *ngFor="let data of uniqueVat">
+          <div *ngIf="getVat(data).vat > 0" fxLayout="row" fxLayoutAlign="start start">
+            <p class="label" fxFlex="50%">{{'ORDERS.PARTS.TAX' | transloco}} ({{getVat(data).vat}}%) </p>
+            <span fxLayout="row" fxLayoutGap="10px">
+              <p>{{getVat(data).total | currency : invoiceCurrency : 'symbol-narrow'}}</p>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="start start">
+        <p class="label" fxFlex="50%"> {{'INVOICES.DETAIL.VAT-TOTAL' | transloco}} </p>
+        <span fxLayout="row" fxLayoutGap="10px">
+          <p>{{vatTotal | currency : invoiceCurrency : 'symbol-narrow'}}</p>
+        </span>
+      </div>
+
+      <div class="total" fxLayout="row" fxLayoutAlign="start start">
+        <p class="label" fxFlex="50%">{{'INVOICES.DETAIL.TOTAL' | transloco}}</p>
+        <span fxLayout="row" fxLayoutGap="10px">
+          <p>{{finalTotal | currency : invoiceCurrency : 'symbol-narrow'}}</p>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

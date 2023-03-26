@@ -12,7 +12,7 @@
       <!-- Deaadline  -->
 
       <mat-form-field appearance="outline">
-        <mat-label>{{"QUOTES.TABLE.DUE-DATE" | transloco}}</mat-label>
+        <mat-label>{{"INVOICES.TABLE.DUE-DATE" | transloco}}</mat-label>
         <mat-select formControlName="dateControl">
           <mat-option value=""></mat-option>
           <mat-option value="past">Past</mat-option>
@@ -25,7 +25,7 @@
 
       <!-- Company -->
       <mat-form-field appearance="outline">
-        <mat-label>{{"QUOTES.TABLE.COMPANY" | transloco}}</mat-label>
+        <mat-label>{{"INVOICES.TABLE.COMPANY" | transloco}}</mat-label>
         <mat-select formControlName="customerControl" [compareWith]="compareFn" multiple>
           <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="customersList"
             (filteredReturn)="filteredCustomersList =$event"></mat-select-filter>
@@ -36,7 +36,7 @@
 
       <!-- Contact  -->
       <mat-form-field appearance="outline">
-        <mat-label>{{"QUOTES.TABLE.CONTACT" | transloco}}</mat-label>
+        <mat-label>{{"INVOICES.TABLE.CONTACT" | transloco}}</mat-label>
         <mat-select formControlName="contactControl" multiple>
           <mat-select-filter [placeholder]="'Filter'" [displayMember]="'fullName'" [array]="contactsList"
             (filteredReturn)="filteredContactsList =$event"></mat-select-filter>
@@ -47,7 +47,7 @@
 
       <!-- Created By  -->
       <mat-form-field appearance="outline">
-        <mat-label>{{"QUOTES.TABLE.CREATED-BY" | transloco}}</mat-label>
+        <mat-label>{{"INVOICES.TABLE.CREATED-BY" | transloco}}</mat-label>
         <mat-select formControlName="assingToControl" multiple>
           <mat-select-filter [placeholder]="'Filter'" [displayMember]="'displayName'" [array]="createdByList"
             (filteredReturn)="filteredCustomersList =$event"></mat-select-filter>
@@ -58,7 +58,7 @@
 
       <!-- Status  -->
       <mat-form-field appearance="outline">
-        <mat-label>{{"QUOTES.TABLE.STATUS" | transloco}}</mat-label>
+        <mat-label>{{"INVOICES.TABLE.STATUS" | transloco}}</mat-label>
         <mat-select formControlName="statusControl" multiple>
           <mat-select-filter [placeholder]="'Filter'" [array]="statusList"
             (filteredReturn)="filteredStatusList =$event"></mat-select-filter>

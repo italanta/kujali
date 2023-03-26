@@ -1,0 +1,97 @@
+.invoice-products, .product-titles, .invoice-form-fields, .full-width {
+  width: 100%;
+}
+
+.invoice-products {
+  padding: 50px 0px 50px 0px;
+}
+
+.invoice-form-fields {
+  padding-top: 10px;
+}
+
+.main-label {
+  color: var(--kujali-color-nav-inactive);
+  font-weight: 900;
+  margin: 0;
+}
+
+.label-form {
+  font-size: 0.8rem;
+  color: var(--kujali-color-nav-inactive);
+  font-size: bold;
+}
+
+.label {
+  font-family: 'Poppins';
+  font-weight: 600;
+  color: var(--kujali-color-text-black);
+  margin: 0;
+}
+
+.product-totals {
+  width: 100%;
+  border-top: solid var(--kujali-color-primary-background) 2px;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.product-totals .total-results, .product-totals .total-results > div {
+  width: 100%;
+}
+
+.flat-button button, .text-button {
+  color: var(--kujali-color-primary);
+  text-decoration: underline;
+}
+
+.add-item {
+  color: var(--kujali-color-primary);
+  text-decoration: underline;
+}
+
+.totals > p {
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
+
+.total {
+  border-top: solid #C7CDD7 1px;
+  padding-top: 20px;
+  font-weight: bolder;
+  font-size: 1.5rem;
+}
+
+::ng-deep .invoice-products .invoice-form-fields .mat-mdc-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.custom-placeholder {
+  background: #ccc;
+  border: dotted 3px #999;
+  min-height: 100px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.custom-item-placeholder {
+  background: #ccc;
+  border: dotted 3px #999;
+  min-height: 40px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.mat-mdc-form-field {
+  max-width: 100%!important;
+}

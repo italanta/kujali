@@ -151,7 +151,7 @@ export class InvoicesPageComponent implements OnInit {
   }
 
   createInvoice () {
-    this._router$$.navigate(['invoices/create']);
+    this._router$$.navigate(['operations/invoices/create']);
   }
 
   ngOnDestroy(): void {

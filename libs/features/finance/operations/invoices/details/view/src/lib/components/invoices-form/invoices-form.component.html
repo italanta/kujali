@@ -1,0 +1,94 @@
+<!-- Invoices header -->
+<kujali-invoices-header
+  (saveInvoiceProgressEvent)="saveInvoice()"
+  (deleteInvoiceEvent)="deleteInvoice()"
+  (copyInvoiceEvent)="copyInvoice()" 
+  [invoiceNumber]="invoiceNumber">
+</kujali-invoices-header>
+
+<div class="invoices-page" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
+  <form [formGroup]="model.mainInvoiceFormGroup" class="invoice-form" fxFlex="80%">
+    <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="20px" class="logo" fxFill>
+      <div fxLayout="column" class="intro-fields">
+        <p class="invoice">{{'INVOICES.HEADER.INVOICES' | transloco}}</p>
+        <div fxLayout="column">
+          <div>
+            <p class="label">{{'INVOICES.DETAIL.TITLE' | transloco}}</p>
+            <mat-form-field appearance="outline">
+              <input formControlName="title" matInput placeholder="New Invoice" maxlength="50"/>
+            </mat-form-field>
+          </div>
+
+          <div  fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="20px">
+            <div fxFlex="50">
+              <p class="label">{{'INVOICES.DETAIL.DATE' | transloco}}</p>
+              <mat-form-field appearance="outline">
+                <input formControlName="date" matInput [matDatepicker]="picker" />
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+  
+            <div fxFlex>
+              <p class="label">{{'INVOICES.TABLE.DUE-DATE' | transloco}}</p>
+              <mat-form-field appearance="outline">
+                <input formControlName="dueDate" matInput [matDatepicker]="dueDatePicker" />
+                <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #dueDatePicker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div>
+            <p class="label">{{'INVOICES.TABLE.STATUS' | transloco}}</p>
+            <mat-form-field appearance="outline">
+              <mat-select formControlName="status">
+                <mat-option value="new">New</mat-option>
+                <mat-option value="paid">Paid</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="from-bill-to">
+      <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="50px" class="cols">
+        <!-- company form -->
+        <kujali-invoice-company-details [companyForm]="model.companyFormGroup"
+          (initCompanyFormEvent)="newCompanySelectedEvent($event)" fxFlex="50%"></kujali-invoice-company-details>
+        <!-- customer-form -->
+        <kujali-invoice-customer-details [customersForm]="model.customerFormGroup"
+          (initCustomerFormEvent)="newCustomerSelectedEvent($event)" fxFlex="50%"
+          [newCompanyPassed$]="newCompanyPassed$.asObservable()"
+          >
+        </kujali-invoice-customer-details>
+      </div>
+    </div>
+
+    <div>
+      <kujali-invoices-products [currency]="activeCurrency$.asObservable()" [invoiceFormGroup]="model.mainInvoiceFormGroup" ></kujali-invoices-products>
+    </div>
+
+    <div *ngIf="showStructuredMessage" class="note" fxLayout="column" fxLayoutAlign="start start" fxFill>
+      <p class="label">{{'INVOICES.OGM' | transloco}}</p>
+      <mat-form-field appearance="outline">
+        <input [readonly]="true" matInput formControlName="structuredMessage" placeholder="Structured Message" />
+      </mat-form-field>
+    </div>
+  </form>
+
+  <!-- invoices sidebar -->
+  <div class="side-bar" fxFlex="20%">
+    <kujali-invoices-sidebar
+      [activeInvoice]="activeInvoice"
+      [canEditInvoice]="canEditInvoice"
+      (sendInvoiceEvent)="sendInvoice()"
+      (includeStructuredMessageEvent)="showStructuredMessageFn($event)"
+      (currencyChangedEvent)="selectedCurrency($event)"
+      (showPreviewEvent)="showFormPreview()" 
+      (downloadInvoiceEvent)="downloadInvoice()">
+    </kujali-invoices-sidebar>
+  </div>
+</div>
