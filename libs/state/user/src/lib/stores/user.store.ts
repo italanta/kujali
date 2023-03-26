@@ -24,4 +24,8 @@ export class UserStore extends UService<KuUser>
   }
 
   getUsers = () => this.getUsersBase(new Query().where('roles.access', '==', true));
+
+  getOrgUsers(activeOrg: string): Observable<KuUser[]>{
+    return this.getUsersBase(new Query().where('profile.orgIds', 'array-contains', activeOrg))
+  }
 }

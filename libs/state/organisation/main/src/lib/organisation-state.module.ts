@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { OrgStore }       from './stores/organisation.store';
 import { ActiveOrgStore } from './stores/active-org.store';
+import { PermissionsStore } from './stores/permissions.store';
 
 @NgModule({
   imports: [CommonModule,
@@ -18,7 +19,8 @@ export class OrgStateModule
       ngModule: OrgStateModule,
       providers: [
         OrgStore,
-        ActiveOrgStore
+        ActiveOrgStore,
+        PermissionsStore
       ]
     };
   }

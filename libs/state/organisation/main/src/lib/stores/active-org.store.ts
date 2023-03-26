@@ -42,27 +42,16 @@ export class ActiveOrgStore extends Store<Organisation> implements OnDestroy
   }
 
   override get = () => super.get().pipe(filter(val => val != null));
+
+  setOrg(org: Organisation) {
+    this.set({
+      id: org.id,
+      logoUrl: org?.logoUrl,
+      name: org?.name,
+      roles: org?.roles,
+      users: org?.users,
+    } as Organisation, 'UPDATE - FROM USER');
+  }
   
   ngOnDestroy = () => this._sbS.unsubscribe();
 }
-
-// private _getRoute(route: NavigationEnd) : string
-// {
-//   const elements = route.url.split('/');
-//   const propId = elements.length >= 3 ? elements[2] : '__noop__';
-
-//   return propId;
-// }
-
-// const orgId = this._getRoute(route);
-
-// if(orgId !== '__noop__')
-// {
-//   const org = orgs.find(o => o.id === orgId);
-
-//   if(org && this._activeOrg !== orgId)
-//   {
-//     this._activeOrg = orgId;
-//     this.set(org, 'UPDATE - FROM DB || ROUTE');
-//   }
-// }

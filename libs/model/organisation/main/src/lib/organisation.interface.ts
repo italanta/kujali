@@ -7,6 +7,8 @@ import { Contact } from './contact.interface';
 
 export interface Organisation extends IObject
 {
+  logoUrl?: string;
+
   name: string;
 
   kboNumber?: string;
@@ -19,6 +21,9 @@ export interface Organisation extends IObject
   activatedBankAccount?: number;
 
   users: string[],
+
+  roles: string[];
+  permissions: {};
 }
 
 export interface OrgBankingInfo
