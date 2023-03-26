@@ -32,6 +32,7 @@ import { ContactsStateModule } from '@app/state/finance/contacts';
 import { InvoicesStateModule } from '@app/state/finance/invoices';
 import { NotesStateModule } from '@app/state/finance/notes';
 import { OpportunitiesStateModule } from '@app/state/finance/opportunities';
+import { TagsStateModule } from '@app/state/tags';
 
 
 import { environment } from '../environments/environment';
@@ -80,6 +81,7 @@ import { AppRoutingModule } from './app.routing.module';
     InvoicesStateModule.forRoot(),
     NotesStateModule.forRoot(),
     OpportunitiesStateModule.forRoot(),
+    TagsStateModule.forRoot(),
 
     // FlowsStateModule.forRoot(),
     // ChatsStateModule.forRoot(),
