@@ -55,6 +55,7 @@
     "state-finance-activities-base": "libs/state/finance/activities/base",
     "state-finance-banking": "libs/state/finance/banking",
     "state-finance-budgetting-results": "libs/state/finance/budgetting/results",
+    "state-finance-companies-base": "libs/state/finance/companies/base",
     "state-finance-cost-types": "libs/state/finance/cost-types",
     "util-iote-bricks": "libs/util/iote/bricks",
     "util-iote-bricks-angular": "libs/util/iote/bricks-angular",
