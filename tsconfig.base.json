@@ -95,6 +95,9 @@
       "@app/model/finance/accounts/main": [
         "libs/model/finance/accounts/main/src/index.ts"
       ],
+      "@app/model/finance/activities": [
+        "libs/model/finance/activities/base/src/index.ts"
+      ],
       "@app/model/finance/banking": [
         "libs/model/finance/banking/base/src/index.ts"
       ],
