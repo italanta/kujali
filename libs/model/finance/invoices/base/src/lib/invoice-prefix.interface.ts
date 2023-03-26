@@ -1,6 +1,6 @@
-import { financeObject } from '@app/model/finance/finance-object';
+import { IObject } from "@iote/bricks";
 
-export interface InvoicesPrefix extends financeObject {
+export interface InvoicesPrefix extends IObject {
   prefix: string;
   number: number;
   

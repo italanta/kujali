@@ -33,5 +33,5 @@ export class CompaniesStore extends DataStore<Company>
     });
   }
 
-  get = () => super.get().pipe(filter((cts, i) => !!cts && cts.length >= 0));
+  override get = () => super.get().pipe(filter((cts, i) => !!cts && cts.length >= 0));
 }

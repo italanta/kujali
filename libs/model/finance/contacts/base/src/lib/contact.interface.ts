@@ -1,6 +1,6 @@
-import { financeObject } from '@app/model/finance/finance-object';
+import { IObject } from "@iote/bricks";
 
-export interface Contact extends financeObject {
+export interface Contact extends IObject {
   id?: string
 
   logoImgUrl?: string;

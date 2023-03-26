@@ -1,6 +1,6 @@
-import { financeObject } from '@app/model/finance/finance-object';
+import { IObject } from "@iote/bricks";
 
-export interface Opportunity extends financeObject{
+export interface Opportunity extends IObject{
 
   title: string,
   type: string,

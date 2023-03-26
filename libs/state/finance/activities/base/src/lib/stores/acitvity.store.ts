@@ -12,7 +12,7 @@ import { ActivefinanceObjectLoader } from '@app/state/finance/base'
 
 import { Activity } from '@app/model/finance/activities';
 import { ActiveOrgStore } from '@app/state/organisation';
-import { financeObject } from '@app/model/finance/finance-object';
+
 import { Router } from '@angular/router';
 
 

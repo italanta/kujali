@@ -1,8 +1,7 @@
 import { Timestamp } from '@firebase/firestore-types';
+import { IObject } from '@iote/bricks';
 
-import { financeObject } from '@app/model/finance/finance-object';
-
-export interface Invoice extends financeObject {
+export interface Invoice extends IObject {
 
   title: string
 
