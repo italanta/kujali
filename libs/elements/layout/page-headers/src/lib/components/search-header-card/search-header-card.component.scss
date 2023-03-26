@@ -1,0 +1,67 @@
+// .search-header {
+//   padding-top: 30px;
+// }
+
+.search-header div:first-of-type p:last-of-type {
+    margin: 0;
+    color: var(--volk-color-nav-inactive);
+    padding-top: 10px;
+    font-size: 15px;
+}
+.page-title {
+  font-family: 'Poppins';
+  margin: 0px 5px 0px 10px;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--volk-color-text-black);
+}
+
+.search-input {
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
+.search-input {
+  margin-right: 5px;
+}
+.search-input i {
+  color: var(--volk-color-nav-inactive);
+}
+.search-input input {
+  outline: none;
+  border: none;
+  margin-left: 5px;
+  color: var(--volk-color-text-black);
+}
+
+.filter {
+  cursor: pointer;
+  // padding: 5px;
+  // border-radius: 2px;
+  color: var(--volk-color-nav-inactive);
+  margin-right: 20px;
+  margin-left: 20px;
+  // border: none;
+  background-color: var(--volk-color-text-white);
+}
+
+.filter i {
+  margin-right: 5px;
+}
+.add-new {
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 2px;
+  color: var(--volk-color-text-white);
+  border: none;
+  background-color: var(--volk-color-primary);
+}
+
+.add-new:hover, .filter:hover {
+  box-shadow: slategray 0px 2px 4px;
+}
+.search-header > input {
+  margin-right: 10px;
+}

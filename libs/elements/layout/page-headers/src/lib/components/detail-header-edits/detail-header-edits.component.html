@@ -1,0 +1,22 @@
+<div  fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px" class="detail-header">
+    <div class="breadcrumbs">
+        <p (click)="mainPageRoute()" class="page-title">{{_page}}</p>
+        <i class="bi bi-chevron-right"></i>
+        <p (click)="back()" class="page-title"> {{_name}} </p>
+        <i class="bi bi-chevron-right"></i>
+        <p class="edit-title"> {{editPageName}} </p>
+    </div>
+
+    <div class="detail-header">
+        <div fxLayout="row" fxLayoutAlign="start" class="breadcrumbs">
+          <div>
+            <button mat-flat-button (click)="back()" class="filter"><i class="bi bi-x"></i> {{ 'CONTACT.ADDNEWCONTACT.CANCEL' | transloco }}</button>
+          </div>
+
+          <div>
+            <ng-content select="[save-button]"></ng-content>
+          </div>
+            <!-- <button mat-flat-button (click)="toogleUpdate()" class="add-new"> <i class="bi bi-file-earmark-diff"></i> {{ 'CONTACT.ADDNEWCONTACT.SAVE' | transloco }}</button>       -->
+        </div>
+      </div>
+</div>
