@@ -15,7 +15,7 @@ import { CompaniesStore } from '@app/state/finance/companies';
 import { TagsService } from '@app/state/finance/tags'
 import { ContactsStore } from '@app/state/finance/contacts';
 
-import { DeleteModalComponent } from '@app/elements/finance/modals';
+import { DeleteModalComponent } from '@app/elements/modals';
 
 @Injectable({
   providedIn: 'root',

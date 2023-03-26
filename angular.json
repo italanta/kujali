@@ -27,6 +27,7 @@
     "@app/state/organisation": "libs/state/organisation/main",
     "@app/state/user": "libs/state/user",
     "elements-layout-page-headers": "libs/elements/layout/page-headers",
+    "elements-modals": "libs/elements/modals",
     "features-budgetting-budget-explorer-burnchart": "libs/features/budgetting/budget-explorer-burnchart",
     "features-budgetting-budget-planning": "libs/features/budgetting/budget-planning",
     "features-finance-banking-activate-banking": "libs/features/finance/banking/activate-banking",

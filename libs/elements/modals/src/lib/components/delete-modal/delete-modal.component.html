@@ -1,0 +1,8 @@
+<p class="main-label" mat-dialog-title>Delete </p>
+<div mat-dialog-content>
+  {{'MODALS.DELETE-PROP' | transloco}} {{domainData}}
+</div>
+<div mat-dialog-actions>
+  <button mat-flat-button mat-dialog-close> {{'MODALS.NO' | transloco}} </button>
+  <button class="deleteBtn" mat-raised-button color="primary" cdkFocusInitial (click)="proceedToDelete()" > {{'MODALS.YES' | transloco}} </button>
+</div>

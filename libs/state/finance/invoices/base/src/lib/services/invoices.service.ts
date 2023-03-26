@@ -20,7 +20,7 @@ import { OrganisationService } from '@app/state/orgs';
 import { ContactsStore } from '@app/state/finance/contacts';
 import { CompaniesStore } from '@app/state/finance/companies';
 
-import { DeleteModalComponent } from '@app/elements/finance/modals';
+import { DeleteModalComponent } from '@app/elements/modals';
 
 import { InvoicesStore } from '../stores/invoices.store';
 import { ActiveInvoiceStore } from '../stores/active-invoice.store';
