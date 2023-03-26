@@ -8,7 +8,7 @@ import { Repository, DataService } from '@ngfi/angular';
 import { Query } from '@ngfi/firestore-qbuilder';
 import { DataStore } from '@ngfi/state';
 
-import { ActivefinanceObjectLoader } from '@app/state/finance/base'
+import { ActiveFinanceObjectLoader } from '@app/state/finance/base'
 
 import { Activity } from '@app/model/finance/activities';
 import { ActiveOrgStore } from '@app/state/organisation';
@@ -24,9 +24,9 @@ export class ActivityStore extends DataStore<Activity>
 
   constructor(private _router$$: Router,
               private _org$$: ActiveOrgStore,
-              private _financeObjLoader: ActivefinanceObjectLoader,
+              private _financeObjLoader: ActiveFinanceObjectLoader,
               private _dataProvider: DataService,
-              protected _logger: Logger
+              protected override _logger: Logger
     ) {
     super('always', _logger);
 
@@ -39,7 +39,7 @@ export class ActivityStore extends DataStore<Activity>
         .pipe(tap(([o, c]) => {
           const store = c.type + '-activities';
           this._activeRepo =
-            (!!o && _financeObjLoader.isValidfinanceObject(c)) ? _dataProvider.getRepo<Activity>(`orgs/${o.id}/${store}`) : null as any
+            (!!o && _financeObjLoader.isValidFinanceObject(c)) ? _dataProvider.getRepo<Activity>(`orgs/${o.id}/${store}`) : null as any
         }),
           switchMap(([o, c]) =>
             !!this._activeRepo

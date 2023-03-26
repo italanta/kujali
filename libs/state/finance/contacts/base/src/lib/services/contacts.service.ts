@@ -15,9 +15,10 @@ import { TranslateService } from '@ngfi/multi-lang';
 
 import { Contact } from '@app/model/finance/contacts';
 
-import { TagsService } from '@app/state/finance/tags';
+import { TagsService } from '@app/state/tags';
 
 import { DeleteModalComponent } from '@app/elements/modals';
+
 import { FileStorageService } from '@app/features/finance/files';
 
 import { ContactsStore, ActiveContactStore } from '../..';

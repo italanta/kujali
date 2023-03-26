@@ -157,6 +157,7 @@
       "@app/model/roles": ["libs/model/roles/base/src/index.ts"],
       "@app/model/tags": ["libs/model/tags/base/src/index.ts"],
       "@app/state/data/firebase": ["libs/state/data/firebase/src/index.ts"],
+      "@app/state/files": ["libs/state/files/base/src/index.ts"],
       "@app/state/finance/activities": [
         "libs/state/finance/activities/base/src/index.ts"
       ],

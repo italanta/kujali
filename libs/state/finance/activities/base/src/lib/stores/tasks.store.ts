@@ -19,7 +19,7 @@ export class TaskStore extends DataStore<Task>
 
   constructor(_org$$: ActiveOrgStore,
               _dataProvider: DataService,
-              protected _logger: Logger
+              protected override _logger: Logger
     ) {
     super('always', _logger);
     
@@ -39,6 +39,5 @@ export class TaskStore extends DataStore<Task>
     });
   }
 
-  get = () => super.get().pipe(filter((tasks, i) => !!tasks && tasks.length >= 0));
-
+  override get = () => super.get().pipe(filter((tasks, i) => !!tasks && tasks.length >= 0));
 }

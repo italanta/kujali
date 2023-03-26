@@ -36,7 +36,7 @@ export class ActiveFinanceObjectLoader
                                      map(ev => ev as NavigationEnd));
   }
 
-  public isValidCrmObject(artifect: any)
+  public isValidFinanceObject(artifect: any)
   {
     return !!artifect.type && artifect.id
               && __IsValidFinanceObjectDomain(artifect.type as string);

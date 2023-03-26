@@ -61,6 +61,7 @@
     "model-roles-base": "libs/model/roles/base",
     "model-tags-base": "libs/model/tags/base",
     "state-data-firebase": "libs/state/data/firebase",
+    "state-files-base": "libs/state/files/base",
     "state-finance-activities-base": "libs/state/finance/activities/base",
     "state-finance-banking": "libs/state/finance/banking",
     "state-finance-base": "libs/state/finance/base",
