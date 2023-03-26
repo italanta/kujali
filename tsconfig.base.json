@@ -110,6 +110,12 @@
       "@app/model/finance/contacts": [
         "libs/model/finance/contacts/base/src/index.ts"
       ],
+      "@app/model/finance/invoices": [
+        "libs/model/finance/invoices/base/src/index.ts"
+      ],
+      "@app/model/finance/notes": [
+        "libs/model/finance/notes/base/src/index.ts"
+      ],
       "@app/model/finance/payments": [
         "libs/model/finance/payments/src/index.ts"
       ],
