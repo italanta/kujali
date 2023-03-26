@@ -32,6 +32,7 @@
     "features-budgetting-budget-planning": "libs/features/budgetting/budget-planning",
     "features-finance-banking-activate-banking": "libs/features/finance/banking/activate-banking",
     "features-finance-banking-main": "libs/features/finance/banking/main",
+    "features-finance-business-companies-main": "libs/features/finance/business/companies/main",
     "features-finance-invoices-details-invoice-documents": "libs/features/finance/invoices/details/invoice-documents",
     "features-finance-invoices-details-view": "libs/features/finance/invoices/details/view",
     "features-finance-invoices-main": "libs/features/finance/invoices/main",

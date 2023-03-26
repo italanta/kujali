@@ -64,6 +64,9 @@
       "@app/features/finance/banking/main": [
         "libs/features/finance/banking/main/src/index.ts"
       ],
+      "@app/features/finance/business/companies": [
+        "libs/features/finance/business/companies/main/src/index.ts"
+      ],
       "@app/features/finance/invoices/details/invoice-documents": [
         "libs/features/finance/invoices/details/invoice-documents/src/index.ts"
       ],
