@@ -15,6 +15,11 @@ const OPERATIONS_ROUTES: Route[] = [
     loadChildren: () => import('@app/features/finance/banking/main').then(m => m.FinanceBankingModule),
     canActivate: [IsLoggedInGuard]
   },
+  {
+    path: 'invoices',
+    loadChildren: () => import('@app/features/finance/operations/invoices/main').then(m => m.InvoicesModule),
+    canActivate: [IsLoggedInGuard]
+  },
 ];
 
 @NgModule({
