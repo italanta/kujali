@@ -15,17 +15,19 @@ import { TranslateService } from '@ngfi/multi-lang';
 import { __DateFromStorage } from '@iote/time';
 
 import { Invoice } from '@app/model/finance/invoices';
-import { AppClaimDomains } from '@app/model/access-control';
+// import { AppClaimDomains } from '@app/model/access-control';
 
 import { OpportunitiesService } from '@app/state/finance/opportunities';
-import { _CheckPermission } from '@app/state/access-control';
-import { KuUsersService } from '@app/state/user';
+// import { _CheckPermission } from '@app/state/access-control';
+
+import { KujaliUsersService } from '@app/state/user';
+
 import { InvoicesService } from '@app/state/finance/invoices';
 
 const DATA: Invoice[] = []
 
 @Component({
-  selector: 'volk-invoices-page',
+  selector: 'kujali-invoices-page',
   templateUrl: './invoices-page.component.html',
   styleUrls: ['./invoices-page.component.scss']
 })
@@ -49,13 +51,13 @@ export class InvoicesPageComponent implements OnInit {
 
   lang: 'fr' | 'en' | 'nl';
 
-  readonly CAN_CREATE_INVOICES = AppClaimDomains.InvCreate;
+  // readonly CAN_CREATE_INVOICES = AppClaimDomains.InvCreate;
   
   constructor(private _translateService: TranslateService,
               private _snackBar: MatSnackBar,
               private cdref: ChangeDetectorRef,
               private _oppsService: OpportunitiesService,
-              private _KuUserService: KuUsersService,
+              private _kuUserService: KujaliUsersService,
               private _invoicesService: InvoicesService,
               private _router$$: Router
   ) 
@@ -110,7 +112,7 @@ export class InvoicesPageComponent implements OnInit {
   }
 
   getUserName(userId: string) {
-    let user: any = this._KuUserService.getOrgUser(userId);
+    let user: any = this._kuUserService.getOrgUser(userId);
     return user?.displayName;
   }
 

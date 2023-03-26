@@ -9,14 +9,14 @@
 
 .detail-header div:first-of-type p:last-of-type {
     margin: 0;
-    color: var(--volk-color-nav-inactive);
+    color: var(--kujali-color-nav-inactive);
     font-size: 15px;
 }
 .page-title {
   margin: 0px 5px 0px 0px;
   font-size: 15px;
   font-weight: 600;
-  color: var(--volk-color-primary);
+  color: var(--kujali-color-primary);
 }
 .page-title:hover{
   text-decoration: underline;
@@ -24,8 +24,8 @@
 }
 .print {
     padding: 2px;
-    background-color: var(--volk-color-text-white);
-  color: var(--volk-color-nav-inactive);
+    background-color: var(--kujali-color-text-white);
+  color: var(--kujali-color-nav-inactive);
 }
 .detail-header > input {
   margin-right: 10px;

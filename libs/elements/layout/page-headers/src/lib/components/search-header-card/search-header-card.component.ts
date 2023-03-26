@@ -6,14 +6,14 @@ import { SubSink } from 'subsink';
 
 import { TranslateService } from '@ngfi/multi-lang';
 
-import { AppClaimDomains } from '@app/model/access-control';
+// import { AppClaimDomains } from '@app/model/access-control';
 
-import { AddNewCompanyComponent } from '@app/features/finance/companies/create';
-import { AddNewContactFormComponent } from '@app/features/finance/contacts/create';
-import { AddNewOpportunityComponent } from '@app/features/finance/opportunities/create';
+// import { AddNewCompanyComponent } from '@app/features/finance/companies/create';
+// import { AddNewContactFormComponent } from '@app/features/finance/contacts/create';
+// import { AddNewOpportunityComponent } from '@app/features/finance/opportunities/create';
 
 @Component({
-  selector: 'volk-finance-search-header-card',
+  selector: 'kujali-finance-search-header-card',
   templateUrl: './search-header-card.component.html',
   styleUrls: ['./search-header-card.component.scss']
 })
@@ -21,7 +21,7 @@ export class SearchHeaderCardComponent implements OnDestroy {
 
   private _sbS = new SubSink();
 
-  readonly CAN_CREATE_DOMAIN_DATA = AppClaimDomains.CanAddMembers;
+  // readonly CAN_CREATE_DOMAIN_DATA = AppClaimDomains.CanAddMembers;
 
   page: string = '';
 
@@ -51,27 +51,27 @@ export class SearchHeaderCardComponent implements OnDestroy {
       // .afterClosed().subscribe();
 
     }
-    else if (this.page == 'contacts' || this.page == 'contacts') {
+    // else if (this.page == 'contacts' || this.page == 'contacts') {
 
-      this._sbS.sink = this.dialog.open(AddNewContactFormComponent, {panelClass: 'full-width-dialog'})
-      .afterClosed().subscribe();
-    }
-    else if (this.page == 'opportunities' || this.page == 'opportunities') {
-      this._sbS.sink = this.dialog.open(AddNewOpportunityComponent, {panelClass: 'full-width-dialog'})
-      .afterClosed().subscribe();
-    }
-    else if (this.page == 'invoices') {
-      this._router$$.navigate(['invoices/create']);
-    }
-    else if (this.page == 'quotes') {
-      // this._router$$.navigate(['quotes/create']);
-    }
-    else if (this.page == 'orders') {
-      // this._router$$.navigate(['orders/create']);
-    }
-    else if (this.page == 'invoices' || this.page == 'invoices') {
-      this._router$$.navigate(['invoices/create']);
-    }
+    //   this._sbS.sink = this.dialog.open(AddNewContactFormComponent, {panelClass: 'full-width-dialog'})
+    //   .afterClosed().subscribe();
+    // }
+    // else if (this.page == 'opportunities' || this.page == 'opportunities') {
+    //   this._sbS.sink = this.dialog.open(AddNewOpportunityComponent, {panelClass: 'full-width-dialog'})
+    //   .afterClosed().subscribe();
+    // }
+    // else if (this.page == 'invoices') {
+    //   this._router$$.navigate(['invoices/create']);
+    // }
+    // else if (this.page == 'quotes') {
+    //   // this._router$$.navigate(['quotes/create']);
+    // }
+    // else if (this.page == 'orders') {
+    //   // this._router$$.navigate(['orders/create']);
+    // }
+    // else if (this.page == 'invoices' || this.page == 'invoices') {
+    //   this._router$$.navigate(['invoices/create']);
+    // }
 
   }
 

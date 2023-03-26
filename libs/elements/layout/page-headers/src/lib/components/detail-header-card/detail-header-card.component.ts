@@ -10,7 +10,7 @@ import { ActiveCompanyStore } from '@app/state/finance/companies';
 import { ActiveOpportunityStore } from '@app/state/finance/opportunities';
 
 @Component({
-  selector: 'volk-finance-detail-header-card',
+  selector: 'kujali-finance-detail-header-card',
   templateUrl: './detail-header-card.component.html',
   styleUrls: ['./detail-header-card.component.scss']
 })

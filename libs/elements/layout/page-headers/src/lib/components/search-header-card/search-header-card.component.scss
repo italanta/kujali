@@ -4,7 +4,7 @@
 
 .search-header div:first-of-type p:last-of-type {
     margin: 0;
-    color: var(--volk-color-nav-inactive);
+    color: var(--kujali-color-nav-inactive);
     padding-top: 10px;
     font-size: 15px;
 }
@@ -13,7 +13,7 @@
   margin: 0px 5px 0px 10px;
   font-size: 32px;
   font-weight: 600;
-  color: var(--volk-color-text-black);
+  color: var(--kujali-color-text-black);
 }
 
 .search-input {
@@ -27,24 +27,24 @@
   margin-right: 5px;
 }
 .search-input i {
-  color: var(--volk-color-nav-inactive);
+  color: var(--kujali-color-nav-inactive);
 }
 .search-input input {
   outline: none;
   border: none;
   margin-left: 5px;
-  color: var(--volk-color-text-black);
+  color: var(--kujali-color-text-black);
 }
 
 .filter {
   cursor: pointer;
   // padding: 5px;
   // border-radius: 2px;
-  color: var(--volk-color-nav-inactive);
+  color: var(--kujali-color-nav-inactive);
   margin-right: 20px;
   margin-left: 20px;
   // border: none;
-  background-color: var(--volk-color-text-white);
+  background-color: var(--kujali-color-text-white);
 }
 
 .filter i {
@@ -54,9 +54,9 @@
   cursor: pointer;
   padding: 5px;
   border-radius: 2px;
-  color: var(--volk-color-text-white);
+  color: var(--kujali-color-text-white);
   border: none;
-  background-color: var(--volk-color-primary);
+  background-color: var(--kujali-color-primary);
 }
 
 .add-new:hover, .filter:hover {

@@ -23,7 +23,7 @@ img,
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background-color: var(--volk-color-text-background);
+  background-color: var(--kujali-color-text-background);
   border: none;
   outline: none;
 }
@@ -32,12 +32,12 @@ img,
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--volk-color-primary);
+  color: var(--kujali-color-primary);
 }
 
 td.mat-column-title {
   font-weight: 600;
-  color: var(--volk-color-text-black);
+  color: var(--kujali-color-text-black);
 }
 
 td.mat-column-imageurl {
@@ -45,12 +45,12 @@ td.mat-column-imageurl {
 }
 
 .mat-header-cell {
-  background-color: var(--volk-color-primary-background);
+  background-color: var(--kujali-color-primary-background);
   font-weight: 600;
   font-size: 15px;
 }
 .mat-row:hover .mat-cell {
-  background-color: var(--volk-color-primary-background);
+  background-color: var(--kujali-color-primary-background);
   cursor: pointer;
 }
 
@@ -62,7 +62,7 @@ td.mat-column-customer,
 td.mat-column-contact,
 td.mat-column-status {
   font-weight: 600;
-  color: var(--volk-color-nav-inactive);
+  color: var(--kujali-color-nav-inactive);
 }
 
 ::ng-deep .mat-elevation-z8 {
@@ -77,12 +77,12 @@ td.mat-column-status {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--volk-color-primary-background); 
+  background: var(--kujali-color-primary-background); 
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--volk-color-text-inactive-bolder);
+  background: var(--kujali-color-text-inactive-bolder);
   border-radius: 3px; 
 }
 

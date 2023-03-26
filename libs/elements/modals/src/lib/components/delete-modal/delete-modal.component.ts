@@ -2,7 +2,7 @@ import { Component, EventEmitter, Inject, Input, OnInit, Optional, Output } from
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-  selector: 'volk-delete-modal',
+  selector: 'kujali-delete-modal',
   templateUrl: './delete-modal.component.html',
   styleUrls: ['./delete-modal.component.scss']
 })

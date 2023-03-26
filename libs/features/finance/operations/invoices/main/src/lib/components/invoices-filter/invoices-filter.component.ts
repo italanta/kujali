@@ -16,12 +16,12 @@ import { KuUser } from '@app/model/common/user';
 
 import { InvoicesService } from '@app/state/finance/invoices';
 
-import { KuUsersService } from '@app/state/user';
+import { KujaliUsersService } from '@app/state/user';
 
 import { InvoicesFilter, __NullInvoicesFilter } from './invoices-filter.interface';
 
 @Component({
-  selector: 'volk-invoices-filter',
+  selector: 'kujali-invoices-filter',
   templateUrl: './invoices-filter.component.html',
   styleUrls: ['./invoices-filter.component.scss']
 })
@@ -58,7 +58,7 @@ export class InvoicesFilterComponent implements OnInit {
   constructor(private _translateService: TranslateService,
               private _fb: FormBuilder,
               private _invoicesService: InvoicesService,
-              private _KuUserService: KuUsersService
+              private _kuUserService: KujaliUsersService
   ) { }
 
   ngOnInit(): void {
@@ -96,7 +96,7 @@ export class InvoicesFilterComponent implements OnInit {
 
         let assignedUsers = this.flattenArray(invoices, 'createdBy');
         assignedUsers = Array.from(assignedUsers.values());
-        this.createdByList = this._KuUserService.getOrgUsersProperties(assignedUsers);
+        this.createdByList = this._kuUserService.getOrgUsersProperties(assignedUsers);
         this.filteredCreatedByList = this.createdByList.slice();
 
         this.statusList = this.flattenArray(invoices, 'status');

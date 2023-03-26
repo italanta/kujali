@@ -14,7 +14,7 @@ import { ActiveCompanyStore } from '@app/state/finance/companies';
 import { ActiveOpportunityStore } from '@app/state/finance/opportunities';
 
 @Component({
-  selector: 'volk-finance-detail-header-edits',
+  selector: 'kujali-finance-detail-header-edits',
   templateUrl: './detail-header-edits.component.html',
   styleUrls: ['./detail-header-edits.component.scss'],
 })

@@ -1,20 +1,20 @@
-<volk-finance-volk-main-page>
+<app-page>
   <div fullContent>
-      <volk-finance-toolbar>
-          <volk-finance-search-header-card header (toogleFilterEvent)='toogleFilter($event)'
+      <kujali-finance-toolbar>
+          <kujali-finance-search-header-card header (toogleFilterEvent)='toogleFilter($event)'
               (searchTableEvent)='applyFilter($event)' [tableData]="allTableData">
               <div add-new>
-                <button *hasWriteAccess="CAN_CREATE_INVOICES" mat-flat-button (click)="createInvoice()" class="add-new"> 
+                <button mat-flat-button (click)="createInvoice()" class="add-new"> 
                     <i class="bi bi-plus-circle-fill"></i> 
                     {{'HEADER-ADD-NEW' | transloco}}
                 </button>
               </div>
-          </volk-finance-search-header-card>
-      </volk-finance-toolbar>
+          </kujali-finance-search-header-card>
+      </kujali-finance-toolbar>
 
       <div *ngIf="showFilter" class="filter-section">
-          <volk-invoices-filter (filterChanged)='fieldsFilter($event)'>
-          </volk-invoices-filter>
+          <kujali-invoices-filter (filterChanged)='fieldsFilter($event)'>
+          </kujali-invoices-filter>
       </div>
 
       <div class="table-container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
@@ -93,4 +93,4 @@
       <mat-paginator [pageSizeOptions]="[20, 30]" showFirstLastButtons>
       </mat-paginator>
   </div>
-</volk-finance-volk-main-page>
+</app-page>
