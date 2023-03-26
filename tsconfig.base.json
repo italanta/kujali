@@ -67,14 +67,14 @@
       "@app/features/finance/business/companies": [
         "libs/features/finance/business/companies/main/src/index.ts"
       ],
-      "@app/features/finance/invoices/details/invoice-documents": [
-        "libs/features/finance/invoices/details/invoice-documents/src/index.ts"
+      "@app/features/finance/operations/invoices/details/invoice-documents": [
+        "libs/features/finance/operations/invoices/details/invoice-documents/src/index.ts"
       ],
-      "@app/features/finance/invoices/details/view": [
+      "@app/features/finance/operations/invoices/details/view": [
         "libs/features/finance/invoices/details/view/src/index.ts"
       ],
-      "@app/features/finance/invoices/main": [
-        "libs/features/finance/invoices/main/src/index.ts"
+      "@app/features/finance/operations/invoices/main": [
+        "libs/features/finance/operations/invoices/main/src/index.ts"
       ],
       "@app/features/operations/main": [
         "libs/features/operations/main/src/index.ts"
