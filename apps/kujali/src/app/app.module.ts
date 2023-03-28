@@ -25,7 +25,7 @@ import { OrgStateModule } from '@app/state/organisation';
 import { BankingStateModule } from '@app/state/finance/banking';
 import { CostTypesStateModule } from '@app/state/finance/cost-types';
 import { BudgetsStateModule } from '@app/state/finance/budgetting/budgets';
-
+import { AllocationsStateModule } from '@app/state/finance/allocations';
 
 import { FinanceBaseModule } from '@app/state/finance/base';
 import { ActivitiesStateModule } from '@app/state/finance/activities';
@@ -73,6 +73,7 @@ import { AppRoutingModule } from './app.routing.module';
 
     //banking
     BankingStateModule.forRoot(),
+    AllocationsStateModule.forRoot(),
 
     // DataModule.forRoot(),
     OrgStateModule.forRoot(),

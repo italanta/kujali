@@ -64,6 +64,7 @@
     "state-data-firebase": "libs/state/data/firebase",
     "state-files-base": "libs/state/files/base",
     "state-finance-activities-base": "libs/state/finance/activities/base",
+    "state-finance-allocations": "libs/state/finance/allocations",
     "state-finance-banking": "libs/state/finance/banking",
     "state-finance-base": "libs/state/finance/base",
     "state-finance-budgetting-results": "libs/state/finance/budgetting/results",
