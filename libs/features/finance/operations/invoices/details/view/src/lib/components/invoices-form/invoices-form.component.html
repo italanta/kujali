@@ -11,8 +11,8 @@
     <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="20px" class="logo" fxFill>
       <div fxLayout="column" class="intro-fields">
         <p class="invoice">{{'INVOICES.HEADER.INVOICES' | transloco}}</p>
-        <div fxLayout="column">
-          <div>
+        <div fxLayout="column" fxFlex>
+          <div fxFlex>
             <p class="label">{{'INVOICES.DETAIL.TITLE' | transloco}}</p>
             <mat-form-field appearance="outline">
               <input formControlName="title" matInput placeholder="New Invoice" maxlength="50"/>
@@ -20,7 +20,7 @@
           </div>
 
           <div  fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="20px">
-            <div fxFlex="50">
+            <div fxFlex="30">
               <p class="label">{{'INVOICES.DETAIL.DATE' | transloco}}</p>
               <mat-form-field appearance="outline">
                 <input formControlName="date" matInput [matDatepicker]="picker" />
@@ -29,7 +29,7 @@
               </mat-form-field>
             </div>
   
-            <div fxFlex>
+            <div fxFlex="30">
               <p class="label">{{'INVOICES.TABLE.DUE-DATE' | transloco}}</p>
               <mat-form-field appearance="outline">
                 <input formControlName="dueDate" matInput [matDatepicker]="dueDatePicker" />
@@ -37,16 +37,16 @@
                 <mat-datepicker #dueDatePicker></mat-datepicker>
               </mat-form-field>
             </div>
-          </div>
 
-          <div>
-            <p class="label">{{'INVOICES.TABLE.STATUS' | transloco}}</p>
-            <mat-form-field appearance="outline">
-              <mat-select formControlName="status">
-                <mat-option value="new">New</mat-option>
-                <mat-option value="paid">Paid</mat-option>
-              </mat-select>
-            </mat-form-field>
+            <div fxFlex>
+              <p class="label">{{'INVOICES.TABLE.STATUS' | transloco}}</p>
+              <mat-form-field appearance="outline">
+                <mat-select formControlName="status">
+                  <mat-option value="new">New</mat-option>
+                  <mat-option value="paid">Paid</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
           </div>
 
         </div>
