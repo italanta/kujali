@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
 
 
 import { SubSink } from 'subsink';
@@ -11,6 +12,7 @@ import { filter, map, Observable, tap } from 'rxjs';
 import { FAccount } from '@app/model/finance/accounts/main';
 
 import { AccountsStateService } from '@app/state/finance/banking';
+import { AllocateTransactionModalComponent } from '@app/features/finance/banking/allocations';
 
 const DATA: any = [];
 
@@ -22,7 +24,7 @@ const DATA: any = [];
 export class SingleAccountPageComponent implements OnInit {
   private _sbS = new SubSink();
 
-  displayedColumns: string[] = ['bankIcon', 'fromAccName', 'toAccName', 'ibanFrom', 'ibanTo', 'toAccName', 'mode', 'trStatus', 'actions'];
+  displayedColumns: string[] = ['bankIcon', 'fromAccName', 'toAccName', 'amount', 'source', 'mode', 'trStatus', 'actions'];
 
   dataSource = new MatTableDataSource(DATA);
 
@@ -35,7 +37,9 @@ export class SingleAccountPageComponent implements OnInit {
   accountId: string;
 
   constructor(private _router$$: Router,
-              private _accountsService: AccountsStateService) {}
+              private _dialog: MatDialog,
+              private _accountsService: AccountsStateService
+  ) {}
 
   ngOnInit(): void {
 
@@ -53,12 +57,12 @@ export class SingleAccountPageComponent implements OnInit {
     return trs.filter(tr => tr.from === this.accountId);
   }
 
-  filterAccountRecords(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+
+  allocateTransaction(tr: any) {
+    this._dialog.open(AllocateTransactionModalComponent, {
+      minWidth: '800px',
+      data: tr
+    });
   }
 }

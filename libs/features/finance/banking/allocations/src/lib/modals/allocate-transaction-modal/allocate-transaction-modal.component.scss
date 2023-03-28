@@ -1,0 +1,49 @@
+mat-card{
+  padding: 20px;
+  height: fit-content;
+}
+
+.allocate-header__left__amount {
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--kujali-color-text-black)
+}
+
+//table 
+
+
+::ng-deep .mat-elevation-z8 {
+  box-shadow: none;
+}
+
+td.mat-column-title {
+  font-weight: 600;
+  color: var(--kujali-color-text-black);
+}
+
+td.mat-column-imageurl {
+  padding-top: 5px;
+}
+
+.mdc-data-table__header-cell {
+  background-color: var(--kujali-color-primary-blue)!important;
+  color: white!important;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.mat-row:hover .mat-cell {
+  background-color: var(--kujali-color-primary-blue);
+  cursor: pointer;
+}
+
+td.mat-column-number,
+td.mat-column-dueDate,
+td.mat-column-date,
+td.mat-column-amount,
+td.mat-column-customer,
+td.mat-column-contact,
+td.mat-column-status {
+  font-weight: 600;
+  color: var(--kujali-color-nav-inactive);
+}

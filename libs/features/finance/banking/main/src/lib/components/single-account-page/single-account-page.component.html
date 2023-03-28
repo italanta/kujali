@@ -2,174 +2,22 @@
   <div class="main">
     <div class="main-user-information" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="20px">
       <div class="toolbar">
-
       </div>
 
       <p class="page-header">Account Details</p>
 
       <div fxFlex>
         <div class="user-information" fxLayout="row" fxLayoutAlign="start" fxLayoutGap="20px">
-          <mat-card class="info" fxFlex>
-            <div class="">
-              <div class="account-card" *ngIf="activeAccount$ | async as account; else loading">
-
-                <div class="edit" fxLayout="row" fxLayoutAlign="end">
-                  <button class="edit-account"> <i class="bi bi-pencil-square"></i></button>
-                </div>
-
-                <div fxLayout="row" fxLayoutAlign="space-evenly start">
-                  <div class="profile" fxLayout="column" fxLayoutAlign="center center">
-
-                    <div class="logo-pic">
-                      <p class="profile-pic">
-                        {{account.name.charAt(0)}}{{account.name.charAt(1)}}
-                      </p>
-                    </div>
-                    <p class="name">
-                      {{account.name}}
-                    </p>
-
-                    <p class="role">
-                      {{account.iban}}
-                    </p>
-                    <p class="company">
-                      {{ account.bic!}}
-                    </p>
-                  </div>
-
-                  <div class="info-one">
-
-                    <div>
-                      <p class="title"> Account Holder Phone </p>
-                      <p class="sub-title">{{account.accountHolderPhone}}</p>
-                    </div>
-
-                    <div>
-                      <p class="title"> Account Holder Email </p>
-                      <p class="sub-title">{{account.accountHolderEmail}}</p>
-                    </div>
-
-                    <div>
-                      <p class="title"> Currency </p>
-                      <p class="sub-title tag">{{account.currency}}</p>
-                    </div>
-                  </div>
-
-                  <div class="info-two">
-
-                    <div>
-                      <p class="title"> Country </p>
-                      <p class="sub-title">Hundelgem 149,201</p>
-                    </div>
-
-                    <div>
-                      <p class="title"> Postal Address </p>
-                      <p class="sub-title">Gent, Lederbeg</p>
-                    </div>
-
-                    <div>
-                      <p class="title"> Postal Code </p>
-                      <p class="sub-title">9050</p>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
-              <ng-template class="loading" #loading>
-                <p>
-                  <mat-spinner class="spinner" [diameter]="25"></mat-spinner>
-                </p>
-              </ng-template>
-            </div>
-          </mat-card>
-
+          <app-account-information [activeAccount$]="activeAccount$" fxFlex></app-account-information>
           <mat-card class="notes" fxFlex="40">
           </mat-card>
         </div>
       </div>
 
       <div class="actions">
-
-
-        <div class="mat-elevation-z8">
-
-          <p class="page-header">Your Transactions</p>
-
-          <mat-form-field>
-            <mat-label>Search for an account</mat-label>
-            <input matInput (keyup)="filterAccountRecords($event)" placeholder="Find Accounts....." #input>
-          </mat-form-field>
-
-          <table mat-table [dataSource]="dataSource" matSort>
-
-            <!-- Image Column -->
-            <ng-container matColumnDef="bankIcon">
-              <th mat-header-cell *matHeaderCellDef> </th>
-              <td mat-cell *matCellDef="let row">
-                <i class="fa-solid fa-money-check-dollar fa-lg" style="color: #0047AB"></i>
-              </td>
-            </ng-container>
-
-            <!-- accountHolder Column -->
-            <ng-container matColumnDef="fromAccName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> From </th>
-              <td mat-cell *matCellDef="let row"> {{row.fromAccName ? row.fromAccName : '-' }} </td>
-            </ng-container>
-
-            <!-- accountHolder Column -->
-            <ng-container matColumnDef="toAccName">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> To </th>
-              <td mat-cell *matCellDef="let row"> {{row.toAccName ? row.toAccName : '-' }} </td>
-            </ng-container>
-
-            <!-- IBAN Column -->
-            <ng-container matColumnDef="ibanFrom">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> IBAN From</th>
-              <td mat-cell *matCellDef="let row"> {{row.ibanFrom ? row.ibanFrom : '-'}} </td>
-            </ng-container>
-
-            <!-- BIC Column -->
-            <ng-container matColumnDef="ibanTo">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> IBAN To </th>
-              <td mat-cell *matCellDef="let row"> {{row.ibanTo ? row.ibanTo : '-'}} </td>
-            </ng-container>
-
-            <!-- Currency Column -->
-            <ng-container matColumnDef="trStatus">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-              <td mat-cell *matCellDef="let row"> {{row.trStatus ? row.trStatus : '-' }} </td>
-            </ng-container>
-
-            <!-- trType Column -->
-            <ng-container matColumnDef="mode">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Mode </th>
-              <td mat-cell *matCellDef="let row"> {{row.mode ? row.mode : '-'}} </td>
-            </ng-container>
-
-            <!-- Actions Column -->
-            <ng-container matColumnDef="actions">
-              <th mat-header-cell *matHeaderCellDef> Actions </th>
-              <td mat-cell *matCellDef="let row">
-                <button mat-stroked-button>
-                  <i class="fa-solid fa-eye fa-2xs"></i>
-                  Allocate
-                </button>
-              </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-            <!-- Row shown when there is no matching data. -->
-            <tr class="mat-row" *matNoDataRow>
-              <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-            </tr>
-          </table>
-
-          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-        </div>
-
+        <app-transactions-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"
+                                (allocateTransaction)="allocateTransaction($event)">
+        </app-transactions-table>
       </div>
     </div>
   </div>

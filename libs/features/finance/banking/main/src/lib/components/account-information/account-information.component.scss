@@ -1,0 +1,98 @@
+.info {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  height: 300px;
+}
+
+.spinner {
+  position: absolute;
+  left: 30%;
+  top: 15%;
+}
+
+p {
+  margin: 0 0 10px 0;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 50%;
+  background-color: #eee;
+  color: var(--kujali-color-primary-blue);
+}
+
+.name {
+  font-weight: 600;
+  color: black;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.role,
+.company {
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+.title {
+  font-size: 1rem;
+  margin-bottom: 0px;
+  font-weight: 600;
+}
+
+.sub-title {
+  font-size: 1rem;
+  color: var(--kujali-color-text-inactive-bolder);
+}
+
+.info-one {
+  padding-left: 20px;
+  border-left: solid #eee 1px;
+}
+.edit {
+  margin-bottom: 20px;
+}
+.edit-account {
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 2px;
+  color: black;
+  border: none;
+  background-color: var(--kujali-color-text-white);
+}
+
+.edit-account:hover {
+  box-shadow: slategray 0px 2px 4px;
+  background-color: var(--kujali-color-primary-blue);
+  color: white;
+}
+
+.logo-pic {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 50%;
+  color: var(--kujali-color-primary-blue);
+}
+
+.logo-pic > img{
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+}

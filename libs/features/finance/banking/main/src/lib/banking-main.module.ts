@@ -21,6 +21,8 @@ import { BankingPageComponent } from './pages/banking-page/banking-page.componen
 import { CreateNewBankAccountModalComponent } from './modals/create-new-bank-account-modal/create-new-bank-account-modal.component';
 
 import { BankingRouterModule } from './banking.router';
+import { AccountInformationComponent } from './components/account-information/account-information.component';
+import { TransactionsTableComponent } from './components/transactions-table/transactions-table.component';
 
 @NgModule({
   imports: [
@@ -43,6 +45,8 @@ import { BankingRouterModule } from './banking.router';
     BankingPageComponent,
     CreateNewBankAccountModalComponent,
     SingleAccountPageComponent,
+    AccountInformationComponent,
+    TransactionsTableComponent,
   ],
 })
 export class FinanceBankingModule {}

@@ -1,0 +1,74 @@
+<mat-card class="info" fxFlex>
+  <div class="">
+    <div class="account-card" *ngIf="activeAccount$ | async as account; else loading">
+
+      <div class="edit" fxLayout="row" fxLayoutAlign="end">
+        <button class="edit-account"> <i class="bi bi-pencil-square"></i></button>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-evenly start">
+        <div class="profile" fxLayout="column" fxLayoutAlign="center center">
+
+          <div class="logo-pic">
+            <p class="profile-pic">
+              {{account.name.charAt(0)}}{{account.name.charAt(1)}}
+            </p>
+          </div>
+          <p class="name">
+            {{account.name}}
+          </p>
+
+          <p class="role">
+            {{account.iban}}
+          </p>
+          <p class="company">
+            {{ account.bic!}}
+          </p>
+        </div>
+
+        <div class="info-one">
+
+          <div>
+            <p class="title"> Account Holder Phone </p>
+            <p class="sub-title">{{account.accountHolderPhone}}</p>
+          </div>
+
+          <div>
+            <p class="title"> Account Holder Email </p>
+            <p class="sub-title">{{account.accountHolderEmail}}</p>
+          </div>
+
+          <div>
+            <p class="title"> Currency </p>
+            <p class="sub-title tag">{{account.currency}}</p>
+          </div>
+        </div>
+
+        <div class="info-two">
+
+          <div>
+            <p class="title"> Country </p>
+            <p class="sub-title">Hundelgem 149,201</p>
+          </div>
+
+          <div>
+            <p class="title"> Postal Address </p>
+            <p class="sub-title">Gent, Lederbeg</p>
+          </div>
+
+          <div>
+            <p class="title"> Postal Code </p>
+            <p class="sub-title">9050</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <ng-template class="loading" #loading>
+      <p>
+        <mat-spinner class="spinner" [diameter]="25"></mat-spinner>
+      </p>
+    </ng-template>
+  </div>
+</mat-card>
