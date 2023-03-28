@@ -102,6 +102,9 @@
       "@app/model/finance/activities": [
         "libs/model/finance/activities/base/src/index.ts"
       ],
+      "@app/model/finance/allocations": [
+        "libs/model/finance/allocations/src/index.ts"
+      ],
       "@app/model/finance/banking": [
         "libs/model/finance/banking/base/src/index.ts"
       ],
