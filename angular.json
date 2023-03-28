@@ -31,6 +31,7 @@
     "features-budgetting-budget-explorer-burnchart": "libs/features/budgetting/budget-explorer-burnchart",
     "features-budgetting-budget-planning": "libs/features/budgetting/budget-planning",
     "features-finance-banking-activate-banking": "libs/features/finance/banking/activate-banking",
+    "features-finance-banking-allocations": "libs/features/finance/banking/allocations",
     "features-finance-banking-main": "libs/features/finance/banking/main",
     "features-finance-business-companies-main": "libs/features/finance/business/companies/main",
     "features-finance-operations-invoices-details-invoice-documents": "libs/features/finance/operations/invoices/details/invoice-documents",

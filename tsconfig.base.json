@@ -61,6 +61,9 @@
       "@app/features/finance/banking/activate-banking": [
         "libs/features/finance/banking/activate-banking/src/index.ts"
       ],
+      "@app/features/finance/banking/allocations": [
+        "libs/features/finance/banking/allocations/src/index.ts"
+      ],
       "@app/features/finance/banking/main": [
         "libs/features/finance/banking/main/src/index.ts"
       ],
