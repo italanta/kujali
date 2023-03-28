@@ -5,6 +5,10 @@ import { InvoicesDetailViewPageComponent } from './pages/invoices-detail-view-pa
 
 const INVOICES_DETAIL_ROUTES: Route[] = [
   { path: '', component: InvoicesDetailViewPageComponent },
+  {
+    path: 'invoices/:id/edit',
+    component: InvoicesDetailViewPageComponent
+  },
 ];
 
 @NgModule({

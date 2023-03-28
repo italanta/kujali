@@ -65,7 +65,7 @@ export class InvoicesFormComponent implements OnInit, AfterViewInit, AfterConten
       this.newInvoiceFromOrder = true;
       this.model.getInvoiceBaseOrder();
     }
-    else if (this._page.length > 2 && this._page[3] === 'edit') {
+    else if (this._page.length > 2 && this._page[4] === 'edit') {
       this.isEditMode = true;
       this.model.getActiveInvoice();
     } else {

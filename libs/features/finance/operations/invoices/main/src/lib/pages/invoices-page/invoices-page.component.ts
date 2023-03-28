@@ -143,7 +143,7 @@ export class InvoicesPageComponent implements OnInit {
 
   
   viewInvoice(invoiceId: string) {
-    this._router$$.navigate(['invoices', invoiceId, 'edit']);
+    this._router$$.navigate(['operations', 'invoices', invoiceId, 'edit']);
   }
 
   openSnackBar(message: string, action: string) {

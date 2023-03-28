@@ -43,7 +43,7 @@ export class ActiveInvoiceStore extends Store<Invoice>
 
   private _getRoute(route: NavigationEnd): string {
     const elements = route.url.split('/');
-    const invoiceId = elements.length >= 3 ? elements[2] : '__noop__';
+    const invoiceId = elements.length >= 3 ? elements[3] : '__noop__';
     return invoiceId;
   }
 }
