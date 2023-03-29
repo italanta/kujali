@@ -43,6 +43,7 @@
     "functions-api-finance-banking-shared": "libs/functions/api/finance/banking/shared",
     "functions-data-db": "libs/functions/data/db",
     "functions-finance-budgeting": "libs/functions/finance/budgeting",
+    "functions-finance-manage-payments": "libs/functions/finance/manage/payments",
     "functions-pubsub": "libs/functions/pubsub",
     "kujali": "apps/kujali",
     "kujali-functions": "apps/kujali-functions",
