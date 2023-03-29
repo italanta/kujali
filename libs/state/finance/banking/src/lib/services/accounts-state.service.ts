@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 
+import { Observable } from 'rxjs';
+
+import { FTransaction } from '@app/model/finance/payments';
 import { FAccount } from '@app/model/finance/accounts/main';
 
 import { AccountsStore } from '../stores/accounts.store';
@@ -20,23 +23,23 @@ export class AccountsStateService {
     return this._accounts$$.get();
   }
   
-  createNewAccount(account: FAccount) {
+  createNewAccount(account: FAccount): Observable<FAccount> {
     return this._accounts$$.add((account as FAccount));
   }
 
-  updateAccount(account: FAccount) {
+  updateAccount(account: FAccount): Observable<FAccount> {
     return this._accounts$$.update(account);
   }
 
-  deleteAccount(account: FAccount) {
+  deleteAccount(account: FAccount): Observable<FAccount> {
     return this._accounts$$.remove(account);
   }
 
-  getActiveFAccount() {
+  getActiveFAccount(): Observable<FAccount> {
     return this._activeAccount$$.get();
   }
 
-  getAllAccountsTransactions() {
+  getAllAccountsTransactions(): Observable<FTransaction[]> {
     return this._accountsTrs$$.get();
   }
 }

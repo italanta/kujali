@@ -8,12 +8,11 @@ import { Logger } from '@iote/bricks-angular';
 import { Repository, DataService } from '@ngfi/angular';
 import { DataStore }  from '@ngfi/state';
 
-import { FAccount } from '@app/model/finance/accounts/main';
-
 import { ActiveOrgStore } from "@app/state/organisation";
+import { FTransaction } from '@app/model/finance/payments';
 
 @Injectable()
-export class AccountsTransactionsStore extends DataStore<any>
+export class AccountsTransactionsStore extends DataStore<FTransaction>
 {
   protected store = 'accounts-trs-store';
 
@@ -27,7 +26,7 @@ export class AccountsTransactionsStore extends DataStore<any>
 
     const data$
       = _activeOrg$$.get()
-            .pipe(tap(o  => this._activeRepo = !!o ? _dataProvider.getRepo<any>(`orgs/${o.id}/ponto-transactions`) : null as any),
+            .pipe(tap(o  => this._activeRepo = !!o ? _dataProvider.getRepo<FTransaction>(`orgs/${o.id}/ponto-transactions`) : null as any),
                   switchMap(o => !!this._activeRepo ? this._activeRepo.getDocuments() : of([])));
 
     this._sbS.sink = data$.subscribe(accountsTrs => {

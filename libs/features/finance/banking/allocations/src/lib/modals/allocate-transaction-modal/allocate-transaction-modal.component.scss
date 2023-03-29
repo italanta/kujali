@@ -3,15 +3,27 @@ mat-card{
   height: fit-content;
 }
 
+.allocate-header {
+  margin: 30px 0px;
+}
+
 .allocate-header__left__amount {
   font-size: 3rem;
   font-weight: 500;
   color: var(--kujali-color-text-black)
 }
 
+.invoices-header__title span:first-of-type {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.invoices-header__title span:last-of-type {
+  font-size: 0.8rem;
+}
+
 //table 
-
-
 ::ng-deep .mat-elevation-z8 {
   box-shadow: none;
 }
@@ -28,8 +40,6 @@ td.mat-column-imageurl {
 .mdc-data-table__header-cell {
   background-color: var(--kujali-color-primary-blue)!important;
   color: white!important;
-  font-weight: 500;
-  font-size: 1.1rem;
 }
 
 .mat-row:hover .mat-cell {
@@ -44,6 +54,22 @@ td.mat-column-amount,
 td.mat-column-customer,
 td.mat-column-contact,
 td.mat-column-status {
-  font-weight: 600;
-  color: var(--kujali-color-nav-inactive);
+  // font-weight: 600;
+  // color: var(--kujali-color-nav-inactive);
+}
+
+.mat-mdc-form-field {
+  width: 100%!important;
+}
+
+::ng-deep .mat-mdc-form-field-flex {
+  height: 40px;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  padding: 5px;
+}
+
+::ng-deep .mdc-text-field--no-label:not(.mdc-text-field--textarea) .mat-mdc-form-field-input-control.mdc-text-field__input, .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+  height: 30px!important;
 }

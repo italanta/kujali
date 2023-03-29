@@ -1,13 +1,17 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { InvoicesService } from '@app/state/finance/invoices';
-import { __DateFromStorage } from '@iote/time';
 
-import { round as __round } from 'lodash';
 import { SubSink } from 'subsink';
 
-const DATA: any[] = [];
+import { round as __round } from 'lodash';
+
+import { __DateFromStorage } from '@iote/time';
+
+import { Invoice } from '@app/model/finance/invoices';
+
+import { InvoicesService } from '@app/state/finance/invoices';
+import { AllocationsStateService } from '@app/state/finance/allocations';
 
 @Component({
   selector: 'app-allocate-transaction-modal',
@@ -18,17 +22,36 @@ export class AllocateTransactionModalComponent implements OnInit {
 
   private _sbS = new SubSink();
 
-  displayedColumns: string[] = ['number', 'amount', 'date', 'dueDate', 'customer', 'contact', 'status'];
+  displayedColumns: string[] = ['select', 'number', 'amount', 'date', 'dueDate', 'customer', 'contact', 'status'];
 
-  dataSource = new MatTableDataSource(DATA);
+  dataSource = new MatTableDataSource();
+
+  selectedInvoice: Invoice;
+
+  allocating: boolean = false;
 
   constructor(private _invoices$$: InvoicesService,
-              @Inject(MAT_DIALOG_DATA) public payment: any) {}
+              private _allocationsService: AllocationsStateService,
+              @Inject(MAT_DIALOG_DATA) public payment: any
+  ) {}
 
   ngOnInit(): void {
-      this._sbS.sink = this._invoices$$.getAllInvoices().subscribe((invoices) => {
-        this.dataSource.data = invoices;
-      })
+    this._sbS.sink = this._invoices$$.getAllInvoices().subscribe((invoices) => {
+      this.dataSource.data = invoices;
+    })
+  }
+
+  filterAccountRecords(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  invoiceSelected(invoice: Invoice) {
+    this.selectedInvoice = invoice;
   }
 
   viewInvoice(invoiceId: string) {
@@ -54,6 +77,12 @@ export class AllocateTransactionModalComponent implements OnInit {
     }, 0);
 
     return __round(totalResult, 2);
+  }
+
+  allocateTransaction() {
+    this.allocating = true;
+    this._allocationsService.allocatePayment(this.payment, this.selectedInvoice)
+                            .subscribe(() => this.allocating = false);
   }
 
 }

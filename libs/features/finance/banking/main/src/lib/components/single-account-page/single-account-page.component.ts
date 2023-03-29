@@ -5,16 +5,14 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 
-
 import { SubSink } from 'subsink';
 import { filter, map, Observable, tap } from 'rxjs';
 
+import { FTransaction } from '@app/model/finance/payments';
 import { FAccount } from '@app/model/finance/accounts/main';
 
 import { AccountsStateService } from '@app/state/finance/banking';
 import { AllocateTransactionModalComponent } from '@app/features/finance/banking/allocations';
-
-const DATA: any = [];
 
 @Component({
   selector: 'app-single-account-page',
@@ -26,13 +24,13 @@ export class SingleAccountPageComponent implements OnInit {
 
   displayedColumns: string[] = ['bankIcon', 'fromAccName', 'toAccName', 'amount', 'source', 'mode', 'trStatus', 'actions'];
 
-  dataSource = new MatTableDataSource(DATA);
+  dataSource = new MatTableDataSource<FTransaction>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   activeAccount$ : Observable<FAccount>;
-  activeAccountTrs$ : Observable<any>;
+  activeAccountTrs$ : Observable<FTransaction>;
 
   accountId: string;
 
@@ -56,8 +54,6 @@ export class SingleAccountPageComponent implements OnInit {
   applyFilter(trs: any) {
     return trs.filter(tr => tr.from === this.accountId);
   }
-
-
 
   allocateTransaction(tr: any) {
     this._dialog.open(AllocateTransactionModalComponent, {

@@ -1,17 +1,20 @@
 <h2 mat-dialog-title>Allocate Payment</h2>
-<mat-dialog-content class="mat-typography">
+<mat-dialog-content class="mat-content">
 
-  <div class="content" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="20px" fxFlex>
-    <div class="allocate-header" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px" fxFlex>
+  <div class="content" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="40px" fxFlex>
+    <div class="allocate-header" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px" fxFlex>
       <mat-card class="allocate-header__left full-width" fxFLex="50">
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" fxFlex>
           <div class="bank-icon">
-            <i class="fa-solid fa-euro-sign fa-2xl" style="color: #0047AB"></i>
+            <!-- <i class="fa-solid fa-euro-sign fa-2xl" style="color: #0047AB"></i> -->
             <!-- <i class="fa-solid fa-money-check-dollar fa-2xl" ></i> -->
           </div>
           <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px" fxFlex>
             <div class="allocate-header__left__title">Total Payment Amount </div>
-            <div class="allocate-header__left__amount">{{ payment.amount }}</div>
+            <div class="allocate-header__left__amount" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <i class="fa-solid fa-euro-sign fa-xs" style="color: #0047AB"></i>
+              <span>{{ payment.amount }}</span>
+            </div>
           </div>
         </div>
       </mat-card>
@@ -36,14 +39,21 @@
       </div>
 
       <div>
+
+        <mat-form-field appearance="outline">
+          <input matInput (keyup)="filterAccountRecords($event)" placeholder="Find Invoices....." #input>
+        </mat-form-field>
+
         <div class="table-container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
           <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
             <!-- Invoice title -->
-            <!-- <ng-container matColumnDef="title">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>{{"INVOICES.TABLE.TITLE" | transloco}}</th>
-                  <td mat-cell *matCellDef="let invoice" (click)="viewInvoice(invoice.id)"> {{invoice.title}} </td>
-              </ng-container> -->
+            <ng-container matColumnDef="select">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+                  <td mat-cell *matCellDef="let invoice" (click)="viewInvoice(invoice.id)">
+                    <mat-radio-button color="primary" (change)="invoiceSelected(invoice)" ></mat-radio-button>
+                  </td>
+              </ng-container>
 
             <!-- Number Column -->
             <ng-container matColumnDef="number">
@@ -117,6 +127,6 @@
 
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+  <button mat-stroked-button mat-dialog-close>Cancel</button>
+  <button [disabled]="!selectedInvoice || allocating" mat-raised-button color="primary" (click)="allocateTransaction()">Allocate Payment</button>
 </mat-dialog-actions>

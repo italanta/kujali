@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { Allocation } from '@app/model/finance/allocations';
 
 import { AllocationsStore } from '../stores/allocations.store';
+import { FTransaction } from '@app/model/finance/payments';
+import { Invoice } from '@app/model/finance/invoices';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +29,15 @@ export class AllocationsStateService {
 
   deleteAllocation(allocation: Allocation): Observable<Allocation> {
     return this._allocations$$.remove(allocation);
+  }
+
+  allocatePayment(payment: FTransaction, invoice: Invoice) {
+    let allocation : Allocation = {
+      invoiceId: invoice.id!,
+      paymentId: payment.id!,
+      amount: payment.amount
+    }
+
+    return this.createAllocation(allocation);
   }
 }

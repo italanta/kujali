@@ -27,19 +27,10 @@ export interface FTransaction extends IObject
   type: FTransactionTypes;
 
   /** Any additional information to be added.
-   *  Particulary useful for special transaction types such as during onboarding. */
+   * */
   payload?: any;
 
   for?: string[];
-  
-  /**
-   * Marks the transaction as a fictive accounting help tool.
-   *
-   * This is used in cases such as in onboarding or certain complex transactions/procedures such as sales of a lot(s).
-   * Fictive transactions are hidden in reports and dashboards, and are used to ensure the balance remains correct
-   *  by for example countering certain requests.
-   */
-  fictive?: boolean;
 
   /** The unique id used to link an incoming payment to an existing provision/invoice.
    * Generated ones use OGM-VCS pattern. i.e: '+++3digits/4digits/5digits+++' = +++(trId)/(lot-number)/(owner-Id)+++

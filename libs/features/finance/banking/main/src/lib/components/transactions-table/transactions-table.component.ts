@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
+import { FTransaction } from '@app/model/finance/payments';
+
 @Component({
   selector: 'app-transactions-table',
   templateUrl: './transactions-table.component.html',
@@ -8,10 +10,12 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class TransactionsTableComponent {
 
-  @Input() dataSource: MatTableDataSource<any>;
+  @Input() dataSource: MatTableDataSource<FTransaction>;
   @Input() displayedColumns: string[];
 
   @Output() allocateTransaction = new EventEmitter();
+
+  constructor() { }
 
   filterAccountRecords(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
