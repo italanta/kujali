@@ -51,7 +51,7 @@
             <ng-container matColumnDef="select">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
                   <td mat-cell *matCellDef="let invoice" (click)="viewInvoice(invoice.id)">
-                    <mat-radio-button color="primary" (change)="invoiceSelected(invoice)" ></mat-radio-button>
+                    <mat-checkbox color="primary" (change)="invoiceSelected(invoice)" ></mat-checkbox>
                   </td>
               </ng-container>
 

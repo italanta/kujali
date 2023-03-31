@@ -147,7 +147,19 @@ export class InvoiceCustomerDetailsComponent implements OnInit {
   getCompanies() {
     this._sbS.sink = combineLatest([this.companies$, this._contactsService.getContacts()]).subscribe(([companies, contacts]) => {
       if (companies && contacts) {
-        this.companies = __sortBy(companies, 'name');
+        let tmpCo : Company[] = [{
+          id: 'sasdccslc',
+          name: 'New Company',
+          hq: 'xcvc',
+          phone: 'xcv',
+          email: 'xcv',
+          accManager: [],
+          vatNo: 'xcv',
+          facebook: 'xcv',
+          linkedin: 'xcv',
+        }];
+
+        this.companies = tmpCo
         this.filteredCompanies = this.companies.slice();
   
         this.customerContacts = contacts;

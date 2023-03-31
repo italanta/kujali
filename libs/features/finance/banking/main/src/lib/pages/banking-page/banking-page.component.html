@@ -75,14 +75,14 @@
           <td mat-cell *matCellDef="let row">
             <button [disabled]="isLoading || row.bankConnection != 0" mat-icon-button (click)="connectToPonto(row)">
               <span *ngIf="!isLoading; else iconSpinner">
-                <i class="fa-solid fa-link" [ngStyle]="{'color':row.bankConnection !== 0 ? 'green' : 'black' }"></i>
+                <i class="fa-solid fa-link fa-xs" [ngStyle]="{'color':row.bankConnection !== 0 ? 'green' : 'black' }"></i>
               </span>
             </button>
             <button [disabled]="isLoading" mat-icon-button (click)="editAccount(row)">
-              <i class="fa-solid fa-edit"></i>
+              <i class="fa-solid fa-edit fa-xs"></i>
             </button>
             <button [disabled]="isLoading" mat-icon-button style="color: #ca1616;" (click)="deleteAccount(row)">
-              <i class="fa-solid fa-trash"></i>
+              <i class="fa-solid fa-trash fa-xs"></i>
             </button>
           </td>
         </ng-container>

@@ -1,6 +1,10 @@
 <div class="mat-elevation-z8">
 
-  <p class="page-header">Your Transactions</p>
+  <div class="trs-heder">
+    <p class="page-header">Your Transactions</p>
+
+    <button mat-raised-button color="primary" (click)="updatePontoTrs()" >Update Transactions</button>
+  </div>
 
   <mat-form-field>
     <mat-label>Search for an account</mat-label>
@@ -57,9 +61,8 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let row">
-        <button mat-stroked-button (click)="allocateTransactionEvent(row)">
-          <i class="fa-solid fa-eye fa-2xs"></i>
-          Allocate
+        <button class="allocate-btn" mat-stroked-button (click)="allocateTransactionEvent(row)">
+          <i class="fas fa-file-invoice"></i> <span style="margin-left: 10px;">Allocate</span>
         </button>
       </td>
     </ng-container>

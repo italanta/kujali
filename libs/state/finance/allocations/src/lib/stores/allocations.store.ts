@@ -25,7 +25,7 @@ export class AllocationsStore extends DataStore<Allocation>
 
     const data$
       = _activeOrg$$.get()
-            .pipe(tap(o  => this._activeRepo = !!o ? _dataProvider.getRepo<Allocation>(`orgs/${o.id}/allocations`) : null as any),
+            .pipe(tap(o  => this._activeRepo = !!o ? _dataProvider.getRepo<Allocation>(`orgs/${o.id}/invoice-allocations`) : null as any),
                   switchMap(o => !!this._activeRepo ? this._activeRepo.getDocuments() : of([])));
 
     this._sbS.sink = data$.subscribe(allocations => {

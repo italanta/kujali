@@ -16,7 +16,9 @@
 
       <div class="actions">
         <app-transactions-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"
-                                (allocateTransaction)="allocateTransaction($event)">
+                                (allocateTransaction)="allocateTransaction($event)"
+                                (fetchTransactions)="fetchTransactions()"
+                                >
         </app-transactions-table>
       </div>
     </div>

@@ -81,8 +81,8 @@ export class AllocateTransactionModalComponent implements OnInit {
 
   allocateTransaction() {
     this.allocating = true;
-    this._allocationsService.allocatePayment(this.payment, this.selectedInvoice)
-                            .subscribe(() => this.allocating = false);
+    // this._allocationsService.allocatePayment(this.payment, this.selectedInvoice)
+    //                         .subscribe(() => this.allocating = false);
   }
 
 }

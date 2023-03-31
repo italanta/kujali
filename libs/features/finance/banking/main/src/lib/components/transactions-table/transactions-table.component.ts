@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AngularFireFunctions } from '@angular/fire/compat/functions';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { FTransaction } from '@app/model/finance/payments';
@@ -8,14 +11,26 @@ import { FTransaction } from '@app/model/finance/payments';
   templateUrl: './transactions-table.component.html',
   styleUrls: ['./transactions-table.component.scss'],
 })
-export class TransactionsTableComponent {
+export class TransactionsTableComponent implements OnInit, AfterViewInit {
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  
   @Input() dataSource: MatTableDataSource<FTransaction>;
   @Input() displayedColumns: string[];
 
   @Output() allocateTransaction = new EventEmitter();
+  @Output() fetchTransactions = new EventEmitter();
 
-  constructor() { }
+
+  constructor(private _aFF: AngularFireFunctions) { }
+
+  ngOnInit(): void {}
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
 
   filterAccountRecords(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -28,5 +43,9 @@ export class TransactionsTableComponent {
 
   allocateTransactionEvent(row: any) {
     this.allocateTransaction.emit(row);
+  }
+
+  updatePontoTrs() {
+    this.fetchTransactions.emit();
   }
 }

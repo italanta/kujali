@@ -32,12 +32,12 @@ export class AllocationsStateService {
   }
 
   allocatePayment(payment: FTransaction, invoice: Invoice) {
-    let allocation : Allocation = {
-      invoiceId: invoice.id!,
-      paymentId: payment.id!,
-      amount: payment.amount
+    let allocation = {
+      // invoiceId: invoice.id!,
+      // paymentId: payment.id!,
+      // amount: payment.amount
     }
 
-    return this.createAllocation(allocation);
+    // return this.createAllocation(allocation);
   }
 }

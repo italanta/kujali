@@ -3,6 +3,13 @@
   box-shadow: none!important;
 }
 
+.trs-heder {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .mat-mdc-form-field {
   font-size: 1rem;
   width: 100%;
@@ -17,4 +24,13 @@
   color: white!important;
   font-weight: 500;
   font-size: 1.1rem;
+}
+
+.allocate-btn {
+  border: solid var(--kujali-color-primary-blue) 1px!important;
+}
+
+.allocate-btn:hover {
+  background-color: var(--kujali-color-primary-blue)!important;
+  color: white!important;
 }
