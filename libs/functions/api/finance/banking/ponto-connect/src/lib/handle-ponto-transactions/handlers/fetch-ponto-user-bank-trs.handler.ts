@@ -1,4 +1,4 @@
-import { HandlerTools } from '@iote/cqrs';
+import { HandlerTools, Repository } from '@iote/cqrs';
 import { Query } from '@ngfi/firestore-qbuilder';
 import { FunctionHandler, FunctionContext } from '@ngfi/functions';
 
@@ -79,9 +79,21 @@ export class FetchPontoUserBankTrsHandler extends FunctionHandler<{ orgId: strin
     {
       const creates$ = updatedTrs.map(tr => _pontoRepo.write(tr, tr.id!));
       tools.Logger.log(() => `[FetchPontoTrsHandler].execute: Creating ${updatedTrs?.length } fetched Ponto transactions for account: ${ pontoAccount.bankAccId }.`);
+
+      // Create normalized kujali payments from ponto transactions
+      const _kujaliPaymentsRepo = tools.getRepository<BankTransaction>(`orgs/${data.orgId}/payments`);
+      const kujaliPayments$ = updatedTrs.map(tr => this.createBankPayments(tr, _kujaliPaymentsRepo, tools));
+
+      await Promise.all(kujaliPayments$);
       const updated = await Promise.all(creates$);
 
       return updated;
     }
+  }
+
+  createBankPayments(tr: BankTransaction, _kujaliPaymentsRepo: Repository<BankTransaction>, tools: HandlerTools) {
+    tools.Logger.log(() => `[createBankPayments]: Creating bank payment fetched from Ponto transactions: ${ tr.id }.`);
+    delete tr.originalTransaction;
+    return _kujaliPaymentsRepo.write(tr, tr.id!);
   }
 }
