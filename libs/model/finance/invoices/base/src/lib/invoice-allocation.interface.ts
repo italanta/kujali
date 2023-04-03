@@ -1,15 +1,11 @@
 import { Timestamp } from '@firebase/firestore-types';
 import { IObject } from '@iote/bricks';
 
-import { ArtifactAllocationStatus } from '@app/model/finance/allocations';
-import { Attachment } from '@s4y/model/accounting/bills';
-import { SupplyCategory } from '@s4y/model/accounting/bills';
+import { ArtifactAllocationStatus } from './allocation-artifact-status.interface';
 
 import { InvoiceAllocationElement } from './invoice-allocation-element.interface';
 
-export interface InvoiceAllocation {
-   /* ID === invoice ID*/
-   id: string;
+export interface InvoiceAllocation extends IObject {
 
    /** Transaction type of allocation-fulfill. */
  
@@ -36,11 +32,7 @@ export interface InvoiceAllocation {
    fromAccName: string;
  
    date: Timestamp | Date;
- 
-   category?: SupplyCategory;
- 
-   attachment?: Attachment[];
- 
+   
    /** In case a balance remains/is underpaid. */
    balance?: number;
    /** In case the balance is overpaid */

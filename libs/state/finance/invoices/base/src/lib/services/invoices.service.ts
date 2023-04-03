@@ -55,10 +55,7 @@ export class InvoicesService {
   }
 
   dateToStorage(date: Moment) {
-    if (date) {
-      return __DateToStorage(date);
-    }
-    return '';
+    return __DateToStorage(date);
   }
 
   getAllInvoices(): Observable<Invoice[]> {
@@ -75,10 +72,8 @@ export class InvoicesService {
 
   prepareInvoice(invoice: FormGroup, company: FormGroup, customer: FormGroup) {
     let invoiceValue = {...invoice.value};
-
-    console.log(invoiceValue);
     
-    let invoiceData : Invoice = {
+    let invoiceData : any = {
       title: invoiceValue.title,
       customer: customer.value.id,
       company: company.value.id,

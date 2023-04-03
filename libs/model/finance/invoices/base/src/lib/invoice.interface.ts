@@ -1,7 +1,8 @@
 import { Timestamp } from '@firebase/firestore-types';
 import { IObject } from '@iote/bricks';
+import { InvoiceAllocation } from './invoice-allocation.interface';
 
-export interface Invoice extends IObject {
+export interface Invoice extends InvoiceAllocation, IObject {
 
   title: string
 
@@ -9,15 +10,22 @@ export interface Invoice extends IObject {
   company: string
   contact: string
 
-  date: Timestamp | string
-  dueDate: Timestamp | string
+  date: Timestamp 
+  dueDate: Timestamp
   
   status: string;
   number: string
 
-  products: []
+  products: InvoiceProduct[]
 
   currency: string
 
   structuredMessage: string
+}
+
+export interface InvoiceProduct {
+  cost: number;
+  qty: number;
+  vat: number;
+  discount?: number;
 }

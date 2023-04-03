@@ -12,6 +12,7 @@ import { Invoice } from '@app/model/finance/invoices';
 
 import { InvoicesService } from '@app/state/finance/invoices';
 import { AllocationsStateService } from '@app/state/finance/allocations';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-allocate-transaction-modal',
@@ -26,9 +27,11 @@ export class AllocateTransactionModalComponent implements OnInit {
 
   dataSource = new MatTableDataSource();
 
-  selectedInvoice: Invoice;
+  selectedInvoices: Invoice[] = [];
 
   allocating: boolean = false;
+
+  alloctedAmount: number = 0;
 
   constructor(private _invoices$$: InvoicesService,
               private _allocationsService: AllocationsStateService,
@@ -50,8 +53,20 @@ export class AllocateTransactionModalComponent implements OnInit {
     }
   }
 
-  invoiceSelected(invoice: Invoice) {
-    this.selectedInvoice = invoice;
+  invoiceSelected(checked: MatCheckboxChange, invoice: Invoice) {
+    if (checked.checked) {
+      this.selectedInvoices.push(invoice);
+    } else {
+      let inv = this.selectedInvoices.find((inv) => inv.id == invoice.id);
+      this.selectedInvoices.splice(this.selectedInvoices.indexOf(inv!), 1);
+    }
+    this.calculateAllocatedAmount();
+  }
+
+  calculateAllocatedAmount() {
+    this.alloctedAmount = this.selectedInvoices.reduce((acc, invoice) => {
+      return acc + this.getTotalAmount(invoice.products);
+    }, 0);
   }
 
   viewInvoice(invoiceId: string) {
@@ -81,8 +96,8 @@ export class AllocateTransactionModalComponent implements OnInit {
 
   allocateTransaction() {
     this.allocating = true;
-    // this._allocationsService.allocatePayment(this.payment, this.selectedInvoice)
-    //                         .subscribe(() => this.allocating = false);
+    this._allocationsService.allocatePayment(this.payment, this.selectedInvoices)
+                            .subscribe(() => this.allocating = false);
   }
 
 }

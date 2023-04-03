@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
+import { AngularFireFunctions } from '@angular/fire/compat/functions';
 
 import { Observable } from 'rxjs';
 
 import { Allocation } from '@app/model/finance/allocations';
+import { Payment } from '@app/model/finance/payments';
+import { Invoice } from '@app/model/finance/invoices';
 
 import { AllocationsStore } from '../stores/allocations.store';
-import { FTransaction } from '@app/model/finance/payments';
-import { Invoice } from '@app/model/finance/invoices';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AllocationsStateService {
 
-  constructor(private _allocations$$: AllocationsStore) { }
+  constructor(private _aFF$$: AngularFireFunctions,
+              private _allocations$$: AllocationsStore) { }
 
   getAllocations(): Observable<Allocation[]> {
     return this._allocations$$.get();
@@ -31,13 +33,11 @@ export class AllocationsStateService {
     return this._allocations$$.remove(allocation);
   }
 
-  allocatePayment(payment: FTransaction, invoice: Invoice) {
-    let allocation = {
-      // invoiceId: invoice.id!,
-      // paymentId: payment.id!,
-      // amount: payment.amount
-    }
+  allocatePayment(payment: Payment, invoice: Invoice[]): Observable<any> {
+    let paymentData = {payment, invoice};
 
-    // return this.createAllocation(allocation);
+    console.log('paymentData: ', paymentData)
+
+    return this._aFF$$.httpsCallable('allocatePayment')({ payment, invoice });
   }
 }

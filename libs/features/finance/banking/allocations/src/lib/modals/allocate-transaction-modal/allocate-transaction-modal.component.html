@@ -3,24 +3,35 @@
 
   <div class="content" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="40px" fxFlex>
     <div class="allocate-header" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="30px" fxFlex>
-      <mat-card class="allocate-header__left full-width" fxFLex="50">
+      <mat-card class="allocate-header__left full-width" fxFLex=>
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" fxFlex>
           <div class="bank-icon">
             <!-- <i class="fa-solid fa-euro-sign fa-2xl" style="color: #0047AB"></i> -->
             <!-- <i class="fa-solid fa-money-check-dollar fa-2xl" ></i> -->
           </div>
-          <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px" fxFlex>
+          <div class="header-amount" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px" fxFlex>
             <div class="allocate-header__left__title">Total Payment Amount </div>
             <div class="allocate-header__left__amount" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
               <i class="fa-solid fa-euro-sign fa-xs" style="color: #0047AB"></i>
               <span>{{ payment.amount }}</span>
             </div>
           </div>
+          <div class="header-amount" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px" fxFlex>
+            <div class="allocate-header__left__title"> Amount Allocated </div>
+            <div class="allocate-header__left__amount" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <i class="fa-solid fa-euro-sign fa-xs" style="color: #0047AB"></i>
+              <span>{{ alloctedAmount | number }}</span>
+            </div>
+          </div>
+
+          <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px" fxFlex>
+            <div class="allocate-header__left__title"> {{ payment.amount - alloctedAmount < 0 ? 'Amount Over Allocated' : 'Amount Unallocated'}} </div>
+            <div class="allocate-header__left__amount" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <i class="fa-solid fa-euro-sign fa-xs" style="color: #0047AB"></i>
+              <span>{{ payment.amount - alloctedAmount }}</span>
+            </div>
+          </div>
         </div>
-      </mat-card>
-      <mat-card class="allocate-header__right full-width" fxFlex="50">
-        <div class="allocate-header__right__title">Payment Note</div>
-        <div class="allocate-header__right__amount">{{ payment.note }}</div>
       </mat-card>
     </div>
 
@@ -34,7 +45,7 @@
 
         <button mat-raised-button color="primary">
           <i class="fa-solid fa-plus fa-lg"></i>
-          <span>New Invoice</span>
+          <span style="margin-left: 10px;" >New Invoice</span>
         </button>
       </div>
 
@@ -51,7 +62,7 @@
             <ng-container matColumnDef="select">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
                   <td mat-cell *matCellDef="let invoice" (click)="viewInvoice(invoice.id)">
-                    <mat-checkbox color="primary" (change)="invoiceSelected(invoice)" ></mat-checkbox>
+                    <mat-checkbox color="primary" (change)="invoiceSelected($event, invoice)" ></mat-checkbox>
                   </td>
               </ng-container>
 
@@ -128,5 +139,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-stroked-button mat-dialog-close>Cancel</button>
-  <button [disabled]="!selectedInvoice || allocating" mat-raised-button color="primary" (click)="allocateTransaction()">Allocate Payment</button>
+  <button [disabled]="selectedInvoices.length <= 0 || allocating" mat-raised-button color="primary" (click)="allocateTransaction()">Allocate Payment</button>
 </mat-dialog-actions>

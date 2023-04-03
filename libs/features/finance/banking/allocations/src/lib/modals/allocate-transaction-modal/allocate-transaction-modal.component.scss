@@ -7,6 +7,9 @@ mat-card{
   margin: 30px 0px;
 }
 
+.header-amount {
+  border-right: solid 1px var(--kujali-color-nav-inactive);
+}
 .allocate-header__left__amount {
   font-size: 3rem;
   font-weight: 500;
