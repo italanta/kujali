@@ -8,15 +8,15 @@ import { Logger } from '@iote/bricks-angular';
 import { Repository, DataService } from '@ngfi/angular';
 import { DataStore }  from '@ngfi/state';
 
-import { Payment } from '@app/model/finance/payments';
+import { BankTransaction, Payment } from '@app/model/finance/payments';
 
 import { ActiveOrgStore } from '@app/state/organisation';
 
 @Injectable()
-export class AllocationsStore extends DataStore<Payment>
+export class PaymentsStore extends DataStore<BankTransaction>
 {
   protected store = 'payments-store';
-  protected _activeRepo: Repository<Payment>;
+  protected _activeRepo: Repository<BankTransaction>;
 
   constructor(_activeOrg$$: ActiveOrgStore,
               _dataProvider: DataService,
@@ -26,7 +26,7 @@ export class AllocationsStore extends DataStore<Payment>
 
     const data$
       = _activeOrg$$.get()
-            .pipe(tap(o  => this._activeRepo = !!o ? _dataProvider.getRepo<Payment>(`orgs/${o.id}/payments`) : null as any),
+            .pipe(tap(o  => this._activeRepo = !!o ? _dataProvider.getRepo<BankTransaction>(`orgs/${o.id}/payments`) : null as any),
                   switchMap(o => !!this._activeRepo ? this._activeRepo.getDocuments() : of([])));
 
     this._sbS.sink = data$.subscribe(payments => {

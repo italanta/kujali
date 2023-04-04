@@ -7,16 +7,14 @@ import { FTransaction } from './transactions/f-transaction.interface';
  * 
  * Extended with certain info such as beneficiary etc.
  */
-export interface Payment extends PaymentBase
-{
+export interface Payment extends PaymentBase {
   mode: 1 | -1;
- }
+}
 
 /**
  * Base layer for payments. A transaction going from source A to B.
  */
-export interface PaymentBase extends FTransaction
-{
+export interface PaymentBase extends FTransaction {
   verified: boolean;
 
   withIban?: string;
@@ -34,8 +32,7 @@ export interface PaymentBase extends FTransaction
 }
 
 
-export enum PaymentSources
-{
+export enum PaymentSources {
   Manual = 0,
   Swan = 1,
   Ponto = 2
