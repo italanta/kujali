@@ -3,36 +3,25 @@ import { AngularFireFunctions } from '@angular/fire/compat/functions';
 
 import { Observable, of, switchMap } from 'rxjs';
 
-import { Allocation } from '@app/model/finance/allocations';
+import { Allocation, PaymentAllocation } from '@app/model/finance/allocations';
 import { Payment } from '@app/model/finance/payments';
 import { Invoice } from '@app/model/finance/invoices';
 
-import { AllocationsStore } from '../stores/allocations.store';
 import { ActiveOrgStore } from '@app/state/organisation';
+
+import { PaymentsAllocationsStore } from '../stores/payments-allocations.store';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AllocationsStateService {
+export class PaymentAllocsStateService {
 
   constructor(private _aFF$$: AngularFireFunctions,
               private _activeOrg$$: ActiveOrgStore,
-              private _allocations$$: AllocationsStore) { }
+              private _allocations$$: PaymentsAllocationsStore) { }
 
-  getAllocations(): Observable<Allocation[]> {
+  getPaymentAllocations(): Observable<PaymentAllocation[]> {
     return this._allocations$$.get();
-  }
-
-  createAllocation(allocation: Allocation): Observable<Allocation> {
-    return this._allocations$$.add(allocation);
-  }
-
-  updateAllocation(allocation: Allocation): Observable<Allocation> {
-    return this._allocations$$.update(allocation);
-  }
-
-  deleteAllocation(allocation: Allocation): Observable<Allocation> {
-    return this._allocations$$.remove(allocation);
   }
 
   allocatePayment(payment: Payment, invoices: Invoice[]) {

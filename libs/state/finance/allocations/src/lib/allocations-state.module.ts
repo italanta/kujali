@@ -1,7 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AllocationsStore } from './stores/allocations.store';
+import { PaymentsAllocationsStore } from './stores/payments-allocations.store';
 
 @NgModule({
   imports: [CommonModule],
@@ -11,7 +11,7 @@ export class AllocationsStateModule {
     return {
       ngModule: AllocationsStateModule,
       providers: [
-        AllocationsStore
+        PaymentsAllocationsStore
       ]
     };
   }
