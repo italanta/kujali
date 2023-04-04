@@ -1,21 +1,22 @@
+import { Injectable } from '@angular/core';
+
 import { of } from 'rxjs';
 import { switchMap, tap, filter } from 'rxjs/operators';
 
-import { Injectable } from '@angular/core';
 import { Logger } from '@iote/bricks-angular';
 
 import { Repository, DataService } from '@ngfi/angular';
 import { DataStore }  from '@ngfi/state';
 
-import { Allocation } from '@app/model/finance/allocations';
+import { Allocation, PaymentAllocation } from '@app/model/finance/allocations';
 
 import { ActiveOrgStore } from '@app/state/organisation';
 
 @Injectable()
-export class AllocationsStore extends DataStore<Allocation>
+export class PaymentsAllocationsStore extends DataStore<PaymentAllocation>
 {
-  protected store = 'allocations-store';
-  protected _activeRepo: Repository<Allocation>;
+  protected store = 'payments-allocations-store';
+  protected _activeRepo: Repository<PaymentAllocation>;
 
   constructor(_activeOrg$$: ActiveOrgStore,
               _dataProvider: DataService,
@@ -25,7 +26,7 @@ export class AllocationsStore extends DataStore<Allocation>
 
     const data$
       = _activeOrg$$.get()
-            .pipe(tap(o  => this._activeRepo = !!o ? _dataProvider.getRepo<Allocation>(`orgs/${o.id}/invoice-allocations`) : null as any),
+            .pipe(tap(o  => this._activeRepo = !!o ? _dataProvider.getRepo<PaymentAllocation>(`orgs/${o.id}/payments-allocs`) : null as any),
                   switchMap(o => !!this._activeRepo ? this._activeRepo.getDocuments() : of([])));
 
     this._sbS.sink = data$.subscribe(allocations => {
