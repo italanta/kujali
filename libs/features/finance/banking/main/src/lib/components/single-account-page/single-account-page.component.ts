@@ -4,16 +4,21 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
+import { AngularFireFunctions } from '@angular/fire/compat/functions';
 
 import { SubSink } from 'subsink';
 import { combineLatest, filter, map, Observable, tap } from 'rxjs';
 
-import { FTransaction } from '@app/model/finance/payments';
+import { BankTransaction, FTransaction } from '@app/model/finance/payments';
 import { FAccount } from '@app/model/finance/accounts/main';
 
 import { AccountsStateService } from '@app/state/finance/banking';
+import { PaymentsStateService } from '@app/state/finance/payments';
+
+import { PaymentAllocsStateService } from '@app/state/finance/allocations';
+
 import { AllocateTransactionModalComponent } from '@app/features/finance/banking/allocations';
-import { AngularFireFunctions } from '@angular/fire/compat/functions';
+import { PaymentAllocation } from '@app/model/finance/allocations';
 
 @Component({
   selector: 'app-single-account-page',
@@ -23,9 +28,9 @@ import { AngularFireFunctions } from '@angular/fire/compat/functions';
 export class SingleAccountPageComponent implements OnInit {
   private _sbS = new SubSink();
 
-  displayedColumns: string[] = ['bankIcon', 'fromAccName', 'toAccName', 'amount', 'source', 'mode', 'trStatus', 'actions'];
+  displayedColumns: string[] = ['bankIcon', 'fromAccName', 'toAccName', 'amount', 'source', 'mode', 'trStatus', 'allocStatus', 'actions'];
 
-  dataSource = new MatTableDataSource<FTransaction>();
+  dataSource = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -39,7 +44,9 @@ export class SingleAccountPageComponent implements OnInit {
   constructor(private _router$$: Router,
               private _dialog: MatDialog,
               private _aFF: AngularFireFunctions,
-              private _accountsService: AccountsStateService
+              private _accountsService: AccountsStateService,
+              private _paymentsService: PaymentsStateService,
+              private _paymentAllocsService: PaymentAllocsStateService
   ) {}
 
   ngOnInit(): void {
@@ -47,16 +54,23 @@ export class SingleAccountPageComponent implements OnInit {
     this.accountId = this._router$$.url.split('/')[4];
 
     this.activeAccount$ = this._accountsService.getActiveFAccount();
-    this._sbS.sink = combineLatest([this.activeAccount$, this._accountsService.getAllAccountsTransactions()])
+    this._sbS.sink = combineLatest([this.activeAccount$, this._paymentsService.getAccountPayments(),
+                                    this._paymentAllocsService.getPaymentAllocations()])
                               .pipe(
-                                tap(([acc, trs]) => this.activeAccount = acc),
-                                map(([acc, trs]) => this.applyFilter(acc, trs)),
-                                tap(trs => this.dataSource.data = trs)
-                              ).subscribe();
+                                filter(([acc, trs, pAllocs]) => !!acc && !!trs && !!pAllocs),
+                                tap(([acc, trs, pAllocs]) => {this.activeAccount = acc}),
+                                map(([acc, trs, pAllocs]) => this.flatMapTransactionsAndPayments(trs, pAllocs)),
+                                tap((data) => {console.log(data)}),
+                                tap((data) => {this.dataSource.data = data}))
+                              .subscribe();
   }
 
-  applyFilter(acc: FAccount, trs: any) {
-    return trs.filter(tr => (tr.ibanFrom == acc.iban || tr.ibanTo == acc.iban));
+  flatMapTransactionsAndPayments(trs: BankTransaction[], pAllocs: PaymentAllocation[]) {
+    let trsAndPayments = trs.map((tr) => {
+      let paymentAlloc = pAllocs.find((p) => p.id === tr.id);
+      return {...tr, ...paymentAlloc}
+    })
+    return trsAndPayments;
   }
 
   allocateTransaction(tr: any) {
