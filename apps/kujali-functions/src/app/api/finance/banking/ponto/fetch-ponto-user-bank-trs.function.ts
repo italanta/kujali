@@ -10,11 +10,11 @@ export const fetchPontoUserBankTransactions = new KujaliFunction("fetchPontoUser
                                                   new RestRegistrar(),
                                                   [],
                                                   handler)
-                                  .build();
+                                                .build();
 
 export const fetchPontoUserBankTransactionsPubsub = new KujaliFunction<{ orgId?: string, orgAccId: string}, any>
                                             ("fetchPontoUserBankTransactionsPubsub",
                                               new PubSubRegistrar('fetchPontoUserBankTransactionsPubsub'),
                                               [],
                                               handler)
-                                  .build();
+                                              .build();

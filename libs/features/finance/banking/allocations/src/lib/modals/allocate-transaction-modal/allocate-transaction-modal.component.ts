@@ -1,6 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 import { SubSink } from 'subsink';
 
@@ -11,8 +12,7 @@ import { __DateFromStorage } from '@iote/time';
 import { Invoice } from '@app/model/finance/invoices';
 
 import { InvoicesService } from '@app/state/finance/invoices';
-import { AllocationsStateService } from '@app/state/finance/allocations';
-import { MatCheckboxChange } from '@angular/material/checkbox';
+import { PaymentAllocsStateService } from '@app/state/finance/allocations';
 
 @Component({
   selector: 'app-allocate-transaction-modal',
@@ -34,7 +34,7 @@ export class AllocateTransactionModalComponent implements OnInit {
   alloctedAmount: number = 0;
 
   constructor(private _invoices$$: InvoicesService,
-              private _allocationsService: AllocationsStateService,
+              private _allocationsService: PaymentAllocsStateService,
               @Inject(MAT_DIALOG_DATA) public payment: any
   ) {}
 
