@@ -3,9 +3,6 @@ import { Invoice } from '@app/model/finance/invoices';
 
 import { round as __round } from 'lodash';
 
-@Injectable({
-  providedIn: 'root'
-})
 export class AllocateInvoicesService {
 
   constructor() { }

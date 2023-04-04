@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
 
-import { Observable } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 
 import { Allocation } from '@app/model/finance/allocations';
 import { Payment } from '@app/model/finance/payments';
 import { Invoice } from '@app/model/finance/invoices';
 
 import { AllocationsStore } from '../stores/allocations.store';
+import { ActiveOrgStore } from '@app/state/organisation';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ import { AllocationsStore } from '../stores/allocations.store';
 export class AllocationsStateService {
 
   constructor(private _aFF$$: AngularFireFunctions,
+              private _activeOrg$$: ActiveOrgStore,
               private _allocations$$: AllocationsStore) { }
 
   getAllocations(): Observable<Allocation[]> {
@@ -33,11 +35,8 @@ export class AllocationsStateService {
     return this._allocations$$.remove(allocation);
   }
 
-  allocatePayment(payment: Payment, invoice: Invoice[]): Observable<any> {
-    let paymentData = {payment, invoice};
-
-    console.log('paymentData: ', paymentData)
-
-    return this._aFF$$.httpsCallable('allocatePayment')({ payment, invoice });
+  allocatePayment(payment: Payment, invoices: Invoice[]) {
+    return this._activeOrg$$.get()
+                            .pipe(switchMap((org) => this._aFF$$.httpsCallable('allocateBankPayments')({orgId:org.id, payment, invoices })))
   }
 }

@@ -20,3 +20,5 @@ export * from './app/api/finance/banking/ponto/get-ponto-org-details.function';
 export * from './app/api/finance/banking/ponto/ponto-reauth-request.function';
 export * from './app/api/finance/banking/ponto/set-selected-bank-account.function';
 export * from './app/api/finance/banking/ponto/update-ponto-connection.function';
+
+export * from './app/finance/manage/payments/allocate-payments.function';

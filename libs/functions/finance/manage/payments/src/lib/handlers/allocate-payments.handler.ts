@@ -21,15 +21,16 @@ const INVOICES_ALLOCS_REPO = (orgId: string) => `orgs/${orgId}/invoices-allocs`;
  */
 export class AllocateBankPaymentsHandler extends FunctionHandler<any, boolean>
 {
-  public async execute(data: { orgId: string, payment: Payment, inovices: Invoice[]}, context: FunctionContext, tools: HandlerTools) {
-    tools.Logger.log(() => `[AllocateBankPaymentsHandler].execute: allocating payments for ${data.orgId}`);
+  public async execute(data: { orgId: string, payment: Payment, invoices: Invoice[]}, context: FunctionContext, tools: HandlerTools) {
+    tools.Logger.log(() => `[AllocateBankPaymentsHandler].execute: allocating payments for: ${data.orgId}`);
+    tools.Logger.log(() => `[AllocateBankPaymentsHandler].execute: selected invoices are: ${data.invoices.length}`);
 
-    const paymentAllocsService = new AllocatePaymentsService();
-    const invoiceAllocsService = new AllocateInvoicesService();
+    const _paymentAllocsService = new AllocatePaymentsService(tools.Logger);
+    const _invoiceAllocsService = new AllocateInvoicesService();
 
     // step 1. create payment allocation
     const paymentAllocsRepo =  tools.getRepository<PaymentAllocation>(PAYMENT_ALLOCS_REPO(data.orgId));
-    const paymentAlloc = paymentAllocsService.createPaymentAllocation(data.payment, data.inovices);
+    const paymentAlloc = _paymentAllocsService.createPaymentAllocation(data['payment'], data['invoices']);
     await paymentAllocsRepo.write(paymentAlloc, paymentAlloc.id);
 
 

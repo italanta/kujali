@@ -7,5 +7,7 @@ import { AllocateBankPaymentsHandler } from '@app/functions/finance/manage/payme
 const allocateBankPaymentsHandler = new AllocateBankPaymentsHandler();
 
 export const allocateBankPayments = new KujaliFunction('allocateBankPayments',
-                                new RestRegistrar(), [], allocateBankPaymentsHandler)
-                                .build()
+                                    new RestRegistrar(), 
+                                    [], 
+                                    allocateBankPaymentsHandler)
+                                    .build()

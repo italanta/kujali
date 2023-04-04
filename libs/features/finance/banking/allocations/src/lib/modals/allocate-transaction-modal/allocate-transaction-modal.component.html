@@ -139,5 +139,9 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-stroked-button mat-dialog-close>Cancel</button>
-  <button [disabled]="selectedInvoices.length <= 0 || allocating" mat-raised-button color="primary" (click)="allocateTransaction()">Allocate Payment</button>
+  <button [disabled]="selectedInvoices.length <= 0 || allocating" mat-raised-button color="primary" (click)="allocateTransaction()"
+    fxLayout="row" fxLayoutAlign="center center">
+    <span>Allocate Payment</span>
+    <mat-spinner *ngIf="allocating" diameter="20" class="spinner"></mat-spinner>
+  </button>
 </mat-dialog-actions>
