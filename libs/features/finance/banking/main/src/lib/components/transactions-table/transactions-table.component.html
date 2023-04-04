@@ -6,8 +6,7 @@
     <button mat-raised-button color="primary" (click)="updatePontoTrs()" >Update Transactions</button>
   </div>
 
-  <mat-form-field>
-    <mat-label>Search for an account</mat-label>
+  <mat-form-field appearance="outline">
     <input matInput (keyup)="filterAccountRecords($event)" placeholder="Find Accounts....." #input>
   </mat-form-field>
 
@@ -57,11 +56,18 @@
       <td mat-cell *matCellDef="let row"> {{row.mode ? row.mode : '-'}} </td>
     </ng-container>
 
+    <!-- Mode Column -->
+    <ng-container matColumnDef="allocStatus">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Alloc </th>
+      <td mat-cell *matCellDef="let row"> {{row?.allocStatus ? row?.allocStatus : '-'}} </td>
+    </ng-container>
+
     <!-- Actions Column -->
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let row">
-        <button class="allocate-btn" mat-stroked-button (click)="allocateTransactionEvent(row)">
+        <button [ngClass]="!row?.allocStatus ? ['unallocated-btn'] : row?.allocStatus == 5 ? ['partial-allocate-btn'] : ['full-allocate-btn']" 
+          mat-stroked-button (click)="allocateTransactionEvent(row)">
           <i class="fas fa-file-invoice"></i> <span style="margin-left: 10px;">Allocate</span>
         </button>
       </td>

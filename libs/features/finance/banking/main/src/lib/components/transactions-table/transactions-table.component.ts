@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { FTransaction } from '@app/model/finance/payments';
+import { BankTransaction, FTransaction } from '@app/model/finance/payments';
 
 @Component({
   selector: 'app-transactions-table',
@@ -16,7 +16,7 @@ export class TransactionsTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   
-  @Input() dataSource: MatTableDataSource<FTransaction>;
+  @Input() dataSource: MatTableDataSource<BankTransaction>;
   @Input() displayedColumns: string[];
 
   @Output() allocateTransaction = new EventEmitter();

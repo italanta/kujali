@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 
 import { SubSink } from 'subsink';
 import { combineLatest } from 'rxjs';
@@ -9,7 +10,6 @@ import { Budget } from '@app/model/finance/planning/budgets';
 import { AccountsStateService } from '@app/state/finance/banking';
 
 import { CreateNewBankAccountForm } from '../../providers/create-new-bank-account-form.function';
-import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-new-bank-account-modal',

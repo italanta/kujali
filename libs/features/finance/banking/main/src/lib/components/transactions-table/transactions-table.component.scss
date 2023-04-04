@@ -34,3 +34,17 @@
   background-color: var(--kujali-color-primary-blue)!important;
   color: white!important;
 }
+
+.partial-allocate-btn {
+  background-color: orange!important;
+  color: white!important;
+}
+
+.full-allocate-btn {
+  background-color: green!important;
+  color: white!important;
+}
+
+.unallocated-btn {
+  border: solid var(--kujali-color-primary-blue) 1px!important;
+}
