@@ -60,7 +60,6 @@ export class SingleAccountPageComponent implements OnInit {
                                 filter(([acc, trs, pAllocs]) => !!acc && !!trs && !!pAllocs),
                                 tap(([acc, trs, pAllocs]) => {this.activeAccount = acc}),
                                 map(([acc, trs, pAllocs]) => this.flatMapTransactionsAndPayments(trs, pAllocs)),
-                                tap((data) => {console.log(data)}),
                                 tap((data) => {this.dataSource.data = data}))
                               .subscribe();
   }
