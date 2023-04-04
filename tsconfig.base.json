@@ -205,6 +205,9 @@
       "@app/state/finance/opportunities": [
         "libs/state/finance/opportunities/base/src/index.ts"
       ],
+      "@app/state/finance/payments": [
+        "libs/state/finance/payments/base/src/index.ts"
+      ],
       "@app/state/organisation": ["libs/state/organisation/main/src/index.ts"],
       "@app/state/roles": ["libs/state/roles/base/src/index.ts"],
       "@app/state/tags": ["libs/state/tags/base/src/index.ts"],
