@@ -5,8 +5,8 @@ import { Logger } from '@iote/cqrs';
 import { Payment } from '@app/model/finance/payments';
 import { Invoice } from '@app/model/finance/invoices';
 
-import { PaymentAllocation } from '../model/payment-allocation.interface';
-import { PaymentAllocationElement } from '../model/payment-allocation-element.interface';
+import { PaymentAllocation } from '@app/model/finance/allocations';
+import { PaymentAllocationElement } from '@app/model/finance/allocations';
 
 import { CALC_INV_TOTAL } from '../providers/calculate-invoice-total.function';
 

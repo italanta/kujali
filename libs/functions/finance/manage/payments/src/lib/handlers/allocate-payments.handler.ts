@@ -4,7 +4,7 @@ import { FunctionHandler, FunctionContext } from '@ngfi/functions';
 import { Payment } from '@app/model/finance/payments';
 import { Invoice } from '@app/model/finance/invoices';
 
-import { PaymentAllocation } from '../model/payment-allocation.interface';
+import { PaymentAllocation } from '@app/model/finance/allocations';
 
 import { AllocatePaymentsService } from '../services/allocate-payments.service';
 import { AllocateInvoicesService } from '../services/allocate-invoices.service';
