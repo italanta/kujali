@@ -77,14 +77,17 @@ export class FetchPontoUserBankTrsHandler extends FunctionHandler<{ orgId: strin
 
     if(updatedTrs.length > 0)
     {
-      const creates$ = updatedTrs.map(tr => _pontoRepo.write(tr, tr.id!));
-      tools.Logger.log(() => `[FetchPontoTrsHandler].execute: Creating ${updatedTrs?.length } fetched Ponto transactions for account: ${ pontoAccount.bankAccId }.`);
-
       // Create normalized kujali payments from ponto transactions
       const _kujaliPaymentsRepo = tools.getRepository<BankTransaction>(`orgs/${data.orgId}/payments`);
       const kujaliPayments$ = updatedTrs.map(tr => this.createBankPayments(tr, _kujaliPaymentsRepo, tools));
 
       await Promise.all(kujaliPayments$);
+
+      tools.Logger.log(() => `[FetchPontoTrsHandler].execute: Creating kujali payments ${ updatedTrs.length }.`);
+
+      const creates$ = updatedTrs.map(tr => _pontoRepo.write(tr, tr.id!));
+      tools.Logger.log(() => `[FetchPontoTrsHandler].execute: Creating ${updatedTrs?.length } fetched Ponto transactions for account: ${ pontoAccount.bankAccId }.`);
+
       const updated = await Promise.all(creates$);
 
       return updated;
