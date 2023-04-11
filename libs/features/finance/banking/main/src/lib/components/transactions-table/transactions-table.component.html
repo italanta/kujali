@@ -66,8 +66,9 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let row">
-        <button [ngClass]="!row?.allocStatus ? ['unallocated-btn'] : row?.allocStatus == 5 ? ['partial-allocate-btn'] : ['full-allocate-btn']" 
-          mat-stroked-button (click)="allocateTransactionEvent(row)">
+        <button [disabled]="row.allocStatus === 1"
+                [ngClass]="!row?.allocStatus ? ['unallocated-btn'] : row?.allocStatus == 5 ? ['partial-allocate-btn'] : ['full-allocate-btn']"
+                mat-stroked-button (click)="allocateTransactionEvent(row)">
           <i class="fas fa-file-invoice"></i> <span style="margin-left: 10px;">Allocate</span>
         </button>
       </td>
