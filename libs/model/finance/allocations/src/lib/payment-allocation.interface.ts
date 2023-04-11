@@ -14,7 +14,7 @@ import { PaymentAllocationElement } from './payment-allocation-element.interface
  */
 export interface PaymentAllocation extends IObject
 {
-  /* ID === paymnt ID*/
+  /* ID of the payment being reconciled. */
   id: string;
 
   /** Transaction type of allocation-fulfill. */

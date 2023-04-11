@@ -4,19 +4,13 @@ import { IObject } from '@iote/bricks';
  *  Acts as the link between an invoice and a payment */
 export interface Allocation extends IObject
 {
+  pId: string;
+
   /** Id of the invoice being reconciled. */
-  req: string;
-  /** Id of the payment/credit note reconciling with req  i*/
-  tr: string;
+  invId: string
 
   trType: AllocateWithType;
-  // /** Id of the account where the payment is stored/originated from */
-  // pmtAccId?: string;
 
-  /** In case only a partial amount is reconciled between a payment and trRequest
-   *    - Helps track how reconciliation was done.
-   * This is for explicit partial allocation.
-   * If req or tr is higher/lower as the other and there is no explicit allocation, reconcile will always be partial. */
   amount?: number;
 }
 

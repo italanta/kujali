@@ -13,25 +13,24 @@ import { AllocateWithType } from '@app/model/finance/allocations';
  */
 export interface InvoiceAllocationElement extends IObject
 {
-  /**
-   * ID === allocation-ID, if InvoiceAllocation is primary allocation.
-   * ID === `min_${allocation-ID}, if InvoiceAllocation is a counter allocation. This is only the case when an
-   *                                invoice is reconciled against a credit note. The alloc will spawn two invoice-allocs
-   *                                with credit note the negative (min) of the invoice alloc*/
-  id: string;
+  // id: string;
 
   /** Foreign key to primary invoice ID.
    *  @note An invoice can be alloced to multiple payments (payment in installment).
    *        This means that invoice-alloc ID for elements cannot be the same as invoice-id. */
   invId: string;
 
+  /** payment ID of payment fulfill. */
+  pId: string;
+
   /** Transaction ID of allocation fulfill. */
-  trId: string;
+  // trId: string;
+
   /** Transaction type of allocation-fulfill. */
   allocType: AllocateWithType;
 
   /** Foreign key to originating allocation ID */
-  allocId: string;
+  // allocId: string;
 
   /** Account ID of the payee. */
   accId: string;
