@@ -15,7 +15,7 @@ import { FAccount } from '@app/model/finance/accounts/main';
 import { AccountsStateService } from '@app/state/finance/banking';
 import { PaymentsStateService } from '@app/state/finance/payments';
 
-import { PaymentAllocsStateService } from '@app/state/finance/allocations';
+import { AllocationsStateService } from '@app/state/finance/allocations';
 
 import { AllocateTransactionModalComponent } from '@app/features/finance/banking/allocations';
 import { PaymentAllocation } from '@app/model/finance/allocations';
@@ -46,7 +46,7 @@ export class SingleAccountPageComponent implements OnInit {
               private _aFF: AngularFireFunctions,
               private _accountsService: AccountsStateService,
               private _paymentsService: PaymentsStateService,
-              private _paymentAllocsService: PaymentAllocsStateService
+              private _allocsService: AllocationsStateService
   ) {}
 
   ngOnInit(): void {
@@ -55,7 +55,7 @@ export class SingleAccountPageComponent implements OnInit {
 
     this.activeAccount$ = this._accountsService.getActiveFAccount();
     this._sbS.sink = combineLatest([this.activeAccount$, this._paymentsService.getAccountPayments(),
-                                    this._paymentAllocsService.getPaymentAllocations()])
+                                    this._allocsService.getPaymentAllocations()])
                               .pipe(
                                 filter(([acc, trs, pAllocs]) => !!acc && !!trs && !!pAllocs),
                                 tap(([acc, trs, pAllocs]) => {this.activeAccount = acc}),

@@ -1,18 +1,20 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 
 import { SubSink } from 'subsink';
 
+import { combineLatest, map, tap } from 'rxjs';
 import { round as __round } from 'lodash';
+import { Timestamp } from '@firebase/firestore-types';
 
 import { __DateFromStorage } from '@iote/time';
 
-import { Invoice } from '@app/model/finance/invoices';
+import { Invoice, InvoiceAllocation } from '@app/model/finance/invoices';
 
-import { InvoicesService } from '@app/state/finance/invoices';
-import { PaymentAllocsStateService } from '@app/state/finance/allocations';
+import { CALCULATE_INVOICE_TOTAL, InvoicesService } from '@app/state/finance/invoices';
+import { AllocationsStateService } from '@app/state/finance/allocations';
 
 @Component({
   selector: 'app-allocate-transaction-modal',
@@ -33,15 +35,29 @@ export class AllocateTransactionModalComponent implements OnInit {
 
   alloctedAmount: number = 0;
 
-  constructor(private _invoices$$: InvoicesService,
-              private _allocationsService: PaymentAllocsStateService,
+  constructor(private _dialog: MatDialog,
+              private _invoices$$: InvoicesService,
+              private _allocationsService: AllocationsStateService,
               @Inject(MAT_DIALOG_DATA) public payment: any
   ) {}
 
   ngOnInit(): void {
-    this._sbS.sink = this._invoices$$.getAllInvoices().subscribe((invoices) => {
-      this.dataSource.data = invoices;
+    const invoiceAllocs$ = this._allocationsService.getInvoicesAllocations();
+
+    this._sbS.sink = combineLatest([invoiceAllocs$, this._invoices$$.getAllInvoices()])
+                                  .pipe(
+                                    map(([invAllocs, invoices]) => this.flatMapTransactionsAndPayments(invoices, invAllocs)),
+                                    map((data) => data.filter((inv) => inv.allocStatus !== 1)),
+                                    tap((data) => {this.dataSource.data = data}))
+                                  .subscribe();
+  }
+
+  flatMapTransactionsAndPayments(invoices: Invoice[], invAllocs: InvoiceAllocation[]) {
+    let invAndAllocs = invoices.map((inv) => {
+      let invAlloc = invAllocs.find((invA) => invA.id === inv.id);
+      return {...inv, ...invAlloc}
     })
+    return invAndAllocs;
   }
 
   filterAccountRecords(event: Event) {
@@ -65,7 +81,7 @@ export class AllocateTransactionModalComponent implements OnInit {
 
   calculateAllocatedAmount() {
     this.alloctedAmount = this.selectedInvoices.reduce((acc, invoice) => {
-      return acc + this.getTotalAmount(invoice.products);
+      return acc + this.getTotalAmount(invoice);
     }, 0);
   }
 
@@ -73,31 +89,22 @@ export class AllocateTransactionModalComponent implements OnInit {
     console.log(invoiceId);
   }
 
-  getDate(date: any) {
+  getDate(date: Timestamp) {
     return __DateFromStorage(date).format('DD/MM/YYYY');
   }
 
-  getTotalAmount(products: any) {
-    let totals: any = products.map((order) => {        
-      const total =
-      order.cost * order.qty - (order.cost * order.qty * order.discount) / 100;
-      return {
-        totalSum: total,
-        vat: total * (order.vat / 100),
-      };
-    });
-
-    var totalResult = totals.reduce(function (order: any, value: any) {
-      return order + value.totalSum + value.vat;
-    }, 0);
-
-    return __round(totalResult, 2);
+  getTotalAmount(invoice: Invoice) {
+    return __round(CALCULATE_INVOICE_TOTAL(invoice), 2);
   }
 
   allocateTransaction() {
     this.allocating = true;
     this._allocationsService.allocatePayment(this.payment, this.selectedInvoices)
-                            .subscribe(() => this.allocating = false);
+                            .subscribe(() => this.completeAllocationActions());
   }
 
+  completeAllocationActions() {
+    this.allocating = false;
+    this._dialog.closeAll();
+  }
 }
