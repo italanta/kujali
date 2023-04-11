@@ -22,3 +22,4 @@ export * from './app/api/finance/banking/ponto/set-selected-bank-account.functio
 export * from './app/api/finance/banking/ponto/update-ponto-connection.function';
 
 export * from './app/finance/manage/payments/allocate-payments.function';
+export * from './app/finance/manage/payments/allocation.function';
