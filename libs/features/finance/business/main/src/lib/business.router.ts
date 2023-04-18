@@ -9,6 +9,16 @@ const BUSINESS_ROUTES: Route[] = [
     redirectTo: 'invoices',
   },
   {
+    path: 'contacts',
+    loadChildren: () => import('@app/features/finance/business/contacts/main').then(m => m.BusinessContactModule),
+    canActivate: [IsLoggedInGuard]
+  },
+  {
+    path: 'companies',
+    loadChildren: () => import('@app/features/finance/business/companies').then(m => m.BusinessCompaniesModule),
+    canActivate: [IsLoggedInGuard]
+  },
+  {
     path: 'invoices',
     loadChildren: () => import('@app/features/finance/business/invoices/main').then(m => m.InvoicesModule),
     canActivate: [IsLoggedInGuard]

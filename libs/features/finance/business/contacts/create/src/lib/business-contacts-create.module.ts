@@ -15,6 +15,7 @@ import { AddNewContactComponent } from '..';
 
 // import { CrmFormFieldsModule } from '@volk/elements/crm/controls/form-fields';
 import { AddNewContactFormComponent } from './components/add-new-contact-form/add-new-contact-form.component'
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { AddNewContactFormComponent } from './components/add-new-contact-form/ad
     FormsModule, 
     ReactiveFormsModule,
     MatDialogModule,
+    MatChipsModule,
 
     // CrmFormFieldsModule,
     MatFormFieldModule, MatInputModule

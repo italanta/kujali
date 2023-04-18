@@ -35,8 +35,8 @@
 
     <div class="tags">
       <mat-form-field class="chip-list" appearance="outline" fxFlex>
-        <mat-chip-list color="primary" #chipList>
-          <mat-chip color="primary" *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
+        <mat-chip-grid color="primary" #chipList>
+          <mat-chip color="primary" *ngFor="let tag of tags" [removable]="removable"
             (removed)="remove(tag)">
             {{tag}}
             <button matChipRemove *ngIf="removable">
@@ -46,7 +46,7 @@
           <input matInput [placeholder]="'CONTACT.ADDNEWCONTACT.DEF-NEW-TAGS' | transloco" #tagInput  [formControl]="tagCtrl" [matAutocomplete]="contact"
             [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
             (matChipInputTokenEnd)="add($event)"/>
-        </mat-chip-list>
+        </mat-chip-grid>
         <mat-autocomplete class="mat-autocom" #contact="matAutocomplete" (optionSelected)="selected($event)">
           <mat-option class="test" *ngFor="let tag of filteredTags | async" [value]="tag">
             {{tag}}

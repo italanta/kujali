@@ -42,4 +42,4 @@ import { CompaniesRouterModule } from './companies.router';
   ],
   exports: [CompanyPageComponent]
 })
-export class CompaniesModule {}
+export class BusinessCompaniesModule {}

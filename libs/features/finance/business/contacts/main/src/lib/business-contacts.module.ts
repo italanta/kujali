@@ -42,4 +42,4 @@ import { ContactsRouterModule } from './contacts.router';
 
   exports: [ContactsPageComponent]
 })
-export class FeaturesFinanceBusinessContactsMainModule {}
+export class BusinessContactModule {}
