@@ -266,6 +266,9 @@
     }
   },
   "CONTACT": {
+    "HEADER": {
+      "CONTACTS": "Contacts"
+    },
     "TABLE": {
       "NAME": "Name",
       "PHONE": "Phone",
@@ -298,6 +301,9 @@
     }
   },
   "COMPANY": {
+    "HEADER": {
+      "COMPANIES": "Companies"
+    },
     "TABLE": {
       "NAME": "Name",
       "ACCMANAGER": "Account Manager",
