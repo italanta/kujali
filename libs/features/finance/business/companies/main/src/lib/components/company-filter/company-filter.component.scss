@@ -1,0 +1,58 @@
+.filter {
+  padding-top: 30px;
+  width: 100%;
+  height: fit-content;
+}
+
+.search-input {
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.search-input {
+  margin-right: 5px;
+}
+
+.search-input i {
+  color: var(--volk-color-nav-inactive);
+}
+
+.search-input input {
+  width: 90%;
+  outline: none;
+  border: none;
+  margin-left: 5px;
+  color: var(--volk-color-text-black);
+}
+
+.fields > mat-form-field {
+  margin-right: 10px;
+}
+
+.clear p {
+  color: var(--volk-color-primary);
+  margin: 0;
+}
+
+.clear p:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+::ng-deep .filter .mat-form-field {
+  width: fit-content;
+  height: 40px !important;
+}
+
+::ng-deep .filter .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 10px 0 10px 0;
+}
+
+::ng-deep .filter .mat-form-field-infix {
+  border-top: 2px solid transparent;
+}
+
+::ng-deep .filter .mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: white;
+}

@@ -1,0 +1,63 @@
+<div class="filter" fxLayout="row" fxLayoutAlign="start center">
+
+  <div class="search-input" fxFlex="50%">
+    <i class="bi bi-funnel-fill"></i>
+    <input [formControl]="search" type="text" [placeholder]="'HEADER-SEARCH' | transloco">
+  </div>
+
+
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex>
+    <div class="fields" fxLayout="row" fxLayoutAlign="start center">
+
+      <!-- field one  -->
+      <mat-form-field appearance="outline">
+        <mat-label>{{"COMPANY.TABLE.NAME" | transloco}}</mat-label>
+        <mat-select [formControl]="companyControl" multiple>
+          <mat-select-trigger>
+            {{companyControl.value ? companyControl.value[0] : ''}}
+            <span *ngIf="companyControl.value?.length > 1">
+              (+{{companyControl.value.length - 1}} {{companyControl.value?.length === 2 ? 'other' : 'others'}})
+            </span>
+          </mat-select-trigger>
+          <mat-select-filter [placeholder]="'Filter'" [array]="companyNames" (filteredReturn)="filteredcompanyNames =$event"></mat-select-filter>
+          <mat-option *ngFor="let companyName of filteredcompanyNames" [value]="companyName">{{companyName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- field two  -->
+      <mat-form-field appearance="outline">
+        <mat-label>{{"COMPANY.TABLE.ACCMANAGER" | transloco}}</mat-label>
+        <mat-select [formControl]="hqControl" multiple>
+          <mat-select-trigger>
+            {{hqControl.value ? hqControl.value[0] : ''}}
+            <span *ngIf="hqControl.value?.length > 1" class="example-additional-selection">
+              (+{{hqControl.value.length - 1}} {{hqControl.value?.length === 2 ? 'other' : 'others'}})
+            </span>
+          </mat-select-trigger>
+          <mat-select-filter [placeholder]="'Filter'" [array]="companyManagers" (filteredReturn)="filteredcompanyManagers =$event"></mat-select-filter>
+          <mat-option *ngFor="let companyMgr of filteredcompanyManagers" [value]="companyMgr">{{companyMgr}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- field three -->
+      <mat-form-field appearance="outline">
+        <mat-label>{{"COMPANY.TABLE.TAGS" | transloco}}</mat-label>
+        <mat-select [formControl]="tagsControl" multiple>
+          <mat-select-trigger>
+            {{tagsControl.value ? tagsControl.value[0] : ''}}
+            <span *ngIf="tagsControl.value?.length > 1" class="example-additional-selection">
+              (+{{tagsControl.value.length - 1}} {{tagsControl.value?.length === 2 ? 'other' : 'others'}})
+            </span>
+          </mat-select-trigger>
+          <mat-select-filter [placeholder]="'Filter'" [array]="tagsList" (filteredReturn)="filteredTagsList =$event"></mat-select-filter>
+          <mat-option *ngFor="let tag of filteredTagsList" [value]="tag">{{tag}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="clear">
+      <p (click)="clearFIlters()">{{"COMPANY.TABLE.CLEAR-FILTERS" | transloco}} ({{filterCount < 1 ? 0 : filterCount}})</p>
+    </div>
+  </div>
+</div>
