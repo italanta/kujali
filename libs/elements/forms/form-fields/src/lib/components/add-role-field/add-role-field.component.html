@@ -1,0 +1,16 @@
+<form [formGroup]='addRoleFormGroup' class="add-role" *ngIf="addRole; else roleBtn" fxLayout="column">
+  <p>{{ 'CONTACT.ADDNEWCONTACT.CREATE-ROLE' | transloco }}</p>
+
+  <mat-form-field appearance="outline">
+    <input matInput formControlName='id' matInput type="text" />
+  </mat-form-field>
+  <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
+    <button (click)="toogleAddRole()">{{ 'CONTACT.ADDNEWCONTACT.CANCEL' | transloco }}</button>
+    <button type="submit" (click)="addNewRole()">{{ 'CONTACT.ADDNEWCONTACT.CREATE' | transloco }}</button>
+  </div>
+</form>
+
+<ng-template #roleBtn>
+  <button class="addRbtn" mat-raised-button color="primary" (click)="toogleAddRole()"><i
+          class="bi bi-plus"></i>{{ 'CONTACT.ADDNEWCONTACT.ADD-NEW-ROLE' | transloco }} </button>
+</ng-template>

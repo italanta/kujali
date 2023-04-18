@@ -34,6 +34,9 @@
       "@app/elements/base/firebase": [
         "libs/elements/base/firebase/src/index.ts"
       ],
+      "@app/elements/forms/form-fields": [
+        "libs/elements/forms/form-fields/src/index.ts"
+      ],
       "@app/elements/forms/validators": [
         "libs/elements/forms/validators/src/index.ts"
       ],

@@ -1,0 +1,36 @@
+.add-role {
+  padding: 10px;
+}
+
+.add-role p {
+  color: var(--volk-color-text-black);
+  font-size: 1.125rem;
+
+}
+.add-role button {
+  background-color: var(--volk-color-text-white);
+  border: none;
+  font-size: 1.125rem;
+
+}
+
+.add-role button:last-of-type {
+  color: var(--volk-color-primary);
+}
+.addRbtn {
+  margin-top: 5px;
+  width: 100%;
+  background-color: var(--volk-color-primary-white);
+}
+
+input {
+  caret-color: black;
+}
+
+::ng-deep .mat-form-field-infix {
+  border-top-width: 2px !important;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  padding: 0px 0px 15px 0px;
+}

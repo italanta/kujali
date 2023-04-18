@@ -1,0 +1,17 @@
+<div [formGroup]="socialMediaFields">
+  <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start">
+    <div fxLayout="column" fxLayoutAlign="start" fxFlex="45">
+      <label>{{ 'SOCIALMEDIA.FACEBOOK' | transloco }}</label>
+      <mat-form-field class="editContacts" id="title-input" appearance="outline" fxFlex>
+        <input matInput name="title" type="text" formControlName="facebook">
+      </mat-form-field>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="start" fxFlex="45">
+      <label>{{ 'SOCIALMEDIA.LINKEDIN' | transloco }}</label>
+      <mat-form-field class="editContacts" id="title-input" appearance="outline" fxFlex>
+        <input matInput name="title" type="text" formControlName="linkedin">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+

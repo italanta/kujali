@@ -1,0 +1,10 @@
+<div [formGroup]="dataForm" fxLayout="column" fxLayoutAlign="start">
+  <label>{{ 'CONTACT.ADDNEWCONTACT.PHONE-NUMBER' | transloco }}</label>
+  <mat-form-field appearance="outline" fxFlex>
+      <input matInput name="phone" type="tel"
+          onkeypress="return event.charCode >= 48 && event.charCode <= 57" formControlName="phone"
+          formControlName="phone"
+          (countryChange)="onCountryChange($event)" [ng2TelInputOptions]="{initialCountry: 'be'}"
+          ng2TelInput />
+  </mat-form-field>
+</div>

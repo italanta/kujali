@@ -1,0 +1,32 @@
+<mat-form-field appearance="outline" fxFill>
+    <mat-select [formControl]="roles" multiple>
+        <mat-select-trigger>
+            {{roles.value ? roles.value[0]! : ''}}
+            <span *ngIf="roles.value?.length > 1">
+                (+{{roles.value.length - 1}} {{roles.value?.length === 2 ? translTe('CONTACT.ADDNEWCONTACT.OTHER') : translTe('CONTACT.ADDNEWCONTACT.OTHERS')}})
+            </span>
+        </mat-select-trigger>
+
+        <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="rolesList" (filteredReturn)="filteredRoles =$event"></mat-select-filter>
+        <mat-option *ngFor="let role of filteredRoles" [value]="role.id">
+          {{role.id}}
+        </mat-option>
+          
+        <form [formGroup]='addRoleFormGroup' class="add-role" *ngIf="addRole; else roleBtn"
+            fxLayout="column">
+            <p>{{ 'CONTACT.ADDNEWCONTACT.CREATE-ROLE' | transloco }}</p>
+  
+            <mat-form-field appearance="outline">
+                <input (keydown)="$event.stopPropagation()" matInput formControlName='id'  matInput type="text"/>
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
+                <button (click)="toogleAddRole()">{{ 'CONTACT.ADDNEWCONTACT.CANCEL' | transloco }}</button>
+                <button type="submit" (click)="addNewRole()">{{ 'CONTACT.ADDNEWCONTACT.CREATE' | transloco }}</button>
+            </div>
+        </form> 
+        <ng-template #roleBtn>
+            <button class="addRbtn" mat-raised-button color="primary" (click)="toogleAddRole()"><i
+                    class="bi bi-plus"></i>{{ 'CONTACT.ADDNEWCONTACT.ADD-NEW-ROLE' | transloco }} </button>
+        </ng-template>
+    </mat-select>
+  </mat-form-field>

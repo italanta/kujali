@@ -1,0 +1,11 @@
+<div [formGroup]="parentForm" fxLayout="column" fxLayoutAlign="start" fxFlex>
+  <p class="label">{{"FORMS.FIELDS.ASSIGNED-TO" | transloco}}</p>
+  <mat-form-field appearance="outline">
+    <mat-select formControlName="assignTo" multiple>
+      <mat-select-filter [placeholder]="'Filter'" [displayMember]="'displayName'" [array]="orgUsers" (filteredReturn)="filteredUsers =$event"></mat-select-filter>
+      <mat-option *ngFor="let user of filteredUsers" [value]="user.id">
+        {{user.displayName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

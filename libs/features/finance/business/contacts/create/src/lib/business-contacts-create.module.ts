@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { MatSelectFilterModule } from 'mat-select-filter';
 
@@ -13,9 +14,9 @@ import { Ng2TelInputModule } from 'ng2-tel-input';
 
 import { AddNewContactComponent } from '..';
 
-// import { CrmFormFieldsModule } from '@volk/elements/crm/controls/form-fields';
+import { FormFieldsModule } from '@app/elements/forms/form-fields';
+
 import { AddNewContactFormComponent } from './components/add-new-contact-form/add-new-contact-form.component'
-import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   imports: [
@@ -34,7 +35,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatDialogModule,
     MatChipsModule,
 
-    // CrmFormFieldsModule,
+    // FormFieldsModule,
     MatFormFieldModule, MatInputModule
   ],
   declarations: [
