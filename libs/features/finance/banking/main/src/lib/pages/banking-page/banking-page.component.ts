@@ -51,6 +51,8 @@ export class BankingPageComponent implements OnInit, AfterViewInit {
 
   accounts$: Observable<FAccount[]>;
 
+  showFilter: boolean = false;
+
   constructor(private _dialog: MatDialog,
               private _router$$: Router,
               private _cdref: ChangeDetectorRef,
@@ -73,13 +75,16 @@ export class BankingPageComponent implements OnInit, AfterViewInit {
     this._cdref.detectChanges();
   }
 
-  filterAccountRecords(event: Event) {
+  applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  toogleFilter(value: boolean) {
+    this.showFilter = value;
   }
 
   connectToPonto(account: FAccount) {

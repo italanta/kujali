@@ -260,6 +260,11 @@
       }
     }
   },
+  "BANKING": {
+    "HEADER": {
+      "BANKING": "Bank Accounts"
+    }
+  },
   "INVOICES" : {
     "HEADER" : {
       "INVOICE" : "Invoice",

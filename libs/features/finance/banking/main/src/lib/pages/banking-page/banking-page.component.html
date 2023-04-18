@@ -1,19 +1,17 @@
 <app-page>
   <div class="main-page full-width" fxLayout="column" fxLayoutAlign="start start">
 
-    <div class="full-width">
-      <div class="full-width" fxLayout="row" fxLayoutAlign="space-between center">
-        <p class="page-header">Your Accounts</p>
-        <button [disabled]="isLoading" mat-raised-button color="primary" (click)="addAnAccount()" style="margin-left: 20px;">
-          <i class="fa-solid fa-plus"></i>
-          <span style="margin-left: 10px;">Add an Account</span>
-        </button>
-      </div>
-    </div>
-
-    <mat-form-field>
-      <input matInput (keyup)="filterAccountRecords($event)" placeholder="Find Accounts....." #input>
-    </mat-form-field>
+    <kujali-finance-toolbar class="full-width">
+      <kujali-finance-search-header-card header (toogleFilterEvent)='toogleFilter($event)'
+        (searchTableEvent)='applyFilter($event)' [tableData]="dataSource.data">
+        <div add-new>
+          <button mat-flat-button (click)="addAnAccount()" class="add-new">
+            <i class="bi bi-plus-circle-fill"></i>
+            {{'HEADER-ADD-NEW' | transloco}}
+          </button>
+        </div>
+      </kujali-finance-search-header-card>
+    </kujali-finance-toolbar>
 
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" matSort>
@@ -35,7 +33,8 @@
         <!-- accountHolder Column -->
         <ng-container matColumnDef="accountHolder">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Account Holder </th>
-          <td mat-cell *matCellDef="let row" (click)="goToDetails(row.id)" > {{row.accountHolder ? row.accountHolder : '-' }} </td>
+          <td mat-cell *matCellDef="let row" (click)="goToDetails(row.id)"> {{row.accountHolder ? row.accountHolder :
+            '-' }} </td>
         </ng-container>
 
         <!-- IBAN Column -->
@@ -72,15 +71,16 @@
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef> Actions </th>
           <td mat-cell *matCellDef="let row">
-            <button [disabled]="isLoading || row.bankConnection != 0" mat-icon-button (click)="connectToPonto(row)">
+            <button class="icon-btn" [disabled]="isLoading || row.bankConnection != 0" mat-icon-button (click)="connectToPonto(row)">
               <span *ngIf="!isLoading; else iconSpinner">
-                <i class="fa-solid fa-link fa-xs" [ngStyle]="{'color':row.bankConnection !== 0 ? 'green' : 'black' }"></i>
+                <i class="fa-solid fa-link fa-xs"
+                  [ngStyle]="{'color':row.bankConnection !== 0 ? 'green' : 'black' }"></i>
               </span>
             </button>
-            <button [disabled]="isLoading" mat-icon-button (click)="editAccount(row)">
+            <button class="icon-btn" [disabled]="isLoading" mat-icon-button (click)="editAccount(row)">
               <i class="fa-solid fa-edit fa-xs"></i>
             </button>
-            <button [disabled]="isLoading" mat-icon-button style="color: #ca1616;" (click)="deleteAccount(row)">
+            <button class="icon-btn" [disabled]="isLoading" mat-icon-button style="color: #ca1616;" (click)="deleteAccount(row)">
               <i class="fa-solid fa-trash fa-xs"></i>
             </button>
           </td>
@@ -91,7 +91,7 @@
 
         <!-- Row shown when there is no matching data. -->
         <tr class="mat-row" *matNoDataRow>
-          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          <td class="mat-cell" colspan="4">No data matching the filter value</td>
         </tr>
       </table>
 

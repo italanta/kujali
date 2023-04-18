@@ -12,17 +12,18 @@ import {
 import { UserStateModule } from '@app/state/user';
 import { MultiLangModule } from '@ngfi/multi-lang';
 
+import { PageHeadersModule } from '@app/elements/layout/page-headers';
 import { iTalPageModule } from '@app/elements/layout/page';
 
 import { SingleAccountPageComponent } from './components/single-account-page/single-account-page.component';
+import { TransactionsTableComponent } from './components/transactions-table/transactions-table.component';
+import { AccountInformationComponent } from './components/account-information/account-information.component';
 
 import { BankingPageComponent } from './pages/banking-page/banking-page.component';
 
 import { CreateNewBankAccountModalComponent } from './modals/create-new-bank-account-modal/create-new-bank-account-modal.component';
 
 import { BankingRouterModule } from './banking.router';
-import { AccountInformationComponent } from './components/account-information/account-information.component';
-import { TransactionsTableComponent } from './components/transactions-table/transactions-table.component';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { TransactionsTableComponent } from './components/transactions-table/tran
     ReactiveFormsModule,
     UserStateModule,
 
+    PageHeadersModule,
     iTalPageModule,
 
     BankingRouterModule,
