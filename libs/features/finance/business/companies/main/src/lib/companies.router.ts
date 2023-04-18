@@ -7,12 +7,10 @@ import { CompanyPageComponent } from './pages/company-page/company-page.componen
 
 const COMPANIES_ROUTES: Route[] = [
   { path: '', component: CompanyPageComponent },
-
-  {
-    path: ':id',
-    loadChildren: () => import('libs/features/crm/companies/details/view/src/lib/features-crm-companies-details-view.module').then(m => m.FeaturesCrmCompaniesDetailsViewModule),
-  },
-
+  // {
+  //   path: ':id',
+  //   loadChildren: () => import('libs/features/crm/companies/details/view/src/lib/features-crm-companies-details-view.module').then(m => m.FeaturesCrmCompaniesDetailsViewModule),
+  // },
 ];
 
 @NgModule({
