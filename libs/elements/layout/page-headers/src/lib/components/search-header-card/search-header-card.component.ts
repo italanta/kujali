@@ -1,16 +1,9 @@
 import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
 
 import { SubSink } from 'subsink';
 
-import { TranslateService } from '@ngfi/multi-lang';
-
 // import { AppClaimDomains } from '@app/model/access-control';
-
-// import { AddNewCompanyComponent } from '@app/features/finance/companies/create';
-// import { AddNewContactFormComponent } from '@app/features/finance/contacts/create';
-// import { AddNewOpportunityComponent } from '@app/features/finance/opportunities/create';
 
 @Component({
   selector: 'kujali-finance-search-header-card',
@@ -31,48 +24,22 @@ export class SearchHeaderCardComponent implements OnDestroy {
 
   showFilter: boolean;
 
-  constructor(public dialog: MatDialog,
-              private _router$$: Router,
-              private _trl: TranslateService
-  ) { }
+  constructor(private _router$$: Router) { }
 
   ngOnInit() {
     const elements = this._router$$.url.split('/');
-    const mypage = elements.length >= 0 ? elements[elements.length - 1] : '__noop__';
-    this.page = mypage 
+    this.page = elements.length >= 0 ? elements[elements.length - 1] : '__noop__';
+    this.setPageName(this.page);
   }
 
-
-  openAddNewDialog() {
-
-    if (this.page == 'companies' || this.page == 'Bedrijven'){
-
-      // this._sbS.sink = this.dialog.open(AddNewCompanyComponent, {panelClass: 'full-width-dialog'})
-      // .afterClosed().subscribe();
-
+  setPageName(page: string) {
+    switch (page) {
+      case 'invoices':
+        this.page = 'INVOICES.HEADER.INVOICES';
+        break;
+      default:
+        break;
     }
-    // else if (this.page == 'contacts' || this.page == 'contacts') {
-
-    //   this._sbS.sink = this.dialog.open(AddNewContactFormComponent, {panelClass: 'full-width-dialog'})
-    //   .afterClosed().subscribe();
-    // }
-    // else if (this.page == 'opportunities' || this.page == 'opportunities') {
-    //   this._sbS.sink = this.dialog.open(AddNewOpportunityComponent, {panelClass: 'full-width-dialog'})
-    //   .afterClosed().subscribe();
-    // }
-    else if (this.page == 'invoices') {
-      // this._router$$.navigate(['create']);
-    }
-    // else if (this.page == 'quotes') {
-    //   // this._router$$.navigate(['quotes/create']);
-    // }
-    // else if (this.page == 'orders') {
-    //   // this._router$$.navigate(['orders/create']);
-    // }
-    // else if (this.page == 'invoices' || this.page == 'invoices') {
-    //   this._router$$.navigate(['invoices/create']);
-    // }
-
   }
 
   toogleFilter() {
@@ -80,11 +47,7 @@ export class SearchHeaderCardComponent implements OnDestroy {
     this.toogleFilterEvent.emit(this.showFilter);
   }
 
-  searchTable(value)
-  {
-    this.searchTableEvent.emit(value)
-  }
+  searchTable = (value) => { this.searchTableEvent.emit(value) };
 
   ngOnDestroy = () => this._sbS.unsubscribe();
-
 }

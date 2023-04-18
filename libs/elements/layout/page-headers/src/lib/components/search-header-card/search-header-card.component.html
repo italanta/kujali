@@ -1,26 +1,27 @@
 <div class="search-header" fxLayout="row" fxLayoutAlign="space-between center">
 
-    <div fxLayout="row" fxLayoutAlign="start center">
-        <p class="page-title">{{page | transloco}}</p>
-        <p>{{tableData.length}} {{'results' | transloco}}</p>
-    </div>
+	<div fxLayout="row" fxLayoutAlign="start center">
+		<p class="page-title">{{page | transloco}}</p>
+		<p>{{tableData.length}} {{'results' | transloco}}</p>
+	</div>
 
-    <div fxLayout="row" fxLayoutAlign="start center">
+	<div fxLayout="row" fxLayoutAlign="start center">
 
-        <ng-content select="[grid-list]"></ng-content>
+		<ng-content select="[grid-list]"></ng-content>
 
-        <div class="search-input" fxLayout="row" fxLayoutAlign="start center">
-            <i class="bi bi-search"></i>
-            <input (keyup)="searchTable($event)" type="text" [placeholder]="'HEADER-SEARCH' | transloco">
-        </div>
+		<div class="search-input" fxLayout="row" fxLayoutAlign="start center">
+			<i class="bi bi-search"></i>
+			<input (keyup)="searchTable($event)" type="text" [placeholder]="'HEADER-SEARCH' | transloco">
+		</div>
 
-        <div>
-            <button mat-flat-button (click)="toogleFilter()" class="filter"><i class="bi bi-funnel-fill"></i> {{'HEADER-FILTER' |
-                transloco}}</button>
-        </div>
+		<div>
+			<button mat-flat-button (click)="toogleFilter()" class="filter"><i class="bi bi-funnel-fill"></i>
+				{{'HEADER-FILTER' |
+				transloco}}</button>
+		</div>
 
-        <ng-content select="[add-new]">
-        </ng-content>
-    </div>
+		<ng-content select="[add-new]">
+		</ng-content>
+	</div>
 
 </div>
