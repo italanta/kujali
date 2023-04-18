@@ -20,12 +20,6 @@
       <div class="table-container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
           <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-              <!-- Invoice title -->
-              <!-- <ng-container matColumnDef="title">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>{{"INVOICES.TABLE.TITLE" | transloco}}</th>
-                  <td mat-cell *matCellDef="let invoice" (click)="viewInvoice(invoice.id)"> {{invoice.title}} </td>
-              </ng-container> -->
-
               <!-- Number Column -->
               <ng-container matColumnDef="number">
                   <th mat-header-cell *matHeaderCellDef> {{"INVOICES.TABLE.INV-NUMBER" | transloco}} </th>

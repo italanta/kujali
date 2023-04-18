@@ -18,23 +18,6 @@ table {
   overflow: auto;
 }
 
-img,
-.nameChar {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  background-color: var(--kujali-color-text-background);
-  border: none;
-  outline: none;
-}
-
-.nameChar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--kujali-color-primary);
-}
-
 td.mat-column-title {
   font-weight: 600;
   color: var(--kujali-color-text-black);
@@ -44,25 +27,20 @@ td.mat-column-imageurl {
   padding-top: 5px;
 }
 
-.mat-header-cell {
-  background-color: var(--kujali-color-primary-background);
-  font-weight: 600;
-  font-size: 15px;
-}
-.mat-row:hover .mat-cell {
-  background-color: var(--kujali-color-primary-background);
-  cursor: pointer;
+.mdc-data-table__header-cell {
+  background-color: var(--kujali-color-primary-blue)!important;
+  color: white!important;
+  font-weight: 500;
+  font-size: 1.1rem;
 }
 
-td.mat-column-number,
-td.mat-column-dueDate,
-td.mat-column-date,
-td.mat-column-amount,
-td.mat-column-customer,
-td.mat-column-contact,
-td.mat-column-status {
-  font-weight: 600;
-  color: var(--kujali-color-nav-inactive);
+.mat-mdc-row:nth-child(odd) {
+  background-color: rgba($color: #2b66b8, $alpha: 0.1);
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  background-color: #eee;
+  cursor: pointer;
 }
 
 ::ng-deep .mat-elevation-z8 {
