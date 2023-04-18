@@ -26,6 +26,7 @@
     "@app/state/finance/budgetting/rendering": "libs/state/finance/budgetting/rendering",
     "@app/state/organisation": "libs/state/organisation/main",
     "@app/state/user": "libs/state/user",
+    "elements-forms-validators": "libs/elements/forms/validators",
     "elements-layout-page-headers": "libs/elements/layout/page-headers",
     "elements-modals": "libs/elements/modals",
     "features-budgetting-budget-explorer-burnchart": "libs/features/budgetting/budget-explorer-burnchart",
