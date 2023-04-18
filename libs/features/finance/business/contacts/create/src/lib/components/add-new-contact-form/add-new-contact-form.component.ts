@@ -20,8 +20,8 @@ import { ContactsService } from '@app/state/finance/contacts'
 import { CompaniesStore } from '@app/state/finance/companies'
 import { TagsService } from '@app/state/tags';
 
-// import { _PhoneOrEmailValidator } from '@app/elements/forms/validators';
-// import { RolesFormFieldComponent } from '@app/elements/controls/form-fields';
+import { _PhoneOrEmailValidator } from '@app/elements/forms/validators';
+import { RolesFormFieldComponent } from '@app/elements/forms/form-fields';
 
 
 @Component({

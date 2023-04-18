@@ -29,6 +29,7 @@ import { ContactsRouterModule } from './contacts.router';
     MultiLangModule,
     MaterialDesignModule, MaterialBricksModule, FlexLayoutModule,
     FormsModule, ReactiveFormsModule,
+    MatSelectFilterModule,
 
     iTalPageModule,
     PageHeadersModule,

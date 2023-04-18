@@ -28,7 +28,9 @@ import { CompaniesRouterModule } from './companies.router';
     RouterModule, 
     MultiLangModule,
     MaterialDesignModule, MaterialBricksModule, FlexLayoutModule,
+    MaterialFormBricksModule,
     FormsModule, ReactiveFormsModule,
+    MatSelectFilterModule,
     UserStateModule,
 
     iTalPageModule,

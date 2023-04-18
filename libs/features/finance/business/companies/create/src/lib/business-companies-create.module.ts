@@ -13,7 +13,7 @@ import { MultiLangModule } from '@ngfi/multi-lang';
 // import { ElementsBricksTagsListModule } from '@app/elements/bricks/tags-list'
 // import { AccessControlElementsModule } from '@app/elements/access-control';
 
-// import { ContactsCreateModule } from '@app/features/finance/contacts/create'
+import { BusinessContactsCreateModule } from '@app/features/finance/business/contacts/create'
 
 import { AddNewCompanyComponent } from './components/add-new-company/add-new-company.component';
 
@@ -26,7 +26,7 @@ import { AddNewCompanyComponent } from './components/add-new-company/add-new-com
     MaterialDesignModule, MaterialBricksModule, FlexLayoutModule,
     FormsModule, ReactiveFormsModule,
 
-    // ContactsCreateModule,
+    BusinessContactsCreateModule,
 
   ],
   declarations: [
