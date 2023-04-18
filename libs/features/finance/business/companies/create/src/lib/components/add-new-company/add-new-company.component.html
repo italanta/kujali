@@ -1,0 +1,126 @@
+<form [formGroup]="addNewCompanyFormGroup" (ngSubmit)="submitForm()" fxLayout="column" fxLayoutAlign="start">
+  <h2 mat-dialog-title>{{"COMPANY.ADD-NEW-COMPANY.ADD-NEW-COMPANY" | transloco}}</h2>
+
+  <mat-dialog-content class="mat-typography">
+
+    <div fxLayout="column" fxLayoutGap="10px">
+      <div fxLayout="column" fxFlex="45">
+        <h4>{{"COMPANY.ADD-NEW-COMPANY.COMPANY-NAME" | transloco}}</h4>
+        <mat-form-field appearance="outline" fxFlex>
+          <input matInput name="name" type="text" formControlName="name"
+            [placeholder]="'COMPANY.ADD-NEW-COMPANY.COMPANY-NAME-PLACEHOLDER' | transloco">
+        </mat-form-field>
+
+      </div>
+
+      <div fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+        <h4>
+          {{"COMPANY.ADD-NEW-COMPANY.ADDRESS" | transloco}}
+        </h4>
+        <mat-form-field appearance="outline" fxFlex>
+          <input matInput name="lName" type="text" formControlName="hq"
+            [placeholder]="'COMPANY.ADD-NEW-COMPANY.ADDRESS-PLACEHOLDER' | transloco">
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+
+          <div fxLayout="column" fxLayoutAlign="start" fxFlex="50%">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <h4>{{"COMPANY.ADD-NEW-COMPANY.COMPANY-CONTACT" | transloco}}</h4>
+              <p class="extra-label">{{"COMPANY.ADD-NEW-COMPANY.OPTIONAL" | transloco}}</p>
+            </div>
+
+            <mat-form-field appearance="outline">
+              <mat-select [disabled]="showContact" formControlName="contact">
+                <mat-select-filter [placeholder]="'Filter'" [displayMember]="'fullName'" [array]="contactList" (filteredReturn)="filteredContactList =$event"></mat-select-filter>
+                <mat-option value=""></mat-option>
+                <mat-option *ngFor="let contact of filteredContactList" [value]="contact">
+                  {{contact.fullName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" fxFlex>
+            <div>
+              <p class="or">{{"COMPANY.ADD-NEW-COMPANY.OR" | transloco}}</p>
+            </div>
+
+            <div fxLayout="column" fxLayoutAlign="start" fxFlex>
+              <a mat-flat-button (click)="toggleContact()">
+                <i *ngIf="!showContact; else dash" class="bi bi-plus-circle-fill"></i>
+                <ng-template #dash><i class="bi bi-dash-circle-fill"></i></ng-template>
+                {{"COMPANY.ADD-NEW-COMPANY.NEW-CONTACT" | transloco}}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="showContact">
+          <p class="new-contact"> {{"COMPANY.ADD-NEW-COMPANY.NEW-CONTACT" | transloco}}</p>
+          <div class="contact">
+            <add-new-contact [contact]="contactForm" (countryCodeEvent)="getCountryCode($event)"></add-new-contact>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="company-tags">
+        <mat-form-field class="chip-list" appearance="outline" fxFlex>
+          <mat-chip-list color="primary" #chipList>
+            <mat-chip color="primary" *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
+              (removed)="remove(tag)">
+              {{tag}}
+              <button matChipRemove *ngIf="removable">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+            <input matInput [placeholder]="'CONTACT.ADDNEWCONTACT.DEF-NEW-TAGS' | transloco" #tagInput  [formControl]="tagCtrl" [matAutocomplete]="company"
+              [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              (matChipInputTokenEnd)="add($event)"/>
+          </mat-chip-list>
+          <mat-autocomplete class="mat-autocom" #company="matAutocomplete" (optionSelected)="selected($event)">
+            <mat-option class="test" *ngFor="let tag of filteredTags | async" [value]="tag">
+              {{tag}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-dialog-content>
+
+  <div>
+    <div
+      *ngIf="submitted == true && (addNewCompanyFormGroup.value.name && addNewCompanyFormGroup.value.hq) == ''"
+      class="errorMessage">
+      <mat-error>
+        {{"COMPANY.ADD-NEW-COMPANY.ERRORS.REQUIRED-FIELDS" | transloco}}
+      </mat-error>
+    </div>
+
+    <div
+      *ngIf="(showContact && contact.invalid  && submitted == true)"
+      class="errorMessage">
+      <mat-error>
+        {{"COMPANY.ADD-NEW-COMPANY.ERRORS.REQUIRED-CONTACT" | transloco}}
+      </mat-error>
+    </div>
+    <div
+      *ngIf="(showContact && contact.hasError('value')  && submitted == true)"
+      class="errorMessage">
+      <mat-error>
+        {{"COMPANY.ADD-NEW-COMPANY.ERRORS.REQUIRED-CONTACT-PHONE" | transloco}}
+      </mat-error>
+    </div>
+
+  </div>
+
+  <mat-dialog-actions class="padd-top" align="end">
+    <button mat-button mat-dialog-close>{{"COMPANY.ADD-NEW-COMPANY.CANCEL" | transloco}}</button>
+    <button class="submit-btn" type="submit" class="create-contact-btn" mat-raised-button color="primary"
+      cdkFocusInitial>{{"COMPANY.ADD-NEW-COMPANY.CREATE-COMPANY" | transloco}}</button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,176 @@
+h2,
+h4,
+p,
+input {
+  font-family: 'Poppins';
+}
+
+.padd-top {
+  padding-top: 20px;
+  margin-top: 30px;
+}
+
+.bi {
+  margin-right: 10px;
+}
+
+.contact-form {
+  border-radius: 5px;
+  border: solid var(--volk-color-primary) 1px;
+  padding: 5px;
+}
+
+.new-contact {
+  color: var(--volk-color-primary);
+}
+
+.contact {
+  padding: 10px;
+  border: solid var(--volk-color-primary) 1px;
+  border-radius: 10px;
+}
+
+.button {
+  color: var(--volk-color-text-white);
+}
+h2,
+h4 {
+  font-weight: 600;
+  color: var(--volk-color-text-black);
+  font-size: 1.125rem;
+}
+
+h4 {
+  margin: 0;
+}
+
+.create-contact-btn {
+  color: var(--volk-color-text-white);
+}
+
+::ng-deep .mat-form-field-infix {
+  border-top-width: 2px !important;
+}
+::ng-deep .mat-input-element {
+  caret-color: white;
+}
+
+.addNewContactFormGroup.ng-invalid.ng-touched input {
+  border: 1px solid red;
+}
+
+.tags {
+  width: 100%;
+}
+
+.chip-list {
+  width: 600px;
+}
+
+mat-chip {
+  color: aliceblue;
+}
+
+// ::ng-deep .mat-chip.mat-standard-chip {
+//   background-color: var(--volk-color-text-background);
+//   color: var(--volk-color-primary);
+//   border-radius: 5px;
+// }
+
+.extra-label {
+  color: var(--volk-color-nav-inactive);
+  font-size: 0.825rem;
+  margin: 0px 0px 0px 7px;
+  padding: 0;
+}
+.or {
+  color: var(--volk-color-nav-inactive);
+  font-size: 0.825rem;
+  margin: 0px 0px 0px 5px;
+  padding: 0;
+}
+
+.submit-btn {
+  color: var(--volk-color-text-white);
+}
+
+.add-role {
+  padding: 10px;
+}
+
+.add-role p {
+  color: #263446;
+  font-size: 1.125rem;
+}
+.add-role button {
+  background-color: var(--volk-color-text-white);
+  border: none;
+  font-size: 1.125rem;
+}
+
+.add-role button:last-of-type {
+  color: var(--volk-color-primary);
+}
+.addRbtn {
+  margin-top: 5px;
+  width: 100%;
+  background-color: var(--volk-color-primary-white);
+}
+
+input {
+  caret-color: black;
+}
+
+.selected-tags span {
+  padding: 2px;
+  border-radius: 5px;
+  background-color: var(--volk-color-text-background);
+  color: var(--volk-color-primary);
+  margin-right: 10px;
+}
+
+// ::ng-deep .mat-autocomplete-panel {
+//   display: none;
+// }
+
+.company-tags {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+//tags
+::ng-deep  .mat-chip.mat-standard-chip {
+  background-color: var(--volk-color-text-background);
+  color: var(--volk-color-primary);
+  border-radius: 5px;
+}
+
+input {
+  caret-color: black;
+}
+
+::ng-deep  .mat-autocom {
+  margin-top: 10px;
+  padding: 5px 0px;
+  display: flex;
+  box-shadow: none;
+}
+
+::ng-deep  .mat-autocom:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+}
+
+::ng-deep  .test {
+  min-width: fit-content;
+  height: 20px;
+  padding: 5px 5px; 
+}
+
+::ng-deep .test span {
+  line-height: 20px;
+  padding: 2px;
+  border-radius: 5px;
+  background-color: var(--volk-color-text-background);
+  color: var(--volk-color-primary);
+  margin-right: 10px;
+}
