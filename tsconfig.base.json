@@ -79,6 +79,9 @@
       "@app/features/finance/business/invoices/main": [
         "libs/features/finance/business/invoices/main/src/index.ts"
       ],
+      "@app/features/finance/business/main": [
+        "libs/features/finance/business/main/src/index.ts"
+      ],
       "@app/features/finance/operations/main": [
         "libs/features/finance/operations/main/src/index.ts"
       ],

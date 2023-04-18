@@ -37,6 +37,7 @@
     "features-finance-business-invoices-details-invoice-documents": "libs/features/finance/business/invoices/details/invoice-documents",
     "features-finance-business-invoices-details-view": "libs/features/finance/business/invoices/details/view",
     "features-finance-business-invoices-main": "libs/features/finance/business/invoices/main",
+    "features-finance-business-main": "libs/features/finance/business/main",
     "features-finance-operations-main": "libs/features/finance/operations/main",
     "features-shared-components-modals": "libs/features/shared/components/modals",
     "functions-api-finance-banking-ponto-connect": "libs/functions/api/finance/banking/ponto-connect",

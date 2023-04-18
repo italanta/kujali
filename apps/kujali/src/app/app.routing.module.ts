@@ -22,7 +22,11 @@ export const APP_ROUTES: Route[] = [
     loadChildren: () => import('@app/features/dashboard/main').then(m => m.DashboardModule),
     canActivate: [IsLoggedInGuard]
   },
-
+  {
+    path: 'business',
+    loadChildren: () => import('@app/features/finance/business/main').then(m => m.FinanceBusinessModule),
+    canActivate: [IsLoggedInGuard]
+  },
   {
     path: 'operations',
     loadChildren: () => import('@app/features/finance/operations/main').then(m => m.OperationsModule),

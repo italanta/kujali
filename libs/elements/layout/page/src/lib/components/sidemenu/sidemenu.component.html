@@ -21,10 +21,20 @@
       </a>
 
       <!-- Section Business -->
-      <a routerLink="/business" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center" fxLayoutGap="10px">
-        <i class="fa-solid fa-business-time"></i>
-        <span>{{'SIDENAV.NAV.BUSINESS' | transloco}}</span>
-      </a>
+      <div>
+        <a routerLink="/business" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center" fxLayoutGap="10px">
+          <i class="fa-solid fa-business-time"></i>
+          <span>{{'SIDENAV.NAV.BUSINESS' | transloco}}</span>
+        </a>
+        <div class="sub-menu">
+          <a routerLink="/business/invoices" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center"
+            fxLayoutGap="10px">
+            <i class="fa-solid fa-chart-line"></i>
+            <span> Invoices </span>
+          </a>
+        </div>
+
+      </div>
 
       <!-- Section Operations -->
       <div>
@@ -38,12 +48,6 @@
             fxLayoutGap="10px">
             <i class="fa-solid fa-chart-line"></i>
             <span> Banking </span>
-          </a>
-
-          <a routerLink="/operations/invoices" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center"
-            fxLayoutGap="10px">
-            <i class="fa-solid fa-chart-line"></i>
-            <span> Invoices </span>
           </a>
         </div>
       </div>
