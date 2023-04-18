@@ -16,27 +16,27 @@ input {
 
 .contact-form {
   border-radius: 5px;
-  border: solid var(--volk-color-primary) 1px;
+  border: solid var(--kujali-color-primary) 1px;
   padding: 5px;
 }
 
 .new-contact {
-  color: var(--volk-color-primary);
+  color: var(--kujali-color-primary);
 }
 
 .contact {
   padding: 10px;
-  border: solid var(--volk-color-primary) 1px;
+  border: solid var(--kujali-color-primary) 1px;
   border-radius: 10px;
 }
 
 .button {
-  color: var(--volk-color-text-white);
+  color: var(--kujali-color-text-white);
 }
 h2,
 h4 {
   font-weight: 600;
-  color: var(--volk-color-text-black);
+  color: var(--kujali-color-text-black);
   font-size: 1.125rem;
 }
 
@@ -45,7 +45,7 @@ h4 {
 }
 
 .create-contact-btn {
-  color: var(--volk-color-text-white);
+  color: var(--kujali-color-text-white);
 }
 
 ::ng-deep .mat-form-field-infix {
@@ -72,26 +72,26 @@ mat-chip {
 }
 
 // ::ng-deep .mat-chip.mat-standard-chip {
-//   background-color: var(--volk-color-text-background);
-//   color: var(--volk-color-primary);
+//   background-color: var(--kujali-color-text-background);
+//   color: var(--kujali-color-primary);
 //   border-radius: 5px;
 // }
 
 .extra-label {
-  color: var(--volk-color-nav-inactive);
+  color: var(--kujali-color-nav-inactive);
   font-size: 0.825rem;
   margin: 0px 0px 0px 7px;
   padding: 0;
 }
 .or {
-  color: var(--volk-color-nav-inactive);
+  color: var(--kujali-color-nav-inactive);
   font-size: 0.825rem;
   margin: 0px 0px 0px 5px;
   padding: 0;
 }
 
 .submit-btn {
-  color: var(--volk-color-text-white);
+  color: var(--kujali-color-text-white);
 }
 
 .add-role {
@@ -103,18 +103,18 @@ mat-chip {
   font-size: 1.125rem;
 }
 .add-role button {
-  background-color: var(--volk-color-text-white);
+  background-color: var(--kujali-color-text-white);
   border: none;
   font-size: 1.125rem;
 }
 
 .add-role button:last-of-type {
-  color: var(--volk-color-primary);
+  color: var(--kujali-color-primary);
 }
 .addRbtn {
   margin-top: 5px;
   width: 100%;
-  background-color: var(--volk-color-primary-white);
+  background-color: var(--kujali-color-primary-white);
 }
 
 input {
@@ -124,8 +124,8 @@ input {
 .selected-tags span {
   padding: 2px;
   border-radius: 5px;
-  background-color: var(--volk-color-text-background);
-  color: var(--volk-color-primary);
+  background-color: var(--kujali-color-text-background);
+  color: var(--kujali-color-primary);
   margin-right: 10px;
 }
 
@@ -140,8 +140,8 @@ input {
 
 //tags
 ::ng-deep  .mat-chip.mat-standard-chip {
-  background-color: var(--volk-color-text-background);
-  color: var(--volk-color-primary);
+  background-color: var(--kujali-color-text-background);
+  color: var(--kujali-color-primary);
   border-radius: 5px;
 }
 
@@ -170,7 +170,7 @@ input {
   line-height: 20px;
   padding: 2px;
   border-radius: 5px;
-  background-color: var(--volk-color-text-background);
-  color: var(--volk-color-primary);
+  background-color: var(--kujali-color-text-background);
+  color: var(--kujali-color-primary);
   margin-right: 10px;
 }

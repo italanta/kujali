@@ -1,13 +1,13 @@
 h2,
 h4 {
   font-weight: 600;
-  color: var(--volk-color-text-black);
+  color: var(--kujali-color-text-black);
   font-size: 1.125rem;
   margin: 0;
 }
 
 .extra-label {
-  color: var(--volk-color-nav-inactive);
+  color: var(--kujali-color-nav-inactive);
   font-size: 0.825rem;
   margin: 0px 0px 0px 7px;
   padding: 0;
@@ -16,8 +16,8 @@ h4 {
 .selected-tags span {
   padding: 2px;
   border-radius: 5px;
-  background-color: var(--volk-color-text-background);
-  color: var(--volk-color-primary);
+  background-color: var(--kujali-color-text-background);
+  color: var(--kujali-color-primary);
   margin-right: 10px;
 }
 
@@ -30,8 +30,8 @@ mat-chip {
 }
 
 :host ::ng-deep .mat-chip.mat-standard-chip {
-  background-color: var(--volk-color-text-background);
-  color: var(--volk-color-primary);
+  background-color: var(--kujali-color-text-background);
+  color: var(--kujali-color-primary);
   border-radius: 5px;
 }
 
@@ -60,12 +60,12 @@ input {
   line-height: 20px;
   padding: 2px;
   border-radius: 5px;
-  background-color: var(--volk-color-text-background);
-  color: var(--volk-color-primary);
+  background-color: var(--kujali-color-text-background);
+  color: var(--kujali-color-primary);
   margin-right: 10px;
 }
 
 // ::ng-deep .mat-option-text {
 //   line-height: fit-content;
-//   background-color: var(--volk-color-text-background);
+//   background-color: var(--kujali-color-text-background);
 // }

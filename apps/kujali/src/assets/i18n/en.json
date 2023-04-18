@@ -265,6 +265,47 @@
       "BANKING": "Bank Accounts"
     }
   },
+  "CONTACT": {
+    "TABLE": {
+      "NAME": "Name",
+      "PHONE": "Phone",
+      "EMAIL": "Email",
+      "COMPANY": "Company",
+      "TAGS": "Tags",
+      "ROLES": "Roles"
+    },
+    "ADDNEWCONTACT" : {
+      "ADD-NEW-CONTACT": "Add New Contact",
+      "OR": "or",
+      "FIRST-NAME": "First Name",
+      "LAST-NAME": "Last Name",
+      "EMAIL": "Email",
+      "DEF-FIRST-NAME": "Jack",
+      "DEF-LAST-NAME": "Sparrow",
+      "DEF-EMAIL": "jacksparrow@company.xyz",
+      "PHONE-NUMBER": "Phone",
+      "COMPANY": "Company",
+      "ROLE": "Role",
+      "DEF-NEW-TAGS": "New tags",
+      "CREATE-CONTACT": "Create Contact",
+      "CANCEL": "Cancel",
+      "OPTIONAL": "Optional",
+      "CREATE-ROLE": "Create Role",
+      "CREATE": "Create",
+      "ADD-NEW-ROLE": "Add New Role",
+      "OTHER": "Other",
+      "OTHERS": "Others"
+    }
+  },
+  "COMPANY": {
+    "TABLE": {
+      "NAME": "Name",
+      "ACCMANAGER": "Account Manager",
+      "HQ": "Headquarters",
+      "ACTIVE-OPPORTUNITIES": "Active Opportunities",
+      "TAGS": "Tags"
+    }
+  },
   "INVOICES" : {
     "HEADER" : {
       "INVOICE" : "Invoice",

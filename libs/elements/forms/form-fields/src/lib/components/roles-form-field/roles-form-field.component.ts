@@ -13,7 +13,7 @@ import { ContactRolesStore } from '@app/state/roles';
 
 
 @Component({
-  selector: 'volk-crm-roles-form-field',
+  selector: 'roles-form-field',
   templateUrl: './roles-form-field.component.html',
   styleUrls: ['./roles-form-field.component.scss']
 })
@@ -33,9 +33,9 @@ export class RolesFormFieldComponent implements OnInit {
 
   addRoleFormGroup: FormGroup;
 
-  constructor(private _roles$$: ContactRolesStore,
-              private _translateService: TranslateService,
-              private _fb: FormBuilder
+  constructor(private _fb: FormBuilder,
+              private _roles$$: ContactRolesStore,
+              private _translateService: TranslateService
   ) { }
 
   ngOnInit(): void {

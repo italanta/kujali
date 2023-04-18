@@ -35,7 +35,7 @@ import { AddNewContactFormComponent } from './components/add-new-contact-form/ad
     MatDialogModule,
     MatChipsModule,
 
-    // FormFieldsModule,
+    FormFieldsModule,
     MatFormFieldModule, MatInputModule
   ],
   declarations: [

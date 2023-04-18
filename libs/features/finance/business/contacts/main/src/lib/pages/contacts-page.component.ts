@@ -115,7 +115,7 @@ export class ContactsPageComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   openAddNewDialog() {
-    this._sbS.sink = this.dialog.open(AddNewContactFormComponent, {panelClass: 'full-width-dialog'})
+    this._sbS.sink = this.dialog.open(AddNewContactFormComponent, {minWidth: '700px'})
     .afterClosed().subscribe();
   }
 

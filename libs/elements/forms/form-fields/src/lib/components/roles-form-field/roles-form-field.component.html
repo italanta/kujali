@@ -7,7 +7,7 @@
             </span>
         </mat-select-trigger>
 
-        <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="rolesList" (filteredReturn)="filteredRoles =$event"></mat-select-filter>
+        <mat-select-filter [placeholder]="'Filter'" [displayMember]="'id'" [array]="rolesList" (filteredReturn)="filteredRoles=$event"></mat-select-filter>
         <mat-option *ngFor="let role of filteredRoles" [value]="role.id">
           {{role.id}}
         </mat-option>
@@ -25,8 +25,10 @@
             </div>
         </form> 
         <ng-template #roleBtn>
-            <button class="addRbtn" mat-raised-button color="primary" (click)="toogleAddRole()"><i
-                    class="bi bi-plus"></i>{{ 'CONTACT.ADDNEWCONTACT.ADD-NEW-ROLE' | transloco }} </button>
+            <button class="addRbtn" mat-raised-button color="primary" (click)="toogleAddRole()">
+                <i class="fas fa-plus" style="color: #000000;"></i>
+                <span style="color: #000000;">{{ 'CONTACT.ADDNEWCONTACT.ADD-NEW-ROLE' | transloco }}</span>
+            </button>
         </ng-template>
     </mat-select>
   </mat-form-field>

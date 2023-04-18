@@ -1,122 +1,122 @@
 <app-page>
-    <div fullContent>
-        <kujali-finance-toolbar>
-            <kujali-finance-search-header-card header (toogleFilterEvent)='toogleFilter($event)'
-                (searchTableEvent)='applyFilter($event)' [tableData]="allTableData">
-                <div add-new>
-                    <button mat-flat-button (click)="openAddNewDialog()" class="add-new"> 
-                        <i class="bi bi-plus-circle-fill"></i> 
-                        {{'HEADER-ADD-NEW' | transloco}}
-                    </button>
-                </div>
-            </kujali-finance-search-header-card>
-        </kujali-finance-toolbar>
+	<div>
+		<kujali-finance-toolbar>
+			<kujali-finance-search-header-card header (toogleFilterEvent)='toogleFilter($event)'
+				(searchTableEvent)='applyFilter($event)' [tableData]="allTableData">
+				<div add-new>
+					<button mat-flat-button (click)="openAddNewDialog()" class="add-new">
+						<i class="bi bi-plus-circle-fill"></i>
+						{{'HEADER-ADD-NEW' | transloco}}
+					</button>
+				</div>
+			</kujali-finance-search-header-card>
+		</kujali-finance-toolbar>
 
-        <div *ngIf="showFilter" class="filter-section">
-            <app-contacts-filter (filterChanged)='fieldsFilter($event)'>
-            </app-contacts-filter>
-        </div>
+		<div *ngIf="showFilter" class="filter-section">
+			<app-contacts-filter (filterChanged)='fieldsFilter($event)'>
+			</app-contacts-filter>
+		</div>
 
-        <div class="table-container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
-            <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+		<div class="table-container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
+			<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-                <!-- Image Column -->
-                <ng-container matColumnDef="imageurl">
-                    <th mat-header-cell *matHeaderCellDef> </th>
-                    <td mat-cell *matCellDef="let contact" (click)="viewContact(contact.id)">
-                        <img *ngIf="contact.logoImgUrl; else show" [src]="contact.logoImgUrl" />
-                        <ng-template #show>
-                            <p class="nameChar">{{contact.fName.charAt(0)}}{{contact.lName.charAt(0)}}</p>
-                        </ng-template>
-                    </td>
-                </ng-container>
+				<!-- Image Column -->
+				<ng-container matColumnDef="imageurl">
+					<th mat-header-cell *matHeaderCellDef> </th>
+					<td mat-cell *matCellDef="let contact" (click)="viewContact(contact.id)">
+						<img *ngIf="contact.logoImgUrl; else show" [src]="contact.logoImgUrl" />
+						<ng-template #show>
+							<p class="nameChar">{{contact.fName.charAt(0)}}{{contact.lName.charAt(0)}}</p>
+						</ng-template>
+					</td>
+				</ng-container>
 
-                <!-- Full Name Column -->
-                <ng-container matColumnDef="fullName">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{"CONTACT.TABLE.NAME" | transloco}}</th>
-                    <td mat-cell *matCellDef="let contact" (click)="viewContact(contact.id)"> {{contact.fullName}} </td>
-                </ng-container>
+				<!-- Full Name Column -->
+				<ng-container matColumnDef="fullName">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>{{"CONTACT.TABLE.NAME" | transloco}}</th>
+					<td mat-cell *matCellDef="let contact" (click)="viewContact(contact.id)"> {{contact.fullName}} </td>
+				</ng-container>
 
-                <!-- Company Column -->
-                <ng-container matColumnDef="company">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{"CONTACT.TABLE.COMPANY" | transloco}} </th>
-                    <td mat-cell *matCellDef="let contact" (click)="viewContact(contact.id)">
-                        <div *ngIf="contact.company; else dash">{{getCompanyNames(contact.company)}}</div>
-                        <ng-template #dash> - </ng-template>
-                    </td>
-                </ng-container>
+				<!-- Company Column -->
+				<ng-container matColumnDef="company">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> {{"CONTACT.TABLE.COMPANY" | transloco}} </th>
+					<td mat-cell *matCellDef="let contact" (click)="viewContact(contact.id)">
+						<div *ngIf="contact.company; else dash">{{getCompanyNames(contact.company)}}</div>
+						<ng-template #dash> - </ng-template>
+					</td>
+				</ng-container>
 
-                <!-- Phone Number Column -->
-                <ng-container matColumnDef="phone">
-                    <th mat-header-cell *matHeaderCellDef> {{"CONTACT.TABLE.PHONE" | transloco}} </th>
-                    <td mat-cell *matCellDef="let contact" (click)="viewContact(contact.id)">
-                        <div *ngIf="contact.phone; else dash">{{contact.phone}}</div>
-                        <ng-template #dash> - </ng-template>
-                    </td>
-                </ng-container>
+				<!-- Phone Number Column -->
+				<ng-container matColumnDef="phone">
+					<th mat-header-cell *matHeaderCellDef> {{"CONTACT.TABLE.PHONE" | transloco}} </th>
+					<td mat-cell *matCellDef="let contact" (click)="viewContact(contact.id)">
+						<div *ngIf="contact.phone; else dash">{{contact.phone}}</div>
+						<ng-template #dash> - </ng-template>
+					</td>
+				</ng-container>
 
-                <!-- Email Column -->
-                <ng-container matColumnDef="email">
-                    <th mat-header-cell *matHeaderCellDef> {{"CONTACT.TABLE.EMAIL" | transloco}} </th>
-                    <td mat-cell *matCellDef="let contact" (click)="viewContact(contact.id)">
-                        <div *ngIf="contact.email; else dash">{{contact.email}}</div>
-                        <ng-template #dash> - </ng-template>
-                    </td>
-                </ng-container>
+				<!-- Email Column -->
+				<ng-container matColumnDef="email">
+					<th mat-header-cell *matHeaderCellDef> {{"CONTACT.TABLE.EMAIL" | transloco}} </th>
+					<td mat-cell *matCellDef="let contact" (click)="viewContact(contact.id)">
+						<div *ngIf="contact.email; else dash">{{contact.email}}</div>
+						<ng-template #dash> - </ng-template>
+					</td>
+				</ng-container>
 
-                <!-- Roles column -->
-                <ng-container matColumnDef="roles">
-                    <th mat-header-cell *matHeaderCellDef> {{"CONTACT.TABLE.ROLES" | transloco}} </th>
-                    <td mat-cell *matCellDef="let contact" (click)="viewContact(contact.id)">
-                        <div *ngIf="contact.tags; else dash">
-                            <ng-template [ngIf]="contact.role.length === 1">
-                                <div>
-                                    <p (click)="viewContact(contact.id)">{{contact.role[0]}}</p>
-                                </div>
-                            </ng-template>
+				<!-- Roles column -->
+				<ng-container matColumnDef="roles">
+					<th mat-header-cell *matHeaderCellDef> {{"CONTACT.TABLE.ROLES" | transloco}} </th>
+					<td mat-cell *matCellDef="let contact" (click)="viewContact(contact.id)">
+						<div *ngIf="contact.tags; else dash">
+							<ng-template [ngIf]="contact.role.length === 1">
+								<div>
+									<p (click)="viewContact(contact.id)">{{contact.role[0]}}</p>
+								</div>
+							</ng-template>
 
-                            <ng-template [ngIf]="contact.role.length >= 2">
-                                <div class="mydiv" fxLayout="row">
-                                    <p>{{contact.role[0]}}</p>
-                                    <p> (+{{contact.role.length-1}})</p>
-                                </div>
-                                <div class="hide">{{contact.role}}</div>
-                            </ng-template>
-                        </div>
-                        <ng-template #dash> - </ng-template>
-                    </td>
-                </ng-container>
+							<ng-template [ngIf]="contact.role.length >= 2">
+								<div class="mydiv" fxLayout="row">
+									<p>{{contact.role[0]}}</p>
+									<p> (+{{contact.role.length-1}})</p>
+								</div>
+								<div class="hide">{{contact.role}}</div>
+							</ng-template>
+						</div>
+						<ng-template #dash> - </ng-template>
+					</td>
+				</ng-container>
 
-                <!-- Tags Column -->
-                <ng-container matColumnDef="tags">
-                    <th mat-header-cell *matHeaderCellDef> {{"CONTACT.TABLE.TAGS" | transloco}} </th>
-                    <td mat-cell *matCellDef="let contact" (click)="viewContact(contact.id)">
+				<!-- Tags Column -->
+				<ng-container matColumnDef="tags">
+					<th mat-header-cell *matHeaderCellDef> {{"CONTACT.TABLE.TAGS" | transloco}} </th>
+					<td mat-cell *matCellDef="let contact" (click)="viewContact(contact.id)">
 
-                        <div *ngIf="contact.tags; else dash">
-                            <ng-template [ngIf]="contact.tags.length === 1">
-                                <div>
-                                    <p class="tag" (click)="viewContact(contact.id)">{{contact.tags[0]}}</p>
-                                </div>
-                            </ng-template>
+						<div *ngIf="contact.tags; else dash">
+							<ng-template [ngIf]="contact.tags.length === 1">
+								<div>
+									<p class="tag" (click)="viewContact(contact.id)">{{contact.tags[0]}}</p>
+								</div>
+							</ng-template>
 
-                            <ng-template [ngIf]="contact.tags.length >= 2">
-                                <div class="mydiv" fxLayout="row">
-                                    <p class="tag">{{contact.tags[0]}}</p>
-                                    <!-- <p class="tag"> {{contact.tags[1]}}</p> -->
-                                    <p class="extra-tag"> +{{contact.tags.length-1}}</p>
-                                </div>
-                                <div class="hide">{{contact.tags}}</div>
-                            </ng-template>
-                        </div>
-                        <ng-template #dash> - </ng-template>
-                    </td>
-                </ng-container>
+							<ng-template [ngIf]="contact.tags.length >= 2">
+								<div class="mydiv" fxLayout="row">
+									<p class="tag">{{contact.tags[0]}}</p>
+									<!-- <p class="tag"> {{contact.tags[1]}}</p> -->
+									<p class="extra-tag"> +{{contact.tags.length-1}}</p>
+								</div>
+								<div class="hide">{{contact.tags}}</div>
+							</ng-template>
+						</div>
+						<ng-template #dash> - </ng-template>
+					</td>
+				</ng-container>
 
-                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-        </div>
-        <mat-paginator [pageSizeOptions]="[20, 30]" showFirstLastButtons>
-        </mat-paginator>
-    </div>
+				<tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+			</table>
+		</div>
+		<mat-paginator [pageSizeOptions]="[20, 30]" showFirstLastButtons>
+		</mat-paginator>
+	</div>
 </app-page>

@@ -18,23 +18,23 @@ table {
   display: none;
   position: absolute;
   width: fit-content;
-  background-color: var(--volk-color-text-black);
+  background-color: var(--kujali-color-text-black);
 }
 
 .mydiv:hover + .hide {
   padding: 2px;
   border-radius: 5px;
   display: block;
-  color: var(--volk-color-text-black);
+  color: var(--kujali-color-text-black);
   font-size: 8px;
-  color: var(--volk-color-text-white);
+  color: var(--kujali-color-text-white);
 }
 img,
 .nameChar {
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background-color: var(--volk-color-text-background);
+  background-color: var(--kujali-color-text-background);
   border: none;
   outline: none;
 }
@@ -43,28 +43,28 @@ img,
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--volk-color-primary);
+  color: var(--kujali-color-primary);
 }
 .tag,
 .extra-tag {
   padding: 2px;
   border-radius: 5px;
   margin: 0px 5px 0px 0px;
-  background-color: var(--volk-color-text-background);
+  background-color: var(--kujali-color-text-background);
   width: fit-content;
-  color: var(--volk-color-primary);
+  color: var(--kujali-color-primary);
 }
 .vl {
   border-left: 5px solid white;
   height: 20px;
 }
 .extra-tag {
-  color: var(--volk-color-primary);
+  color: var(--kujali-color-primary);
 }
 
 td.mat-column-fullName {
   font-weight: 600;
-  color: var(--volk-color-text-black);
+  color: var(--kujali-color-text-black);
 }
 
 td.mat-column-imageurl {
@@ -72,12 +72,12 @@ td.mat-column-imageurl {
 }
 
 .mat-header-cell {
-  background-color: var(--volk-color-primary-background);
+  background-color: var(--kujali-color-primary-background);
   font-weight: 600;
   font-size: 15px;
 }
 .mat-row:hover .mat-cell {
-  background-color: var(--volk-color-primary-background);
+  background-color: var(--kujali-color-primary-background);
   cursor: pointer;
 }
 
@@ -88,7 +88,7 @@ td.mat-column-company,
 td.mat-column-roles,
 td.mat-column-tags {
   font-weight: 600;
-  color: var(--volk-color-nav-inactive);
+  color: var(--kujali-color-nav-inactive);
 }
 
 ::ng-deep .mat-elevation-z8 {
@@ -97,7 +97,7 @@ td.mat-column-tags {
 
 .search-header div:first-of-type p:last-of-type {
   margin: 0;
-  color: var(--volk-color-nav-inactive);
+  color: var(--kujali-color-nav-inactive);
   padding-top: 10px;
   font-size: 15px;
 }
@@ -106,7 +106,7 @@ td.mat-column-tags {
   margin: 0px 5px 0px 10px;
   font-size: 32px;
   font-weight: 600;
-  color: var(--volk-color-text-black);
+  color: var(--kujali-color-text-black);
 }
 
 .search-input {
@@ -119,24 +119,24 @@ td.mat-column-tags {
   margin-right: 5px;
 }
 .search-input i {
-  color: var(--volk-color-nav-inactive);
+  color: var(--kujali-color-nav-inactive);
 }
 .search-input input {
   outline: none;
   border: none;
   margin-left: 5px;
-  color: var(--volk-color-text-black);
+  color: var(--kujali-color-text-black);
 }
 
 .filter {
   cursor: pointer;
   padding: 5px;
   border-radius: 2px;
-  color: var(--volk-color-nav-inactive);
+  color: var(--kujali-color-nav-inactive);
   margin-right: 20px;
   margin-left: 20px;
   border: none;
-  background-color: var(--volk-color-text-white);
+  background-color: var(--kujali-color-text-white);
 }
 
 .filter i {
@@ -155,12 +155,12 @@ td.mat-column-tags {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--volk-color-primary-background); 
+  background: var(--kujali-color-primary-background); 
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--volk-color-text-inactive-bolder);
+  background: var(--kujali-color-text-inactive-bolder);
   border-radius: 3px; 
 }
 

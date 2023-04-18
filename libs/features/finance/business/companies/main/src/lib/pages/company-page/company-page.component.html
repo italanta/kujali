@@ -1,111 +1,110 @@
 <app-page>
-    <div fullContent>
-        <kujali-finance-toolbar class="toolbar">
-            <kujali-finance-search-header-card header (toogleFilterEvent)='toogleFilter($event)' (searchTableEvent)='applyFilter($event)' [tableData]="allTableData">
-                <div add-new>
-                    <button *hasWriteAccess="CAN_CREATE_COMPANIES" mat-flat-button (click)="openAddNewDialog()" class="add-new"> 
-                        <i class="bi bi-plus-circle-fill"></i> 
-                        {{'HEADER-ADD-NEW' | transloco}}
-                    </button>
-                </div>
-            </kujali-finance-search-header-card>
-        </kujali-finance-toolbar>
+	<div>
+		<kujali-finance-toolbar class="toolbar">
+			<kujali-finance-search-header-card header (toogleFilterEvent)='toogleFilter($event)'
+				(searchTableEvent)='applyFilter($event)' [tableData]="allTableData">
+				<div add-new>
+					<button mat-flat-button (click)="openAddNewDialog()" class="add-new">
+						<i class="bi bi-plus-circle-fill"></i>
+						{{'HEADER-ADD-NEW' | transloco}}
+					</button>
+				</div>
+			</kujali-finance-search-header-card>
+		</kujali-finance-toolbar>
 
-        <div *ngIf="showFilter" class="filter-section">
-            <kujali-company-filter (filterChanged)='fieldsFilter($event)'></kujali-company-filter>
-        </div>
+		<div *ngIf="showFilter" class="filter-section">
+			<kujali-company-filter (filterChanged)='fieldsFilter($event)'></kujali-company-filter>
+		</div>
 
-        <div class="table-container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
-            <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+		<div class="table-container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
+			<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-                <!-- Image Column -->
-                <ng-container matColumnDef="logoImgUrl">
-                    <th mat-header-cell *matHeaderCellDef> </th>
-                    <td mat-cell *matCellDef="let company" (click)="viewcompany(company.id)">
-                        <img  class="img-url" *ngIf="company.logoImgUrl; else show" [src]="company.logoImgUrl" />
+				<!-- Image Column -->
+				<ng-container matColumnDef="logoImgUrl">
+					<th mat-header-cell *matHeaderCellDef> </th>
+					<td mat-cell *matCellDef="let company" (click)="viewcompany(company.id)">
+						<img class="img-url" *ngIf="company.logoImgUrl; else show" [src]="company.logoImgUrl" />
 
-                        <ng-template #show>
-                            <div class="nameChar"><img
-                                    src="assets/icons/company-icon.svg"
-                                    alt=""></div>
-                        </ng-template>
-                    </td>
-                </ng-container>
+						<ng-template #show>
+							<div class="nameChar"><img src="assets/icons/company-icon.svg" alt=""></div>
+						</ng-template>
+					</td>
+				</ng-container>
 
-                <!-- Full Name Column -->
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{"COMPANY.TABLE.NAME" | transloco}}</th>
-                    <td mat-cell *matCellDef="let company" (click)="viewcompany(company.id)"> {{company.name}} </td>
-                </ng-container>
+				<!-- Full Name Column -->
+				<ng-container matColumnDef="name">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>{{"COMPANY.TABLE.NAME" | transloco}}</th>
+					<td mat-cell *matCellDef="let company" (click)="viewcompany(company.id)"> {{company.name}} </td>
+				</ng-container>
 
-                <!-- Account manager Column -->
-                <ng-container matColumnDef="manager">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header>{{"COMPANY.TABLE.ACCMANAGER" | transloco}}</th>
-                    <td mat-cell *matCellDef="let company" (click)="viewcompany(company.id)">
-                        <div *ngIf="company?.accManager?.length > 0; else dash" >{{company.accManager}}</div>
-                        <ng-template #dash> - </ng-template>
-                    </td>
-                </ng-container>
+				<!-- Account manager Column -->
+				<ng-container matColumnDef="manager">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header>{{"COMPANY.TABLE.ACCMANAGER" | transloco}}</th>
+					<td mat-cell *matCellDef="let company" (click)="viewcompany(company.id)">
+						<div *ngIf="company?.accManager?.length > 0; else dash">{{company.accManager}}</div>
+						<ng-template #dash> - </ng-template>
+					</td>
+				</ng-container>
 
-                <!-- HQ Column -->
-                <ng-container matColumnDef="headquarters">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{"COMPANY.TABLE.HQ" | transloco}} </th>
-                    <td mat-cell *matCellDef="let company" (click)="viewcompany(company.id)">
-                        <div *ngIf="company.hq; else dash">{{company.hq}}</div>
-                        <ng-template #dash> - </ng-template>
-                    </td>
-                </ng-container>
+				<!-- HQ Column -->
+				<ng-container matColumnDef="headquarters">
+					<th mat-header-cell *matHeaderCellDef mat-sort-header> {{"COMPANY.TABLE.HQ" | transloco}} </th>
+					<td mat-cell *matCellDef="let company" (click)="viewcompany(company.id)">
+						<div *ngIf="company.hq; else dash">{{company.hq}}</div>
+						<ng-template #dash> - </ng-template>
+					</td>
+				</ng-container>
 
-                <!-- Opportunities Column -->
-                <ng-container matColumnDef="opportunities">
-                    <th mat-header-cell *matHeaderCellDef>{{"COMPANY.TABLE.ACTIVE-OPPORTUNITIES" | transloco}}</th>
-                    <td mat-cell *matCellDef="let company" (click)="viewcompany(company.id)">
-                        <div *ngIf="company.name; else dash">{{getActiveOpps(company.id)}}</div>
-                        <ng-template #dash> - </ng-template>
-                    </td>
-                </ng-container>
-
-
-                <!-- Tags Column -->
-                <ng-container matColumnDef="tags">
-                    <th mat-header-cell *matHeaderCellDef> {{"COMPANY.TABLE.TAGS" | transloco}} </th>
-                    <td mat-cell *matCellDef="let company" (click)="viewcompany(company.id)">
-
-                        <div *ngIf="company.tags; else dash">
-                            <ng-template [ngIf]="company.tags.length === 1">
-                                <div>
-                                    <p class="tag" (click)="viewcompany(company.id)">{{company.tags[0]}}</p>
-                                </div>
-                            </ng-template>
-
-                            <ng-template [ngIf]="company.tags.length >= 2">
-
-                                <div class="mydiv" fxLayout="row">
-                                    <p class="tag">{{company.tags[0]}}</p>
-                                    <!-- <p class="tag"> {{company.tags[1]}}</p> -->
-                                    <p class="extra-tag"> +{{company.tags.length-1}}</p>
-                                </div>
-
-                                <div class="hide">{{company.tags}}</div>
-
-                            </ng-template>
-
-                        </div>
-
-                        <ng-template #dash> - </ng-template>
+				<!-- Opportunities Column -->
+				<ng-container matColumnDef="opportunities">
+					<th mat-header-cell *matHeaderCellDef>{{"COMPANY.TABLE.ACTIVE-OPPORTUNITIES" | transloco}}</th>
+					<td mat-cell *matCellDef="let company" (click)="viewcompany(company.id)">
+						<div *ngIf="company.name; else dash">{{getActiveOpps(company.id)}}</div>
+						<ng-template #dash> - </ng-template>
+					</td>
+				</ng-container>
 
 
-                    </td>
+				<!-- Tags Column -->
+				<ng-container matColumnDef="tags">
+					<th mat-header-cell *matHeaderCellDef> {{"COMPANY.TABLE.TAGS" | transloco}} </th>
+					<td mat-cell *matCellDef="let company" (click)="viewcompany(company.id)">
 
-                </ng-container>
+						<div *ngIf="company.tags; else dash">
+							<ng-template [ngIf]="company.tags.length === 1">
+								<div>
+									<p class="tag" (click)="viewcompany(company.id)">{{company.tags[0]}}</p>
+								</div>
+							</ng-template>
 
-                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
+							<ng-template [ngIf]="company.tags.length >= 2">
 
-        </div>
+								<div class="mydiv" fxLayout="row">
+									<p class="tag">{{company.tags[0]}}</p>
+									<!-- <p class="tag"> {{company.tags[1]}}</p> -->
+									<p class="extra-tag"> +{{company.tags.length-1}}</p>
+								</div>
 
-        <mat-paginator [pageSizeOptions]="[20, 30]" showFirstLastButtons>
-        </mat-paginator>
-    </div>
+								<div class="hide">{{company.tags}}</div>
+
+							</ng-template>
+
+						</div>
+
+						<ng-template #dash> - </ng-template>
+
+
+					</td>
+
+				</ng-container>
+
+				<tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+			</table>
+
+		</div>
+
+		<mat-paginator [pageSizeOptions]="[20, 30]" showFirstLastButtons>
+		</mat-paginator>
+	</div>
 </app-page>

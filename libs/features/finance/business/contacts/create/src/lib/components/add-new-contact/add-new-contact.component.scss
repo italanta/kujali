@@ -2,13 +2,13 @@ h2,
 h4,
 p,
 input {
-  font-family: var(--volk-font-poppins-family);
+  font-family: var(--kujali-font-poppins-family);
 }
 
 h2,
 h4 {
   font-weight: 600;
-  color: var(--volk-color-text-black);
+  color: var(--kujali-color-text-black);
   font-size: 1.125rem;
 }
 
@@ -17,7 +17,7 @@ h4 {
 }
 
 .create-contact-btn {
-  color: var(--volk-color-text-white);
+  color: var(--kujali-color-text-white);
 }
 
 .addNewContactFormGroup.ng-invalid.ng-touched input {
@@ -37,20 +37,20 @@ mat-chip {
 }
 
 .extra-label{
-  color: var(--volk-color-nav-inactive);
+  color: var(--kujali-color-nav-inactive);
   font-size: 0.825rem;
   margin: 0px 0px 0px 7px;
   padding: 0;
 }
 .or {
-  color: var(--volk-color-nav-inactive);
+  color: var(--kujali-color-nav-inactive);
   font-size: 0.825rem;
   margin: 0px 0px 0px 5px;
   padding: 0;
 }
 
 .submit-btn {
-  color: var(--volk-color-text-white);
+  color: var(--kujali-color-text-white);
 }
 
 input {
@@ -59,8 +59,8 @@ input {
 .selected-tags span {
   padding: 2px;
   border-radius: 5px;
-  background-color: var( --volk-color-text-background);
-  color: var(--volk-color-primary);
+  background-color: var( --kujali-color-text-background);
+  color: var(--kujali-color-primary);
   margin-right: 10px;
 }
 
@@ -73,8 +73,8 @@ input {
 }
 
 ::ng-deep .mat-chip.mat-standard-chip{
-  background-color: var(--volk-color-text-background);
-  color: var(--volk-color-primary);
+  background-color: var(--kujali-color-text-background);
+  color: var(--kujali-color-primary);
   border-radius: 5px;
 }
 
