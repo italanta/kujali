@@ -18,7 +18,8 @@
         "styles": [
           "libs/elements/theming/_theme.scss",
           "libs/elements/theming/_variables.scss",
-          "apps/kujali/src/styles.scss"
+          "apps/kujali/src/styles.scss",
+          "node_modules/intl-tel-input/build/css/intlTelInput.css"
         ],
         "stylePreprocessorOptions": {
           "includePaths": ["libs/elements/theming"]

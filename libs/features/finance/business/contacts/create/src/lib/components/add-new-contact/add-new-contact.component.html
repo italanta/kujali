@@ -1,0 +1,44 @@
+<form [formGroup]="contact" class="contact" fxLayout="column" fxLayoutAlign="start">
+    <div fxLayout="row" fxFill fxLayoutAlign="space-between" fxLayoutGap="20px">
+        <div fxLayout="column" fxFlex="45">
+            <h4>{{ 'CONTACT.ADDNEWCONTACT.FIRST-NAME' | transloco }}</h4>
+            <mat-form-field appearance="outline" fxFlex>
+                <input matInput name="fName" type="text" formControlName="fName"
+                    [placeholder]=" 'CONTACT.ADDNEWCONTACT.DEF-FIRST-NAME' | transloco" />
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+            <h4>{{ 'CONTACT.ADDNEWCONTACT.LAST-NAME' | transloco }}</h4>
+            <mat-form-field appearance="outline" fxFlex>
+                <input matInput name="lName" type="text" formControlName="lName"
+                    [placeholder]=" 'CONTACT.ADDNEWCONTACT.DEF-LAST-NAME' | transloco" />
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="column" fxLayoutAlign="start" fxFlex="45%">
+            <h4>{{ 'CONTACT.ADDNEWCONTACT.PHONE-NUMBER' | transloco }}</h4>
+            <mat-form-field appearance="outline" fxFlex>
+                <input matInput name="phone" type="number"
+                    onkeypress="return event.charCode >= 48 && event.charCode <= 57" formControlName="phone"
+                    (countryChange)="onCountryChange($event)" [ng2TelInputOptions]="{initialCountry: 'be'}"
+                    ng2TelInput />
+            </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" fxFlex>
+            <div>
+                <p class="or">{{ 'CONTACT.ADDNEWCONTACT.OR' | transloco }}</p>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="start" fxFlex>
+                <h4>{{ 'CONTACT.ADDNEWCONTACT.EMAIL' | transloco }}</h4>
+                <mat-form-field appearance="outline" fxFlex>
+                    <input matInput name="email" type="email" formControlName="email"
+                        [placeholder]=" 'CONTACT.ADDNEWCONTACT.DEF-EMAIL' | transloco" />
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</form>

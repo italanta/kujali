@@ -1,0 +1,90 @@
+h2,
+h4,
+p,
+input {
+  font-family: var(--volk-font-poppins-family);
+}
+
+h2,
+h4 {
+  font-weight: 600;
+  color: var(--volk-color-text-black);
+  font-size: 1.125rem;
+}
+
+h4 {
+  margin: 0;
+}
+
+.padd-top {
+  padding-top: 20px;
+}
+
+.create-contact-btn {
+  color: var(--volk-color-text-white);
+}
+
+.addNewContactFormGroup.ng-invalid.ng-touched input {
+  border:1px solid red;
+}
+
+.extra-label{
+  color: var(--volk-color-nav-inactive);
+  font-size: 0.825rem;
+  margin: 0px 0px 0px 7px;
+  padding: 0;
+}
+.or {
+  color: var(--volk-color-nav-inactive);
+  font-size: 0.825rem;
+  margin: 0px 0px 0px 5px;
+  padding: 0;
+}
+
+.submit-btn {
+  color: var(--volk-color-text-white);
+}
+
+::ng-deep .mat-form-field-infix {
+  border-top-width: 2px !important;
+}
+
+::ng-deep .mat-input-element {
+  caret-color: white;
+}
+
+::ng-deep  .mat-chip.mat-standard-chip {
+  background-color: var(--volk-color-text-background);
+  color: var(--volk-color-primary);
+  border-radius: 5px;
+}
+
+input {
+  caret-color: black;
+}
+
+::ng-deep  .mat-autocom {
+  margin-top: 10px;
+  padding: 5px 0px;
+  display: flex;
+  box-shadow: none;
+}
+
+::ng-deep  .mat-autocom:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+}
+
+::ng-deep  .test {
+  min-width: fit-content;
+  height: 20px;
+  padding: 5px 5px; 
+}
+
+::ng-deep .test span {
+  line-height: 20px;
+  padding: 2px;
+  border-radius: 5px;
+  background-color: var(--volk-color-text-background);
+  color: var(--volk-color-primary);
+  margin-right: 10px;
+}

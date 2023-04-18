@@ -1,0 +1,85 @@
+<form [formGroup]="addNewContactFormGroup" (ngSubmit)="onSubmitForm()" fxLayout="column" fxLayoutAlign="start">
+  <h2 mat-dialog-title> {{ 'CONTACT.ADDNEWCONTACT.ADD-NEW-CONTACT' | transloco }}</h2>
+  <mat-dialog-content class="mat-typography">
+
+    <!-- add new contact form  -->
+    <add-new-contact [contact]='addNewContactFormGroup' (countryCodeEvent)="getCountryCode($event)"></add-new-contact>
+
+    <!-- company -roles - tags field  -->
+    <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="20px">
+
+      <div fxLayout="column" fxLayoutAlign="start" fxFlex="45">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <h4>{{ 'CONTACT.ADDNEWCONTACT.COMPANY' | transloco }}</h4>
+          <p class="extra-label">{{ 'CONTACT.ADDNEWCONTACT.OPTIONAL' | transloco }}</p>
+        </div>
+
+        <mat-form-field appearance="outline">
+          <mat-select formControlName="company">
+            <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="companies" (filteredReturn)="filteredCompanies =$event"></mat-select-filter>
+            <mat-option value=""></mat-option>
+            <mat-option *ngFor="let company of filteredCompanies" [value]="company.id">
+              {{company.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+      <div fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+        <h4>{{ 'CONTACT.ADDNEWCONTACT.ROLE' | transloco }}</h4>
+        <volk-crm-roles-form-field fxFill></volk-crm-roles-form-field>
+      </div>
+
+    </div>
+
+    <div class="tags">
+      <mat-form-field class="chip-list" appearance="outline" fxFlex>
+        <mat-chip-list color="primary" #chipList>
+          <mat-chip color="primary" *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
+            (removed)="remove(tag)">
+            {{tag}}
+            <button matChipRemove *ngIf="removable">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input matInput [placeholder]="'CONTACT.ADDNEWCONTACT.DEF-NEW-TAGS' | transloco" #tagInput  [formControl]="tagCtrl" [matAutocomplete]="contact"
+            [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)"/>
+        </mat-chip-list>
+        <mat-autocomplete class="mat-autocom" #contact="matAutocomplete" (optionSelected)="selected($event)">
+          <mat-option class="test" *ngFor="let tag of filteredTags | async" [value]="tag">
+            {{tag}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <div *ngIf=" submitted && (fName?.invalid  || lName?.invalid || this.rolesComponent.roles?.invalid)"
+        class="errorMessage">
+        <mat-error>
+          {{ 'CONTACT.ADDNEWCONTACT.ERRORS.REQUIRED-FIELDS' | transloco }}
+        </mat-error>
+      </div>
+
+      <div *ngIf=" submitted && (addNewContactFormGroup.hasError('value'))" class="errorMessage">
+        <mat-error>
+          {{ 'CONTACT.ADDNEWCONTACT.ERRORS.PHONE-OR-EMAIL' | transloco }}
+        </mat-error>
+      </div>
+      <div *ngIf=" submitted && (addNewContactFormGroup.hasError('period'))" class="errorMessage">
+        <mat-error>
+          {{ 'FORMS.ERRORS.REMOVE-PERIOD' | transloco }}
+        </mat-error>
+      </div>
+    </div>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="padd-top" align="end">
+    <button mat-button mat-dialog-close>{{ 'CONTACT.ADDNEWCONTACT.CANCEL' | transloco }}</button>
+    <button class="submit-btn" type="submit" class="create-contact-btn" mat-raised-button color="primary"
+      cdkFocusInitial>{{ 'CONTACT.ADDNEWCONTACT.CREATE-CONTACT' | transloco }}</button>
+  </mat-dialog-actions>
+</form>
