@@ -143,7 +143,7 @@ export class InvoicesPageComponent implements OnInit {
 
   
   viewInvoice(invoiceId: string) {
-    this._router$$.navigate(['operations', 'invoices', invoiceId, 'edit']);
+    this._router$$.navigate(['business', 'invoices', invoiceId, 'edit']);
   }
 
   openSnackBar(message: string, action: string) {
@@ -151,7 +151,7 @@ export class InvoicesPageComponent implements OnInit {
   }
 
   createInvoice () {
-    this._router$$.navigate(['operations/invoices/create']);
+    this._router$$.navigate(['business/invoices/create']);
   }
 
   ngOnDestroy(): void {

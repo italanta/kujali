@@ -7,15 +7,15 @@ const INVOICES_ROUTES: Route[] = [
   { path: '', component: InvoicesPageComponent },
   {
     path: 'create',
-    loadChildren: () => import('libs/features/finance/operations/invoices/details/view/src/lib/invoices-view.module').then(m => m.InvoicesViewModule),
+    loadChildren: () => import('libs/features/finance/business/invoices/details/view/src/lib/invoices-view.module').then(m => m.InvoicesViewModule),
   },
   {
     path: ':id/edit',
-    loadChildren: () => import('libs/features/finance/operations/invoices/details/view/src/lib/invoices-view.module').then(m => m.InvoicesViewModule),
+    loadChildren: () => import('libs/features/finance/business/invoices/details/view/src/lib/invoices-view.module').then(m => m.InvoicesViewModule),
   },
   {
     path: ':id/new-invoice',
-    loadChildren: () => import('libs/features/finance/operations/invoices/details/view/src/lib/invoices-view.module').then(m => m.InvoicesViewModule),
+    loadChildren: () => import('libs/features/finance/business/invoices/details/view/src/lib/invoices-view.module').then(m => m.InvoicesViewModule),
   },
 ];
 

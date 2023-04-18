@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'features-finance-invoices-main',
+  displayName: 'features-finance-business-invoices-main',
   preset: '../../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -10,7 +10,7 @@ export default {
     },
   },
   coverageDirectory:
-    '../../../../../coverage/libs/features/finance/invoices/main',
+    '../../../../../coverage/libs/features/finance/business/invoices/main',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

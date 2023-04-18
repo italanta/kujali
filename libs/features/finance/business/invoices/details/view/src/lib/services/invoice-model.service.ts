@@ -8,7 +8,7 @@ groupBy as __groupBy } from 'lodash';
 
 import { Logger } from '@iote/bricks-angular';
 
-// import { InvoicePdfComponent } from '@app/features/finance/operations/invoices/details/invoice-documents';
+// import { InvoicePdfComponent } from '@app/features/finance/business/invoices/details/invoice-documents';
 
 @Injectable({
   providedIn: 'root'

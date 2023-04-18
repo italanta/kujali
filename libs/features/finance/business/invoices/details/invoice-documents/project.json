@@ -1,15 +1,15 @@
 {
-  "name": "features-finance-operations-invoices-details-invoice-documents",
+  "name": "features-finance-business-invoices-details-invoice-documents",
   "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/features/finance/operations/invoices/details/invoice-documents/src",
+  "sourceRoot": "libs/features/finance/business/invoices/details/invoice-documents/src",
   "prefix": "app",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/features/finance/operations/invoices/details/invoice-documents/jest.config.ts",
+        "jestConfig": "libs/features/finance/business/invoices/details/invoice-documents/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -18,8 +18,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/features/finance/operations/invoices/details/invoice-documents/**/*.ts",
-          "libs/features/finance/operations/invoices/details/invoice-documents/**/*.html"
+          "libs/features/finance/business/invoices/details/invoice-documents/**/*.ts",
+          "libs/features/finance/business/invoices/details/invoice-documents/**/*.html"
         ]
       }
     }
