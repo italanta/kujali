@@ -4,9 +4,9 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialDesignModule, MaterialBricksModule, FlexLayoutModule } from '@iote/bricks-angular';
+import { MultiLangModule } from '@ngfi/multi-lang';
 
 import { UserStateModule } from '@app/state/user';
-import { MultiLangModule } from '@ngfi/multi-lang';
 
 import { iTalPageModule } from '@app/elements/layout/page';
 

@@ -1,0 +1,62 @@
+<div class="filter" fxLayout="row" fxLayoutAlign="start center">
+
+  <div class="search-input">
+    <i class="bi bi-funnel-fill"></i>
+    <input [formControl]="searchControl" type="text" [placeholder]="'HEADER-SEARCH' | transloco">
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex>
+
+    <div class="fields" fxLayout="row" fxLayoutAlign="start center">
+      <!-- field one  -->
+      <mat-form-field appearance="outline">
+        <mat-label>{{"CONTACT.TABLE.COMPANY" | transloco}}</mat-label>
+        <mat-select [formControl]="companyControl" [compareWith]="compareFn" multiple>
+          <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="companiesList"
+            (filteredReturn)="filteredCompaniesList =$event"></mat-select-filter>
+          <mat-option *ngFor="let company of filteredCompaniesList" [value]="company.id">
+            {{company.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- field two  -->
+      <mat-form-field appearance="outline">
+        <mat-label>{{"CONTACT.TABLE.ROLES" | transloco}}</mat-label>
+        <mat-select [formControl]="rolesControl" multiple>
+          <mat-select-trigger>
+            {{rolesControl.value ? rolesControl.value[0] : ''}}
+            <span *ngIf="rolesControl.value?.length > 1" class="example-additional-selection">
+              (+{{rolesControl.value.length - 1}} {{rolesControl.value?.length === 2 ? 'other' : 'others'}})
+            </span>
+          </mat-select-trigger>
+          <mat-select-filter [placeholder]="'Filter'" [array]="rolesList" (filteredReturn)="filteredRolesList =$event">
+          </mat-select-filter>
+          <mat-option *ngFor="let role of filteredRolesList" [value]="role">{{role}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- field three -->
+      <mat-form-field appearance="outline">
+        <mat-label>{{"CONTACT.TABLE.TAGS" | transloco}}</mat-label>
+        <mat-select [formControl]="tagsControl" multiple>
+          <mat-select-trigger>
+            {{tagsControl.value ? tagsControl.value[0] : ''}}
+            <span *ngIf="tagsControl.value?.length > 1" class="example-additional-selection">
+              (+{{tagsControl.value.length - 1}} {{tagsControl.value?.length === 2 ? 'other' : 'others'}})
+            </span>
+          </mat-select-trigger>
+          <mat-select-filter [placeholder]="'Filter'" [array]="tagsList" (filteredReturn)="filteredTagsList =$event">
+          </mat-select-filter>
+          <mat-option *ngFor="let tag of filteredTagsList" [value]="tag">{{tag}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="clear">
+      <p (click)="clearFIlters()">{{"COMPANY.TABLE.CLEAR-FILTERS" | transloco}} ({{filterCount < 1 ? 0 :
+          filterCount}})</p>
+    </div>
+
+  </div>
+</div>

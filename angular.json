@@ -35,6 +35,7 @@
     "features-finance-banking-main": "libs/features/finance/banking/main",
     "features-finance-business-companies-create": "libs/features/finance/business/companies/create",
     "features-finance-business-companies-main": "libs/features/finance/business/companies/main",
+    "features-finance-business-contacts-main": "libs/features/finance/business/contacts/main",
     "features-finance-business-invoices-details-invoice-documents": "libs/features/finance/business/invoices/details/invoice-documents",
     "features-finance-business-invoices-details-view": "libs/features/finance/business/invoices/details/view",
     "features-finance-business-invoices-main": "libs/features/finance/business/invoices/main",
