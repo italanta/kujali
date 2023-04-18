@@ -21,10 +21,12 @@
           </div>
 
           <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px" fxFlex>
-            <div class="allocate-header__left__title"> {{ payment.amount - alloctedAmount < 0 ? 'Amount Over Allocated' : 'Amount Unallocated'}} </div>
+            <div class="allocate-header__left__title"> Amount Unallocated </div>
             <div class="allocate-header__left__amount" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
               <i class="fa-solid fa-euro-sign fa-xs" style="color: #0047AB"></i>
-              <span>{{ payment.allocStatus == 5 ? payment.credit - alloctedAmount: payment.amount - alloctedAmount  | number}}</span>
+              <span>
+                {{ getUnallocatedAmount(payment, payment.amount) | number }}
+              </span>
             </div>
           </div>
         </div>
@@ -41,7 +43,7 @@
 
         <button mat-raised-button color="primary">
           <i class="fa-solid fa-plus fa-lg"></i>
-          <span style="margin-left: 10px;" >New Invoice</span>
+          <span style="margin-left: 10px;">New Invoice</span>
         </button>
       </div>
 
@@ -56,11 +58,11 @@
 
             <!-- Invoice title -->
             <ng-container matColumnDef="select">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-                  <td mat-cell *matCellDef="let invoice" (click)="viewInvoice(invoice.id)">
-                    <mat-checkbox color="primary" (change)="invoiceSelected($event, invoice)" ></mat-checkbox>
-                  </td>
-              </ng-container>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+              <td mat-cell *matCellDef="let invoice" (click)="viewInvoice(invoice.id)">
+                <mat-checkbox color="primary" (change)="invoiceSelected($event, invoice)"></mat-checkbox>
+              </td>
+            </ng-container>
 
             <!-- Number Column -->
             <ng-container matColumnDef="number">
@@ -135,8 +137,8 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-stroked-button mat-dialog-close>Cancel</button>
-  <button [disabled]="selectedInvoices.length <= 0 || allocating" mat-raised-button color="primary" (click)="allocateTransaction()"
-    fxLayout="row" fxLayoutAlign="center center">
+  <button [disabled]="selectedInvoices.length <= 0 || allocating" mat-raised-button color="primary"
+    (click)="allocateTransaction()" fxLayout="row" fxLayoutAlign="center center">
     <span *ngIf="!allocating">Allocate Payment</span>
     <mat-spinner *ngIf="allocating" diameter="20" class="spinner"></mat-spinner>
   </button>

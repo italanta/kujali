@@ -15,6 +15,8 @@ import { Invoice, InvoiceAllocation } from '@app/model/finance/invoices';
 
 import { CALCULATE_INVOICE_TOTAL, InvoicesService } from '@app/state/finance/invoices';
 import { AllocationsStateService } from '@app/state/finance/allocations';
+import { BankTransaction, Payment } from '@app/model/finance/payments';
+import { PaymentAllocation } from '@app/model/finance/allocations';
 
 @Component({
   selector: 'app-allocate-transaction-modal',
@@ -95,6 +97,11 @@ export class AllocateTransactionModalComponent implements OnInit {
 
   getTotalAmount(invoice: Invoice) {
     return __round(CALCULATE_INVOICE_TOTAL(invoice), 2);
+  }
+
+  getUnallocatedAmount(payment: PaymentAllocation, payAmnt: number): number {
+    const amnt = payment.allocStatus == 5 ? payment.credit! - this.alloctedAmount: payAmnt - this.alloctedAmount;
+    return amnt > 0 ? amnt : 0;
   }
 
   allocateTransaction() {
