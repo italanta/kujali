@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 
 import { SubSink } from 'subsink';
 
@@ -8,10 +8,9 @@ import { SubSink } from 'subsink';
 @Component({
   selector: 'app-sidemenu',
   templateUrl: './sidemenu.component.html',
-  styleUrls: [ './sidemenu.component.scss' ]
+  styleUrls: ['./sidemenu.component.scss']
 })
-export class SideMenuComponent implements OnInit, OnDestroy
-{
+export class SideMenuComponent implements OnInit, AfterViewInit, OnDestroy {
   private _sbS = new SubSink();
 
   @Input() user: any;
@@ -22,20 +21,23 @@ export class SideMenuComponent implements OnInit, OnDestroy
   projectInfo: string;
 
   constructor(// private _org$$: ActiveOrgStore,
-              // private _flow$$: ActiveCommFlowStore,
-              @Inject('ENVIRONMENT') private _env: any)
-  {}
+    // private _flow$$: ActiveCommFlowStore,
+    @Inject('ENVIRONMENT') private _env: any) { }
 
-  ngOnInit()
-  {
+  ngOnInit() {
     // this.projectName = this._env.project.name;
     // this.projectInfo = this._env.project.info;
+
+
+  }
+
+  ngAfterViewInit(): void {
+
   }
 
   getLogo = () => 'assets/images/italanta-logo.png'
 
-  ngOnDestroy()
-  {
+  ngOnDestroy() {
     this._sbS.unsubscribe();
   }
 }

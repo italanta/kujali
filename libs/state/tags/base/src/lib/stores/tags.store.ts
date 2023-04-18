@@ -33,7 +33,7 @@ export class TagsStore extends DataStore<Tags> {
 
     const data$ = combineLatest([_activeOrg$$.get(), route$.pipe(startWith('companies'))])
     .pipe(tap(([o, r]) => {
-        const store = this._router$$.url.split('/')[1] + '-tags';
+        const store = this._router$$.url.split('/')[2] + '-tags';
         this._activeRepo = !!o ? _dataProvider.getRepo<Tags>(`orgs/${o.id}/${store}`) : (null as any);
       }),
       switchMap((r) =>

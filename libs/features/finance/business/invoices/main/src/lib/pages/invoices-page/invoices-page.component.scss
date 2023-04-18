@@ -47,6 +47,21 @@ td.mat-column-imageurl {
   box-shadow: none;
 }
 
+
+.partial-allocate-btn {
+  background-color: orange!important;
+  color: white!important;
+}
+
+.full-allocate-btn {
+  background-color: green!important;
+  color: white!important;
+}
+
+.unallocated-btn {
+  border: solid var(--kujali-color-primary-blue) 1px!important;
+}
+
 // Custom Scrollbar
 /* width */
 ::-webkit-scrollbar {

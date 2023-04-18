@@ -82,9 +82,8 @@ export class KujaliUsersService {
     return [];
   }
 
-  getOrgUser(userId: string): string {
-    let user: any = __find(this.orgUsers, { id: userId });
-    return user;
+  getOrgUser(userId: string): KuUser {
+    return __find(this.orgUsers, { id: userId })!;
   }
 
   isUserAssignedRole(role: string, roles: string[]): boolean {

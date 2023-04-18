@@ -310,6 +310,19 @@
       "HQ": "Headquarters",
       "ACTIVE-OPPORTUNITIES": "Active Opportunities",
       "TAGS": "Tags"
+    },
+    "ADD-NEW-COMPANY" : {
+      "ADD-NEW-COMPANY": "Add New Company",
+      "OR": "or",
+      "COMPANY-NAME": "Name",
+      "COMPANY-NAME-PLACEHOLDER": "Company XYZ",
+      "ADDRESS": "Physical Address",
+      "ADDRESS-PLACEHOLDER": "Physical Address",
+      "COMPANY-CONTACT": "Company Contact",
+      "OPTIONAL": "Optional",
+      "NEW-CONTACT": "New Contact",
+      "CANCEL": "Cancel",
+      "CREATE-COMPANY": "Create Company"
     }
   },
   "INVOICES" : {

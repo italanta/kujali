@@ -11,7 +11,6 @@ import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 
 import { round as __round } from 'lodash';
 
-import { TranslateService } from '@ngfi/multi-lang';
 import { __DateFromStorage } from '@iote/time';
 
 import { Invoice } from '@app/model/finance/invoices';
@@ -22,9 +21,10 @@ import { OpportunitiesService } from '@app/state/finance/opportunities';
 
 import { KujaliUsersService } from '@app/state/user';
 
-import { InvoicesService } from '@app/state/finance/invoices';
+import { CALCULATE_INVOICE_TOTAL, InvoicesService } from '@app/state/finance/invoices';
+import { AllocationsStateService } from '@app/state/finance/allocations';
 
-const DATA: Invoice[] = []
+import { COMBINE_INVOICE_AND_INVOICE_ALLLOCS } from '../../providers/invoice-allocs-util.function';
 
 @Component({
   selector: 'kujali-invoices-page',
@@ -38,9 +38,9 @@ export class InvoicesPageComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  displayedColumns: string[] = ['number', 'amount', 'date', 'dueDate', 'customer', 'contact', 'status'];
+  displayedColumns: string[] = ['number', 'amount', 'date', 'dueDate', 'customer', 'contact', 'status', 'actions'];
 
-  dataSource = new MatTableDataSource(DATA);
+  dataSource = new MatTableDataSource();
 
   filter$$ = new BehaviorSubject<(Invoice) => boolean>((c) => true);
   filter$: Observable<{ invoices: Invoice[]}>
@@ -53,24 +53,17 @@ export class InvoicesPageComponent implements OnInit {
 
   // readonly CAN_CREATE_INVOICES = AppClaimDomains.InvCreate;
   
-  constructor(private _translateService: TranslateService,
+  constructor(private _router$$: Router,
               private _snackBar: MatSnackBar,
               private cdref: ChangeDetectorRef,
               private _oppsService: OpportunitiesService,
               private _kuUserService: KujaliUsersService,
               private _invoicesService: InvoicesService,
-              private _router$$: Router
-  ) 
-  {
-    this.lang = this._translateService.initialise();
-  }
+              private _invoiceAllocsService: AllocationsStateService
+  ) {}
 
   ngOnInit(): void {
     this.getInvoices();
-  }
-
-  setLang(lang: 'en' | 'fr' | 'nl') {
-    this._translateService.setLang(lang);
   }
 
   ngAfterViewInit() {
@@ -85,35 +78,20 @@ export class InvoicesPageComponent implements OnInit {
     this.cdref.detectChanges();
   }
 
-  getTotalAmount(products: any) {
-    let totals: any = products.map((order) => {        
-      const total =
-      order.cost * order.qty - (order.cost * order.qty * order.discount) / 100;
-      return {
-        totalSum: total,
-        vat: total * (order.vat / 100),
-      };
-    });
-
-    var totalResult = totals.reduce(function (order: any, value: any) {
-      return order + value.totalSum + value.vat;
-    }, 0);
-
-    return __round(totalResult, 2);
-  }
-
   getInvoices() {
-    this._sbS.sink = combineLatest([this.filter$$.asObservable(), this._invoicesService.getAllInvoices()])
-    .subscribe(([filter, invoices]) => {
+    this._sbS.sink = combineLatest([this.filter$$.asObservable(), this._invoicesService.getAllInvoices(),
+                                    this._invoiceAllocsService.getInvoicesAllocations()])
+    .subscribe(([filter, invoices, invoiceAllocs]) => {
       const filterRecords = invoices.filter(filter);
-      this.dataSource.data = filterRecords;
+      this.dataSource.data = COMBINE_INVOICE_AND_INVOICE_ALLLOCS(filterRecords, invoiceAllocs);
       this.allTableData = this.dataSource.data
     });
   }
 
+  getTotalAmount = (invoice: Invoice) => CALCULATE_INVOICE_TOTAL(invoice);
+
   getUserName(userId: string) {
-    let user: any = this._kuUserService.getOrgUser(userId);
-    return user?.displayName;
+    return this._kuUserService.getOrgUser(userId)?.displayName;
   }
 
   getDate(date: any) {
@@ -141,7 +119,6 @@ export class InvoicesPageComponent implements OnInit {
     this.showFilter = value
   }
 
-  
   viewInvoice(invoiceId: string) {
     this._router$$.navigate(['business', 'invoices', invoiceId, 'edit']);
   }
@@ -154,7 +131,9 @@ export class InvoicesPageComponent implements OnInit {
     this._router$$.navigate(['business/invoices/create']);
   }
 
-  ngOnDestroy(): void {
-    this._sbS.unsubscribe();
+  allocateTransactionEvent(inv: Invoice) {
+
   }
+
+  ngOnDestroy = () => {this._sbS.unsubscribe()}
 }

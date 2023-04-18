@@ -14,7 +14,7 @@
   <div class="nav-links-section" fxLayout="column" fxLayoutAlign="space-between" fxLayoutGap="10px" fxFlex="75">
     <div fxFlex="90">
       <!-- Section Dashboard -->
-      <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" fxLayout=row
+      <a class="main-menu-option" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" fxLayout=row
         fxLayoutAlign="start center" fxLayoutGap="10px">
         <i class="fa-solid fa-house"></i>
         <span>{{'SIDENAV.NAV.DASHBOARD' | transloco}}</span>
@@ -22,24 +22,25 @@
 
       <!-- Section Business -->
       <div>
-        <a routerLink="/business" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center" fxLayoutGap="10px">
+        <a class="main-menu-option" routerLink="/business" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center"
+          fxLayoutGap="10px">
           <i class="fa-solid fa-business-time"></i>
           <span>{{'SIDENAV.NAV.BUSINESS' | transloco}}</span>
         </a>
         <div class="sub-menu">
-          <a routerLink="/business/contacts" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center"
+          <a class="sub-menu-option" routerLink="/business/contacts" routerLinkActive="sub-active" fxLayout=row fxLayoutAlign="start center"
             fxLayoutGap="10px">
-            <i class="fa-solid fa-chart-line"></i>
+            <i class="far fa-address-book"></i>
             <span> Contacts </span>
           </a>
-          <a routerLink="/business/companies" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center"
+          <a class="sub-menu-option" routerLink="/business/companies" routerLinkActive="sub-active" fxLayout=row fxLayoutAlign="start center"
             fxLayoutGap="10px">
-            <i class="fa-solid fa-chart-line"></i>
+            <i class="fas fa-building"></i>
             <span> Companies </span>
           </a>
-          <a routerLink="/business/invoices" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center"
+          <a class="sub-menu-option" routerLink="/business/invoices" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center"
             fxLayoutGap="10px">
-            <i class="fa-solid fa-chart-line"></i>
+            <i class="fas fa-file-invoice"></i>
             <span> Invoices </span>
           </a>
         </div>
@@ -48,22 +49,22 @@
 
       <!-- Section Operations -->
       <div>
-        <a routerLink="/operations" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center"
+        <a class="main-menu-option" routerLink="/operations" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center"
           fxLayoutGap="10px">
           <i class="fa-solid fa-chart-line"></i>
           <span>{{'SIDENAV.NAV.OPERATIONS' | transloco}}</span>
         </a>
         <div class="sub-menu">
-          <a routerLink="/operations/banking" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center"
+          <a class="sub-menu-option" routerLink="/operations/banking" routerLinkActive="sub-active" fxLayout=row fxLayoutAlign="start center"
             fxLayoutGap="10px">
-            <i class="fa-solid fa-chart-line"></i>
+            <i class="fas fa-university"></i>
             <span> Banking </span>
           </a>
         </div>
       </div>
 
       <!-- Section Budgetting -->
-      <a routerLink="/budgets" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center" fxLayoutGap="10px">
+      <a class="main-menu-option" routerLink="/budgets" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center" fxLayoutGap="10px">
         <i class="fa-solid fa-wallet"></i>
         <span>{{'SIDENAV.NAV.BUDGETTING' | transloco}}</span>
       </a>
@@ -72,7 +73,7 @@
 
     <div>
       <!-- Section Settings -->
-      <a routerLink="/settings" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center" fxLayoutGap="10px">
+      <a class="main-menu-option" routerLink="/settings" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center" fxLayoutGap="10px">
         <i class="fa-solid fa-gear"></i>
         <span>{{'SIDENAV.NAV.SETTINGS' | transloco}}</span>
       </a>

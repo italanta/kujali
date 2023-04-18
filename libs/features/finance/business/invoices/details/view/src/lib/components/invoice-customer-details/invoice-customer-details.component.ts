@@ -16,7 +16,6 @@ import { Contact } from '@app/model/finance/contacts';
 
 import { CompaniesService } from '@app/state/finance/companies';
 import { ContactsService } from '@app/state/finance/contacts';
-// import { OrdersService } from '@app/state/finance/orders';
 import { InvoicesService } from '@app/state/finance/invoices';
 
 @Component({
@@ -24,7 +23,7 @@ import { InvoicesService } from '@app/state/finance/invoices';
   templateUrl: './invoice-customer-details.component.html',
   styleUrls: ['./invoice-customer-details.component.scss']
 })
-export class InvoiceCustomerDetailsComponent implements OnInit {
+export class InvoiceCustomerDetailsComponent implements OnInit, OnDestroy {
   private _sbS = new SubSink();
 
   @Input() customersForm: FormGroup;
@@ -51,7 +50,6 @@ export class InvoiceCustomerDetailsComponent implements OnInit {
   constructor(private _router$$: Router,
               private _translateService: TranslateService,
               private _invoiceService: InvoicesService,
-              // private _orderService: OrdersService,
               private _companyService: CompaniesService,
               private _contactsService: ContactsService
   ) {}
@@ -65,8 +63,6 @@ export class InvoiceCustomerDetailsComponent implements OnInit {
 
     if (page.length > 2 && page[3] == 'new-invoice') {
       this.isEditMode = true;
-      this.getInvoiceOrder();
-
     } else if (page.length > 2 && page[3] === 'edit') {
       this.isEditMode = true;
       this.getActiveInvoice();
@@ -84,16 +80,6 @@ export class InvoiceCustomerDetailsComponent implements OnInit {
 
   setLang(lang: 'en' | 'fr' | 'nl') {
     this._translateService.setLang(lang);
-  }
-
-  getInvoiceOrder() {
-    // this._orderService.getActiveOrder().subscribe((order) => {
-    //   if (order) {
-    //     if (order.customer) {
-    //       this.setCompanyAndContact(order.customer, order.contact);
-    //     }
-    //   }
-    // });
   }
 
   getActiveInvoice() {
@@ -147,21 +133,8 @@ export class InvoiceCustomerDetailsComponent implements OnInit {
   getCompanies() {
     this._sbS.sink = combineLatest([this.companies$, this._contactsService.getContacts()]).subscribe(([companies, contacts]) => {
       if (companies && contacts) {
-        let tmpCo : Company[] = [{
-          id: 'sasdccslc',
-          name: 'New Company',
-          hq: 'xcvc',
-          phone: 'xcv',
-          email: 'xcv',
-          accManager: [],
-          vatNo: 'xcv',
-          facebook: 'xcv',
-          linkedin: 'xcv',
-        }];
-
-        this.companies = tmpCo
+        this.companies = companies;
         this.filteredCompanies = this.companies.slice();
-  
         this.customerContacts = contacts;
         this.filteredCustomerContacts = this.customerContacts.slice();
       }
@@ -176,7 +149,5 @@ export class InvoiceCustomerDetailsComponent implements OnInit {
     return c1 && c2 ? c1.id === c2.id : c1.id === c2.id;
   }
 
-  ngOnDestroy(): void {
-    this._sbS.unsubscribe();
-  }
+  ngOnDestroy = ()  => {this._sbS.unsubscribe()}
 }
