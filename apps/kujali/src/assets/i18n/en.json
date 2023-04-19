@@ -17,7 +17,8 @@
       "INVOICES": "Invoices",
       "CONTACTS": "Contacts",
       "COMPANIES": "Companies",
-      "BANKING":"Bank Accounts"
+      "BANKING":"Bank Accounts",
+      "PAYMENTS": "Payments"
     }
   },
   "LOGIN": {

@@ -8,18 +8,18 @@ import { OperationsPageComponent } from './pages/operations-page/operations-page
 const OPERATIONS_ROUTES: Route[] = [
   {
     path: '',
-    component: OperationsPageComponent,
+    redirectTo: 'banking',
   },
   {
     path: 'banking',
     loadChildren: () => import('@app/features/finance/banking/main').then(m => m.FinanceBankingModule),
     canActivate: [IsLoggedInGuard]
   },
-  // {
-  //   path: 'invoices',
-  //   loadChildren: () => import('@app/features/finance/operations/invoices/main').then(m => m.InvoicesModule),
-  //   canActivate: [IsLoggedInGuard]
-  // },
+  {
+    path: 'payments',
+    loadChildren: () => import('@app/features/finance/operations/payments').then(m => m.OperationsPaymentsModule),
+    canActivate: [IsLoggedInGuard]
+  },
 ];
 
 @NgModule({
