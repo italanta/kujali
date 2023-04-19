@@ -11,34 +11,34 @@ $black-87-opacity: rgba(black, 0.87);
 $white-87-opacity: rgba(white, 0.87);
 
 $mat-ele: (
-  50 : #e6e8f3,
-  100 : #c1c5e2,
-  200 : #989fcf,
-  300 : #6e79bc,
-  400 : #4f5cad,
-  500 : #303f9f,
-  600 : #2b3997,
-  700 : #24318d,
-  800 : #1e2983,
-  900 : #131b72,
-  A100 : #a8aeff,
-  A200 : #757eff,
-  A400 : #424fff,
-  A700 : #2937ff,
-  contrast: (50 : $black-87-opacity,
-    100 : $black-87-opacity,
-    200 : $black-87-opacity,
-    300 : $white-87-opacity,
-    400 : $white-87-opacity,
-    500 : $white-87-opacity,
-    600 : $white-87-opacity,
-    700 : $white-87-opacity,
-    800 : $white-87-opacity,
-    900 : $white-87-opacity,
-    A100 : $black-87-opacity,
-    A200 : $black-87-opacity,
-    A400 : $white-87-opacity,
-    A700 : $white-87-opacity,
+  50 : #e0e9f5,
+  100 : #b3c8e6,
+  200 : #80a3d5,
+  300 : #4d7ec4,
+  400 : #2663b8,
+  500 : #0047ab,
+  600 : #0040a4,
+  700 : #00379a,
+  800 : #002f91,
+  900 : #002080,
+  A100 : #adbbff,
+  A200 : #7a90ff,
+  A400 : #4766ff,
+  A700 : #2e51ff,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff,
   )
 );
 
@@ -70,8 +70,7 @@ $mat-ele-accent: (
     A100 : $black-87-opacity,
     A200 : $black-87-opacity,
     A400 : $black-87-opacity,
-    A700 : $black-87-opacity
-  )
+    A700 : $black-87-opacity )
 );
 /*  A100: #b9e4f8,
   A200: #8ed2f3,
@@ -82,39 +81,33 @@ $mat-ele-accent: (
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $primary: mat.define-palette($mat-ele);
-$accent:  mat.define-palette($mat-ele-accent);
+$accent: mat.define-palette($mat-ele-accent);
 
 // The warn palette is optional (defaults to red).
 $warn: mat.define-palette(mat.$red-palette);
 
-$custom-typography:  mat.define-typography-config(
-  $headline-4:  mat.define-typography-level(112px, 112px, 300, 'Varela Round, sans-serif', $letter-spacing: -0.05em),
-  $headline-3:  mat.define-typography-level(56px, 56px, 400, 'Varela Round, sans-serif', $letter-spacing: -0.02em),
-  $headline-2:  mat.define-typography-level(45px, 48px, 400, 'Varela Round, sans-serif', $letter-spacing: -0.005em),
-  $headline-1:  mat.define-typography-level(34px, 40px, 400, 'Varela Round, sans-serif'),
+$custom-typography: mat.define-typography-config($headline-4: mat.define-typography-level(112px, 112px, 300, 'Varela Round, sans-serif', $letter-spacing: -0.05em),
+    $headline-3: mat.define-typography-level(56px, 56px, 400, 'Varela Round, sans-serif', $letter-spacing: -0.02em),
+    $headline-2: mat.define-typography-level(45px, 48px, 400, 'Varela Round, sans-serif', $letter-spacing: -0.005em),
+    $headline-1: mat.define-typography-level(34px, 40px, 400, 'Varela Round, sans-serif'),
 
-  $headline-5:       mat.define-typography-level(24px, 32px, 600, 'Varela Round, sans-serif'),
-  $subtitle-2:   mat.define-typography-level(16px, 28px, 400, 'Varela Round, sans-serif'),
-  $subtitle-1:   mat.define-typography-level(15px, 24px, 400, 'Varela Round, sans-serif'),
+    $headline-5: mat.define-typography-level(24px, 32px, 600, 'Varela Round, sans-serif'),
+    $subtitle-2: mat.define-typography-level(16px, 28px, 400, 'Varela Round, sans-serif'),
+    $subtitle-1: mat.define-typography-level(15px, 24px, 400, 'Varela Round, sans-serif'),
 
-  $body-2:  mat.define-typography-level(14px, 24px, 500),
-  $body-1:  mat.define-typography-level(14px, 20px, 500),
-  $caption: mat.define-typography-level(12px, 20px, 400),
-  
-  $button:  mat.define-typography-level(14px, 14px, 400, 'Varela Round, sans-serif')
-);
+    $body-2: mat.define-typography-level(14px, 24px, 500),
+    $body-1: mat.define-typography-level(14px, 20px, 500),
+    $caption: mat.define-typography-level(12px, 20px, 400),
+
+    $button: mat.define-typography-level(14px, 14px, 400, 'Varela Round, sans-serif'));
 
 // Create the theme object (a Sass map containing all of the palettes).
 // $theme: mat.define-light-theme($primary, $accent, $warn);
-$theme: mat.define-light-theme(
-(
-  color: (
-    primary: $primary,
-    accent: $accent, 
-    warn: $warn
- ),
- typography: $custom-typography,
-));
+$theme: mat.define-light-theme((color: (primary: $primary,
+        accent: $accent,
+        warn: $warn ),
+      typography: $custom-typography,
+    ));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -123,4 +116,3 @@ $theme: mat.define-light-theme(
 @include mat.all-component-themes($theme);
 
 // CUSTOM STYLES (ANGULAR MATERIAL ONLY)
-
