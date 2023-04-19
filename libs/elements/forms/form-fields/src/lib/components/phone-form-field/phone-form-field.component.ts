@@ -19,10 +19,6 @@ export class PhoneFormFieldComponent implements OnInit {
   ngOnInit() { }
 
   validatePhoneNumber(event: any) {
-    return event.charCode >= 48 && event.charCode <= 57
-  }
-
-  onCountryChange(country: any) {
-    this.countryCode = country.dialCode;
+    return event.charCode >= 48 && event.charCode <= 57;
   }
 }

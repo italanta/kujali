@@ -3,8 +3,6 @@
   <mat-form-field appearance="outline" fxFlex>
       <input matInput name="phone" type="tel"
           onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-          formControlName="phone"
-          (countryChange)="onCountryChange($event)"
-          ng2TelInput />
+          formControlName="phone" />
   </mat-form-field>
 </div>

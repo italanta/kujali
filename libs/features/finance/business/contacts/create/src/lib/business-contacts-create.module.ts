@@ -10,7 +10,6 @@ import { MatSelectFilterModule } from 'mat-select-filter';
 
 import { MaterialDesignModule, MaterialBricksModule, FlexLayoutModule } from '@iote/bricks-angular';
 import { MultiLangModule } from '@ngfi/multi-lang';
-import { Ng2TelInputModule } from 'ng2-tel-input';
 
 import { AddNewContactComponent } from '..';
 
@@ -26,7 +25,6 @@ import { AddNewContactFormComponent } from './components/add-new-contact-form/ad
     MaterialDesignModule, 
     MaterialBricksModule, 
     FlexLayoutModule,
-    Ng2TelInputModule,
 
     MatSelectFilterModule,
 

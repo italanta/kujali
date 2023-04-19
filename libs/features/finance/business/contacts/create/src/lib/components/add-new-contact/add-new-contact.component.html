@@ -21,7 +21,12 @@
         <div fxLayout="column" fxLayoutAlign="start" fxFlex="45%">
             <h4>{{ 'CONTACT.ADDNEWCONTACT.PHONE-NUMBER' | transloco }}</h4>
             <mat-form-field appearance="outline" fxFlex>
-                <input matInput name="phone" type="tel" formControlName="phone" placeholder="+44xxxxxxxx"/>
+                <input matInput 
+                    name="phone" 
+                    type="tel" 
+                    onkeypress="return event.charCode >= 48 && event.charCode <= 57" 
+                    formControlName="phone" 
+                    placeholder="+44xxxxxxxx"/>
             </mat-form-field>
         </div>
 

@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-import { Ng2TelInputModule } from 'ng2-tel-input';
 import { MatSelectFilterModule } from 'mat-select-filter';
 
 import { MaterialDesignModule, MaterialBricksModule, FlexLayoutModule } from '@iote/bricks-angular';
@@ -26,7 +25,6 @@ import { OrgUsersFormField } from './components/org-users/org-users.component'
 
     MatInputModule,
     MatFormFieldModule,
-    Ng2TelInputModule,
     MatSelectFilterModule,
 
     MaterialDesignModule,
