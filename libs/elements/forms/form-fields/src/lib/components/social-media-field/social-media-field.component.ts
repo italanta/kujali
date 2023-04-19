@@ -4,7 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngfi/multi-lang';
 
 @Component({
-  selector: 'volk-crm-social-media-field',
+  selector: 'kujali-crm-social-media-field',
   templateUrl: './social-media-field.component.html',
   styleUrls: ['./social-media-field.component.scss'],
 })

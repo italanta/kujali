@@ -13,7 +13,7 @@ import { UserStateModule } from '@app/state/user';
 import { iTalPageModule } from '@app/elements/layout/page';
 
 import { PageHeadersModule } from '@app/elements/layout/page-headers';
-// import { AccessControlElementsModule } from '@volk/elements/access-control';
+// import { AccessControlElementsModule } from '@kujali/elements/access-control';
 
 import { CompanyFilterComponent } from './components/company-filter/company-filter.component';
 import { CompanyPageComponent } from './pages/company-page/company-page.component';

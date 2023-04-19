@@ -16,7 +16,7 @@ import { Tags } from '@app/model/tags';
 import { TagsService, TagsStore } from '@app/state/tags'
 
 @Component({
-  selector: 'volk-crm-tags-form-field',
+  selector: 'kujali-crm-tags-form-field',
   templateUrl: './tags-form-field.component.html',
   styleUrls: ['./tags-form-field.component.scss']
 })

@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'volk-crm-phone-form-field',
+  selector: 'kujali-crm-phone-form-field',
   templateUrl: './phone-form-field.component.html',
   styleUrls: ['./phone-form-field.component.scss']
 

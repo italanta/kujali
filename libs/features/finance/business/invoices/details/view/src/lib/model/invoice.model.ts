@@ -93,7 +93,7 @@ export class InvoiceModel
   }
 
   _checkPermissions() {
-    // this._sbS.sink = this._permissionsService.checkAccessRight((p: VolkPermissions) => p.InvoicesSettings.CanEditInvoices)
+    // this._sbS.sink = this._permissionsService.checkAccessRight((p: kujaliPermissions) => p.InvoicesSettings.CanEditInvoices)
     //   .pipe(take(1))
     //   .subscribe((permissions) => {
     //     if (permissions == false) {

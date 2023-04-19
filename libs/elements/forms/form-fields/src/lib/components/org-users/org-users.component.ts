@@ -8,7 +8,7 @@ import { KuUser } from '@app/model/common/user';
 import { OrganisationService } from '@app/state/organisation';
 
 @Component({
-  selector: 'volk-org-users',
+  selector: 'kujali-org-users',
   templateUrl: './org-users.component.html',
   styleUrls: ['./org-users.component.scss']
 })
