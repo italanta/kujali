@@ -1,4 +1,4 @@
-mat-card{
+mat-card {
   padding: 20px;
   height: fit-content;
 }
@@ -10,6 +10,7 @@ mat-card{
 .header-amount {
   border-right: solid 1px var(--kujali-color-nav-inactive);
 }
+
 .allocate-header__left__amount {
   font-size: 3rem;
   font-weight: 500;
@@ -41,28 +42,23 @@ td.mat-column-imageurl {
 }
 
 .mdc-data-table__header-cell {
-  background-color: var(--kujali-color-primary-blue)!important;
-  color: white!important;
+  background-color: var(--kujali-color-primary-blue) !important;
+  color: white !important;
+  font-weight: 500;
+  font-size: 1.1rem;
 }
 
-.mat-row:hover .mat-cell {
-  background-color: var(--kujali-color-primary-blue);
+.mat-mdc-row:nth-child(odd) {
+  background-color: rgba($color: #2b66b8, $alpha: 0.1);
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  background-color: #eee;
   cursor: pointer;
 }
 
-td.mat-column-number,
-td.mat-column-dueDate,
-td.mat-column-date,
-td.mat-column-amount,
-td.mat-column-customer,
-td.mat-column-contact,
-td.mat-column-status {
-  // font-weight: 600;
-  // color: var(--kujali-color-nav-inactive);
-}
-
 .mat-mdc-form-field {
-  width: 100%!important;
+  width: 100% !important;
 }
 
 ::ng-deep .mat-mdc-form-field-flex {
@@ -73,6 +69,7 @@ td.mat-column-status {
   padding: 5px;
 }
 
-::ng-deep .mdc-text-field--no-label:not(.mdc-text-field--textarea) .mat-mdc-form-field-input-control.mdc-text-field__input, .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
-  height: 30px!important;
+::ng-deep .mdc-text-field--no-label:not(.mdc-text-field--textarea) .mat-mdc-form-field-input-control.mdc-text-field__input,
+.mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+  height: 30px !important;
 }

@@ -1,13 +1,15 @@
 table {
   width: 100%;
 }
-.table-container{
+
+.table-container {
   margin-top: 50px;
   position: relative;
   min-height: 200px;
   max-height: 70vh;
   overflow: auto;
 }
+
 .hide {
   display: none;
   position: absolute;
@@ -15,7 +17,7 @@ table {
   background-color: var(--kujali-color-text-black);
 }
 
-.mydiv:hover + .hide {
+.mydiv:hover+.hide {
   padding: 2px;
   border-radius: 5px;
   display: block;
@@ -23,7 +25,9 @@ table {
   font-size: 8px;
   color: var(--kujali-color-text-white);
 }
-.nameChar, .img-url {
+
+.nameChar,
+.img-url {
   height: 30px;
   width: 30px;
   border-radius: 50%;
@@ -38,10 +42,13 @@ table {
   justify-content: center;
   color: var(--kujali-color-primary);
 }
-.nameChar img, img {
+
+.nameChar img,
+img {
   height: 15px;
   width: 15px;
 }
+
 .tag,
 .extra-tag {
   padding: 2px;
@@ -51,38 +58,34 @@ table {
   width: fit-content;
   color: var(--kujali-color-primary);
 }
+
 .vl {
   border-left: 5px solid white;
   height: 20px;
 }
+
 .extra-tag {
   color: var(--kujali-color-primary);
-}
-
-td.mat-column-name {
-  font-weight: 600;
-  color: var(--kujali-color-text-black);
 }
 
 td.mat-column-logoImgUrl {
   padding-top: 5px;
 }
-.mat-header-cell {
-  background-color: var(--kujali-color-primary-background);
-  font-weight: 600;
-  font-size: 15px;
-}
-.mat-row:hover .mat-cell {
-  background-color: var(--kujali-color-primary-background);
-  cursor: pointer;
+
+.mdc-data-table__header-cell {
+  background-color: var(--kujali-color-primary-blue) !important;
+  color: white !important;
+  font-weight: 500;
+  font-size: 1.1rem;
 }
 
-td.mat-column-headquarters,
-td.mat-column-manager,
-td.mat-column-opportunities,
-td.mat-column-tags {
-  font-weight: 600;
-  color: var(--kujali-color-nav-inactive);
+.mat-mdc-row:nth-child(odd) {
+  background-color: rgba($color: #2b66b8, $alpha: 0.1);
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  background-color: #eee;
+  cursor: pointer;
 }
 
 ::ng-deep .mat-elevation-z8 {

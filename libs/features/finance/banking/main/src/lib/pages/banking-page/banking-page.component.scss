@@ -34,10 +34,6 @@ td.mat-column-bankIcon {
   font-size: 1.1rem;
 }
 
-.mat-mdc-row {
- border-bottom: solid var(--kujali-color-primary-blue) 1px!important;
-}
-
 .mat-mdc-row:nth-child(odd) {
   background-color: rgba($color: #2b66b8, $alpha: 0.1);
 }
@@ -45,16 +41,6 @@ td.mat-column-bankIcon {
 .mat-mdc-row:hover .mat-mdc-cell {
   background-color: #eee;
   cursor: pointer;
-}
-
-td.mat-column-name,
-td.mat-column-accountHolder,
-td.mat-column-iban,
-td.mat-column-bic,
-td.mat-column-currency,
-td.mat-column-bankConnection,
-td.mat-column-trType {
-  font-weight: 400;
 }
 
 .mdc-icon-button {

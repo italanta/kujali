@@ -26,6 +26,15 @@
   font-size: 1.1rem;
 }
 
+.mat-mdc-row:nth-child(odd) {
+  background-color: rgba($color: #2b66b8, $alpha: 0.1);
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  background-color: #eee;
+  cursor: pointer;
+}
+
 .allocate-btn {
   border: solid var(--kujali-color-primary-blue) 1px!important;
 }

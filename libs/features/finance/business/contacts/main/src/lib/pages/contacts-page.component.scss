@@ -62,39 +62,24 @@ img,
   color: var(--kujali-color-primary);
 }
 
-td.mat-column-fullName {
-  font-weight: 600;
-  color: var(--kujali-color-text-black);
-}
-
 td.mat-column-imageurl {
   padding-top: 5px;
 }
 
 .mdc-data-table__header-cell {
-  color: var(--kujali-color-primary-blue)!important;
-  font-weight: 700;
+  background-color: var(--kujali-color-primary-blue)!important;
+  color: white!important;
+  font-weight: 500;
   font-size: 1.1rem;
 }
 
-.mat-mdc-row:nth-child(even) {
+.mat-mdc-row:nth-child(odd) {
   background-color: rgba($color: #2b66b8, $alpha: 0.1);
 }
 
 .mat-mdc-row:hover .mat-mdc-cell {
-  background-color: #2b66b8;
+  background-color: #eee;
   cursor: pointer;
-  color: white;
-}
-
-td.mat-column-imageurl,
-td.mat-column-phone,
-td.mat-column-email,
-td.mat-column-company,
-td.mat-column-roles,
-td.mat-column-tags {
-  font-weight: 500;
-  color: black;
 }
 
 ::ng-deep .mat-elevation-z8 {
