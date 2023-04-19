@@ -13,7 +13,11 @@
       "BUSINESS": "Business",
       "OPERATIONS": "Operations",
       "BUDGETTING": "Budgeting",
-      "SETTINGS": "Settings"
+      "SETTINGS": "Settings",
+      "INVOICES": "Invoices",
+      "CONTACTS": "Contacts",
+      "COMPANIES": "Companies",
+      "BANKING":"Bank Accounts"
     }
   },
   "LOGIN": {
