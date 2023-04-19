@@ -1,86 +1,148 @@
-<div id="side-menu" fxLayout="column" fxLayoutAlign="space-between" fxLayoutGap="10px">
-
-  <div [routerLink]="['/']" mat-list-item class="header top-header" fxLayout="row" fxLayoutAlign="start center">
-
-    <img class="list-icon icon-top" src="assets/images/kujali-logo.png">
-    <!-- <div fxLayout="column">
-                <div class="proj-name">{{ projectName }}</div>
-                <div class="proj-info">
-                    {{ projectInfo }}
-                </div>
-            </div> -->
-  </div>
-
-  <div class="nav-links-section" fxLayout="column" fxLayoutAlign="space-between" fxLayoutGap="10px" fxFlex="75">
-    <div fxFlex="90">
-      <!-- Section Dashboard -->
-      <a class="main-menu-option" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" fxLayout=row
-        fxLayoutAlign="start center" fxLayoutGap="10px">
-        <i class="fa-solid fa-house"></i>
-        <span>{{'SIDENAV.NAV.DASHBOARD' | transloco}}</span>
-      </a>
-
-      <!-- Section Business -->
-      <div>
-        <a class="main-menu-option" routerLink="/business" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center"
-          fxLayoutGap="10px">
-          <i class="fa-solid fa-business-time"></i>
-          <span>{{'SIDENAV.NAV.BUSINESS' | transloco}}</span>
-        </a>
-        <div class="sub-menu">
-          <a class="sub-menu-option" routerLink="/business/contacts" routerLinkActive="sub-active" fxLayout=row fxLayoutAlign="start center"
-            fxLayoutGap="10px">
-            <i class="far fa-address-book"></i>
-            <span> Contacts </span>
-          </a>
-          <a class="sub-menu-option" routerLink="/business/companies" routerLinkActive="sub-active" fxLayout=row fxLayoutAlign="start center"
-            fxLayoutGap="10px">
-            <i class="fas fa-building"></i>
-            <span> Companies </span>
-          </a>
-          <a class="sub-menu-option" routerLink="/business/invoices" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center"
-            fxLayoutGap="10px">
-            <i class="fas fa-file-invoice"></i>
-            <span> Invoices </span>
-          </a>
-        </div>
-
-      </div>
-
-      <!-- Section Operations -->
-      <div>
-        <a class="main-menu-option" routerLink="/operations" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center"
-          fxLayoutGap="10px">
-          <i class="fa-solid fa-chart-line"></i>
-          <span>{{'SIDENAV.NAV.OPERATIONS' | transloco}}</span>
-        </a>
-        <div class="sub-menu">
-          <a class="sub-menu-option" routerLink="/operations/banking" routerLinkActive="sub-active" fxLayout=row fxLayoutAlign="start center"
-            fxLayoutGap="10px">
-            <i class="fas fa-university"></i>
-            <span> Banking </span>
-          </a>
+<div class="layout has-sidebar fixed-sidebar fixed-header">
+  <aside id="sidebar" class="sidebar break-point-sm has-bg-image">
+    <div class="image-wrapper">
+      <img src="assets/images/sidebar-bg.jpg" alt="sidebar background" />
+    </div>
+    <div class="sidebar-layout">
+      <div class="sidebar-header">
+        <div class="pro-sidebar-logo">
+          <div>K</div>
+          <h5>Kujali</h5>
         </div>
       </div>
+      <div class="sidebar-content">
+        <nav class="menu open-current-submenu">
+          <ul>
+            <li class="menu-header"><span> FINANCE </span></li>
+            <li class="menu-item sub-menu">
+              <!-- Section Dashboard -->
+              <a>
+                <span class="menu-icon">
+                  <i class="fa-solid fa-house"></i>
+                </span>
+                <span class="menu-title" routerLink="/dashboard" routerLinkActive="active"> {{'SIDENAV.NAV.DASHBOARD' |
+                  transloco}} </span>
+                <span class="menu-suffix">
+                  <span class="badge primary">Coming</span>
+                </span>
+              </a>
+              <div class="sub-menu-list">
+                <ul>
+                  <li class="menu-item">
+                    <a>
+                      <span class="menu-icon">
+                        <i class="fa-solid fa-file-chart-column"></i>
+                      </span>
+                      <span class="menu-title" routerLink="/business" routerLinkActive="active">Reports Summary</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
 
-      <!-- Section Budgetting -->
-      <a class="main-menu-option" routerLink="/budgets" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center" fxLayoutGap="10px">
-        <i class="fa-solid fa-wallet"></i>
-        <span>{{'SIDENAV.NAV.BUDGETTING' | transloco}}</span>
-      </a>
+            <!-- Section Operations -->
 
+            <li class="menu-item sub-menu">
+              <a>
+                <span class="menu-icon">
+                  <i class="fa-solid fa-business-time"></i>
+                </span>
+                <span class="menu-title" routerLink="/business" routerLinkActive="active"> {{'SIDENAV.NAV.BUSINESS' |
+                  transloco}} </span>
+              </a>
+              <div class="sub-menu-list">
+                <ul>
+                  <li class="menu-item">
+                    <a>
+                      <span class="menu-icon">
+                        <i class="fas fa-building"></i>
+                      </span>
+                      <span class="menu-title" routerLink="/business/companies"
+                        routerLinkActive="active">{{'SIDENAV.NAV.COMPANIES' | transloco}}</span>
+                    </a>
+                  </li>
+                  <li class="menu-item">
+                    <a>
+                      <span class="menu-icon">
+                        <i class="far fa-address-book"></i>
+                      </span>
+                      <span class="menu-title" routerLink="/business/contacts"
+                        routerLinkActive="active">{{'SIDENAV.NAV.CONTACTS' | transloco}}</span>
+                    </a>
+                  </li>
+                  <li class="menu-item">
+                    <a>
+                      <span class="menu-icon">
+                        <i class="fas fa-file-invoice"></i>
+                      </span>
+                      <span class="menu-title" routerLink="/business/invoices" routerLinkActive="active">
+                        {{'SIDENAV.NAV.INVOICES' | transloco}} </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <!-- Section Operations -->
+
+            <li class="menu-item sub-menu">
+              <a>
+                <span class="menu-icon">
+                  <i class="fa-solid fa-chart-line"></i>
+                </span>
+                <span class="menu-title" routerLink="/operations" routerLinkActive="active"> {{'SIDENAV.NAV.OPERATIONS'
+                  | transloco}} </span>
+              </a>
+              <div class="sub-menu-list">
+                <ul>
+                  <li class="menu-item">
+                    <a>
+                      <span class="menu-icon">
+                        <i class="fas fa-university"></i>
+                      </span>
+                      <span class="menu-title" routerLink="/operations/banking"
+                        routerLinkActive="active">{{'SIDENAV.NAV.BANKING' | transloco}}</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="menu-item">
+              <a>
+                <span class="menu-icon">
+                  <i class="fa-solid fa-wallet"></i>
+                </span>
+                <span class="menu-title" routerLink="/budgets" routerLinkActive="active">{{'SIDENAV.NAV.BUDGETTING' |
+                  transloco}}</span>
+              </a>
+            </li>
+
+            <li class="menu-header" style="padding-top: 20px">
+              <span> PEOPLE & HR </span>
+              <span class="menu-suffix">
+                <span class="badge primary">Coming</span>
+              </span>
+            </li>
+            <li class="menu-item">
+              <a>
+                <span class="menu-icon">
+                  <i class="fa-solid fa-person"></i>
+                </span>
+                <span class="menu-title">Employees</span>
+                <span class="menu-suffix">
+                  <!-- <span class="badge secondary">Beta</span> -->
+                </span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div>
+        <app-sidemenu-footer></app-sidemenu-footer>
+      </div>
     </div>
-
-    <div>
-      <!-- Section Settings -->
-      <a class="main-menu-option" routerLink="/settings" routerLinkActive="active" fxLayout=row fxLayoutAlign="start center" fxLayoutGap="10px">
-        <i class="fa-solid fa-gear"></i>
-        <span>{{'SIDENAV.NAV.SETTINGS' | transloco}}</span>
-      </a>
-    </div>
-  </div>
-
-  <div>
-    <app-sidemenu-footer></app-sidemenu-footer>
-  </div>
+  </aside>
+  <div id="overlay" class="overlay"></div>
 </div>
