@@ -44,6 +44,7 @@
     "features-finance-business-invoices-main": "libs/features/finance/business/invoices/main",
     "features-finance-business-main": "libs/features/finance/business/main",
     "features-finance-operations-main": "libs/features/finance/operations/main",
+    "features-finance-operations-payments": "libs/features/finance/operations/payments",
     "features-shared-components-modals": "libs/features/shared/components/modals",
     "functions-api-finance-banking-ponto-connect": "libs/functions/api/finance/banking/ponto-connect",
     "functions-api-finance-banking-shared": "libs/functions/api/finance/banking/shared",

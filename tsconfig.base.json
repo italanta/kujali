@@ -100,6 +100,9 @@
       "@app/features/finance/operations/main": [
         "libs/features/finance/operations/main/src/index.ts"
       ],
+      "@app/features/finance/operations/payments": [
+        "libs/features/finance/operations/payments/src/index.ts"
+      ],
       "@app/features/shared/components/modals": [
         "libs/features/shared/components/modals/src/index.ts"
       ],
