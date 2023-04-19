@@ -1,0 +1,59 @@
+.mat-elevation-z8 {
+  width: 100%!important;
+  box-shadow: none!important;
+}
+
+.trs-heder {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-mdc-form-field {
+  font-size: 1rem;
+  width: 100%;
+}
+
+.table {
+  width: 100%!important;
+}
+
+.mdc-data-table__header-cell {
+  background-color: var(--kujali-color-primary-blue)!important;
+  color: white!important;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.mat-mdc-row:nth-child(odd) {
+  background-color: rgba($color: #2b66b8, $alpha: 0.1);
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.allocate-btn {
+  border: solid var(--kujali-color-primary-blue) 1px!important;
+}
+
+.allocate-btn:hover {
+  background-color: var(--kujali-color-primary-blue)!important;
+  color: white!important;
+}
+
+.partial-allocate-btn {
+  background-color: orange!important;
+  color: white!important;
+}
+
+.full-allocate-btn {
+  background-color: green!important;
+  color: white!important;
+}
+
+.unallocated-btn {
+  border: solid var(--kujali-color-primary-blue) 1px!important;
+}
