@@ -91,7 +91,7 @@ export class SideMenuComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   openActiveFeature(feature: string, ) {
-    const features = ['dashboard', 'business', 'operations', 'budgets'];
+    const features = ['home', 'business', 'operations', 'budgets'];
     const featureIndex = features.indexOf(feature);
     const featureEl = this.FIRST_SUB_MENUS_BTN[featureIndex];
     slideToggle(featureEl?.nextElementSibling);
