@@ -1,54 +1,11 @@
 <app-page>
-  <div *ngIf="user$ | async as user">
-    <!-- <div *ngIf="user.isNew || !user.roles.emp">You have not yet been assigned a place in the system. Please call the system administrator and ask to register you.</div> -->
-    <!-- <div *ngIf="!user.isNew && user.roles.emp"> -->
-  
-      <div fxLayout="row wrap" fxLayoutAlign="space-around center">
+  <div class="container" *ngIf="user$ | async as user">
 
-        <p>Main Dashboard page</p>
-  
-        <!-- <app-action-tile *ngIf="user.roles.admin" 
-                          [routerLink]="['/admin/user-management']" 
-                          
-                          label="Admin" icon="fas fa-user" color="#ffce32" 
-                          fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="25">
-        </app-action-tile>
-  
-        <app-action-tile  [routerLink]="['/expense']"
-  
-                          label="Expense Tracker" icon="fas fa-money-check-alt" color="#48a999"
-                          fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="25">
-        </app-action-tile> -->
-  
-        <!-- <app-action-tile  [routerLink]="['/budgets']"
-  
-                          [label]="'DASHBOARD.LINKS.FINANCE' | transloco" icon="fas fa-pen-alt" color="#b71c1c"
-                          fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="25">
-        </app-action-tile> -->
-        <!-- *ngIf="user.roles.finance" -->
-  <!-- 
-        <app-action-tile  *ngIf="user.roles.content"
-                          [routerLink]="['/content']"
-                          
-                          label="Content Dev" icon="fas fa-chalkboard" color="#00acc1"
-                          fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="25" >
-        </app-action-tile>
-  
-        <app-action-tile  *ngIf="user.roles.sales"
-                          [routerLink]="['/sales']"
-                          
-                          label="sales" icon="fas fa-hand-holding-usd" color="#4caf50"
-                          fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="25">
-        </app-action-tile>
-  
-        <app-action-tile  *ngIf="user.roles.kcse"
-                          [routerLink]="['/kcse']"
-  
-                          label="KCSE Input" icon="fas fa-pen-alt" color="#5758BB"
-                          fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="25">
-        </app-action-tile> -->
-  
-      <!-- </div> -->
+    <div class="metabase-iframe" *ngIf="!!iframeUrl">
+        <iframe [src] = "iframeUrl | safe: 'resourceUrl'"
+          frameborder="0"
+          allowtransparency>
+        </iframe>
     </div>
   
   </div>

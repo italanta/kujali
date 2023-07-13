@@ -12,6 +12,7 @@ import { iTalPageModule } from '@app/elements/layout/page';
 
 import { DashboardRouterModule }  from './dashboard-router.module';
 import { DashboardPageComponent } from './pages/dashboard/dashboard.page';
+import { SafePipe } from './pages/safe.pipe';
 
 /**
  * Auth module. Contains the auth of the app and Base Access Control.
@@ -27,7 +28,8 @@ import { DashboardPageComponent } from './pages/dashboard/dashboard.page';
             DashboardRouterModule],
 
   declarations: [
-    DashboardPageComponent
+    DashboardPageComponent,
+    SafePipe
   ]
 })
 export class DashboardModule { }

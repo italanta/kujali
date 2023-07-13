@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { OrgStore }       from './stores/organisation.store';
 import { ActiveOrgStore } from './stores/active-org.store';
 import { PermissionsStore } from './stores/permissions.store';
+import { MetabaseService } from './services/metabase.service';
 
 @NgModule({
   imports: [CommonModule,
@@ -20,7 +21,8 @@ export class OrgStateModule
       providers: [
         OrgStore,
         ActiveOrgStore,
-        PermissionsStore
+        PermissionsStore,
+        MetabaseService
       ]
     };
   }
