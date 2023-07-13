@@ -6,7 +6,7 @@ import { CanAccessCompaniesGuard, CanAccessContactsGuard, CanAccessInvoicesGuard
 
 const BUSINESS_ROUTES: Route[] = [
   {
-    path: '', redirectTo: 'invoices', pathMatch: 'full'
+    path: '', redirectTo: 'companies', pathMatch: 'full'
   },
   {
     path: 'contacts',
