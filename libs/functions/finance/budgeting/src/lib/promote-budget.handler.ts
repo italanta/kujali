@@ -52,14 +52,14 @@ export class PromoteBudgetHandler extends FunctionHandler<any, any>
           delete month['plan'];
 
           month['year'] = yearData?.year ?? 0;
-          month['month'] = index;
+          month['month'] = index + 1;
           month['planId'] = monthPlan.id ?? '';
           month['lineId'] = monthPlan?.lineId ?? '';
           month['budgetId'] = monthPlan?.budgetId ?? '';
           month['allocatedTo'] = '';
           month['mode'] = monthPlan?.mode ?? '';
 
-          const lineId = `${yr}-${index}-${month['lineId']}`;
+          const lineId = `${yr}-${index + 1}-${month['lineId']}`;
           await linesRepo.write(month, lineId);
         })
 

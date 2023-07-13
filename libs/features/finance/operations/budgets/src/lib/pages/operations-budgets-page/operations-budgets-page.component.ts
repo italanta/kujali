@@ -110,14 +110,14 @@ export class OperationsBudgetsPageComponent implements OnInit {
                                       .subscribe();
   }
 
-  combineData(selectedYear: number, selectedMonth: number) {
+  combineData(selectedYear: number, selectedMonth: number) {    
     return combineLatest(([this._plans$$.getPlans(this.activeBudget), this._budgetsStateService$$.getBudgetLine(),
                             this._budgetsStateService$$.getBudgetLineAllocs()]))
       .pipe(
         map(([plans, budgetLines, budgetLineAllocs]) => {return {plans: plans, lines: this.combineBudgetLineAndBudgetLineAllocs(budgetLines, budgetLineAllocs)}}),
         tap((data: {plans: TransactionPlan[], lines: BudgetLineAllocUI[]}) => {
           const budgetLinesData = data.lines.filter((budgetLine) =>
-            (budgetLine.year === Number(selectedYear) && budgetLine.month === selectedMonth - 1 && budgetLine.budgetId === this.activeBudget.id));
+            (budgetLine.year === Number(selectedYear) && budgetLine.month === selectedMonth && budgetLine.budgetId === this.activeBudget.id));
           const plan = data.plans.filter((plan) => plan.budgetId === this.activeBudget.id);
           this.allMonths = budgetLinesData.map((line) => this.createBudgetLine(line, plan!))
         }), tap(() => this.aggragateBudgetLine()));

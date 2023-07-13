@@ -75,7 +75,7 @@ export class ExpensesStateService {
     const month = __DateFromStorage(expense.date).month();
     const year = __DateFromStorage(expense.date).year();
 
-    const lineId = `${year}-${month}-${expense.lineId}`;
+    const lineId = `${year}-${month + 1}-${expense.lineId}`;
 
     const alloc: ExpenseAllocs = {
       amount: expense.amount,
