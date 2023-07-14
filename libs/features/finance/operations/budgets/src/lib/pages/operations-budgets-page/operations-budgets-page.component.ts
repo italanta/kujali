@@ -131,25 +131,30 @@ export class OperationsBudgetsPageComponent implements OnInit {
   }
 
   createBudgetLine(budgetLine: BudgetLineAllocUI, plans: TransactionPlan[]): BudgetLineUI {
-    this.allocatedExpenses = [];
+    // this.allocatedExpenses = [];
     this.allocatedInvoices = [];
+
+    let allExp: any = [];
 
     const budgetLinePlan = plans.find((plan) => plan.id === budgetLine.lineId);
     const expIds = budgetLine.elements?.filter((el) => el.allocMode == -1).map((element) => element.withId);
     const invIds = budgetLine.elements?.filter((el) => el.allocMode == 1).map((element) => element.withId);
-
-    if (expIds?.length > 0)
-      this.allocatedExpenses = this.expenses?.filter((exp) => expIds?.includes(exp.id!));
+    
+    if (expIds?.length > 0) {
+      const el = this.expenses?.filter((exp) => expIds?.includes(exp.id!));
+      this.allocatedExpenses.push(...el!);
+      allExp = el!;
+    }
 
     if (invIds?.length > 0)
       this.allocatedInvoices = this.invoices?.filter((inv) => invIds?.includes(inv.id!));
-
+    
     const budgetLineData: BudgetLineUI = {
       amount: budgetLine.amount,
       baseAmount: budgetLine.baseAmount,
       budgetName: this.activeBudget.name,
       lineName: budgetLinePlan?.lineName!,
-      allocatedExpenses: this.allocatedExpenses,
+      allocatedExpenses: {allExp: allExp, allocatedExpenses: this.allocatedExpenses},
       allocatedInvoices: this.allocatedInvoices,
       mode: budgetLine.mode as any,
     }
@@ -165,7 +170,7 @@ export class OperationsBudgetsPageComponent implements OnInit {
     this.agg = {tottalIncome, tottalCost, difference};
     this.agg.allocatedIncome = this.calculateAllocatedIncome(this.allocatedInvoices);
     this.agg.allocatedCost = this.calculateAllocatedCosts(this.allocatedExpenses);
-
+    
     this.agg$$.next(this.agg);
     this.allDataIsReady = true;
   }
@@ -206,7 +211,7 @@ export class OperationsBudgetsPageComponent implements OnInit {
     if (mode === 1)
       this._router$$.navigate(['business/invoices', id, 'edit']);
     else
-      this._router$$.navigate(['operations/expenses', id]);
+      this._router$$.navigate(['operations/expenses']);
   }
 
   compareBudgets() {

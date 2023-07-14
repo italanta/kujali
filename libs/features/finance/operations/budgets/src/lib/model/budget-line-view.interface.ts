@@ -11,5 +11,5 @@ export interface BudgetLineUI {
   lineName: string;
   mode: 1 | -1;
   allocatedInvoices?: Invoice[];
-  allocatedExpenses?: Expenses[];
+  allocatedExpenses?: {allExp: Expenses[], allocatedExpenses: Expenses[]};
 }
