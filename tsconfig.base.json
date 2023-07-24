@@ -149,6 +149,9 @@
       "@app/features/finance/business/opportunities/main": [
         "libs/features/finance/business/opportunities/main/src/index.ts"
       ],
+      "@app/features/finance/operations/accounts/detail/view": [
+        "libs/features/finance/operations/accounts/detail/view/src/index.ts"
+      ],
       "@app/features/finance/operations/accounts/main": [
         "libs/features/finance/operations/accounts/main/src/index.ts"
       ],
