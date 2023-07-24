@@ -27,12 +27,12 @@ import { ActivatePontoBankingService } from '../../services/activate-ponto-banki
 const DATA: FAccount[] = []
 
 @Component({
-  selector: 'app-banking-page',
-  templateUrl: './banking-page.component.html',
-  styleUrls: ['./banking-page.component.scss'],
+  selector: 'app-accounts-page',
+  templateUrl: './accounts-page.component.html',
+  styleUrls: ['./accounts-page.component.scss'],
 })
 
-export class BankingPageComponent implements OnInit, AfterViewInit {
+export class AccountsPageComponent implements OnInit, AfterViewInit {
 
   private _sbS = new SubSink();
 
@@ -142,6 +142,6 @@ export class BankingPageComponent implements OnInit, AfterViewInit {
   }
 
   goToDetails(accountId: string) {
-    this._router$$.navigate([ 'operations', 'banking', 'accounts', accountId]);
+    this._router$$.navigate([ 'operations/accounts', accountId]);
   }
 }

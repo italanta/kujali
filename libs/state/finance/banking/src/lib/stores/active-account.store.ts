@@ -45,7 +45,7 @@ export class ActiveFAccountStore extends Store<FAccount>
 
   private _getRoute(route: NavigationEnd): string {
     const elements = route.url.split('/');
-    const accountId = elements.length > 3 ? elements[4] : '__noop__';
+    const accountId = elements.length > 3 ? elements[3] : '__noop__';
     return accountId;
   }
 }

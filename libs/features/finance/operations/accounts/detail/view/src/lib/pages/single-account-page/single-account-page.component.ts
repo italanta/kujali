@@ -10,6 +10,7 @@ import { SubSink } from 'subsink';
 import { combineLatest, filter, map, Observable, tap } from 'rxjs';
 
 import { BankTransaction, FTransaction } from '@app/model/finance/payments';
+import { PaymentAllocation } from '@app/model/finance/allocations';
 import { FAccount } from '@app/model/finance/accounts/main';
 
 import { AccountsStateService } from '@app/state/finance/banking';
@@ -18,7 +19,6 @@ import { PaymentsStateService } from '@app/state/finance/payments';
 import { AllocationsStateService } from '@app/state/finance/allocations';
 
 import { AllocateTransactionModalComponent } from '@app/features/finance/banking/allocations';
-import { PaymentAllocation } from '@app/model/finance/allocations';
 
 @Component({
   selector: 'app-single-account-page',
@@ -51,7 +51,7 @@ export class SingleAccountPageComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.accountId = this._router$$.url.split('/')[4];
+    this.accountId = this._router$$.url.split('/')[3];
 
     this.activeAccount$ = this._accountsService.getActiveFAccount();
     this._sbS.sink = combineLatest([this.activeAccount$, this._paymentsService.getAccountPayments(),

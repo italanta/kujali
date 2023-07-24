@@ -8,12 +8,12 @@ import { OperationsPageComponent } from './pages/operations-page/operations-page
 const OPERATIONS_ROUTES: Route[] = [
   {
     path: '',
-    redirectTo: 'banking',
+    redirectTo: 'accounts',
     pathMatch: 'full'
   },
   {
-    path: 'banking',
-    loadChildren: () => import('@app/features/finance/banking/main').then(m => m.FinanceBankingModule),
+    path: 'accounts',
+    loadChildren: () => import('@app/features/finance/operations/accounts/main').then(m => m.OperationsAccountsModule),
     canActivate: [IsLoggedInGuard]
   },
   {
