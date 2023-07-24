@@ -7,6 +7,7 @@ import { SubSink } from 'subsink';
 import { ActiveContactStore } from '@app/state/finance/contacts';
 import { ActiveCompanyStore } from '@app/state/finance/companies';
 import { ActiveOpportunityStore } from '@app/state/finance/opportunities';
+import { ActiveFAccountStore } from '@app/state/finance/banking';
 
 @Component({
   selector: 'kujali-finance-detail-header-card',
@@ -22,30 +23,33 @@ export class DetailHeaderCardComponent implements OnInit {
   pageName: string
   name: string;
 
-  constructor(private _contacts$$: ActiveContactStore,
+  constructor(private router$$: Router,
+              private _location$$: Location,
               private _company$$: ActiveCompanyStore,
               private _ops$$: ActiveOpportunityStore,
-              private _location: Location,
-              private route: Router
-  ) {
-    this._page = this.route.url
+              private _contacts$$: ActiveContactStore,
+              private _accounts$$: ActiveFAccountStore
+  ) { }
 
-    this.pageName = this._page.split('/')[2]
+  ngOnInit(): void {
+    this._page = this.router$$.url;
+
+    this.pageName = this._page.split('/')[2];
 
     if (this.pageName == 'contacts') {
-      this._sbS.sink = this._contacts$$.get().subscribe((contact) => {this.name = contact?.fName + ' ' + contact?.lName})
+      this._sbS.sink = this._contacts$$.get().subscribe((contact) => { this.name = contact?.fName + ' ' + contact?.lName })
     }
     else if (this.pageName == 'companies') {
-      this._sbS.sink = this._company$$.get().subscribe((company) => { this.name = company?.name});
+      this._sbS.sink = this._company$$.get().subscribe((company) => { this.name = company?.name });
     }
     else if (this.pageName == 'opportunities') {
-      this._sbS.sink = this._ops$$.get().subscribe((ops) => { this.name = ops?.title});
+      this._sbS.sink = this._ops$$.get().subscribe((ops) => { this.name = ops?.title });
+    } else if (this.pageName == 'accounts') {
+      this._sbS.sink = this._accounts$$.get().subscribe((account) => { this.name = account?.name });
     }
   }
 
-  ngOnInit(): void {}
-
   back(): void {
-    this._location.back()
+    this._location$$.back()
   }
 }

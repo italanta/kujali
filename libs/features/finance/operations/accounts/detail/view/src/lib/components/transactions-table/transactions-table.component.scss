@@ -1,6 +1,12 @@
 .mat-elevation-z8 {
-  width: 100%!important;
-  box-shadow: none!important;
+  width: 100% !important;
+  box-shadow: none !important;
+}
+
+.payments {
+  font-size: 1.2rem;
+  color: var(--kujali-color-primary-blue);
+  font-weight: 700;
 }
 
 .trs-heder {
@@ -15,19 +21,39 @@
   width: 100%;
 }
 
+.badge {
+  display: inline-block;
+  padding: 0.5em;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+}
+
+.red-bg {
+  color: red;
+  background-color: rgba($color: red, $alpha: 0.1);
+}
+
+.green-bg {
+  color: green;
+  background-color: rgba($color: green, $alpha: 0.1);
+}
+
 .table {
-  width: 100%!important;
+  width: 100% !important;
 }
 
 .mdc-data-table__header-cell {
-  background-color: var(--kujali-color-primary-blue)!important;
-  color: white!important;
-  font-weight: 500;
+  color: var(--kujali-color-primary-blue) !important;
+  font-weight: 700;
   font-size: 1.1rem;
 }
 
-.mat-mdc-row:nth-child(odd) {
-  background-color: rgba($color: #2b66b8, $alpha: 0.1);
+.mat-mdc-row {
+  border-bottom: 1px solid var(--kujali-color-primary-black);
 }
 
 .mat-mdc-row:hover .mat-mdc-cell {
@@ -36,24 +62,24 @@
 }
 
 .allocate-btn {
-  border: solid var(--kujali-color-primary-blue) 1px!important;
+  border: solid var(--kujali-color-primary-blue) 1px !important;
 }
 
 .allocate-btn:hover {
-  background-color: var(--kujali-color-primary-blue)!important;
-  color: white!important;
+  background-color: var(--kujali-color-primary-blue) !important;
+  color: white !important;
 }
 
 .partial-allocate-btn {
-  background-color: orange!important;
-  color: white!important;
+  background-color: orange !important;
+  color: white !important;
 }
 
 .full-allocate-btn {
-  background-color: green!important;
-  color: white!important;
+  background-color: green !important;
+  color: white !important;
 }
 
 .unallocated-btn {
-  border: solid var(--kujali-color-primary-blue) 1px!important;
+  border: solid var(--kujali-color-primary-blue) 1px !important;
 }

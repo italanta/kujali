@@ -40,7 +40,7 @@
         <!-- IBAN Column -->
         <ng-container matColumnDef="iban">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> IBAN </th>
-          <td mat-cell *matCellDef="let row"> {{row.iban ? row.iban : '-'}} </td>
+          <td mat-cell *matCellDef="let row" (click)="goToDetails(row.id)"> {{row.iban ? row.iban : '-'}} </td>
         </ng-container>
 
         <!-- BIC Column -->
@@ -58,19 +58,19 @@
         <!-- trType Column -->
         <ng-container matColumnDef="trType">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Transaction </th>
-          <td mat-cell *matCellDef="let row"> {{row.trType ? row.trType : '-'}} </td>
+          <td mat-cell *matCellDef="let row" (click)="goToDetails(row.id)"> {{row.trType ? row.trType : '-'}} </td>
         </ng-container>
 
         <!-- bankConnection Column -->
         <ng-container matColumnDef="bankConnection">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Bank </th>
-          <td mat-cell *matCellDef="let row"> {{getBankAccount(row.bankConnection)}} </td>
+          <td mat-cell *matCellDef="let row" (click)="goToDetails(row.id)"> {{getBankAccount(row.bankConnection)}} </td>
         </ng-container>
 
         <!-- Actions Column -->
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef> Actions </th>
-          <td mat-cell *matCellDef="let row">
+          <td mat-cell *matCellDef="let row" (click)="goToDetails(row.id)">
             <button class="icon-btn" [disabled]="isLoading || row.bankConnection != 0" mat-icon-button (click)="connectToPonto(row)">
               <span *ngIf="!isLoading; else iconSpinner">
                 <i class="fa-solid fa-link fa-xs"

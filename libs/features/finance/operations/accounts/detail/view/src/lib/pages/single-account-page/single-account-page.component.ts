@@ -28,7 +28,7 @@ import { AllocateTransactionModalComponent } from '@app/features/finance/banking
 export class SingleAccountPageComponent implements OnInit {
   private _sbS = new SubSink();
 
-  displayedColumns: string[] = ['bankIcon', 'fromAccName', 'toAccName', 'amount', 'source', 'mode', 'trStatus', 'allocStatus', 'actions'];
+  displayedColumns: string[] = ['bankIcon', 'fromAccName', 'toAccName', 'amount', 'source', 'actions'];
 
   dataSource = new MatTableDataSource<any>();
 
@@ -40,6 +40,9 @@ export class SingleAccountPageComponent implements OnInit {
   activeAccountTrs$ : Observable<FTransaction>;
 
   accountId: string;
+  accountData: {orgId: string, orgAccId: string};
+
+  allAccountDataIsReady: boolean = false;
 
   constructor(private _router$$: Router,
               private _dialog: MatDialog,
@@ -58,9 +61,13 @@ export class SingleAccountPageComponent implements OnInit {
                                     this._allocsService.getPaymentAllocations()])
                               .pipe(
                                 filter(([acc, trs, pAllocs]) => !!acc && !!trs && !!pAllocs),
-                                tap(([acc, trs, pAllocs]) => {this.activeAccount = acc}),
+                                tap(([acc, trs, pAllocs]) => {
+                                  this.activeAccount = acc;
+                                  this.accountData = {orgId: acc.createdBy!, orgAccId: this.accountId};
+                                }),
                                 map(([acc, trs, pAllocs]) => this.flatMapTransactionsAndPayments(trs, pAllocs)),
-                                tap((data) => {this.dataSource.data = data}))
+                                tap((data) => {this.dataSource.data = data}),
+                                tap((data) => this.allAccountDataIsReady = true))
                               .subscribe();
   }
 
@@ -68,7 +75,7 @@ export class SingleAccountPageComponent implements OnInit {
     let trsAndPayments = trs.map((tr) => {
       let paymentAlloc = pAllocs.find((p) => p.id === tr.id);
       return {...tr, ...paymentAlloc}
-    })
+    });
     return trsAndPayments;
   }
 
@@ -77,16 +84,5 @@ export class SingleAccountPageComponent implements OnInit {
       minWidth: '800px',
       data: tr
     });
-  }
-
-  fetchTransactions() {
-    let fetchData = {
-      orgId: this.activeAccount.createdBy,
-      orgAccId: this.accountId
-    }
-
-    this._aFF.httpsCallable('fetchPontoUserBankTransactions')(fetchData).subscribe(() => {
-      console.log('Ponto Transactions Fetched');
-    })
   }
 }

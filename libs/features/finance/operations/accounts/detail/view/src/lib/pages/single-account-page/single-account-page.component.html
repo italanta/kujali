@@ -1,26 +1,14 @@
 <app-page>
   <div class="main">
-    <div class="main-user-information" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="20px">
-      <div class="toolbar">
-      </div>
 
-      <p class="page-header">Account Details</p>
-
-      <div fxFlex>
-        <div class="user-information" fxLayout="row" fxLayoutAlign="start" fxLayoutGap="20px">
-          <app-account-information [activeAccount$]="activeAccount$" fxFlex></app-account-information>
-          <mat-card class="notes" fxFlex="40">
-          </mat-card>
-        </div>
-      </div>
-
-      <div class="actions">
-        <app-transactions-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"
-                                (allocateTransaction)="allocateTransaction($event)"
-                                (fetchTransactions)="fetchTransactions()"
-                                >
-        </app-transactions-table>
-      </div>
-    </div>
+    <single-detail-information-page *ngIf="allAccountDataIsReady">
+      <kujali-finance-toolbar toolbar>
+        <kujali-finance-detail-header-card header></kujali-finance-detail-header-card>
+      </kujali-finance-toolbar>
+      <app-account-information [activeAccount$]="activeAccount$" info></app-account-information>
+      <app-transactions-table [dataSource]="dataSource" [displayedColumns]="displayedColumns"
+        [accountData]="accountData"  (allocateTransaction)="allocateTransaction($event)" actions>
+      </app-transactions-table>
+    </single-detail-information-page>
   </div>
 </app-page>

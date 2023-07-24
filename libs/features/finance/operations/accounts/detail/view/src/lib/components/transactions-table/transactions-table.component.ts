@@ -18,10 +18,12 @@ export class TransactionsTableComponent implements OnInit, AfterViewInit {
   
   @Input() dataSource: MatTableDataSource<BankTransaction>;
   @Input() displayedColumns: string[];
+  @Input() accountData: {orgId: string, orgAccId: string};
 
   @Output() allocateTransaction = new EventEmitter();
   @Output() fetchTransactions = new EventEmitter();
 
+  fetchingTransactions: boolean = false;
 
   constructor(private _aFF: AngularFireFunctions) { }
 
@@ -46,6 +48,9 @@ export class TransactionsTableComponent implements OnInit, AfterViewInit {
   }
 
   updatePontoTrs() {
-    this.fetchTransactions.emit();
+    this.fetchingTransactions = true;
+    this._aFF.httpsCallable('fetchPontoUserBankTransactions')(this.accountData).subscribe(() => {
+      this.fetchingTransactions = false;
+    })
   }
 }
