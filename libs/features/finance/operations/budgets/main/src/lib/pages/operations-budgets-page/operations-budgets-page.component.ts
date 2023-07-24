@@ -39,7 +39,7 @@ export class OperationsBudgetsPageComponent implements OnInit {
 
   currentYear = new Date().getFullYear();
 
-  displayedColumns: string[] = ['name', 'total', 'expenses', 'invoices'];
+  displayedColumns: string[] = ['name', 'total', 'expenses', 'invoices', 'actions'];
   
   dataSource = new MatTableDataSource();
 
