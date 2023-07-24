@@ -28,7 +28,7 @@ const OPERATIONS_ROUTES: Route[] = [
   },
   {
     path: 'budgets',
-    loadChildren: () => import('@app/features/finance/operations/budgets').then(m => m.OperationsBudgetsModule),
+    loadChildren: () => import('@app/features/finance/operations/budgets/main').then(m => m.OperationsBudgetsModule),
     canActivate: [IsLoggedInGuard]
   },
 ];

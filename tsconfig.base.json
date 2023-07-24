@@ -155,8 +155,8 @@
       "@app/features/finance/operations/accounts/main": [
         "libs/features/finance/operations/accounts/main/src/index.ts"
       ],
-      "@app/features/finance/operations/budgets": [
-        "libs/features/finance/operations/budgets/src/index.ts"
+      "@app/features/finance/operations/budgets/main": [
+        "libs/features/finance/operations/budgets/main/src/index.ts"
       ],
       "@app/features/finance/operations/expenses": [
         "libs/features/finance/operations/expenses/src/index.ts"
