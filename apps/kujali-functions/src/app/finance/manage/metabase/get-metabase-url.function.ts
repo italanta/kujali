@@ -1,6 +1,8 @@
 import { GetMetabaseUrlHandler } from "@app/functions/data/db";
+
 import { RestRegistrar } from "@ngfi/functions";
-import { KujaliFunction } from "apps/kujali-functions/src/environments/kujali-func.class";
+
+import { KujaliFunction } from '../../../../environments/kujali-func.class';
 
 const handler = new GetMetabaseUrlHandler();
 

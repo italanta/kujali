@@ -6,6 +6,8 @@ export interface KuUserProfile extends UserProfile
 
   activeOrg: string;
   orgIds: string[]
+
+  metabaseUrl: string;
   /** Budgets the user has access too. */
   budgets: { 
     [id: string]: { 

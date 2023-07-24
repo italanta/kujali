@@ -97,6 +97,7 @@ export class KujaliUsersService {
       profile: {
         orgIds: [this.org.id!],
         activeOrg: this.org.id!,
+        metabaseUrl: '',
         budgets: {},
         phone: userData?.phone ?? '',
       },

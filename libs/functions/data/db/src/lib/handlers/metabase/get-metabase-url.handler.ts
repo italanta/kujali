@@ -37,14 +37,14 @@ export class GetMetabaseUrlHandler extends FunctionHandler<KuUser, string>
 
     const iframeUrl = `${METABASE_SITE_URL}/auth/sso?jwt=${token}&return_to=${encodeURIComponent(METABASE_SITE_URL)}`
 
-    //save the iframe url for each user
-    // const usersRepo = tools.getRepository<User>('users');
+    // save the iframe url to user props
+    const usersRepo = tools.getRepository<KuUser>('users');
 
-    // const userData = await usersRepo.getDocumentById(user.uid);
+    const userData = await usersRepo.getDocumentById(user.uid);
 
-    // userData.profile.metabaseUrl = iframeUrl;
+    userData.profile.metabaseUrl = iframeUrl;
 
-    // await usersRepo.write(userData,userData.uid)
+    await usersRepo.write(userData,userData.uid)
 
     return iframeUrl;
   }
