@@ -1,6 +1,17 @@
 .container {
-  margin-bottom: 25px;
+  padding: 30px, 30px, 30px 50px !important;
   max-width: 100%;
+}
+
+.exp-header {
+  background-color: #fff;
+  height: 150px;
+  border-radius: 5px;
+  z-index: 100;
+  position: sticky;
+  top: 0px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
 }
 
 app-yearly-pl-table {
@@ -8,15 +19,14 @@ app-yearly-pl-table {
 }
 
 .budget-name {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--kujali-color-primary-blue);
 }
 
 .budget-status {
-  font-size: 1.5rem;
-  text-transform: capitalize;
-  font-weight: bold;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .year-selector {
@@ -28,11 +38,6 @@ app-yearly-pl-table {
   background: #efefef;
   color: black;
   box-shadow: none !important;
-}
-
-.center-items {
-  margin: auto; 
-  text-align: center
 }
 
 .year-title {
@@ -57,4 +62,27 @@ mat-select {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+:host ::ng-deep .exp-header .mat-mdc-form-field {
+  max-height: 40px !important;
+}
+
+:host ::ng-deep .exp-header .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  padding-top: 8px !important;
+  padding-bottom: 0px !important;
+}
+
+:host ::ng-deep .exp-header .mat-mdc-form-field-infix {
+  min-height: 40px !important;
+  max-height: 40px !important;
+}
+
+:host ::ng-deep .exp-header .mat-mdc-icon-button.mat-mdc-button-base {
+  height: 40px !important;
+  padding: 7px !important;
+}
+
+:host ::ng-deep .content-wrapper-inner {
+  padding: 0 !important;
 }

@@ -204,15 +204,19 @@ export class FinancialExplorerStateService
     );
   }
 
-  submitBudget() {
+  submitBudget(budgetInput: Budget) {
     let state$ = this._state$$;
     let plans$ = this._budgetPlan$$.getTransactionPlans$();
 
-    return combineLatest(([state$, plans$]))
-              .pipe(take(1)).pipe(
-                filter(([state, plans]) => !!state && !!plans),
-                tap(([state, plans]) => state.budget.status == BudgetStatus.InUse ? this.activateBudget(): null),
-                switchMap(([state, plans]) =>  this._budgetPlans$.savePlans(state.budget, plans)));
+    const save$ = combineLatest(([state$, plans$]))
+                      .pipe(
+                        filter(([state, plans]) => !!state && !!plans),
+                        switchMap(([state, plans]) => this._budgetPlans$.savePlans(state.budget, plans)));
+
+    if (budgetInput.status == BudgetStatus.InUse) 
+      return combineLatest([save$, this.activateBudget()]);
+    else
+      return save$;
   }
 
   activateBudget() {
@@ -221,7 +225,8 @@ export class FinancialExplorerStateService
 
     let promoteBudgetData: {budget: FinancialExplorerState, plans: TransactionPlan[]};
 
-    return combineLatest([state$, plans$]).pipe(take(1),
+    return combineLatest([state$, plans$])
+                              .pipe(
                                     filter(([state, plans]) => !!state && !!plans),
                                     tap(([state, plans]) => promoteBudgetData = {budget: state, plans: plans}),
                                     switchMap(() => this._bs.httpsCallable('promoteBudget')(promoteBudgetData)));

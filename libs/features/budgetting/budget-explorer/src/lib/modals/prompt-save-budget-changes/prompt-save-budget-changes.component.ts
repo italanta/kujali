@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Budget } from '@app/model/finance/planning/budgets';
 import { FinancialExplorerStateService } from '@app/state/finance/budgetting/rendering';
 
 @Component({
@@ -23,7 +24,7 @@ export class PromptSaveBudgetChangesComponent {
 
   saveBudgetChangesAndClose() {
     this.savingBugetChanges = true;
-    this._eXState$$.submitBudget().subscribe(() => {
+    this._eXState$$.submitBudget({} as Budget).subscribe(() => {
       this.savingBugetChanges = false;
       this.savedSuccessfully = true;
       setTimeout(() => this.dialogRef.close({event: 'saveChangesAndClose'}), 1000);
