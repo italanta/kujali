@@ -30,18 +30,20 @@ export class DashboardPageComponent implements OnInit, OnDestroy
   ngOnInit(): void {
     this.user$ = this._userService.getUser();
 
-    this._sbS.sink = this.user$.pipe(tap((user) => 
-      {
-        if(!!user.profile.metabaseUrl && user.profile.metabaseUrl.length > 0)
-        {
-          this.iframeUrl = user.profile.metabaseUrl;
-          this.generatingMetabaseLink = false;
-        }
-        else
-        {
-          this.generateMetabaseLink();
-        }
-      })).subscribe();
+    this.generateMetabaseLink();
+
+    // this._sbS.sink = this.user$.pipe(tap((user) => 
+    //   {
+    //     if(!!user.profile.metabaseUrl && user.profile.metabaseUrl.length > 0)
+    //     {
+    //       this.iframeUrl = user.profile.metabaseUrl;
+    //       this.generatingMetabaseLink = false;
+    //     }
+    //     else
+    //     {
+    //       this.generateMetabaseLink();
+    //     }
+    //   })).subscribe();
   }
 
   // addMetabseUrlOnUserProp(url: string) {
