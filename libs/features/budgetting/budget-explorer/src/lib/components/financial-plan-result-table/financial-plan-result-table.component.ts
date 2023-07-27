@@ -88,20 +88,20 @@ export class  FinancialPlanResultTableComponent implements OnInit, OnDestroy
     console.log('Service does not exist');
   }
 
-  activateBudget() {
-    this.budgetActivating = true;
-    this._bs.activateBudget().subscribe(() => this.budgetActivating = false);
-  }
+  // activateBudget() {
+  //   this.budgetActivating = true;
+  //   this._bs.activateBudget().subscribe(() => this.budgetActivating = false);
+  // }
 
-  deActivateBudget(budget: Budget) {
-    this.budgetActivating = true;    
-    this._budgetStateService.deActivateBudget(budget).subscribe(() => this.budgetActivating = false);
-  }
+  // deActivateBudget(budget: Budget) {
+  //   this.budgetActivating = true;    
+  //   this._budgetStateService.deActivateBudget(budget).subscribe(() => this.budgetActivating = false);
+  // }
 
-  submitBudget() {
-    this.budgetSubmitting = true;
-    this._bs.submitBudget().subscribe(() => this.budgetSubmitting = false);
-  }
+  // submitBudget() {
+  //   this.budgetSubmitting = true;
+  //   this._bs.submitBudget().subscribe(() => this.budgetSubmitting = false);
+  // }
 
   ngOnDestroy(): void {
     this._sbS.unsubscribe();

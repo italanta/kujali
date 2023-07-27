@@ -1,17 +1,17 @@
 <app-page [loading]="loading">
   <!-- [loadingText]="'Please hold as we load the budget..'"> -->
 
-  <div *ngIf="state$ | async as state; else loadingBudget" fxLayout="column" fxLayoutALign="start start"
-    class="container">
-    <div fxLayout="row" fxLayoutALign="space-between center" fxFlex>
-      <div fxLayout="row" fxLayoutALign="start center" fxLayoutGap="10px" fxFlex>
+  <div *ngIf="state$ | async as state; else loadingBudget" fxLayout="column" fxLayoutALign="start" class="">
+
+    <div class="exp-header" fxLayout="row" fxLayoutALign="space-between center" fxFlex>
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" fxFlex>
         <p class="budget-name">{{ state.budget.name }}</p>
         <!-- Role:  -->
         <p class="budget-status">
           ({{ translateStatus(state.budget.status) | transloco}})
         </p>
 
-        <mat-form-field appearance="outline" class="year-selector">
+        <mat-form-field appearance="outline">
           <mat-label>Year</mat-label>
           <mat-select name="year" [(ngModel)]="year" (ngModelChange)="setYear($event)" required>
             <mat-option *ngFor="let year of years" [value]="year">
@@ -21,28 +21,69 @@
         </mat-form-field>
       </div>
 
-      <div class="hierachy">
-        <app-budget-hierarchy-tree [state$]="state$" [budget$]="budget$" ></app-budget-hierarchy-tree>
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+        <button matTooltip="Include budget in operations" *ngIf="state.budget.status !== 1; else activateBudgetBtn" [disabled]="budgetActivating"
+          mat-raised-button color="primary" (click)="activateBudget()">
+          <span fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" fxFlex>
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>
+              Activate Budget
+            </span>
+            <mat-spinner *ngIf="budgetActivating" diameter="15"></mat-spinner>
+          </span>
+        </button>
+
+        <ng-template #activateBudgetBtn>
+          <button matTooltip="Remove budget from operations" [disabled]="budgetActivating" mat-stroked-button color="primary"
+            (click)="deActivateBudget(state.budget)">
+            <span fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" fxFlex>
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>
+                Dectivate Budget
+              </span>
+              <mat-spinner *ngIf="budgetActivating" diameter="15"></mat-spinner>
+            </span>
+          </button>
+        </ng-template>
+
+        <button matTooltip="Save your changes on the Database" [disabled]="budgetSubmitting" style="margin-right: 20px;" mat-raised-button color="primary"
+          (click)="submitBudget(state.budget)">
+          <span fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" fxFlex>
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>{{"BUDGETS.SUBMIT" | transloco}}</span>
+            <mat-spinner *ngIf="budgetSubmitting" diameter="15"></mat-spinner>
+          </span>
+        </button>
       </div>
     </div>
 
-    <!-- chart -->
-    <app-year-focus (navigateYearPressed)="navigateYear($event)">
+    <!-- 
+    <div fxLayout="row" fxLayoutALign="space-between center" fxFlex>
+      <div fxLayout="row" fxLayoutALign="start center" fxLayoutGap="10px" fxFlex>
 
-      <app-financial-plan-burn-chart [state$]="state$">
-      </app-financial-plan-burn-chart>
+      </div>
 
-    </app-year-focus>
+      <div class="hierachy">
+        <app-budget-hierarchy-tree [state$]="state$" [budget$]="budget$" ></app-budget-hierarchy-tree>
+      </div>
+    </div> -->
+    <div class="container">
+      <!-- chart -->
+      <app-year-focus (navigateYearPressed)="navigateYear($event)">
 
-    <div style="max-width: 100%;" fxLayout="column" fxLayoutAlign="start">
+        <app-financial-plan-burn-chart [state$]="state$">
+        </app-financial-plan-burn-chart>
 
-      <!-- Budget Table Viz -->
-      <app-financial-plan-pl-tables [state$]="state$" 
-                                    [budgetId]="budgetId" 
-                                    [isInEditMode]="isInEditMode"
-                                    (navigateYearPressed)="navigateYear($event)">
-      </app-financial-plan-pl-tables>
+      </app-year-focus>
 
+      <div style="max-width: 100%;" fxLayout="column" fxLayoutAlign="start">
+
+        <!-- Budget Table Viz -->
+        <app-financial-plan-pl-tables [state$]="state$" [budgetId]="budgetId" [isInEditMode]="isInEditMode"
+          (navigateYearPressed)="navigateYear($event)">
+        </app-financial-plan-pl-tables>
+
+      </div>
     </div>
   </div>
 

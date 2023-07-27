@@ -5,11 +5,14 @@ import { filter, map, Observable, Subscription, take } from 'rxjs';
 
 import { Logger } from '@iote/bricks-angular';
 
+import { Budget } from '@app/model/finance/planning/budgets';
 import { RenderedBudget } from '@app/model/finance/planning/budget-rendering';
 import { FinancialExplorerState } from '@app/model/finance/planning/budget-rendering-state';
 
-import { FinancialExplorerStateService } from '@app/state/finance/budgetting/rendering';
 import { BudgetLockService } from '@app/state/finance/budgetting/rendering';
+import { BudgetsStateService } from '@app/state/finance/budgetting/budgets';
+import { FinancialExplorerStateService } from '@app/state/finance/budgetting/rendering';
+
 import { GET_BUDGET_STATUS } from '../../providers/transalate-status.provider';
 
 /**
@@ -21,52 +24,54 @@ import { GET_BUDGET_STATUS } from '../../providers/transalate-status.provider';
   templateUrl: './financial-plan-explorer.component.html',
   styleUrls: ['./financial-plan-explorer.component.scss']
 })
-export class FinancialPlanExplorerPageComponent implements OnInit, OnDestroy
-{
+export class FinancialPlanExplorerPageComponent implements OnInit, OnDestroy {
   private _subscr = new Subscription();
 
   budgetId!: string;
   state$!: Observable<FinancialExplorerState>;
 
-  year$!  : Observable<number>;
+  year$!: Observable<number>;
   budget$!: Observable<RenderedBudget>;
 
 
   startYear!: number;
-  year!     : number;
-  years!    : number[];
+  year!: number;
+  years!: number[];
 
   minValue = 0;
   maxValue = 1;
+  currentScroll = 0;
+  lastScroll: number = 0;
 
   loading = true;
   isInEditMode: boolean;
+  budgetActivating: boolean = false;
+  budgetSubmitting: boolean = false;
 
-  constructor(private _state$$: FinancialExplorerStateService,
-              private _bLock$$: BudgetLockService,
+  constructor(private _logger: Logger,
               private _router$$: Router,
-              private _logger: Logger)
-  { 
-  }
+              private _bLock$$: BudgetLockService,
+              private _state$$: FinancialExplorerStateService,
+              private _budgetStateService: BudgetsStateService
+  ) {}
 
-  ngOnInit() 
-  {
+  ngOnInit() {
     const routeParams = this._router$$.url.split('/');
     this.budgetId = routeParams[2];
     this.isInEditMode = routeParams[3] === 'edit';
 
     this._bLock$$.lockBudget(this.budgetId, true);
 
-    if(!this.budgetId) {
+    if (!this.budgetId) {
       alert('Component cannot load as no budget-id has been passed through the route. Please contact support.');
       throw new Error('FPE-L1');
     }
 
     this.state$ = this._state$$.init(this.budgetId).pipe(filter(st => st.loaded));
     this.budget$ = this.state$.pipe(map(s => s.budget));
-    this.year$   = this.state$.pipe(map(st => st.year));
+    this.year$ = this.state$.pipe(map(st => st.year));
 
-    this._subscr = 
+    this._subscr =
       this.state$.subscribe(st => {
         this.year = st.year;
       });
@@ -80,8 +85,7 @@ export class FinancialPlanExplorerPageComponent implements OnInit, OnDestroy
   }
 
   /** Prev/Next-style navigation by year */
-  navigateYear(nav: 'prev' | 'next')
-  {  
+  navigateYear(nav: 'prev' | 'next') {
     if (nav === 'prev' && this.year > this.startYear) {
       this.year--;
       this.minValue = this.year % this.startYear;
@@ -102,12 +106,27 @@ export class FinancialPlanExplorerPageComponent implements OnInit, OnDestroy
     this.year = year;
     this._state$$.setYear(this.year);
   }
-  
+
   translateStatus(status: number) {
     return GET_BUDGET_STATUS(status);
   }
 
-  ngOnDestroy () {
+  activateBudget() {
+    this.budgetActivating = true;
+    this._state$$.activateBudget().subscribe(() => this.budgetActivating = false);
+  }
+
+  deActivateBudget(budget: Budget) {
+    this.budgetActivating = true;    
+    this._budgetStateService.deActivateBudget(budget).subscribe(() => this.budgetActivating = false);
+  }
+
+  submitBudget(budget: Budget) {
+    this.budgetSubmitting = true;
+    this._state$$.submitBudget(budget).subscribe(() => this.budgetSubmitting = false);
+  }
+
+  ngOnDestroy() {
     this._subscr.unsubscribe();
     this._bLock$$.lockBudget(this.budgetId, false);
   }
