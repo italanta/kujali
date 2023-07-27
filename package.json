@@ -11,8 +11,9 @@
     "start-firebase-emulators": "firebase emulators:start --import=demo-data --export-on-exit=demo-data",
     "run-develop": "npm run start & npm run start-firebase-emulators",
     "deploy-kujali-hosting": "firebase deploy --only hosting",
-    "build-kujali-app": "export GOOGLE_PROJECT_ID=project-kujali || set GOOGLE_PROJECT_ID=project-kujali && node tools/scripts/secret-manager.js && node tools/scripts/dotenv2json.js && nx build kujali --prod",
-    "deploy-kujali": "npm run build-kujali-app && npm run deploy-kujali-hosting"
+    "build-kujali-app-staging": "export GOOGLE_PROJECT_ID=project-kujali || set GOOGLE_PROJECT_ID=project-kujali && node tools/scripts/secret-manager.js && node tools/scripts/dotenv2json.js && nx build kujali --prod",
+    "build-kujali-app-prod": "export GOOGLE_PROJECT_ID=prod-kujali || set GOOGLE_PROJECT_ID=prod-kujali && node tools/scripts/secret-manager.js && node tools/scripts/dotenv2json.js && nx build kujali --prod",
+    "deploy-kujali-prod": "npm run build-kujali-app-prod && npm run deploy-kujali-hosting"
   },
   "private": true,
   "dependencies": {
