@@ -12,7 +12,7 @@
     "run-develop": "npm run start & npm run start-firebase-emulators",
     "deploy-kujali-hosting": "firebase deploy --only hosting",
     "build-kujali-app-staging": "export GOOGLE_PROJECT_ID=project-kujali || set GOOGLE_PROJECT_ID=project-kujali && node tools/scripts/secret-manager.js && node tools/scripts/dotenv2json.js && nx build kujali --prod",
-    "build-kujali-app-prod": "export GOOGLE_PROJECT_ID=prod-kujali || set GOOGLE_PROJECT_ID=prod-kujali && node tools/scripts/secret-manager.js && node tools/scripts/dotenv2json.js && nx build kujali --prod",
+    "build-kujali-app-prod": "export GOOGLE_PROJECT_ID=prod-kujali || set GOOGLE_PROJECT_ID=prod-kujali && node tools/scripts/secret-manager-prod.js && node tools/scripts/dotenv2json.js && nx build kujali --prod",
     "deploy-kujali-prod": "npm run build-kujali-app-prod && npm run deploy-kujali-hosting"
   },
   "private": true,
