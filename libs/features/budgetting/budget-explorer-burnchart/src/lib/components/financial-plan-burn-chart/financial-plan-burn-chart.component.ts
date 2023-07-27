@@ -39,7 +39,7 @@ export class FinancialPlanBurnChartComponent implements OnInit
   balanceLineDisplay!: number[];
 
   resultBlocks$!: Observable<{ label: string, data: number[] }[]>;
-  resultsBlocksDisplay!: { label: string, data: number[] }[];
+  resultsBlocksDisplay!: { label: string, data: number[], backgroundColor: string }[];
   
   labels$!: Observable<string[]>;
   labelsDisplay!: string[];
@@ -64,7 +64,7 @@ export class FinancialPlanBurnChartComponent implements OnInit
       .subscribe(([balanceLine, slider]) => { this.balanceLineDisplay = this._valuesForSlider(balanceLine, slider) });
     
     combineLatest([this.resultBlocks$, this.sliderValues$])
-      .subscribe(([resultBlocks, slider]) => { this.resultsBlocksDisplay = resultBlocks.map((rB) => this._resultBlocksForSlider(rB, slider)) });
+      .subscribe(([resultBlocks, slider]) => { this.resultsBlocksDisplay = resultBlocks.map((rB: any) => this._resultBlocksForSlider(rB, slider)) });
     
     combineLatest([this.labels$, this.sliderValues$])
       .subscribe(([labels, slider]) => {
@@ -103,7 +103,7 @@ export class FinancialPlanBurnChartComponent implements OnInit
     this.sliderValues$$.next({ min: this.sliderMinValue, max: this.sliderMaxValue });
   }
 
-  private _resultBlocksForSlider(resultBlock: { label: string, data: number[] }, slider: { min: number, max: number })
+  private _resultBlocksForSlider(resultBlock: { label: string, data: number[], backgroundColor: string }, slider: { min: number, max: number })
   {
     const block = ___clone(resultBlock);
     block.data = this._valuesForSlider(block.data, slider);

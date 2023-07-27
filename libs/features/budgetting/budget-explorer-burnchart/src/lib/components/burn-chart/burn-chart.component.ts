@@ -13,7 +13,7 @@ export class BurnChartComponent implements AfterViewInit, OnChanges
   @ViewChild('chart', { static: true }) chartEl!: ElementRef;
 
   @Input() labels!    : string[];
-  @Input() groupData! : { label: string, data: number[] }[];
+  @Input() groupData! : { label: string, data: number[], backgroundColor: string }[];
   @Input() lineData!  : number[];
 
   private _viewHasInit = false;
@@ -98,10 +98,17 @@ export class BurnChartComponent implements AfterViewInit, OnChanges
     }
   }
 
-  translateLabels(groups: { label: string, data: number[] }[]): { label: string, data: number[] }[] {
+  translateLabels(groups: { label: string, data: number[], backgroundColor: string }[]): { label: string, data: number[], backgroundColor: string }[] {
     groups.forEach((group) => {
       group.label = this._translateService.translate(group.label);
-    })
-    return groups;
+      group.backgroundColor = LABELS[group.label];
+    });
+    return groups.reverse();
   }
+}
+
+enum LABELS {
+  Income = 'green',
+  Costs = 'red',
+  Result = '#0047AB'
 }
