@@ -214,7 +214,7 @@ export class FinancialPlanTableComponent implements OnInit
     const classes: string[] = [];
     const value = this._getCellValue(row, col);
 
-    if (row.isHeader || row.type == 'childResult')
+    if (row.isHeader || row.type == 'childResult' || row.type == '')
       classes.push(this._getClassesTotal(value.amount));
     else
     {
