@@ -34,7 +34,7 @@ export class ContactsStore extends DataStore<Contact>
             .pipe(tap(o  => this._activeRepo = !!o ? _dataProvider.getRepo<Contact>(`orgs/${o.id}/contacts`) : null as any),
                   tap(o  => this._activeUser = o?.activeUser!),
                   switchMap(o => !!this._activeRepo ? this._activeRepo.getDocuments() : of([])),
-                  map(companies => this._dataAccessQuery.filterByAccess(companies, this._activeUser!)));
+                  map(contacts => this._dataAccessQuery.filterByAccess(contacts, this._activeUser!)));
 
     this._sbS.sink = data$.subscribe(contacts => {
       this.set(contacts, 'UPDATE - FROM DB');
