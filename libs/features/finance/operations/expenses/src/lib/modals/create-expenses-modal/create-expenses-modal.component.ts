@@ -15,6 +15,7 @@ import { BudgetsStateService } from '@app/state/finance/budgetting/budgets';
 import { BudgetPlansQuery } from '@app/state/finance/budgetting/rendering';
 import { ExpensesStateService } from '@app/state/finance/operations/expenses';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { CREATE_EXPENSE_FORM } from '../../model/create-expense-form.model';
 
 @Component({
   selector: 'app-create-expenses-modal',
@@ -48,7 +49,7 @@ export class CreateExpensesModalComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    this.addNewExpenseFormGroup = this.buildExpensesForm();
+    this.addNewExpenseFormGroup = CREATE_EXPENSE_FORM(this._fb, this.activeExpenseDate);
     this.getModalData();
   }
 
@@ -110,18 +111,5 @@ export class CreateExpensesModalComponent implements OnInit, AfterViewInit {
       this.creatingExpense = false;
       this._dialog.closeAll();
     });
-  }
-
-  buildExpensesForm(): FormGroup {
-    return this._fb.group({
-      name: [''],
-      budget: [''],
-      plan: [''],
-      date: [this.activeExpenseDate],
-      amount: [0],
-      vat: [0],
-      note: [''],
-      allocated: [false],
-    })
   }
 }

@@ -1,8 +1,9 @@
+import { DataAccessRestriction } from "@app/model/access-control";
 import { Timestamp } from "@firebase/firestore-types";
 
 import { IObject } from "@iote/bricks";
 
-export interface Expenses extends IObject {
+export interface Expenses extends DataAccessRestriction, IObject {
   // Name of the expense
   name: string;
   // The amount of the expense.
