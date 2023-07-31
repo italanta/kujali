@@ -35,7 +35,7 @@ export class CanAccessContactsDetailGuard implements CanActivate, CanLoad
     return combineLatest([this.authService.getUser(), this.permission$, this.contacts$]) 
                .pipe(
                     tap(([u, p, c]) => {this.activeContact = c.find(j => j.id === route.params['id'])!}),
-                    map(([u, p, c]) => !!u && p && (!this.activeContact.restricted || this.activeContact.accessibleBy.includes(u.id!))),
+                    map(([u, p, c]) => !!u && p && this.activeContact ? (!this.activeContact.restricted || this.activeContact.accessibleBy.includes(u.id!)) : false),
                      tap(canNavigate => {
                         if(!canNavigate)
                           this.router.navigate(['/access-denied']);

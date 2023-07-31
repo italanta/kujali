@@ -35,7 +35,7 @@ export class CanAccessOpportunitiesDetailGuard implements CanActivate, CanLoad
     return combineLatest([this.authService.getUser(), this.permission$, this.opportunities$]) 
                .pipe(
                     tap(([u, p, o]) => {this.activeOpps = o.find(j => j.id === route.params['id'])!}),
-                    map(([u, p, o]) => !!u && p && (!this.activeOpps.restricted || this.activeOpps.accessibleBy.includes(u.id!))),
+                    map(([u, p, o]) => !!u && p && this.activeOpps ? (!this.activeOpps.restricted || this.activeOpps.accessibleBy.includes(u.id!)) : false),
                      tap(canNavigate => {
                         if(!canNavigate)
                           this.router.navigate(['/access-denied']);

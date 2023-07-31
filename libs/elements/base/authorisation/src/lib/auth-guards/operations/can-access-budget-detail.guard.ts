@@ -34,7 +34,7 @@ export class CanAccessBudgetsDetailGuard implements CanActivate, CanLoad
     return combineLatest([this.authService.getUser(), this.permission$, this.budgets$]) 
                .pipe(
                     tap(([u, p, c]) => {this.activeBudget = c.find(j => j.id === route.params['id'])!}),
-                    map(([u, p, c]) => !!u && p && (!this.activeBudget.restricted || this.activeBudget.accessibleBy.includes(u.id!))),
+                    map(([u, p, c]) => !!this.activeBudget ? !!u && p && (!this.activeBudget.restricted || this.activeBudget.accessibleBy.includes(u.id!)) : false),
                      tap(canNavigate => {
                         if(!canNavigate)
                           this.router.navigate(['/access-denied']);

@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
+
+import { CanAccessBudgetsDetailGuard, IsLoggedInGuard } from '@app/elements/base/authorisation';
+
 import { SelectBudgetPageComponent } from './pages/select-budget/select-budget.component';
 
 const BUDGET_EXPL_ROUTES: Route[] = [
@@ -8,12 +11,14 @@ const BUDGET_EXPL_ROUTES: Route[] = [
     component: SelectBudgetPageComponent
   },
   {
-    path: ':budgetId/edit',
+    path: ':id/edit',
     loadChildren: () => import('libs/features/budgetting/budget-explorer/src/lib/budget-explorer.module').then(m => m.BudgetExplorerFeatureModule),
+    canActivate: [IsLoggedInGuard, CanAccessBudgetsDetailGuard]
   },
   {
-    path: ':budgetId/view',
+    path: ':id/view',
     loadChildren: () => import('libs/features/budgetting/budget-explorer/src/lib/budget-explorer.module').then(m => m.BudgetExplorerFeatureModule),
+    canActivate: [IsLoggedInGuard, CanAccessBudgetsDetailGuard]
   }
 ];
 

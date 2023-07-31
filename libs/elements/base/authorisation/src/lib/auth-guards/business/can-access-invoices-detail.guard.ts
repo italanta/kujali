@@ -35,7 +35,7 @@ export class CanAccessInvoicesDetailGuard implements CanActivate, CanLoad
     return combineLatest([this.authService.getUser(), this.permission$, this.invoices$]) 
                .pipe(
                     tap(([u, p, o]) => {this.activeInv = o.find(j => j.id === route.params['id'])!}),
-                    map(([u, p, o]) => !!u && p && (!this.activeInv.restricted || this.activeInv.accessibleBy.includes(u.id!))),
+                    map(([u, p, o]) => !!u && p && this.activeInv ? (!this.activeInv.restricted || this.activeInv.accessibleBy.includes(u.id!)) : false),
                      tap(canNavigate => {
                         if(!canNavigate)
                           this.router.navigate(['/access-denied']);

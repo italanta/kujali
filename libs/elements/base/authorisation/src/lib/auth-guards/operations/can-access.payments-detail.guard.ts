@@ -34,7 +34,7 @@ export class CanAccessPaymentsDetailGuard implements CanActivate, CanLoad
     return combineLatest([this.authService.getUser(), this.permission$, this.pays$]) 
                .pipe(
                     tap(([u, p, c]) => {this.activePay = c.find(j => j.id === route.params['id'])!}),
-                    map(([u, p, c]) => !!u && p && (!this.activePay.restricted || this.activePay.accessibleBy.includes(u.id!))),
+                    map(([u, p, c]) => !!u && p && this.activePay ? (!this.activePay.restricted || this.activePay.accessibleBy.includes(u.id!)) : false),
                      tap(canNavigate => {
                         if(!canNavigate)
                           this.router.navigate(['/access-denied']);

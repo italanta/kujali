@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Route, PreloadAllModules }    from '@angular/router';
 import { NoPermissionToAccessComponent } from '@app/elements/access-control';
 
-import { IsLoggedInGuard } from '@app/elements/base/authorisation';
+import { CanAccessBudgetsGuard, IsLoggedInGuard } from '@app/elements/base/authorisation';
 
 export const APP_ROUTES: Route[] = [
 
@@ -48,7 +48,7 @@ export const APP_ROUTES: Route[] = [
     path: 'budgets',
     loadChildren: () => import('@app/features/budgetting/budgets').then(m => m.FinancialPlanningModule),
     data: { title: 'Budgets' },
-    canActivate: [IsLoggedInGuard]
+    canActivate: [IsLoggedInGuard, CanAccessBudgetsGuard]
   },
 
   {

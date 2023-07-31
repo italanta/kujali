@@ -34,7 +34,7 @@ export class CanAccessAccountsDetailGuard implements CanActivate, CanLoad
     return combineLatest([this.authService.getUser(), this.permission$, this.accounts$]) 
                .pipe(
                     tap(([u, p, c]) => {this.activeAcc = c.find(j => j.id === route.params['id'])!}),
-                    map(([u, p, c]) => !!u && p && (!this.activeAcc.restricted || this.activeAcc.accessibleBy.includes(u.id!))),
+                    map(([u, p, c]) => !!u && p && this.activeAcc ? (!this.activeAcc.restricted || this.activeAcc.accessibleBy.includes(u.id!)) : false),
                      tap(canNavigate => {
                         if(!canNavigate)
                           this.router.navigate(['/access-denied']);
