@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 
-import { IsLoggedInGuard } from '@app/elements/base/authorisation';
-
-import { OperationsPageComponent } from './pages/operations-page/operations-page.component';
+import { CanAccessAccountsGuard, CanAccessBudgetsGuard, 
+      CanAccessExpensesGuard, 
+      CanAccessPaymentsGuard, IsLoggedInGuard } from '@app/elements/base/authorisation';
 
 const OPERATIONS_ROUTES: Route[] = [
   {
@@ -14,22 +14,22 @@ const OPERATIONS_ROUTES: Route[] = [
   {
     path: 'accounts',
     loadChildren: () => import('@app/features/finance/operations/accounts/main').then(m => m.OperationsAccountsModule),
-    canActivate: [IsLoggedInGuard]
+    canActivate: [IsLoggedInGuard, CanAccessAccountsGuard]
   },
   {
     path: 'payments',
     loadChildren: () => import('@app/features/finance/operations/payments').then(m => m.OperationsPaymentsModule),
-    canActivate: [IsLoggedInGuard]
+    canActivate: [IsLoggedInGuard, CanAccessPaymentsGuard]
   },
   {
     path: 'expenses',
     loadChildren: () => import('@app/features/finance/operations/expenses').then(m => m.OperationsExpensesModule),
-    canActivate: [IsLoggedInGuard]
+    canActivate: [IsLoggedInGuard, CanAccessExpensesGuard]
   },
   {
     path: 'budgets',
     loadChildren: () => import('@app/features/finance/operations/budgets/main').then(m => m.OperationsBudgetsModule),
-    canActivate: [IsLoggedInGuard]
+    canActivate: [IsLoggedInGuard, CanAccessBudgetsGuard]
   },
 ];
 

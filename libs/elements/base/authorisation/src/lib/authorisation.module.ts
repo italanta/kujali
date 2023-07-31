@@ -13,6 +13,15 @@ import { CanAccessContactsDetailGuard } from './auth-guards/business/can-access-
 import { CanAccessInvoicesDetailGuard } from './auth-guards/business/can-access-invoices-detail.guard';
 import { CanAccessOpportunitiesDetailGuard } from './auth-guards/business/can-access-opportunities-detail.guard';
 
+import { CanAccessAccountsGuard } from './auth-guards/operations/can-access.accounts.guard';
+import { CanAccessAccountsDetailGuard } from './auth-guards/operations/can-access.accounts-detail.guard';
+import { CanAccessExpensesGuard } from './auth-guards/operations/can-access.expenses.guard';
+import { CanAccessExpensesDetailGuard } from './auth-guards/operations/can-access.expenses-detail.guard';
+import { CanAccessPaymentsGuard } from './auth-guards/operations/can-access.payments.guard';
+import { CanAccessPaymentsDetailGuard } from './auth-guards/operations/can-access.payments-detail.guard';
+import { CanAccessBudgetsGuard } from './auth-guards/operations/can-access-budgets.guard';
+import { CanAccessBudgetsDetailGuard } from './auth-guards/operations/can-access-budget-detail.guard';
+
 /**
  * Authorisation module. Contains Auth Guards & Access Control Directives
  */
@@ -45,7 +54,20 @@ export class AuthorisationModule
         CanAccessInvoicesDetailGuard,
 
         CanAccessOpportunitiesGuard,
-        CanAccessOpportunitiesDetailGuard
+        CanAccessOpportunitiesDetailGuard,
+
+        // operations routes
+        CanAccessAccountsGuard,
+        CanAccessAccountsDetailGuard,
+
+        CanAccessExpensesGuard,
+        CanAccessExpensesDetailGuard,
+
+        CanAccessPaymentsGuard,
+        CanAccessPaymentsDetailGuard,
+
+        CanAccessBudgetsGuard,
+        CanAccessBudgetsDetailGuard
       ]
     };
   }
