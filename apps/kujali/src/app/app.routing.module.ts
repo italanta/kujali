@@ -56,6 +56,12 @@ export const APP_ROUTES: Route[] = [
     data: { title: 'Settings' },
     canActivate: [IsLoggedInGuard]
   },
+  {
+    path: 'no-permissions',
+    loadChildren: () => import('@app/features/settings/main').then(m => m.SettingsModule),
+    data: { title: 'Settings' },
+    canActivate: [IsLoggedInGuard]
+  },
 ];
 
 

@@ -7,6 +7,7 @@ import { CanAccessCompaniesGuard } from './auth-guards/business/can-access-compa
 import { CanAccessContactsGuard } from './auth-guards/business/can-access-contacts.guard';
 import { CanAccessInvoicesGuard } from './auth-guards/business/can-access-invoices.guard';
 import { CanAccessOpportunitiesGuard } from './auth-guards/business/can-access-opportunities.guard';
+import { CanAccessCompaniesDetailGuard } from './auth-guards/business/can-access-companies-detail.guard';
 
 /**
  * Authorisation module. Contains Auth Guards & Access Control Directives
@@ -29,7 +30,8 @@ export class AuthorisationModule
         CanAccessCompaniesGuard,
         CanAccessContactsGuard,
         CanAccessInvoicesGuard,
-        CanAccessOpportunitiesGuard
+        CanAccessOpportunitiesGuard,
+        CanAccessCompaniesDetailGuard
       ]
     };
   }
