@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 
+import { CanAccessInvoicesDetailGuard, IsLoggedInGuard } from '@app/elements/base/authorisation';
+
 import { InvoicesPageComponent } from './pages/invoices-page/invoices-page.component';
 
 const INVOICES_ROUTES: Route[] = [
@@ -12,6 +14,7 @@ const INVOICES_ROUTES: Route[] = [
   {
     path: ':id/edit',
     loadChildren: () => import('libs/features/finance/business/invoices/details/view/src/lib/invoices-view.module').then(m => m.InvoicesViewModule),
+    canActivate: [IsLoggedInGuard, CanAccessInvoicesDetailGuard]
   },
   {
     path: ':id/new-invoice',

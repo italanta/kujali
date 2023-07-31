@@ -1,40 +1,41 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanLoad, Route, UrlSegment } from '@angular/router';
+import { CanActivate, Router, ActivatedRouteSnapshot, 
+          RouterStateSnapshot, CanLoad, Route, UrlSegment } from '@angular/router';
 
 import { Observable, combineLatest } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
-import { Company } from '@app/model/finance/companies';
 import { KujaliPermissions } from '@app/model/organisation';
+import { Invoice } from '@app/model/finance/invoices';
 
 import { UserStore } from '@app/state/user';
 import { PermissionsStateService } from '@app/state/organisation';
-import { CompaniesStore } from '@app/state/finance/companies';
+import { InvoicesService } from '@app/state/finance/invoices';
 
 @Injectable()
-export class CanAccessCompaniesDetailGuard implements CanActivate, CanLoad
+export class CanAccessInvoicesDetailGuard implements CanActivate, CanLoad
 {
 
   permission$: Observable<boolean>;
-  company$: Observable<Company[]>
+  invoices$: Observable<Invoice[]>
 
-  private activeCompany: Company;
+  private activeInv: Invoice;
 
   constructor(private router: Router,
               private authService: UserStore,
-              private company$$: CompaniesStore,
+              private _invs$$: InvoicesService,
               private _permissions$$: PermissionsStateService
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>|Promise<boolean>|boolean
   {
-    this.permission$ = this._permissions$$.checkAccessRight((p: KujaliPermissions) => p.CompanySettings.CanViewCompanies);
-    this.company$ = this.company$$.get();
+    this.permission$ = this._permissions$$.checkAccessRight((p: KujaliPermissions) => p.InvoicesSettings.CanViewInvoices);
+    this.invoices$ = this._invs$$.getAllInvoices();
 
-    return combineLatest([this.authService.getUser(), this.permission$, this.company$]) 
+    return combineLatest([this.authService.getUser(), this.permission$, this.invoices$]) 
                .pipe(
-                    tap(([u, p, c]) => {this.activeCompany = c.find(j => j.id === route.params['id'])!}),
-                    map(([u, p, c]) => !!u && p && (!this.activeCompany.restricted || this.activeCompany.accessibleBy.includes(u.id!))),
+                    tap(([u, p, o]) => {this.activeInv = o.find(j => j.id === route.params['id'])!}),
+                    map(([u, p, o]) => !!u && p && (!this.activeInv.restricted || this.activeInv.accessibleBy.includes(u.id!))),
                      tap(canNavigate => {
                         if(!canNavigate)
                           this.router.navigate(['/access-denied']);
@@ -48,5 +49,4 @@ export class CanAccessCompaniesDetailGuard implements CanActivate, CanLoad
                .getUser()
                .pipe(map(u => !!u));
   }
-
 }
