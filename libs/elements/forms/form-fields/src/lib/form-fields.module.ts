@@ -6,15 +6,20 @@ import { MatInputModule } from '@angular/material/input';
 
 import { MatSelectFilterModule } from 'mat-select-filter';
 
-import { MaterialDesignModule, MaterialBricksModule, FlexLayoutModule } from '@iote/bricks-angular';
+import {
+  MaterialDesignModule,
+  MaterialBricksModule,
+  FlexLayoutModule,
+} from '@iote/bricks-angular';
 import { MultiLangModule } from '@ngfi/multi-lang';
 
 import { TagsFormFieldComponent } from './components/tags-form-field/tags-form-field.component';
 import { PhoneFormFieldComponent } from './components/phone-form-field/phone-form-field.component';
 import { RolesFormFieldComponent } from './components/roles-form-field/roles-form-field.component';
-import { SocialMediaFieldComponent } from './components/social-media-field/social-media-field.component'
+import { SocialMediaFieldComponent } from './components/social-media-field/social-media-field.component';
 import { AddRoleFieldComponent } from './components/add-role-field/add-role-field.component';
-import { OrgUsersFormField } from './components/org-users/org-users.component'
+import { OrgUsersFormField } from './components/org-users/org-users.component';
+import { RestrictAccessComponent } from './components/restrict-access/restrict-access.component';
 
 @NgModule({
   imports: [
@@ -38,7 +43,8 @@ import { OrgUsersFormField } from './components/org-users/org-users.component'
     RolesFormFieldComponent,
     SocialMediaFieldComponent,
     AddRoleFieldComponent,
-    OrgUsersFormField
+    OrgUsersFormField,
+    RestrictAccessComponent,
   ],
   exports: [
     TagsFormFieldComponent,
@@ -46,7 +52,8 @@ import { OrgUsersFormField } from './components/org-users/org-users.component'
     RolesFormFieldComponent,
     SocialMediaFieldComponent,
     AddRoleFieldComponent,
-    OrgUsersFormField
-  ]
+    OrgUsersFormField,
+    RestrictAccessComponent,
+  ],
 })
-export class FormFieldsModule { }
+export class FormFieldsModule {}

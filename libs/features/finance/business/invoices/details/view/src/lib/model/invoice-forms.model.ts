@@ -13,7 +13,9 @@ export function __CreateInvoiceMainForm(_fb: FormBuilder)
       status          : ['new'],
       products : _fb.array([]),
       structuredMessage: [''],
-      currency: ['EUR']
+      currency: ['EUR'],
+      restricted: [false],
+      accessibleBy: [[]],
     },
   );
 }

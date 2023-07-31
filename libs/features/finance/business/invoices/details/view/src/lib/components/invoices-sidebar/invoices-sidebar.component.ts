@@ -9,6 +9,7 @@ import { AppClaimDomains } from '@app/model/access-control';
 import { Invoice } from '@app/model/finance/invoices';
 
 import { InvoicesService } from '@app/state/finance/invoices';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'kujali-invoices-sidebar',
@@ -18,6 +19,8 @@ import { InvoicesService } from '@app/state/finance/invoices';
 export class InvoicesSidebarComponent implements OnInit {
 
   private _sbS = new SubSink();
+
+  @Input() invoiceForm: FormGroup;
   @Input() canEditInvoice: boolean;
   @Input() activeInvoice: Invoice;
   

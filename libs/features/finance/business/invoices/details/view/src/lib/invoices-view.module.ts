@@ -25,6 +25,7 @@ import { InvoiceFormsService } from './services/invoice-forms.service';
 import { InvoiceModelService } from './services/invoice-model.service';
 
 import { InvoicesViewRouterModule } from './invoices-view.router';
+import { FormFieldsModule } from '@app/elements/forms/form-fields';
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import { InvoicesViewRouterModule } from './invoices-view.router';
     AccessControlModule,
     iTalPageModule,
     PageHeadersModule,
+    FormFieldsModule,
     InvoicesViewRouterModule
   ],
   declarations: [

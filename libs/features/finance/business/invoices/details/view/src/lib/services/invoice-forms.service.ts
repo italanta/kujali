@@ -80,7 +80,9 @@ export class InvoiceFormsService {
       status: invoiceDetails.status,
       products: new FormArray([]),
       structuredMessage: invoiceDetails.structuredMessage ?? '',
-      currency: invoiceDetails.currency ?? 'EUR'
+      currency: invoiceDetails.currency ?? 'EUR',
+      restricted: invoiceDetails.restricted ?? false,
+      accessibleBy: [invoiceDetails.accessibleBy] ?? [],
     });
   }
 
