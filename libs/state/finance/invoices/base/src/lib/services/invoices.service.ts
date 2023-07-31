@@ -91,6 +91,8 @@ export class InvoicesService {
       currency: invoiceValue.currency ?? 'EUR',
       structuredMessage: invoiceValue.structuredMessage,
       status: invoiceValue.status,
+      restricted: invoiceValue.restricted,
+      accessibleBy: invoiceValue.accessibleBy,
     } as Invoice;
 
     invoiceData.products.forEach((product: any) => {

@@ -1,5 +1,6 @@
 import { IObject } from '@iote/bricks';
 
+import { KuUser } from '@app/model/common/user';
 import { FAccount } from '@app/model/finance/accounts/main';
 
 import { Address } from './address.interface';
@@ -25,6 +26,7 @@ export interface Organisation extends IObject
   activatedBankAccount?: number;
 
   users: string[],
+  activeUser?: KuUser;
 
   roles: string[];
   permissions: {};
