@@ -1,6 +1,7 @@
 import { IObject } from "@iote/bricks";
 
 import { BudgetStatus } from "./types/budget-status.enum";
+import { DataAccessQuery } from "@app/state/access-control";
 
 /**
  * The @interface {Budget} is a key model within our application.
@@ -8,7 +9,7 @@ import { BudgetStatus } from "./types/budget-status.enum";
  * Budgets allow discovery and finalization of business plans for the organisation,
  *    from which then the accounts can be reconciled.
  */
-export interface Budget extends IObject 
+export interface Budget extends DataAccessQuery, IObject 
 {
   name: string;
 

@@ -6,7 +6,7 @@
     </span>
   </div>
 
-  <form #form="ngForm" (ngSubmit)="createBudget(form.value)" fxLayout="column">
+  <form [formGroup]="createBudgetForm" (ngSubmit)="createBudget(createBudgetForm.value)" fxLayout="column">
 
 
     <h2 class="mat-headline-6 modal-title">
@@ -23,7 +23,7 @@
     <div fxLayout="column" fxFlex>
       <h4>{{ 'BUDGET.CREATE.HDR-FLD-BUDGET-NAME' | transloco }}</h4>
       <mat-form-field appearance="outline" fxFlex>
-        <input matInput [(ngModel)]="budgetName" name="budgetName" placeholder="New Budget">
+        <input matInput formControlName="budgetName" name="budgetName" placeholder="New Budget">
       </mat-form-field>
     </div>
 
@@ -32,7 +32,7 @@
       <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="30px" fxFlex>
         <div fxFlex="50">
           <mat-form-field appearance="outline" fxFLex>
-            <mat-select [(ngModel)]="startYear" name="startYear" #categoryYF="ngModel" placeholder="Start Year" required
+            <mat-select formControlName="startYear" name="startYear" placeholder="Start Year" required
               fxFLex>
               <mat-option *ngFor="let year of years" [value]="year">
                 {{ year }}
@@ -43,7 +43,7 @@
   
         <div fxFlex="50">
           <mat-form-field appearance="outline" fxFlex>
-            <mat-select [(ngModel)]="duration" name="duration" placeholder="Duration In Years" required>
+            <mat-select formControlName="duration" name="duration" placeholder="Duration In Years" required>
               <mat-option *ngFor="let year of inYears" [value]="year.val">
                 {{ year.name }}
               </mat-option>
@@ -53,9 +53,13 @@
       </div>
     </div>
 
+    <div>
+      <app-restrict-access [restrictionFormGroup]="createBudgetForm" ></app-restrict-access>
+    </div>
+
     <div class="sm-divider"></div>
 
-    <button fxLayout="row" fxLayoutAlign="center center" type="submit" [disabled]="form.invalid || isSaving" class="btn-submit"
+    <button fxLayout="row" fxLayoutAlign="center center" type="submit" [disabled]="createBudgetForm.invalid || isSaving" class="btn-submit"
       mat-raised-button color="primary">
       <span *ngIf="!isSaving"> {{ 'BUDGET.CREATE.BTN-SUBMIT' | transloco }} </span>
       <mat-spinner *ngIf="isSaving" diameter="20"></mat-spinner>

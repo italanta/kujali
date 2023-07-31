@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
   FlexLayoutModule,
@@ -28,6 +28,7 @@ import { SelectBudgetPageComponent } from './pages/select-budget/select-budget.c
 import { ChildBudgetsModalComponent } from './modals/child-budgets-modal/child-budgets-modal.component';
 
 import { BudgetRouter } from './budget-router';
+import { FormFieldsModule } from '@app/elements/forms/form-fields';
 /**
  * Financial-Planning module. Contains financial planning creation and forecasting.
  */
@@ -39,9 +40,12 @@ import { BudgetRouter } from './budget-router';
     FlexLayoutModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule,
     MultiLangModule,
+
     iTalPageModule,
     PageHeadersModule,
+    FormFieldsModule,
 
     BudgetsStateModule,
 

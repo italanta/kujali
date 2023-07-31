@@ -8,10 +8,12 @@ import { Query } from "@ngfi/firestore-qbuilder";
 import { DataService, Repository } from "@ngfi/angular";
 import { DataStore } from "@ngfi/state";
 
+import { KuUser } from "@app/model/common/user";
 import { Organisation } from "@app/model/organisation";
 import { Budget } from "@app/model/finance/planning/budgets";
 
 import { ActiveOrgStore } from "@app/state/organisation";
+import { DataAccessQuery } from "@app/state/access-control";
 
 @Injectable()
 export class BudgetsStore extends DataStore<Budget>
@@ -20,20 +22,23 @@ export class BudgetsStore extends DataStore<Budget>
   protected _activeRepo!: Repository<Budget>;
   protected store!: string; 
 
+  private _activeUser: KuUser;
+
   constructor(org$$: ActiveOrgStore,
               dataService: DataService,
+              private _dataAccessQuery: DataAccessQuery,
               _logger: Logger)
   {
     super('always', _logger);
 
     org$$.get()
       .pipe(
-        tap(o => this._org = o),
+        tap(o => {this._org = o, this._activeUser = o.activeUser!}),
         tap(o => this._activeRepo = dataService.getRepo<Budget>(`orgs/${o.id}/budgets`)),
         switchMap(
           () => this._activeRepo.getDocuments(new Query())),
+        map(budgets => this._dataAccessQuery.filterByAccess(budgets, this._activeUser!)),
         map((budgets: Budget[]) => ___orderBy(budgets, 'createdOn', 'asc')))
-    
       .subscribe(budgets => {
         this.set(budgets, 'FROM DB');
       });

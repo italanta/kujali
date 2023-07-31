@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { cloneDeep as ___cloneDeep, range as ___range } from 'lodash';
@@ -13,6 +14,7 @@ import { BudgetsStore } from '@app/state/finance/budgetting/budgets';
 import { BudgetLockService } from '@app/state/finance/budgetting/rendering';
 
 import { CalculateBudgetHeaderService } from '@app/state/finance/budgetting/rendering';
+import { CREATE_BUDGET_FORM } from '../model/create-budget-form.model';
 @Component({
   selector: 'app-create-budget-modal',
   templateUrl: './create-budget-modal.component.html',
@@ -23,6 +25,7 @@ export class CreateBudgetModalComponent implements OnInit
 {
   // - SECTION "CREATE FORM"
 
+  createBudgetForm: FormGroup;
   /** If the budget has a child or note */
   hasChild!: boolean;
 
@@ -49,7 +52,8 @@ export class CreateBudgetModalComponent implements OnInit
 
   isSaving: boolean = false;
 
-  constructor(private _budgets$$: BudgetsStore,
+  constructor(private _fb: FormBuilder,
+              private _budgets$$: BudgetsStore,
               private _budgetLockService: BudgetLockService,
               private _headersService: CalculateBudgetHeaderService,
               @Inject(MAT_DIALOG_DATA) public childBudget: Budget | false,
@@ -57,7 +61,10 @@ export class CreateBudgetModalComponent implements OnInit
               private _logger: Logger
   ){ }
 
-  ngOnInit = () => this.hasChild = !!this.childBudget;
+  ngOnInit () {
+    this.createBudgetForm = CREATE_BUDGET_FORM(this._fb);
+    this.hasChild = !!this.childBudget;
+  }
 
   onNoClick = () => this.dialogRef.close();
 
@@ -89,10 +96,12 @@ export class CreateBudgetModalComponent implements OnInit
     }
 
     const budget = <Budget><unknown>{
-      name: this.budgetName,
-      startYear: this.startYear,
+      name: this.createBudgetForm.value.budgetName,
+      startYear: this.createBudgetForm.value.startYear,
       startMonth: 0,
-      duration: this.duration,
+      duration: this.createBudgetForm.value.duration,
+      restricted: this.createBudgetForm.value.restricted,
+      accessibleBy: this.createBudgetForm.value.accessibleBy,
 
       // result: this._emptyBalance(),
       status: BudgetStatus.Open,
