@@ -33,7 +33,6 @@ export class CreateNewBankAccountModalComponent implements OnInit {
     this.addNewBankAccountFormGroup = CreateNewBankAccountForm(this._fb);
   }
 
-
   createBankAccount() {    
     this.isCreatingNewBankAccount = true;
     this._sbS.sink = this._accountsService.createNewAccount(this.addNewBankAccountFormGroup.value)

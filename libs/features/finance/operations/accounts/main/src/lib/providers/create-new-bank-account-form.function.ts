@@ -21,6 +21,8 @@ export function CreateNewBankAccountForm (_fb: FormBuilder): FormGroup {
     // }),
 
     bankConnection : [0],
-    trType: ['bank']
+    trType: ['bank'],
+    restricted: [false],
+    accessibleBy: [[]],
   })
 }
