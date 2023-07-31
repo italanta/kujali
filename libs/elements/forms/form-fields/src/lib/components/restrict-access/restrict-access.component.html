@@ -1,0 +1,9 @@
+<div class="restrict-access" [formGroup]="restrictionFormGroup" fxLayout="column" fxLayoutAlign="start"
+  fxLayoutGap="10px" fxFlex>
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex>
+    <p class="label"> Restrict Access </p>
+    <mat-slide-toggle color="primary" formControlName="restricted" (change)="accessRestricted()"></mat-slide-toggle>
+  </div>
+  <kujali-org-users *ngIf="accessRestricted()" [parentForm]="restrictionFormGroup"
+    [restriction]="true"></kujali-org-users>
+</div>
