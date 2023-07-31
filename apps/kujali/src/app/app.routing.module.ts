@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Route, PreloadAllModules }    from '@angular/router';
+import { NoPermissionToAccessComponent } from '@app/elements/access-control';
 
 import { IsLoggedInGuard } from '@app/elements/base/authorisation';
 
@@ -57,9 +58,9 @@ export const APP_ROUTES: Route[] = [
     canActivate: [IsLoggedInGuard]
   },
   {
-    path: 'no-permissions',
-    loadChildren: () => import('@app/features/settings/main').then(m => m.SettingsModule),
-    data: { title: 'Settings' },
+    path: 'access-denied',
+    component: NoPermissionToAccessComponent,
+    data: { title: 'Access Denied' },
     canActivate: [IsLoggedInGuard]
   },
 ];

@@ -36,7 +36,7 @@ export class CanAccessCompaniesDetailGuard implements CanActivate, CanLoad
                     map(([u, p, c]) => !!u && p && (!this.activeCompany.restricted || this.activeCompany.accessibleBy.includes(u.id!))),
                      tap(canNavigate => {
                         if(!canNavigate)
-                          this.router.navigate(['/home']);
+                          this.router.navigate(['/access-denied']);
                      })
                 );
   }

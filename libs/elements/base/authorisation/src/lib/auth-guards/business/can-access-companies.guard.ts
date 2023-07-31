@@ -27,7 +27,7 @@ export class CanAccessCompaniesGuard implements CanActivate, CanLoad
                .pipe(map(([u, p]) => !!u && p),
                      tap(canNavigate => {
                         if(!canNavigate)
-                          this.router.navigate(['/home']);
+                          this.router.navigate(['/access-denied']);
                      })
                 );
   }
