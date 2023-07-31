@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { COMMA, ENTER, SPACE } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
@@ -10,8 +10,6 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { sortBy as __sortBy, flatMap as __flatMap } from 'lodash';
 
-import { TranslateService } from '@ngfi/multi-lang';
-
 import { AppClaimDomains } from '@app/model/access-control';
 
 import { ContactsService } from '@app/state/finance/contacts'
@@ -20,6 +18,8 @@ import { OrganisationService } from '@app/state/organisation';
 import { TagsService } from '@app/state/tags';
 
 import { _PhoneOrEmailValidator } from '@app/elements/forms/validators';
+
+import { CREATE_COMPANY_FORM } from '../../model/create-company-form.model';
 
 
 @Component({
@@ -58,20 +58,15 @@ export class AddNewCompanyComponent implements OnInit, OnDestroy {
 
   readonly CAN_CREATE_CONTACTS = AppClaimDomains.ContactCreate;
 
-  constructor(private _translateService: TranslateService,
+  constructor(private _FB: FormBuilder,
+              private _tagsService: TagsService,
               private _contact$$: ContactsService,
-              private _FB: FormBuilder,
-              private _companyService: CompaniesService,
               private _org$$: OrganisationService,
-              private _tagsService: TagsService
-  ) 
-  {
-    this.lang = this._translateService.initialise();
-  }
+              private _companyService: CompaniesService
+  ) {}
 
   ngOnInit(): void {
-    this.buildCompanyForm();
-    this.getPageData();
+    this.addNewCompanyFormGroup = CREATE_COMPANY_FORM(this._FB);
 
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(''),
@@ -79,10 +74,6 @@ export class AddNewCompanyComponent implements OnInit, OnDestroy {
         return tag ? this._filter(tag) : this.allTags?.slice();
       })
     );
-  }
-
-  setLang(lang: 'en' | 'fr' | 'nl') {
-    this._translateService.setLang(lang);
   }
 
   private _filter(value) {
@@ -114,32 +105,6 @@ export class AddNewCompanyComponent implements OnInit, OnDestroy {
     this._sbS.sink = this._tagsService.getTagsStore().subscribe((tags) => {
       this.allTags = __flatMap(tags, 'id');
     });
-  }
-
-  buildCompanyForm() {
-    this.addNewCompanyFormGroup = this._FB.group(
-      {
-        name: ['', Validators.required],
-        hq: ['', Validators.required],
-        logoImgUrl: [''],
-        tags: [[]],
-        contact: [''],
-        contactDetails: this._FB.group(
-          {
-            fName: ['', Validators.required],
-            lName: ['', Validators.required],
-            email: [''],
-            phone: [''],
-            company: [''],
-          },
-          {
-            updateOn: 'submit',
-            validators: _PhoneOrEmailValidator('phone', 'email'),
-          }
-        ),
-      },
-      { updateOn: 'submit' }
-    );
   }
 
   onCountryChange(country: any) {
