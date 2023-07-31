@@ -20,6 +20,7 @@ import { CompareBudgetsModalComponent } from './modals/compare-budgets-modal/com
 import { AllocateInvoiceToLineModalComponent } from './modals/allocate-invoice-to-line-modal/allocate-invoice-to-line-modal.component';
 
 import { OperationsBudgetsRouterModule } from './operations-budgets.router';
+import { OperationsBudgetsModelService } from './services/operations-budgets.service';
 
 @NgModule({
   imports: [
@@ -45,6 +46,6 @@ import { OperationsBudgetsRouterModule } from './operations-budgets.router';
     BudgetAnalysisComponent,
     CompareBudgetsModalComponent,
   ],
-  providers: [BudgetPlansQuery],
+  providers: [BudgetPlansQuery, OperationsBudgetsModelService],
 })
 export class OperationsBudgetsModule {}
