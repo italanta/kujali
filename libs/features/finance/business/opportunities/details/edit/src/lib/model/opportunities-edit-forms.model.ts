@@ -14,6 +14,8 @@ export function CreateOpportunityForm (_fb: FormBuilder){
     assignTo: [[]],
     status: [''],
     tags: [[]],
+    restricted: [false],
+    accessibleBy: [[]],
   });
 }
 
@@ -29,6 +31,8 @@ export function PatchOpportunityForm (_fb: FormBuilder, opps:Opportunity){
     assignTo: [opps.assignTo ?? []],
     status: [opps.status ?? ''],
     tags: [opps.tags ?? []],
+    restricted: [opps.restricted ?? false],
+    accessibleBy: [opps.accessibleBy ?? []],
   });
 }
 

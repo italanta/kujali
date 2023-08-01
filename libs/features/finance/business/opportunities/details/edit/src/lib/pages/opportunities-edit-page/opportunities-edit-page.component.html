@@ -125,6 +125,9 @@
 
               <kujali-finance-tags-form-field></kujali-finance-tags-form-field>
 
+              <div>
+                <app-restrict-access [restrictionFormGroup]="opportunityEditModel.opportunityForm" ></app-restrict-access>
+              </div>
               <div class="deleteBtn">
                 <button *hasViewAccess="CAN_DELETE_OPPS" mat-raised-button color="warn" class="danger"
                   (click)="deleteOpportunity(oppsData)">Delete Opportunity</button>
