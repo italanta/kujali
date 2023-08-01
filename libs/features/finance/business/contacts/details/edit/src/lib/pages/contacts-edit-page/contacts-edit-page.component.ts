@@ -146,6 +146,8 @@ export class ContactsEditPageComponent implements OnInit {
       linkedin: [c?.linkedin ?? ''],
       dob: [moment(c.dob.seconds * 1000) ?? ''],
       gender: [c?.gender ?? ''],
+      restricted: [c?.restricted ?? false],
+      accessibleBy: [c?.accessibleBy ?? []],
     });
   }
 
