@@ -24,7 +24,6 @@ import { ChangeProfilePictureComponent } from '../../components/change-profile-p
 
 import { AppClaimDomains } from '@app/model/access-control';
 
-
 @Component({
   selector: 'companies-edit-page',
   templateUrl: './companies-edit-page.component.html',
@@ -127,7 +126,9 @@ export class CompaniesEditPageComponent implements OnInit, AfterViewInit {
       vatNo: [c?.vatNo ?? ''],
       accManager: [c?.accManager ?? ''],
       website: [c?.website ?? ''],
-      slogan: [c?.slogan ?? '']
+      slogan: [c?.slogan ?? ''],
+      restricted: [c?.restricted ?? false],
+      accessibleBy: [c?.accessibleBy ?? ''],
     });
   }
 
