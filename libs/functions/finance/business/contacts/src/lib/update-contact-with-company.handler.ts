@@ -24,7 +24,9 @@ export class UpdateContactWithCompanyHandler extends FunctionHandler<any, boolea
         vatNo: '',
         facebook: '',
         linkedin: '',
-        tags: companyData.company.tags ?? []
+        tags: companyData.company.tags ?? [],
+        restricted: false,
+        accessibleBy: []
       }
   
       let company =  await companyRepo.create(companyObj as Company);
