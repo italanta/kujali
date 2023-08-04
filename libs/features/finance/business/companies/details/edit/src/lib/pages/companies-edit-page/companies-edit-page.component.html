@@ -78,7 +78,7 @@
           <div fxFlex="" class="topElements">
             <div fxLayout="column">
 
-              <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start">
+              <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between">
                 <div fxLayout="column" fxLayoutAlign="start" fxFlex="45">
                   <label> {{ 'CONTACT.ADDNEWCONTACT.EMAIL' | transloco }}</label>
                   <mat-form-field class="editCompanies" id="title-input" appearance="outline" fxFlex>
@@ -91,7 +91,7 @@
                 </div>
               </div>
               <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start">
-                <div fxLayout="column" fxLayoutAlign="start" fxFlex="45">
+                <div fxLayout="column" fxLayoutAlign="start" fxFlex>
                   <label> {{ 'COMPANY.WEBSITE' | transloco }}</label>
                   <mat-form-field class="editCompanies" id="title-input" appearance="outline" fxFlex>
                     <input matInput name="title" type="text" formControlName="website">
@@ -101,7 +101,7 @@
 
 
               <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start">
-                <div fxLayout="column" fxLayoutAlign="start" fxFlex="93">
+                <div fxLayout="column" fxLayoutAlign="start" fxFlex="100">
                   <label>{{ 'COMPANY.SLOGAN' | transloco }}</label>
                 <mat-form-field class="editCompanies" id="title-input" appearance="outline" fxFlex>
                   <input matInput name="title" type="text" formControlName="slogan">
@@ -110,8 +110,11 @@
               </div>
 
               <!-- reusable social media component  -->
-              <kujali-finance-social-media-field [socialMediaFields]="companyForm"></kujali-finance-social-media-field>
+              <kujali-finance-social-media-field [socialMediaFields]="companyForm" fxFlex></kujali-finance-social-media-field>
 
+              <div>
+                <app-restrict-access [restrictionFormGroup]="companyForm"></app-restrict-access>
+              </div>
               <div>
                 <button *hasViewAccess="CAN_DELETE_COMPANIES" mat-raised-button color="warn" class="danger-btn" (click)="deleteCompany(companyData)">Delete Company</button>
               </div>

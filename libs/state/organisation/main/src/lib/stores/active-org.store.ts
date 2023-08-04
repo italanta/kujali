@@ -35,6 +35,7 @@ export class ActiveOrgStore extends Store<Organisation> implements OnDestroy
         this._activeOrg = '__noop__';
         this.set(null as any, 'UPDATE - FROM USER');
       } else {
+        org.activeUser = user;
         this._activeOrg = org?.id!;
         this.set(org);
       }

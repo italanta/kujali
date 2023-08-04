@@ -12,8 +12,6 @@ import { map, startWith } from 'rxjs/operators';
 
 import { sortBy as __sortBy, flatMap as __flatMap } from 'lodash';
 
-import { TranslateService } from '@ngfi/multi-lang';
-
 import { Company } from '@app/model/finance/companies';
 
 import { ContactsService } from '@app/state/finance/contacts'
@@ -23,6 +21,7 @@ import { TagsService } from '@app/state/tags';
 import { _PhoneOrEmailValidator } from '@app/elements/forms/validators';
 import { RolesFormFieldComponent } from '@app/elements/forms/form-fields';
 
+import { CREATE_CONTACT_FORM } from '../model/create-contact-form.model';
 
 @Component({
   selector: 'add-new-contact-form',
@@ -56,19 +55,15 @@ export class AddNewContactFormComponent implements OnInit, OnDestroy {
 
   lang: 'fr' | 'en' | 'nl';
 
-  constructor(private _translateService: TranslateService,
-              private _formBuilder: FormBuilder,
-              @Inject(MAT_DIALOG_DATA) public data: any,
-              private _ContactService: ContactsService,
+  constructor(private _fb: FormBuilder,
+              private _tagsService: TagsService,
               private _companies$$: CompaniesStore,
-              private _tagsService: TagsService
-  ) 
-  {
-    this.lang = this._translateService.initialise();
-  }
+              private _ContactService: ContactsService,
+              @Inject(MAT_DIALOG_DATA) public data: any,
+  ) {}
 
   ngOnInit(): void {
-    this.buildContactForm();
+    this.addNewContactFormGroup = CREATE_CONTACT_FORM(this._fb);
 
     this.contactCompany = this.data;
 
@@ -105,35 +100,7 @@ export class AddNewContactFormComponent implements OnInit, OnDestroy {
       this.allTags = __flatMap(tags, 'id');
     });
   }
-
-  buildContactForm() {
-    this.addNewContactFormGroup = this._formBuilder.group(
-      {
-        fName: new FormControl('', [Validators.required]),
-        lName: new FormControl('', [Validators.required]),
-        phone: new FormControl(''),
-        email: new FormControl(''),
-        company: new FormControl(''),
-        role: new FormControl(),
-        tags: new FormControl(),
-        gender: new FormControl(''),
-        mainLanguage: new FormControl(''),
-        address: new FormControl(''),
-        facebook: new FormControl(''),
-        linkedin: new FormControl(''),
-        dob: new FormControl(''),
-      },
-      {
-        updateOn: 'submit',
-        validators: _PhoneOrEmailValidator('phone', 'email'),
-      }
-    );
-  }
-
-  setLang(lang: 'en' | 'fr' | 'nl') {
-    this._translateService.setLang(lang);
-  }
-
+  
   getCountryCode(country: any) {
     this.countryCode = country;
   }

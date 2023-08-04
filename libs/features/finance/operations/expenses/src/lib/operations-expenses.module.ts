@@ -17,6 +17,8 @@ import { OperationBudgetsQuery } from '@app/state/finance/budgetting/rendering';
 
 import { BudgetPlansQuery } from '@app/state/finance/budgetting/rendering';
 
+import { FormFieldsModule } from '@app/elements/forms/form-fields';
+
 import { ExpensesTableComponent } from './components/expenses-table/expenses-table.component';
 
 import { ExpensesPageComponent } from './pages/expenses-page/expenses-page.component';
@@ -40,6 +42,7 @@ import { OperationsExpensesRouterModule } from './operations-expenses.router';
 
     PageHeadersModule,
     iTalPageModule,
+    FormFieldsModule,
 
     OperationsExpensesRouterModule,
   ],

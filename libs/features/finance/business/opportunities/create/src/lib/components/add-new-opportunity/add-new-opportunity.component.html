@@ -34,7 +34,7 @@
             <div fxLayout="column" fxFill>
               <h4>{{"FORMS.FIELDS.DESC" | transloco}}</h4>
               <mat-form-field appearance="outline" fxFlex>
-                <textarea matInput rows="8" name="desc" formControlName="desc" type="text"
+                <textarea matInput rows="4" name="desc" formControlName="desc" type="text"
                   [placeholder]=" 'OPPORTUNITIES.ADD-NEW-OPPORTUNITY.DESCRIPTION' | transloco">
                 </textarea>
               </mat-form-field>
@@ -60,6 +60,10 @@
 
           <div>
             <kujali-finance-tags-form-field></kujali-finance-tags-form-field>
+          </div>
+
+          <div>
+            <app-restrict-access [restrictionFormGroup]="model.addNewOpportunityForm"></app-restrict-access>
           </div>
         </div> 
       </div>

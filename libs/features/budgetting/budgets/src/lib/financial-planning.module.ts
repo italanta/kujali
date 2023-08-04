@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
   FlexLayoutModule,
@@ -26,8 +26,10 @@ import { BudgetTableComponent } from './components/budget-table/budget-table.com
 import { SelectBudgetPageComponent } from './pages/select-budget/select-budget.component';
 
 import { ChildBudgetsModalComponent } from './modals/child-budgets-modal/child-budgets-modal.component';
+import { ManageBudgetAccessComponent } from './modals/manage-budget-access/manage-budget-access.component';
 
 import { BudgetRouter } from './budget-router';
+import { FormFieldsModule } from '@app/elements/forms/form-fields';
 /**
  * Financial-Planning module. Contains financial planning creation and forecasting.
  */
@@ -39,9 +41,12 @@ import { BudgetRouter } from './budget-router';
     FlexLayoutModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule,
     MultiLangModule,
+
     iTalPageModule,
     PageHeadersModule,
+    FormFieldsModule,
 
     BudgetsStateModule,
 
@@ -56,6 +61,7 @@ import { BudgetRouter } from './budget-router';
     SelectBudgetPageComponent,
     BudgetTableComponent,
     ChildBudgetsModalComponent,
+    ManageBudgetAccessComponent,
   ],
 
   entryComponents: [CreateBudgetModalComponent, ShareBudgetModalComponent],

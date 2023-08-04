@@ -35,6 +35,9 @@ import { PerformEditContactsActionRightsQuery } from './queries/contacts/perfom-
 import { PerformEditOpportunitiesActionRightsQuery } from './queries/opportunities/perfom-edit-opportunities-actions-rights.query';
 import { PerformEditInvoicesActionRightsQuery } from './queries/invoices/perfom-edit-invoices-actions-rights.query';
 
+import { DataAccessQuery } from './base/data-access-query';
+import { ActiveDomainLoader } from './base/base-domains/active-domain-loader.service';
+
 @NgModule({
   imports: [CommonModule],
 })
@@ -44,6 +47,11 @@ export class AccessControlStateModule {
     return {
       ngModule: AccessControlStateModule,
       providers: [
+
+        //base data access control
+        DataAccessQuery,
+        ActiveDomainLoader,
+
         //members actions rights
         PerformCreateKujaliMembersActionRightsQuery,
         

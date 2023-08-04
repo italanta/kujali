@@ -16,6 +16,8 @@ export function __CreateOpportunityForm(_fb: FormBuilder)
       contact: [],
       status: [''],
       tags: [],
+      restricted: [false],
+      accessibleBy: [[]],
     },
     {}
   );

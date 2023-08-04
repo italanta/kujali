@@ -35,7 +35,9 @@ export class CreateOppsWithContactOrCompanyHandler extends FunctionHandler<any, 
           linkedin: '',
           gender: '',
           mainLanguage: '',
-          dob: ''
+          dob: '',
+          restricted: false,
+          accessibleBy: [],
         };
 
         let contact = await contactsRepo.create(contactData as Contact);
@@ -58,6 +60,8 @@ export class CreateOppsWithContactOrCompanyHandler extends FunctionHandler<any, 
           email: '',
           facebook: '',
           linkedin: '',
+          restricted: false,
+          accessibleBy: [],
         };
 
         let company = await companyRepo.create(companyData as Company);

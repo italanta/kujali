@@ -56,6 +56,10 @@
     </div>
 
     <div>
+      <app-restrict-access [restrictionFormGroup]="addNewContactFormGroup"></app-restrict-access>
+    </div>
+
+    <div>
       <div *ngIf=" submitted && (fName?.invalid  || lName?.invalid || this.rolesComponent.roles?.invalid)"
         class="errorMessage">
         <mat-error>

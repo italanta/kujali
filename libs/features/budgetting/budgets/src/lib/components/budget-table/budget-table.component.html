@@ -38,18 +38,20 @@
       <div class="budget-btn-container" fxLayout="row" fxLayoutALign="start center" fxLayoutGap="10px">
 
         <button color="primary" class="secondary-action" mat-mini-fab (click)="openCloneBudgetDialog(row)"
-          matTooltip="{{ 'BUDGET.VIEW-RECORD.ACTIONS.CLONE'| transloco }}" *ngIf="access('clone')">
+          matTooltip="{{ 'BUDGET.VIEW-RECORD.ACTIONS.CLONE'| transloco }}">
           <i class="fas fa-copy fa-sm"></i>
         </button>
 
-        <button color="primary" class="secondary-action" mat-mini-fab
-          matTooltip="{{'BUDGET.VIEW-RECORD.ACTIONS.VIEW' | transloco}}" (click)="goToDetail(row.id!, 'view')"
-          *ngIf="access('view')">
-          <i class="fas fa-eye fa-sm"></i>
+        <button color="primary" [ngClass]="!hasManageAccess(row) ? 'access-btn' : 'secondary-action'" 
+          mat-mini-fab
+          [disabled]="hasManageAccess(row)"
+          matTooltip="Manage Access" (click)="manageBudgetAccess(row)">
+          <i *ngIf="row.restricted" class="fas fa-lock fa-sm"></i>
+          <i *ngIf="!row.restricted" class="fas fa-unlock fa-sm"></i>
         </button>
 
         <button color="primary" mat-mini-fab matTooltip="{{ 'BUDGET.VIEW-RECORD.ACTIONS.EDIT' | transloco }}"
-          color="primary" (click)="goToDetail(row.id!, 'edit')" *ngIf="access('edit')">
+          color="primary" (click)="goToDetail(row.id!, 'edit')">
           <i class="fas fa-edit fa-sm"></i>
         </button>
 

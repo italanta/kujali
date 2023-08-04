@@ -2,13 +2,14 @@ import { IObject } from '@iote/bricks';
 
 import { BankConnectionAccountType } from '@app/model/finance/banking';
 import { StringLike } from '@firebase/util';
+import { DataAccessRestriction } from '@app/model/access-control';
 
 /**
  * Financial Account.
  *
  * Accounts are considered transactable i.e. can perform and receive transactions.
  */
-export interface FAccount extends IObject
+export interface FAccount extends DataAccessRestriction, IObject
 {
   name: string;
   desc: String;

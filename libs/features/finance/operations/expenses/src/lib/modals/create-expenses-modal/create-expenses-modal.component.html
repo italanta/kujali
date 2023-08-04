@@ -83,6 +83,10 @@
         </div>
       </div>
 
+      <div style="margin-top: 10px;">
+        <app-restrict-access [restrictionFormGroup]="addNewExpenseFormGroup"></app-restrict-access>
+      </div>
+
       <div>
         <!-- errors -->
         <!-- <div *ngIf=" submitted && (fName?.invalid  || lName?.invalid || this.rolesComponent.roles?.invalid)"

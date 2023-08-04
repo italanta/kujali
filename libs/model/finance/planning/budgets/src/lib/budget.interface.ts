@@ -1,5 +1,7 @@
 import { IObject } from "@iote/bricks";
 
+import { DataAccessRestriction } from "@app/model/access-control";
+
 import { BudgetStatus } from "./types/budget-status.enum";
 
 /**
@@ -8,7 +10,7 @@ import { BudgetStatus } from "./types/budget-status.enum";
  * Budgets allow discovery and finalization of business plans for the organisation,
  *    from which then the accounts can be reconciled.
  */
-export interface Budget extends IObject 
+export interface Budget extends DataAccessRestriction, IObject 
 {
   name: string;
 

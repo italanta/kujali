@@ -1,6 +1,8 @@
 import { IObject } from "@iote/bricks";
 
-export interface Opportunity extends IObject{
+import { DataAccessRestriction } from "@app/model/access-control";
+
+export interface Opportunity extends DataAccessRestriction, IObject{
 
   title: string,
   type: string,
@@ -15,6 +17,5 @@ export interface Opportunity extends IObject{
 
   status: string,
 
-  tags: string[]
-  
+  tags: string[],
 }

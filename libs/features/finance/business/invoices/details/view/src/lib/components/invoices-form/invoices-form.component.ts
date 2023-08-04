@@ -62,12 +62,8 @@ export class InvoicesFormComponent implements OnInit, AfterViewInit, AfterConten
     this._page = this._router$$.url.split('/');
 
     this.model = this._invoiceFormService.initModalState();
-
-    if (this._page.length > 2 && this._page[2] === 'invoices'&& this._page[3] === 'new-invoice') {
-      this.newInvoiceFromOrder = true;
-      this.model.getInvoiceBaseOrder();
-    }
-    else if (this._page.length > 2 && this._page[2] === 'invoices' && this._page[4] === 'edit') {
+    
+    if (this._page.length > 2 && this._page[2] === 'invoices' && this._page[4] === 'edit') {
       this.isEditMode = true;
       this.model.getActiveInvoice().subscribe(() => {this.invoiceIsReady = true});
     } else {

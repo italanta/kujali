@@ -96,6 +96,8 @@ export class ExpensesStateService {
       vat: expense.vat,
       note: expense.note,
       allocated: allocated,
+      restricted: expense.restricted,
+      accessibleBy: expense.accessibleBy
     }
   }
 }

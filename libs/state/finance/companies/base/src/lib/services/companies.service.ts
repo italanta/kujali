@@ -121,7 +121,9 @@ export class CompaniesService implements OnDestroy {
       address: '',
       facebook: '',
       linkedin: '',
-      dob: ''
+      dob: '',
+      restricted: false,
+      accessibleBy: []
     };
 
     delete companyDetails.contactDetails;    

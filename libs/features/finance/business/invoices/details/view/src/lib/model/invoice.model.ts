@@ -74,21 +74,6 @@ export class InvoiceModel {
     }))
   }
 
-
-  getInvoiceBaseOrder() {
-    // this._sbS.sink = this._ordersService$$.getActiveOrder().subscribe((order) => {
-    //   if (order) {
-    //     this.orderProducts = order.products;
-    //     this.mainInvoiceFormGroup = this._invoiceFormService$$._initMainForm(order, false);       
-    //     this.productsArray = this.mainInvoiceFormGroup.get('products') as FormArray;
-
-    //     this.orderProducts.map((element: any, index) => {            
-    //       this.productsArray.push(this._invoiceFormService$$._initProducts(element));
-    //     })
-    //   }
-    // })
-  }
-
   _checkPermissions() {
     this._sbS.sink = this._permissionsService.checkAccessRight((p: KujaliPermissions) => p.InvoicesSettings.CanEditInvoices)
       .pipe(take(1))

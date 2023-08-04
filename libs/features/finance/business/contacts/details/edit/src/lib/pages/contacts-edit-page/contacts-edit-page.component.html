@@ -98,7 +98,7 @@
           <div fxFlex="" class="topElements">
             <div fxLayout="column">
 
-              <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start">
+              <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between">
                 <div fxLayout="column" fxLayoutAlign="start" fxFlex="45">
                   <label> {{ 'CONTACT.ADDNEWCONTACT.EMAIL' | transloco }}</label>
                   <mat-form-field class="editContacts" id="title-input" appearance="outline" fxFlex>
@@ -109,7 +109,7 @@
                   <kujali-finance-phone-form-field [dataForm]="contactForm"></kujali-finance-phone-form-field>
                 </div>
               </div>
-              <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start">
+              <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-between">
                 <div fxLayout="column" fxLayoutAlign="start" fxFlex="45">
                   <label>{{ 'CONTACT.MAIN-LANGUAGE' | transloco }}</label>
                   <mat-form-field class="editContacts" id="title-input" appearance="outline" fxFlex>
@@ -133,7 +133,7 @@
               </div>
 
               <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start">
-                <div fxLayout="column" fxLayoutAlign="start" fxFlex="93">
+                <div fxLayout="column" fxLayoutAlign="start" fxFlex>
                   <label>{{ 'CONTACT.DOB' | transloco }}</label>
                   <mat-form-field appearance="outline">
                     <input matInput formControlName="dob" [matDatepicker]="picker">
@@ -142,10 +142,14 @@
                   </mat-form-field>
                 </div>
               </div>
+
               <kujali-finance-social-media-field [socialMediaFields]="contactForm"></kujali-finance-social-media-field>
 
               <div>
-                <button *hasViewAccess="CAN_DELETE_CONTACTS" mat-raised-button color="danger" class="danger-btn"
+                <app-restrict-access [restrictionFormGroup]="contactForm"></app-restrict-access>
+              </div>
+              <div>
+                <button *hasViewAccess="CAN_DELETE_CONTACTS" mat-raised-button color="warn" class="danger-btn"
                   (click)="deleteContact(contact)">Delete Contact</button>
               </div>
             </div>

@@ -14,6 +14,7 @@ import { MultiLangModule } from '@ngfi/multi-lang';
 
 import { PageHeadersModule } from '@app/elements/layout/page-headers';
 import { iTalPageModule } from '@app/elements/layout/page';
+import { FormFieldsModule } from '@app/elements/forms/form-fields';
 
 import { AccountsPageComponent } from './pages/accounts-page/accounts-page.component';
 
@@ -35,6 +36,7 @@ import { OperationsAccountsRouterModule } from './operations-accounts.router';
 
     PageHeadersModule,
     iTalPageModule,
+    FormFieldsModule,
 
     OperationsAccountsRouterModule,
   ],

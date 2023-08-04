@@ -61,7 +61,7 @@
 
         <div *ngIf="showContact">
           <p class="new-contact"> {{"COMPANY.ADD-NEW-COMPANY.NEW-CONTACT" | transloco}}</p>
-          <div class="contact">
+          <div class="contact-form">
             <add-new-contact [contact]="contactForm" (countryCodeEvent)="getCountryCode($event)"></add-new-contact>
           </div>
         </div>
@@ -88,6 +88,10 @@
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
+      </div>
+
+      <div fxFlex>
+        <app-restrict-access [restrictionFormGroup]="addNewCompanyFormGroup"></app-restrict-access>
       </div>
     </div>
   </mat-dialog-content>

@@ -1,6 +1,7 @@
+import { DataAccessRestriction } from '@app/model/access-control';
 import { IObject } from '@iote/bricks';
 
-export interface Company extends IObject {
+export interface Company extends DataAccessRestriction, IObject {
   name: string;
   email: string;
   logoImgUrl?: string;

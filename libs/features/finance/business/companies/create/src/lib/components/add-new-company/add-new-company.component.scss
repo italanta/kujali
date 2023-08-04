@@ -5,19 +5,14 @@ input {
   font-family: 'Poppins';
 }
 
-.padd-top {
-  // padding-top: 20px;
-  // margin-top: 30px;
-}
-
 .bi {
   margin-right: 10px;
 }
 
 .contact-form {
   border-radius: 5px;
-  border: solid var(--kujali-color-primary) 1px;
-  padding: 5px;
+  border: solid var(--kujali-color-primary-blue) 1px!important;
+  padding: 10px;
 }
 
 .new-contact {
@@ -70,12 +65,6 @@ h4 {
 mat-chip {
   color: aliceblue;
 }
-
-// ::ng-deep .mat-chip.mat-standard-chip {
-//   background-color: var(--kujali-color-text-background);
-//   color: var(--kujali-color-primary-blue);
-//   border-radius: 5px;
-// }
 
 .extra-label {
   color: var(--kujali-color-nav-inactive);

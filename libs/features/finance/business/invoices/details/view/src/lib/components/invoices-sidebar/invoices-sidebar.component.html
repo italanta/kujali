@@ -37,6 +37,10 @@
         </mat-slide-toggle>
     </div>
   </div>
+
+  <div fxFlex>
+    <app-restrict-access [restrictionFormGroup]="invoiceForm" ></app-restrict-access>
+  </div>
 </div>
 
 <ng-template #loading>

@@ -79,7 +79,7 @@
 
     <!-- invoices sidebar -->
     <div class="side-bar" fxFlex="20%">
-      <kujali-invoices-sidebar [activeInvoice]="activeInvoice" [canEditInvoice]="canEditInvoice"
+      <kujali-invoices-sidebar [invoiceForm]="model.mainInvoiceFormGroup"  [activeInvoice]="activeInvoice" [canEditInvoice]="canEditInvoice"
         (sendInvoiceEvent)="sendInvoice()" (includeStructuredMessageEvent)="showStructuredMessageFn($event)"
         (currencyChangedEvent)="selectedCurrency($event)" (showPreviewEvent)="showFormPreview()"
         (downloadInvoiceEvent)="downloadInvoice()">

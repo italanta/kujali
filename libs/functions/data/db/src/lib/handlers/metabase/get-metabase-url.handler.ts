@@ -5,6 +5,7 @@ import { HandlerTools } from '@iote/cqrs';
 
 import { KuUser } from '@app/model/common/user';
 
+
 /** This handler is responsible for creating an authenticated jwt token
  * for the metabase ebedded iframe source.
  */
@@ -16,8 +17,8 @@ export class GetMetabaseUrlHandler extends FunctionHandler<KuUser, string>
     tools.Logger.log(() => `Setting up metabase url for User: ${JSON.stringify(user.uid)}`);
 
     //TODO: Move to google secrets
-    const METABASE_SITE_URL = "https://elewa-group.metabaseapp.com";
-    const METABASE_SECRET_KEY = "f4b04fed137e7d78dd5f669ee4b2d03903097ecca37e1fe0d6870a161e2376ea";
+    const METABASE_SITE_URL = process.env['METABASE_SITE_URL'] as string;
+    const METABASE_SECRET_KEY = process.env['METABASE_SECRET_KEY'] as string;
 
     const displayname = user.displayName!.split(' ');
     
