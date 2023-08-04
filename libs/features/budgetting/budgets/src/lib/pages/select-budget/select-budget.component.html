@@ -1,8 +1,8 @@
 <app-page>
-  <div>
+  <div *ngIf="allBudgets$ | async as budgets">
     <kujali-finance-toolbar>
       <kujali-finance-search-header-card header (toogleFilterEvent)='toogleFilter($event)'
-        (searchTableEvent)='applyFilter($event)' [tableData]="[]">
+        (searchTableEvent)='applyFilter($event)' [tableData]="budgets.budgets">
         <div add-new>
           <button mat-flat-button (click)="openDialog(false)" class="add-new">
             <i class="bi bi-plus-circle-fill"></i>

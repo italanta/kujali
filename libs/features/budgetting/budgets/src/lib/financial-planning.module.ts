@@ -26,6 +26,7 @@ import { BudgetTableComponent } from './components/budget-table/budget-table.com
 import { SelectBudgetPageComponent } from './pages/select-budget/select-budget.component';
 
 import { ChildBudgetsModalComponent } from './modals/child-budgets-modal/child-budgets-modal.component';
+import { ManageBudgetAccessComponent } from './modals/manage-budget-access/manage-budget-access.component';
 
 import { BudgetRouter } from './budget-router';
 import { FormFieldsModule } from '@app/elements/forms/form-fields';
@@ -60,6 +61,7 @@ import { FormFieldsModule } from '@app/elements/forms/form-fields';
     SelectBudgetPageComponent,
     BudgetTableComponent,
     ChildBudgetsModalComponent,
+    ManageBudgetAccessComponent,
   ],
 
   entryComponents: [CreateBudgetModalComponent, ShareBudgetModalComponent],

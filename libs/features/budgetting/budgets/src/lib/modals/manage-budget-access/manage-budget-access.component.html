@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Manage Budget Access</h1>
+<div mat-dialog-content>
+  <app-restrict-access [restrictionFormGroup]="budgetAccessForm"></app-restrict-access>
+</div>
+<div mat-dialog-actions align="end">
+  <button [disabled]="updatingPermissions" mat-stroked-button mat-dialog-close>Cancel</button>
+  <button [disabled]="updatingPermissions"  mat-raised-button color="primary" (click)="updateBudget()">
+    <span *ngIf="updatingPermissions">
+      <mat-spinner strokeWidth="3" diameter="20"></mat-spinner>
+    </span>
+    <span *ngIf="!updatingPermissions">
+      Update Access
+    </span>
+  </button>
+</div>

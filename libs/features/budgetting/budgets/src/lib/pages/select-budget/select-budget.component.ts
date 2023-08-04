@@ -12,7 +12,6 @@ import { BudgetsStore, OrgBudgetsStore } from '@app/state/finance/budgetting/bud
 
 import { CreateBudgetModalComponent } from '../../components/create-budget-modal/create-budget-modal.component';
 
-
 @Component({
   selector: 'app-select-budget',
   templateUrl: './select-budget.component.html',
