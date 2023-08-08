@@ -50,22 +50,32 @@ h4 {
   background-color: rgba($color: green, $alpha: 0.1);
 }
 
-::ng-deep .mat-elevation-z8 {
+.inv-btn {
+  color: green!important;
+  border: solid 1px green!important;
+}
+
+.exp-btn {
+  color: red!important;
+  border: solid 1px red!important;
+}
+
+:host ::ng-deep .mat-elevation-z8 {
   box-shadow: none;
 }
 
-::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--outlined 
+:host ::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--outlined 
 .mat-mdc-form-field-infix {
   padding-top: 8px!important;
   padding-bottom: 0px!important;
 }
 
-::ng-deep .mat-mdc-form-field-infix {
+:host ::ng-deep .mat-mdc-form-field-infix {
   min-height: 40px!important;
   max-height: 40px!important;
 }
 
-::ng-deep .mat-mdc-icon-button.mat-mdc-button-base {
+:host ::ng-deep .mat-mdc-icon-button.mat-mdc-button-base {
   height: 40px!important;
   padding: 7px!important;
 }

@@ -9,6 +9,8 @@ export interface BudgetLineUI {
   baseAmount: number;
   budgetName: string;
   lineName: string;
+  lineId: string;
+  planId: string;
   mode: 1 | -1;
   allocatedInvoices?: Invoice[];
   allocatedExpenses?: {allExp: Expenses[], allocatedExpenses: Expenses[]};

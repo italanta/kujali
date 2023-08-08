@@ -27,10 +27,10 @@ input {
   caret-color: black;
 }
 
-::ng-deep .mat-form-field-infix {
+:host ::ng-deep .mat-form-field-infix {
   border-top-width: 2px !important;
 }
 
-::ng-deep .mat-form-field-wrapper {
+:host ::ng-deep .mat-form-field-wrapper {
   padding: 0px 0px 15px 0px;
 }

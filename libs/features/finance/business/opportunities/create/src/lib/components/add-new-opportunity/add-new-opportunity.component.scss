@@ -96,23 +96,24 @@ button {
   color: var(--kujali-color-text-black) !important;
 }
 
-::ng-deep .mat-horizontal-stepper-header {
+:host ::ng-deep .mat-horizontal-stepper-header {
   display: none !important;
   padding: 0px 0px !important;
 }
-::ng-deep .mat-stepper-horizontal-line {
+
+:host ::ng-deep .mat-stepper-horizontal-line {
   display: none !important;
 }
 
-::ng-deep .mat-horizontal-content-container {
+:host ::ng-deep .mat-horizontal-content-container {
   padding: 24px 20px 24px 20px !important;
 }
 
-::ng-deep .mat-step-header .mat-step-icon {
+:host ::ng-deep .mat-step-header .mat-step-icon {
   color: white;
 }
 
-::ng-deep  .mat-chip.mat-standard-chip {
+:host ::ng-deep  .mat-chip.mat-standard-chip {
   background-color: var(--kujali-color-text-background);
   color: var(--kujali-color-primary-blue);
   border-radius: 5px;
@@ -122,24 +123,24 @@ input {
   caret-color: black;
 }
 
-::ng-deep  .mat-autocom {
+:host ::ng-deep  .mat-autocom {
   margin-top: 10px;
   padding: 5px 0px;
   display: flex;
   box-shadow: none;
 }
 
-::ng-deep  .mat-autocom:not([class*=mat-elevation-z]) {
+:host ::ng-deep  .mat-autocom:not([class*=mat-elevation-z]) {
   box-shadow: none;
 }
 
-::ng-deep  .test {
+:host ::ng-deep  .test {
   min-width: fit-content;
   height: 20px;
   padding: 5px 5px; 
 }
 
-::ng-deep .test span {
+:host ::ng-deep .test span {
   line-height: 20px;
   padding: 2px;
   border-radius: 5px;

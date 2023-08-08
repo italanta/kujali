@@ -37,17 +37,17 @@ form {
 }
 
 /** Special selector to go inside of child components - Only use for third-party libraries in very special cases!! */
-::ng-deep .mat-horizontal-stepper-header,
-::ng-deep .mat-horizontal-content-container {
+:host ::ng-deep .mat-horizontal-stepper-header,
+:host ::ng-deep .mat-horizontal-content-container {
   padding: 0 !important;
 }
 
-::ng-deep .mat-horizontal-stepper-header {
+:host ::ng-deep .mat-horizontal-stepper-header {
   display: none !important;
   padding: 0px 0px !important;
 }
 
-::ng-deep .mat-stepper-horizontal-line {
+:host ::ng-deep .mat-stepper-horizontal-line {
   display: none !important;
 }
 

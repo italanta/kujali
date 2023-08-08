@@ -40,19 +40,19 @@
   text-decoration: underline;
 }
 
-::ng-deep .filter .mat-form-field {
+:host ::ng-deep .filter .mat-form-field {
   max-width: 150px;
   height: 40px !important;
 }
 
-::ng-deep .filter .mat-form-field-appearance-outline .mat-form-field-infix {
+:host ::ng-deep .filter .mat-form-field-appearance-outline .mat-form-field-infix {
   padding: 10px 0 10px 0;
 }
 
-::ng-deep .filter .mat-form-field-infix {
+:host ::ng-deep .filter .mat-form-field-infix {
   border-top: 2px solid transparent;
 }
 
-::ng-deep .filter .mat-form-field-appearance-outline .mat-form-field-outline {
+:host ::ng-deep .filter .mat-form-field-appearance-outline .mat-form-field-outline {
   background-color: white;
 }

@@ -37,11 +37,11 @@ button {
   border: solid var(--kujali-color-primary-blue) 1px;
   border-radius: 5px;
 }
-::ng-deep .mat-form-field-infix {
+:host ::ng-deep .mat-form-field-infix {
   border-top-width: 2px !important;
 }
 
-::ng-deep .mat-input-element {
+:host ::ng-deep .mat-input-element {
   caret-color: white;
 }
 

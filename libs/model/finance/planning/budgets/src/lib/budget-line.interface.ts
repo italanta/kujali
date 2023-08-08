@@ -24,7 +24,7 @@ export interface BudgetLine extends IObject{
   year: number;
 
   // The plan/trs (on budget) this line belongs to.
-  plandId: string;
+  planId: string;
 
   // The mode of the plan/trs (on budget) this line belongs to.
   mode?: 1 | -1; 
