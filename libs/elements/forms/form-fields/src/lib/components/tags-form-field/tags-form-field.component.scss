@@ -39,7 +39,7 @@ input {
   caret-color: black;
 }
 
-::ng-deep .mat-autocom {
+:host ::ng-deep .mat-autocom {
   margin-top: 10px;
   padding: 5px 0px;
   display: flex;
@@ -47,16 +47,17 @@ input {
   overflow: hidden!important;
 }
 
-::ng-deep .mat-autocom:not([class*=mat-elevation-z]) {
+:host ::ng-deep .mat-autocom:not([class*=mat-elevation-z]) {
   box-shadow: none;
 }
-::ng-deep .test {
+
+:host ::ng-deep .test {
   min-width: fit-content;
   height: 20px;
   padding: 5px 5px; 
 }
 
-::ng-deep .test span {
+:host ::ng-deep .test span {
   line-height: 20px;
   padding: 2px;
   border-radius: 5px;

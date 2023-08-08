@@ -48,6 +48,6 @@ td.mat-column-imageurl {
 }
 
 //table 
-::ng-deep .mat-elevation-z8 {
+:host ::ng-deep .mat-elevation-z8 {
   box-shadow: none;
 }

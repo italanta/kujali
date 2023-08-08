@@ -613,14 +613,14 @@ a {
   background-color: var(--kujali-color-primary-blue);
 }
 
-::ng-deep .nav-links-section .mat-expansion-panel-body {
+:host ::ng-deep .nav-links-section .mat-expansion-panel-body {
   padding: 0;
 }
 
-::ng-deep .nav-links-section .mat-expansion-panel:not([class*=mat-elevation-z]){
+:host ::ng-deep .nav-links-section .mat-expansion-panel:not([class*=mat-elevation-z]){
   box-shadow: none!important;
 }
 
-::ng-deep .mat-expansion-indicator {
+:host ::ng-deep .mat-expansion-indicator {
   padding: 10px;
 }
