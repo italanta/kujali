@@ -13,6 +13,8 @@ import { CompareBudgetsModalComponent } from '../../modals/compare-budgets-modal
 import { AllocateInvoiceToLineModalComponent } from '../../modals/allocate-invoice-to-line-modal/allocate-invoice-to-line-modal.component';
 
 import { OperationsBudgetsModelService } from '../../services/operations-budgets.service';
+import { CreateExpensesModalComponent } from 'libs/features/finance/operations/expenses/src/lib/modals/create-expenses-modal/create-expenses-modal.component';
+import { TransactionPlan } from '@app/model/finance/planning/budget-items';
 
 @Component({
   selector: 'app-operations-budgets-page',
@@ -77,7 +79,17 @@ export class OperationsBudgetsPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  addExpense() {}
+  addExpense(plan: TransactionPlan) {
+    this._dialog.open(CreateExpensesModalComponent, {
+      minWidth: '700px', minHeight: 'fit-content', 
+      data: {
+        budget: this.model.activeBudget, 
+        year: this.model.activeYear, 
+        month: this.model.month,
+        plan: plan
+      }
+      });
+  }
   addInvoice() {}
 
   ngOnDestroy(): void {

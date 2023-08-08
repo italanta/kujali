@@ -123,6 +123,8 @@ export class OperationsBudgetsModel {
       allocatedExpenses: {allExp: allExp, allocatedExpenses: this.allocatedExpenses},
       allocatedInvoices: this.allocatedInvoices,
       mode: budgetLine.mode as any,
+      lineId: budgetLine.lineId,
+      planId: budgetLine.planId
     }
     return budgetLineData;
   }

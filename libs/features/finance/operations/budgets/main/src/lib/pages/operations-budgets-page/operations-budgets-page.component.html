@@ -7,11 +7,11 @@
         </div>
       </kujali-finance-search-header-card>
     </kujali-finance-toolbar> -->
-  
+
     <div *ngIf="model.allDataIsReady">
       <app-budget-analysis [agg$]="model.agg$$.asObservable()"></app-budget-analysis>
     </div>
-  
+
     <div *ngIf="model.allMonths" class="headers" fxLayout="row" fxLayoutAlign="space-between center">
 
       <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
@@ -20,14 +20,14 @@
           <mat-form-field appearance="outline">
             <mat-select (selectionChange)="budgetChanged($event)" [(ngModel)]="model.activeBudget">
               <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="model.budgets"
-              (filteredReturn)="model.filteredBudgets=$event"></mat-select-filter>
+                (filteredReturn)="model.filteredBudgets=$event"></mat-select-filter>
               <mat-option *ngFor="let budget of model.filteredBudgets" [value]="budget">
                 {{budget.name}}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
-    
+
         <div fxLayout="column">
           <h4>Current Year</h4>
           <mat-form-field appearance="outline">
@@ -38,7 +38,7 @@
             </mat-select>
           </mat-form-field>
         </div>
-    
+
         <div fxLayout="column">
           <h4>Current Month</h4>
           <mat-form-field appearance="outline">
@@ -57,20 +57,20 @@
           <span style="margin-left: 10px;">Compare Budgets</span>
         </button>
       </div>
-  
+
     </div>
-  
+
   </div>
-  
+
   <p *ngIf="model.allDataIsReady" style="margin: 20px 0px; font-weight: 700; font-size: 1.2rem;">Month Transacations</p>
-  
+
   <table *ngIf="model.allMonths; else FetchingData" mat-table [dataSource]="model.allMonths" class="mat-elevation-z8">
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
       <td mat-cell *matCellDef="let element"> {{element?.lineName}} </td>
     </ng-container>
-  
+
     <!-- total Column -->
     <ng-container matColumnDef="total">
       <th mat-header-cell *matHeaderCellDef> Total </th>
@@ -78,7 +78,7 @@
         <span class="badge" [ngClass]="element.mode == 1 ? 'green-bg' : 'red-bg'">{{absolute(element.amount)}} </span>
       </td>
     </ng-container>
-  
+
     <!-- Expenses Column -->
     <ng-container matColumnDef="expenses">
       <th mat-header-cell *matHeaderCellDef> Expenses </th>
@@ -89,7 +89,7 @@
         </span>
       </td>
     </ng-container>
-  
+
     <!-- Invoices Column -->
     <ng-container matColumnDef="invoices">
       <th mat-header-cell *matHeaderCellDef> Invoices </th>
@@ -106,16 +106,23 @@
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element">
         <span>
-          <button mat-stroked-button style="margin-right: 20px;" (click)="addExpense()"> Add Expense </button>
-          <button mat-stroked-button (click)="addInvoice()"> Add Invoice </button>
+          <button class="exp-btn" *ngIf="element.mode == -1" mat-stroked-button style="margin-right: 20px;"
+            (click)="addExpense(element)">
+            <i class="fas fa-plus"></i>
+            Add Expense
+          </button>
+          <button class="inv-btn" *ngIf="element.mode == 1" mat-stroked-button (click)="addInvoice()">
+            <i class="fas fa-plus"></i>
+            Add Invoice
+          </button>
         </span>
       </td>
     </ng-container>
-  
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  
+
   <ng-template #noData>
     <span>-</span>
   </ng-template>
