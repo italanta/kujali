@@ -3,10 +3,10 @@
   <mat-dialog-content class="mat-typography">
 
     <div fxLayout="column" fxLayoutAlign="start" fxFlex>
-      <div>
+      <!-- <div>
         <input type="file" name="file" id="file" class="inputfile" />
         <label for="file">Upload a reciept</label>
-      </div>
+      </div> -->
 
       <div fxLayout="column" fxLayoutAlign="start" fxFlex>
         <h4>{{ 'MODALS.CREATE-EXPENSE.NAME' | transloco }}</h4>
@@ -57,10 +57,16 @@
         </div>
       </div>
 
+      <div *ngIf="!isBudgetLineActive && assignToBudget && addNewExpenseFormGroup.value.plan" class="errorMessage">
+        <mat-error>
+          The month selected does not have an active budget line, please select another month!!
+        </mat-error>
+      </div>
+
       <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="20px">
         <div fxLayout="column" fxFlex="50">
           <h4>{{ 'MODALS.CREATE-EXPENSE.AMOUNT' | transloco }}</h4>
-          <span>Amount Left - {{ budgetAmountDifference }} </span>
+          <span *ngIf="assignToBudget">Amount Left - {{ budgetAmountDifference }} </span>
           <mat-form-field appearance="outline" fxFlex>
             <input matInput type="number" formControlName="amount" />
           </mat-form-field>
@@ -102,8 +108,9 @@
 
   <mat-dialog-actions class="padd-top" align="end">
     <button mat-button mat-dialog-close>{{ 'MODAL.CLOSE' | transloco }}</button>
-    <button class="submit-btn" [disabled]="creatingExpense" type="submit" class="create-contact-btn" mat-raised-button
-      color="primary" cdkFocusInitial>
+    <button class="submit-btn"
+      [disabled]="creatingExpense || !isBudgetLineActive || !addNewExpenseFormGroup.valid"
+      type="submit" class="create-contact-btn" mat-raised-button color="primary" cdkFocusInitial>
       <span *ngIf="!creatingExpense; else creatingExpenseSpinner">
         {{ 'MODALS.CREATE-EXPENSE.CREATE-EXPENSE' | transloco }}
       </span>

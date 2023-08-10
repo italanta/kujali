@@ -23,7 +23,7 @@ const OPERATIONS_ROUTES: Route[] = [
   },
   {
     path: 'expenses',
-    loadChildren: () => import('@app/features/finance/operations/expenses').then(m => m.OperationsExpensesModule),
+    loadChildren: () => import('@app/features/finance/operations/expenses/main').then(m => m.OperationsExpensesModule),
     canActivate: [IsLoggedInGuard, CanAccessExpensesGuard]
   },
   {

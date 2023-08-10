@@ -1,15 +1,15 @@
 {
-  "name": "features-finance-operations-expenses",
-  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "name": "features-finance-operations-expenses-main",
+  "$schema": "../../../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "libs/features/finance/operations/expenses/src",
+  "sourceRoot": "libs/features/finance/operations/expenses/main/src",
   "prefix": "app",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/features/finance/operations/expenses/jest.config.ts",
+        "jestConfig": "libs/features/finance/operations/expenses/main/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -18,8 +18,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/features/finance/operations/expenses/**/*.ts",
-          "libs/features/finance/operations/expenses/**/*.html"
+          "libs/features/finance/operations/expenses/main/**/*.ts",
+          "libs/features/finance/operations/expenses/main/**/*.html"
         ]
       }
     }

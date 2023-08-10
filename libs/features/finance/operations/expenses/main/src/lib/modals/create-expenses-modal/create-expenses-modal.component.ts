@@ -34,6 +34,7 @@ export class CreateExpensesModalComponent implements OnInit, AfterViewInit {
 
   creatingExpense: boolean = false;
   assignToBudget: boolean = false;
+  isBudgetLineActive: boolean = true;
 
   budgetLine: BudgetLine;
   budgetAmountDifference: number = 0;
@@ -118,13 +119,24 @@ export class CreateExpensesModalComponent implements OnInit, AfterViewInit {
   }
 
   setBudgetLine() {
+    if (!this.assignToBudget || !this.activePlan || !this.activeExpenseDate) {
+      this.budgetAmountDifference = 0;
+      this.isBudgetLineActive = true;
+      return;
+    }
     const lineId = `${this.activeExpenseDate.year()}-${this.activeExpenseDate.month() + 1}-${this.activePlan.lineId}`;
     this._sbS.sink = this._budgetsStateService$$.getBudgetLineById(lineId).pipe(tap((budgetLine) => this.perfomAutoFillOperations(budgetLine))).subscribe();
   }
 
   perfomAutoFillOperations(budgetLine: BudgetLine) {
+    if (!budgetLine) {
+      this.isBudgetLineActive = false;
+      this.budgetAmountDifference = 0;
+      return;
+    }
     this.budgetLine = budgetLine;
     this.budgetAmountDifference = Math.abs(this.budgetLine.amount);
+    this.isBudgetLineActive = true;
   }
 
   getAmountDifference() {}

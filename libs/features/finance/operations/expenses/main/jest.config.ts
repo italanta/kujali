@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: 'features-finance-operations-expenses',
-  preset: '../../../../../jest.preset.js',
+  displayName: 'features-finance-operations-expenses-main',
+  preset: '../../../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -10,7 +10,7 @@ export default {
     },
   },
   coverageDirectory:
-    '../../../../../coverage/libs/features/finance/operations/expenses',
+    '../../../../../../coverage/libs/features/finance/operations/expenses/main',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

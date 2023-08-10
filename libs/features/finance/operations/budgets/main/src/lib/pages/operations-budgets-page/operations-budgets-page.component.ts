@@ -8,13 +8,14 @@ import { flatMap as __flatMap, groupBy as __groupBy } from 'lodash';
 import { BudgetLineUI } from '../../model/budget-line-view.interface';
 import { OperationsBudgetsModel } from '../../model/operations-budget.model';
 import { resetBudgetAnalysisAggregate } from '../../model/budget-analysis-aggregate.interface';
+import { TransactionPlan } from '@app/model/finance/planning/budget-items';
+
+import { CreateExpensesModalComponent } from '@app/features/finance/operations/expenses/main';
 
 import { CompareBudgetsModalComponent } from '../../modals/compare-budgets-modal/compare-budgets-modal.component';
 import { AllocateInvoiceToLineModalComponent } from '../../modals/allocate-invoice-to-line-modal/allocate-invoice-to-line-modal.component';
 
 import { OperationsBudgetsModelService } from '../../services/operations-budgets.service';
-import { CreateExpensesModalComponent } from 'libs/features/finance/operations/expenses/src/lib/modals/create-expenses-modal/create-expenses-modal.component';
-import { TransactionPlan } from '@app/model/finance/planning/budget-items';
 
 @Component({
   selector: 'app-operations-budgets-page',
