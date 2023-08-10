@@ -1,7 +1,7 @@
 <app-page [loading]="loading">
   <!-- [loadingText]="'Please hold as we load the budget..'"> -->
 
-  <div *ngIf="state$ | async as state; else loadingBudget" fxLayout="column" fxLayoutALign="start" class="">
+  <div *ngIf="state$ | async as state; else loadingBudget" fxLayout="column" fxLayoutALign="start" class="main-page">
 
     <div class="exp-header" fxLayout="row" fxLayoutALign="space-between center" fxFlex>
       <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" fxFlex>
