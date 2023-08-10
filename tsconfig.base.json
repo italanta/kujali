@@ -158,6 +158,9 @@
       "@app/features/finance/operations/budgets/main": [
         "libs/features/finance/operations/budgets/main/src/index.ts"
       ],
+      "@app/features/finance/operations/expenses/detail/activities": [
+        "libs/features/finance/operations/expenses/detail/activities/src/index.ts"
+      ],
       "@app/features/finance/operations/expenses/detail/view": [
         "libs/features/finance/operations/expenses/detail/view/src/index.ts"
       ],

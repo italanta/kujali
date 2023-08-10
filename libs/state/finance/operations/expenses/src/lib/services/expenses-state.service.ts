@@ -13,6 +13,7 @@ import { ActiveOrgStore } from '@app/state/organisation';
 
 import { ExpensesStore } from '../stores/expenses.store';
 import { ExpensesAllocsStore } from '../stores/expenses-allocs.store';
+import { ActiveExpenseStore } from '../stores/active-expense.store';
 
 @Injectable({
   providedIn: 'root'
@@ -21,12 +22,17 @@ export class ExpensesStateService {
 
   constructor(private _aFF: AngularFireFunctions,
               private _expenses$$: ExpensesStore,
+              private _exp$$: ActiveExpenseStore,
               private _activeOrg$$: ActiveOrgStore,
               private _expensesAllocs$$: ExpensesAllocsStore
   ) { }
 
   getAllExpenses(): Observable<Expenses[]> {
     return this._expenses$$.get();
+  }
+
+  getActiveExpense(): Observable<Expenses> {
+    return this._exp$$.get();
   }
 
   getAllAlocatedExpenses(): Observable<Expenses[]> {

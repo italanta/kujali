@@ -8,6 +8,7 @@ import { ActiveContactStore } from '@app/state/finance/contacts';
 import { ActiveCompanyStore } from '@app/state/finance/companies';
 import { ActiveOpportunityStore } from '@app/state/finance/opportunities';
 import { ActiveFAccountStore } from '@app/state/finance/banking';
+import { ExpensesStateService } from '@app/state/finance/operations/expenses';
 
 @Component({
   selector: 'kujali-finance-detail-header-card',
@@ -28,7 +29,8 @@ export class DetailHeaderCardComponent implements OnInit {
               private _company$$: ActiveCompanyStore,
               private _ops$$: ActiveOpportunityStore,
               private _contacts$$: ActiveContactStore,
-              private _accounts$$: ActiveFAccountStore
+              private _accounts$$: ActiveFAccountStore,
+              private _expenses$$: ExpensesStateService,
   ) { }
 
   ngOnInit(): void {
@@ -46,6 +48,8 @@ export class DetailHeaderCardComponent implements OnInit {
       this._sbS.sink = this._ops$$.get().subscribe((ops) => { this.name = ops?.title });
     } else if (this.pageName == 'accounts') {
       this._sbS.sink = this._accounts$$.get().subscribe((account) => { this.name = account?.name });
+    } else if (this.pageName == 'expenses') {
+      this._sbS.sink = this._expenses$$.getActiveExpense().subscribe((exp) => { this.name = exp?.name });
     }
   }
 

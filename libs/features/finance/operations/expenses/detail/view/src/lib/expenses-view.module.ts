@@ -9,6 +9,7 @@ import { MultiLangModule } from '@ngfi/multi-lang';
 import { iTalPageModule } from '@app/elements/layout/page';
 import { PageHeadersModule } from '@app/elements/layout/page-headers';
 import { NotesModule } from '@app/features/notes'
+import { ExpensesActivitiesModule } from '@app/features/finance/operations/expenses/detail/activities';
 
 import { ExpenseInformationComponent } from './components/expense-information/expense-information.component';
 import { ExpenseDetailComponent } from './components/expense-detail/expense-detail.component';
@@ -32,6 +33,7 @@ import { ExpensesViewRouterModule } from './expenses-detail.router';
     PageHeadersModule,
     iTalPageModule,
     NotesModule,
+    ExpensesActivitiesModule,
 
     ExpensesViewRouterModule
   ],

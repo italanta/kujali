@@ -10,6 +10,10 @@ const OPERATIONS_EXPENSES_ROUTES: Route[] = [
     path: '',
     component: ExpensesPageComponent,
   },
+  {
+    path: ':id',
+    loadChildren: () => import('@app/features/finance/operations/expenses/detail/view').then(m => m.ExpensesViewModule),
+  }
 ];
 
 @NgModule({

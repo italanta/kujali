@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 import { SubSink } from 'subsink';
 import { BehaviorSubject, Observable, combineLatest, map, mergeMap, switchMap, tap } from 'rxjs';
@@ -52,7 +53,8 @@ export class ExpensesPageComponent implements OnInit, AfterViewInit {
 
   dataIsReady = false;
 
-  constructor(private _matDialog: MatDialog,
+  constructor(private _router$$: Router,
+              private _matDialog: MatDialog,
               private _expService: ExpensesService,
               private _budgetsStateService: BudgetsStateService,
               private _expensesStateService: ExpensesStateService
@@ -126,7 +128,11 @@ export class ExpensesPageComponent implements OnInit, AfterViewInit {
     return __DateFromStorage(date).format('DD/MM/YYYY');
   }
   
-  viewExpense(expenseId: string) {}
+  viewExpense(expenseId: string) {
+    console.log(expenseId);
+    
+    this._router$$.navigate(['operations' , 'expenses', expenseId]);
+  }
 
   allocateTransactionEvent(expense: Expenses) {}
 

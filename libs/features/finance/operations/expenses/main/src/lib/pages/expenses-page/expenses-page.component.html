@@ -80,18 +80,10 @@
 					<th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
 					<td mat-cell *matCellDef="let row">
 						<div class="budget-btn-container" fxLayout="row" fxLayoutALign="start center" fxLayoutGap="10px">
-
-
-							<button color="primary" mat-mini-fab matTooltip="{{ 'BUDGET.VIEW-RECORD.ACTIONS.EDIT' | transloco }}"
-								color="primary" (click)="editExpense(row)">
-								<i class="fas fa-edit fa-sm"></i>
-							</button>
-
 							<button color="primary" class="delete-btn" mat-mini-fab
 								matTooltip="Delete" (click)="deleteExpense(row)">
 								<i class="fas fa-trash fa-sm"></i>
 							</button>
-
 						</div>
 					</td>
 				</ng-container>

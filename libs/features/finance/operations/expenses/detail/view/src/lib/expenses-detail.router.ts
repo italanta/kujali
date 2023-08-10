@@ -4,13 +4,7 @@ import { Route, RouterModule } from '@angular/router';
 import { ExpenseDetailPageComponent } from './pages/expense-detail-page/expense-detail-page.component';
 
 const EXPENSES_VIEW_ROUTES: Route[] = [
-
   { path: '', component: ExpenseDetailPageComponent },
-
-  {
-    path: 'edit'
-    // loadChildren: () => import('').then(),
-  },
 ];
 
 @NgModule({
