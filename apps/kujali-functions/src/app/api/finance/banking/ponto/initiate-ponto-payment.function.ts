@@ -2,11 +2,11 @@ import { RestRegistrar } from '@ngfi/functions';
 
 import { KujaliFunction } from 'apps/kujali-functions/src/environments/kujali-func.class';
 
-import { ActivatePontoPaymentsHandler } from '@app/functions/api/finance/banking/ponto-connect';
+import { InitiatePontoPaymentHandler } from '@app/functions/api/finance/banking/ponto-connect';
 
-const handler = new ActivatePontoPaymentsHandler();
+const handler = new InitiatePontoPaymentHandler();
 
-export const activatePontoPayments = new KujaliFunction("activatePontoPayments",
+export const initiatePontoPayment = new KujaliFunction("initiatePontoPayment",
                                                   new RestRegistrar(),
                                                   [], handler)
                                                   .build();
