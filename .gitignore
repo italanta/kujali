@@ -62,3 +62,5 @@ apps/kujali-functions/src/assets/security/*
 
 project-kujali-secrets.json
 apps/kujali-functions/src/functions/.env.project-kujali-secret
+apps/kujali-functions/src/functions/.env.prod-kujali-secret
+prod-kujali-secrets.json
