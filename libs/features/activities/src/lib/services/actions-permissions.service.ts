@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import { PermissionsStateService } from '@app/state/organisation';
+import { KujaliPermissions } from '@app/model/organisation';
 
 @Injectable({
   providedIn: 'root',
@@ -27,10 +28,10 @@ export class ActionsPermissionsService {
       case 'companies':
         switch (action) {
           case 'create':
-            return (p: any) => p.CompanySettings.CanCreateCompanyActions;
+            return (p: KujaliPermissions) => p.CompanySettings.CanCreateCompanyActions;
 
           case 'delete':
-            return (p: any) => p.CompanySettings.CanDeleteCompanyActions;
+            return (p: KujaliPermissions) => p.CompanySettings.CanDeleteCompanyActions;
           default:
             return () => {};
         }
@@ -38,10 +39,10 @@ export class ActionsPermissionsService {
       case 'contacts':
         switch (action) {
           case 'create':
-            return (p: any) => p.ContactsSettings.CanCreateContactsActions;
+            return (p: KujaliPermissions) => p.ContactsSettings.CanCreateContactsActions;
 
           case 'delete':
-            return (p: any) => p.ContactsSettings.CanDeleteContactsActions;
+            return (p: KujaliPermissions) => p.ContactsSettings.CanDeleteContactsActions;
 
           default:
             return () => {};
@@ -50,12 +51,26 @@ export class ActionsPermissionsService {
       case 'opportunities':
         switch (action) {
           case 'create':
-            return (p: any) =>
+            return (p: KujaliPermissions) =>
               p.OpportunitiesSettings.CanCreateOpportunitiesActions;
 
           case 'delete':
-            return (p: any) =>
+            return (p: KujaliPermissions) =>
               p.OpportunitiesSettings.CanDeleteOpportunitiesActions;
+
+          default:
+            return () => {};
+        }
+
+      case 'expenses':
+        switch (action) {
+          case 'create':
+            return (p: KujaliPermissions) =>
+              p.ExpensesSettings.CanCreateExpensesActions;
+
+          case 'delete':
+            return (p: KujaliPermissions) =>
+              p.ExpensesSettings.CanDeleteExpensesActions;
 
           default:
             return () => {};

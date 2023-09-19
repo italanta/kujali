@@ -55,9 +55,7 @@ export class ActivitiesService {
 
     addNewActionForm.value.activityOwnerId = id;
     addNewActionForm.value.domainId = domain;
-    
-    console.log(addNewActionForm.value);
-    
+        
     this._sbS.sink = this._activity$$
       .add(addNewActionForm.value as Activity)
       .subscribe((success) => {

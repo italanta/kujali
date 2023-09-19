@@ -64,6 +64,7 @@
     "features-finance-operations-accounts-detail-view": "libs/features/finance/operations/accounts/detail/view",
     "features-finance-operations-accounts-main": "libs/features/finance/operations/accounts/main",
     "features-finance-operations-budgets-main": "libs/features/finance/operations/budgets/main",
+    "features-finance-operations-expenses-detail-activities": "libs/features/finance/operations/expenses/detail/activities",
     "features-finance-operations-expenses-detail-view": "libs/features/finance/operations/expenses/detail/view",
     "features-finance-operations-expenses-main": "libs/features/finance/operations/expenses/main",
     "features-finance-operations-main": "libs/features/finance/operations/main",

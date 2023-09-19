@@ -78,7 +78,13 @@ export class OrganisationAssignUserHandler extends FunctionHandler<Organisation,
         CanViewDetailView: {admin:true, senior:false, junior:false, intern:false},
       },
       CompanySettings: {
-        CanViewCompanies: {admin:true, senior:false, junior:false, intern:false},
+        CanViewCompanies: "cl_com"
+        {
+          admin:true, 
+          senior:false, 
+          junior:false, 
+          intern:false
+        },
         CanCreateCompanies: {admin:true, senior:false, junior:false, intern:false},
         CanEditCompanies: {admin:true, senior:false, junior:false, intern:false},
         CanEditCompanyActions: {admin:true, senior:false, junior:false, intern:false},

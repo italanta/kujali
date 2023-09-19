@@ -94,6 +94,8 @@ export class ActivitiesComponent implements OnInit, AfterViewInit {
         return (p: KujaliPermissions) => p.ContactsSettings.CanEditContactActions;
       case 'opportunities':
         return (p: KujaliPermissions) => p.OpportunitiesSettings.CanEditOpportunitiesActions;
+      case 'expenses':
+        return (p: KujaliPermissions) => p.ExpensesSettings.CanEditExpensesActions;
       default:
         return;
     }

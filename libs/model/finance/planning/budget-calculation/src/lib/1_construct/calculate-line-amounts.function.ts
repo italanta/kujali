@@ -66,7 +66,7 @@ function _templateToLine(template: TransactionPlan, plans: TransactionPlan[], va
     id: template.id!,
     name: template.lineName,
 
-    amountsYear: values,
+    amountsYear: _calculateAmountForMonthTotal(values),
 
     trTypeId: template.trTypeId,
     categoryId: template.trCatId,
@@ -78,4 +78,14 @@ function _templateToLine(template: TransactionPlan, plans: TransactionPlan[], va
     isRecord: true,
     total: values.reduce((py, cy) => py + cy.amountsMonth.reduce((pm, cm) => pm + cm.amount, 0), 0)
   }
+}
+
+// calculate total for all amountMonths in amountPerYear
+function _calculateAmountForMonthTotal(values: AmountPerYear[]) {
+  const total = values.map((year) => {
+    return {
+    ...year,
+    total : year.amountsMonth.reduce((prev, curr) => prev + curr.amount, 0)}
+  });
+  return total;
 }

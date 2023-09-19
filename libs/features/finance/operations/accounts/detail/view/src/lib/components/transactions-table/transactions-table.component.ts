@@ -4,6 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
+import { combineLatest } from 'rxjs';
+
 import { BankTransaction, FTransaction } from '@app/model/finance/payments';
 
 @Component({
@@ -49,8 +51,10 @@ export class TransactionsTableComponent implements OnInit, AfterViewInit {
 
   updatePontoTrs() {
     this.fetchingTransactions = true;
-    this._aFF.httpsCallable('fetchPontoUserBankTransactions')(this.accountData).subscribe(() => {
-      this.fetchingTransactions = false;
-    })
+    
+    const triggersync$ = this._aFF.httpsCallable("triggerSynchronization")(this.accountData);
+    const updatePontoTrs$ = this._aFF.httpsCallable("fetchPontoUserBankTransactions")(this.accountData);
+
+    return combineLatest([triggersync$, updatePontoTrs$]).subscribe((res) => this.fetchingTransactions = false);
   }
 }

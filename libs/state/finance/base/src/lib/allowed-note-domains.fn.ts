@@ -2,7 +2,7 @@
 /** Returns whether the current base pages has notes. */
 export function __isValidFinanceObjectDomain(type: string)
 {
-  return ['companies', 'contacts', 'opportunities'].indexOf(type) >= 0;
+  return ['companies', 'contacts', 'opportunities', 'expenses'].indexOf(type) >= 0;
 }
 
 // export function __artifectToRoute(validatedArtifectLoader: { type: string | boolean, id: string | boolean })
