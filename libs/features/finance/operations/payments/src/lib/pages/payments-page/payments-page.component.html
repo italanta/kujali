@@ -68,7 +68,7 @@
         <!-- Source Column -->
         <ng-container matColumnDef="source">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Source </th>
-          <td mat-cell *matCellDef="let row"> {{row.source ? row.source === 2 ? 'Ponto' : 'Cash' : '-'}} </td>
+          <td mat-cell *matCellDef="let row"> {{ getPaymentSource(row.source)}} </td>
         </ng-container>
 
         <!-- Actions Column -->

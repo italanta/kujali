@@ -16,6 +16,7 @@ import { PaymentAllocation } from '@app/model/finance/allocations';
 import { PaymentsStateService } from '@app/state/finance/payments';
 import { AllocationsStateService } from '@app/state/finance/allocations';
 import { AllocateTransactionModalComponent } from '@app/features/finance/banking/allocations';
+import { CreateManualPaymentsModalComponent } from '../../modals/create-manual-payments-modal/create-manual-payments-modal.component';
 
 @Component({
   selector: 'app-payments-page',
@@ -102,7 +103,26 @@ export class PaymentsPageComponent implements OnInit, AfterViewInit {
     });
   }
 
-  createPayment() {}
+  createPayment() {
+    this._dialog.open(CreateManualPaymentsModalComponent, {minWidth: '600px'});
+  }
+
+  getPaymentSource(source: number) {
+    switch (source) {
+      case 1:
+        return 'Swan';
+      case 2:
+        return 'Ponto';
+      case 3:
+        return 'Bank';
+      case 4:
+        return 'Mpesa';
+      case 5:
+        return 'Cash';
+      default:
+        return '';
+    }
+  }
 
   updatePontoTrs() { }
 }

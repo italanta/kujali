@@ -18,6 +18,8 @@ import { PageHeadersModule } from '@app/elements/layout/page-headers';
 import { PaymentsPageComponent } from './pages/payments-page/payments-page.component';
 
 import { PaymentsRouterModule } from './payments.router';
+import { CreateManualPaymentsModalComponent } from './modals/create-manual-payments-modal/create-manual-payments-modal.component';
+import { MatSelectFilterModule } from 'mat-select-filter';
 
 @NgModule({
   imports: [
@@ -31,12 +33,13 @@ import { PaymentsRouterModule } from './payments.router';
     FormsModule,
     ReactiveFormsModule,
     UserStateModule,
+    MatSelectFilterModule,
 
     iTalPageModule,
     PageHeadersModule,
 
     PaymentsRouterModule,
   ],
-  declarations: [PaymentsPageComponent],
+  declarations: [PaymentsPageComponent, CreateManualPaymentsModalComponent],
 })
 export class OperationsPaymentsModule {}

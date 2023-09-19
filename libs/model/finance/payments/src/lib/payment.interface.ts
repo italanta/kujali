@@ -32,9 +32,10 @@ export interface PaymentBase extends FTransaction {
   source?: PaymentSources;
 }
 
-
 export enum PaymentSources {
-  Manual = 0,
   Swan = 1,
-  Ponto = 2
+  Ponto = 2,
+  Bank = 3,
+  Mpesa = 4,
+  Cash = 5
 }

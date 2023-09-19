@@ -1,0 +1,98 @@
+<form [formGroup]="addNewPaymentFormGroup" fxLayout="column" fxLayoutAlign="start">
+  <h2 mat-dialog-title>  Add Payment </h2>
+  <mat-dialog-content class="mat-typography">
+
+    <div fxLayout="column" fxLayoutAlign="start" fxFlex>
+
+
+      <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="20px">
+        <div fxLayout="column" fxFlex="50">
+          <h4> Invoice </h4>
+          <mat-form-field appearance="outline">
+            <mat-select formControlName="invoice" multiple>
+              <mat-select-filter [placeholder]="'Filter'" [displayMember]="'title'" [array]="invoices" (filteredReturn)="filteredInvoices =$event"></mat-select-filter>
+              <mat-option [value]="[]"></mat-option>
+              <mat-option *ngFor="let invoice of filteredInvoices" [value]="invoice">
+                {{invoice.title}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+          <h4> Customer </h4>
+          <mat-form-field appearance="outline">
+            <mat-select formControlName="customer">
+              <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="customers" (filteredReturn)="filteredCustomers =$event"></mat-select-filter>
+              <mat-option value=""></mat-option>
+              <mat-option *ngFor="let customer of filteredCustomers" [value]="customer">
+                {{customer.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between">
+        <div fxLayout="column" fxLayoutAlign="start" fxFlex>
+          <h4>{{ 'MODALS.CREATE-EXPENSE.DATE' | transloco }}</h4>
+          <mat-form-field appearance="outline">
+            <input formControlName="date" matInput [matDatepicker]="picker" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="20px">
+        <div fxLayout="column" fxFlex="50">
+          <h4>{{ 'MODALS.CREATE-EXPENSE.AMOUNT' | transloco }}</h4>
+          <mat-form-field appearance="outline" fxFlex>
+            <input matInput type="number" formControlName="amount" />
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="start" fxFlex="50">
+          <h4> Platform </h4>
+          <mat-form-field appearance="outline">
+            <mat-select formControlName="platform">
+              <mat-select-filter [placeholder]="'Filter'" [displayMember]="'name'" [array]="platforms" (filteredReturn)="filteredPlatforms = $event"></mat-select-filter>
+              <mat-option value=""></mat-option>
+              <mat-option *ngFor="let platform of filteredPlatforms" [value]="platform">
+                {{ platform.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div>
+        <div fxLayout="column" fxLayoutAlign="start" fxFlex>
+          <h4>{{ 'MODALS.CREATE-EXPENSE.NOTE' | transloco }}</h4>
+          <textarea name="" id="" rows="3" formControlName="note"></textarea>
+        </div>
+      </div>
+    </div>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="padd-top" align="end">
+    <button mat-button mat-dialog-close>{{ 'MODAL.CLOSE' | transloco }}</button>
+    <button class="submit-btn"
+      [disabled]="creatingPayment || !addNewPaymentFormGroup.valid"
+      class="create-contact-btn" mat-raised-button color="primary" cdkFocusInitial (click)="createPayment()">
+      <span *ngIf="!creatingPayment; else creatingPaymentSpinner">
+        Add Payment
+      </span>
+    </button>
+  </mat-dialog-actions>
+</form>
+
+<ng-template #creatingPaymentSpinner>
+  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+    <span>
+      Please wait...
+    </span>
+    <mat-spinner [diameter]="20" color="#fff"></mat-spinner>
+  </div>
+</ng-template>
